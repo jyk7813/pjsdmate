@@ -1,0 +1,118 @@
+.selectBoxList {
+  display: flex;
+  grid-gap: 10px;
+  flex-direction: column;
+}
+.selectBox1 * { box-sizing: border-box; }
+.selectBox2 * { box-sizing: border-box; }
+
+.selectBox1,
+.selectBox2 {
+position: relative;
+z-index: 1;
+width: 371px;
+height: 50px;
+border-radius: 15px;
+border: 1px solid #D9D9D9;
+background: #f3f5f6;
+background-size: 20px;
+cursor: pointer;
+}
+
+.selectBox1:before,
+.selectBox2:before {
+content: url('static/img/icoarrow.png');
+position: absolute;
+top: 50%;
+transform: translateY(-50%); 
+right: 10px; 
+z-index: -1;
+}
+
+.selectBox1:after,
+.selectBox2:after {
+content: '';
+display: block; 
+width: 2px;
+height: 100%; 
+position: absolute; 
+top: 0; 
+right: 35px;
+/* background: lightcoral; */
+}
+
+.selectBox1 .label,
+.selectBox2 .label {
+display: flex;
+align-items: center;
+width: inherit;
+height: inherit;
+border: 0 none;
+outline: 0 none;
+padding-left: 15px;
+background: transparent;
+cursor: pointer;
+color: #727272;
+font-family: Noto Sans;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.8px;
+text-transform: lowercase;
+text-align: center;
+align-items: center;
+}
+
+.selectBox1 .optionList,
+.selectBox2 .optionList {
+position: absolute; 
+top: 35px;
+left: 0;
+width: 100%;
+background: #f3f5f6;
+color: #727272;
+list-style-type: none;
+padding: 0;
+border-radius: 15px;
+overflow: hidden;
+max-height: 0;
+/* transition: .3s ease-in; */
+}
+
+.selectBox1 .optionList::-webkit-scrollbar {width: 6px;}
+.selectBox2 .optionList::-webkit-scrollbar {width: 6px;}
+.selectBox1 .optionList::-webkit-scrollbar-track {background: transparent; }
+.selectBox2 .optionList::-webkit-scrollbar-track {background: transparent; }
+.selectBox1 .optionList::-webkit-scrollbar-thumb {background: #303030; border-radius: 45px;}
+.selectBox2 .optionList::-webkit-scrollbar-thumb {background: #303030; border-radius: 45px;}
+.selectBox1 .optionList::-webkit-scrollbar-thumb:hover {background: #303030;}
+.selectBox2 .optionList::-webkit-scrollbar-thumb:hover {background: #303030;}
+
+.selectBox1.active,
+.selectBox2.active {
+  z-index: 10;
+}
+
+.selectBox1.active .optionList,
+.selectBox2.active .optionList {
+max-height: 240px;
+overflow: auto;
+}
+
+.selectBox1 .optionItem,
+.selectBox2 .optionItem {
+
+padding: 10px 15px 10px;
+transition: .1s;
+}
+
+.selectBox1 .optionItem:hover,
+.selectBox2 .optionItem:hover {
+background: rgb(244, 244, 244);
+}
+
+.selectBox1 .optionItem:last-child,
+.selectBox2 .optionItem:last-child {
+border-bottom: 0 none;
+}
