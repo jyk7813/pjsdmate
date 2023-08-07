@@ -18,4 +18,5 @@ public class Member {
     private boolean active;
     private byte[] image;
 
+
 }
