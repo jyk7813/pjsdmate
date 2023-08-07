@@ -1,101 +1,52 @@
 package kr.com.greenart.sdmate.pjsdmate.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+
+import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 public class Member {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer member_no;
+    @Getter
+    @Id
+   // @Column(name="member_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer memberNo;
+    @Getter
     private String name;
+    @Getter
     private String identity_no;
+    @Getter
     private String id;
+    @Getter
     private String pwd;
+
+    @Getter
     private String phoneNum;
+
+    @Getter
     private String email;
+    @Getter
     private boolean active;
     private byte[] image;
 
-
-    public Integer getMember_no() {
-        return member_no;
-    }
-
-    public void setMember_no(Integer member_no) {
-        this.member_no = member_no;
-    }
-
-    public String getName() {
-        return name;
+    public void setMemberNo(Integer memberNo) {
+        this.memberNo = memberNo;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getIdentity_no() {
-        return identity_no;
-    }
-
     public void setIdentity_no(String identity_no) {
         this.identity_no = identity_no;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getPhoneNum() {
-        return phoneNum;
-    }
-
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 
     @Override
     public String toString() {
         return "Member{" +
-                "member_no=" + member_no +
+                "memberNo=" + memberNo +
                 ", name='" + name + '\'' +
                 ", identity_no='" + identity_no + '\'' +
                 ", id='" + id + '\'' +
@@ -106,4 +57,31 @@ public class Member {
                 '}';
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

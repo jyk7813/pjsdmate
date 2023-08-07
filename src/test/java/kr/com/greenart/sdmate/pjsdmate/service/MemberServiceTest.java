@@ -16,9 +16,15 @@ class MemberServiceTest {
    MemberService memberService;
     @Autowired MemberRepository memberRepository;
 
+//    @Test
+//    void searchByid() {
+//        Member member = memberService.get
+//    }
+
     @Test
     void 찿기(){
-       Member member =memberService.getMemberByPK(1);
+
+        Member member = memberService.getMemberByPK(1);
         System.out.print(member.getName());
     }
 }
