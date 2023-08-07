@@ -27,7 +27,8 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation("mysql:mysql-connector-java:8.0.33")
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
