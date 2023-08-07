@@ -15,8 +15,10 @@ private final MemberRepository memberRepository;
         this.memberRepository = memberRepository;
     }
     public Member getMemberByPK(int member_no){
-        Member member = memberRepository.findByMember_no(member_no).get();
+        Member member = memberRepository.findBymemberNo(member_no).get();
 
         return member;
     }
+
+
 }

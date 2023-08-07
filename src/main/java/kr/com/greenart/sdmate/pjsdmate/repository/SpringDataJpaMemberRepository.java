@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface DataJpaMemberRepository extends JpaRepository<Member,Integer>, MemberRepository{
+public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Integer>, MemberRepository {
+
     @Override
-    Optional<Member> findByMember_no(int member_no);
+    Optional<Member> findBymemberNo(Integer memberNo);
+
+    @Override
+    Optional<Member> findByName(String name);
 }
