@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MemberController {
-    @GetMapping("/mainplanner")
+    @GetMapping("/main")
     public String main() {
-        return "mainplanner";
+        return "main";
     }
 }
