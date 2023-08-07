@@ -19,6 +19,7 @@ public class Member {
     private boolean active;
     private byte[] image;
 
+
     public Integer getMember_no() {
         return member_no;
     }
@@ -104,4 +105,5 @@ public class Member {
                 ", active=" + active +
                 '}';
     }
+
 }
