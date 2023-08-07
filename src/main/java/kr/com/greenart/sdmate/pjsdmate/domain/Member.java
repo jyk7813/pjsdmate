@@ -9,7 +9,7 @@ import java.util.Arrays;
 @Entity
 public class Member {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int member_no;
+    private Integer member_no;
     private String name;
     private String identity_no;
     private String id;
@@ -19,11 +19,11 @@ public class Member {
     private boolean active;
     private byte[] image;
 
-    public int getMember_no() {
+    public Integer getMember_no() {
         return member_no;
     }
 
-    public void setMember_no(int member_no) {
+    public void setMember_no(Integer member_no) {
         this.member_no = member_no;
     }
 
