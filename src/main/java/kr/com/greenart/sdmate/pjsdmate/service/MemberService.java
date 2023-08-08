@@ -19,9 +19,9 @@ public class MemberService {
 
 
     @Autowired
-    public MemberService(MemberRepository memberRepository, ValidatorMember validatorMember, ValidatorMember validatorMember1) {
+    public MemberService(MemberRepository memberRepository, ValidatorMember validatorMember) {
         this.memberRepository = memberRepository;
-        this.validatorMember = validatorMember1;
+        this.validatorMember = validatorMember;
     }
     public Member getMemberByPK(int member_no){
         Member member = memberRepository.findBymemberNo(member_no).get();
@@ -53,6 +53,7 @@ public class MemberService {
         for (Map.Entry<String, String> entry : map.entrySet()){
             list.add(entry.getValue());
         }
+        validatorMember.cleanMap();
             return list;
     }
 

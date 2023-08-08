@@ -52,6 +52,10 @@ public class ValidatorMember {
 
             return errors;
         }
+//        public Map<String,String> joinValidate(Member member){
+//
+//            return
+//        }
 
         public Map<String, String> validateName(String name){
 
