@@ -22,8 +22,7 @@ public class MemberController {
         card.setReviewCnt(3);
         System.out.println(card);
         session.setAttribute("card", card);
-
-
+        session.setAttribute("a", "b");
 
 
 //        @GetMapping("/answer")

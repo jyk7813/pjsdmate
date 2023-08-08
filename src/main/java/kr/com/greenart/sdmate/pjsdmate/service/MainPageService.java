@@ -14,6 +14,7 @@ public class MainPageService {
     private final PlannerRepository plannerRepository;
     private final SpecificationRepository specificationRepository;
     private final ReviewRepository reviewRepository;
+
     @Autowired
     public MainPageService(PlannerRepository plannerRepository, SpecificationRepository specificationRepository, ReviewRepository reviewRepository) {
         this.plannerRepository = plannerRepository;
@@ -25,14 +26,8 @@ public class MainPageService {
         mainpageCard card = null;
 
 
-
         return card;
     }
-
-
-
-
-
 
 
 //    public List<mainpageCard> returnMainCardList(int memberNo) {
