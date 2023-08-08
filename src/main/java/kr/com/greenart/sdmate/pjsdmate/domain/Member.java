@@ -23,7 +23,7 @@ public class Member {
     private String pwd;
 
     @Getter
-    private String phoneNum;
+    private String phonenum;
 
     @Getter
     private String email;
@@ -51,7 +51,7 @@ public class Member {
                 ", identity_no='" + identity_no + '\'' +
                 ", id='" + id + '\'' +
                 ", pwd='" + pwd + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
+                ", phoneNum='" + phonenum + '\'' +
                 ", email='" + email + '\'' +
                 ", active=" + active +
                 '}';
@@ -74,7 +74,7 @@ public class Member {
     }
 
     public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+        this.phonenum = phoneNum;
     }
 
     public void setEmail(String email) {
