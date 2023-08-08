@@ -17,11 +17,18 @@ import java.util.Map;
 @Controller
 public class MemberController {
 
+
     private final MemberService memberService;
 
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+
+    @GetMapping("/")
+    public String start(){
+        return "start";
     }
 
     @GetMapping("/main")
@@ -30,6 +37,7 @@ public class MemberController {
 
         return "main";
     }
+
 
     // 로그인 매핑을 해주세요
     public String Login(Model model, HttpSession session, HttpServletResponse response){
@@ -71,4 +79,14 @@ public class MemberController {
     }
 
 
+    @GetMapping("/answer")
+    public String answer() {
+        return "answer";
+    }
+
+
+    @GetMapping("/member/join")
+    public String join() { return "member_join"; }
+
 }
+

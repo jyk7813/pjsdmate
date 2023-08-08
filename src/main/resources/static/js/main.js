@@ -114,10 +114,12 @@
 					});
 
 		}
-
+console.log(`${ card }`);
 	// Scrolly.
 		$('.scrolly').scrolly({
 			speed: 1000
 		});
 
 })(jQuery);
+
+console.log(document.t)
