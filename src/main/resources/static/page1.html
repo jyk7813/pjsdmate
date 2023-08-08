@@ -54,4 +54,33 @@
 </div>
 <script src="/js/combobox.js"></script>
 <script src="/js/api.js"></script>
+<script>
+    var regionList = document.querySelector(".selectBox1 ul");
+    var cityList = document.querySelector(".selectBox2 ul");
+    var regionLabel = document.querySelector(".selectBox1 .label");
+    var cityLabel = document.querySelector(".selectBox2 .label");
+    var guest = document.querySelector(".guest");
+    var date = document.querySelector("#date");
 
+
+    //위에 들어있는 값들이 변할때 마다 console.log에 찍히는지 확인해보기
+    regionList.addEventListener("click", function () {
+        question.q1_city = regionLabel.textContent;
+        console.log(regionLabel.textContent);
+    });
+    cityList.addEventListener("click", function () {
+        question.q1_gu = cityLabel.textContent;
+        console.log(cityLabel.textContent);
+    });
+    guest.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q1_guestno = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    date.addEventListener("change", function(e) {
+        question.q1_date = e.target.value;
+        console.log(e.target.value);
+    });
+
+</script>
