@@ -20,5 +20,6 @@ public class MemberController {
         card.setReviewCnt(3);
         model.addAttribute("card", card);
         return "main";
+
     }
 }
