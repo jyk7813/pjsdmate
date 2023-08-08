@@ -93,6 +93,35 @@ checkbox.addEventListener('change', function(){
   }
 });
 
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+  }
+
+  var userstatParam = getURLParameter('userstat');
+
+  if (userstatParam) {
+    if (userstatParam === 'planner') {
+      checkbox.checked = true;
+
+      whatuser = 'planner';
+      member.innerHTML = '플래너';
+      member.style.color = '#4BA698';
+      logo.className = 'logo planner';
+      loginbtn.className = 'loginbtn planner';
+      autologin.className = 'autologin planner';
+    } else if (userstatParam === 'member') {
+      checkbox.checked = false;
+
+      whatuser = 'member';
+      member.innerHTML = '일반인';
+      member.style.color = '#F28585';
+      logo.className = 'logo member';
+      loginbtn.className = 'loginbtn member';
+      autologin.className = 'autologin member';
+    }
+  }
+
+
 
 </script>
 </html>
