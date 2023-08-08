@@ -22,4 +22,8 @@ public class MemberController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/member/join")
+    public String join() { return "member_join"; }
 }
+
