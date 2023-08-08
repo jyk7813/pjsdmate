@@ -66,10 +66,11 @@ input, select, textarea {
 }
 
 .chat_wrap {
-	position: absolute;
-	display: inline-block;
 	width: 430px;
+	display: inline-block;
 	margin-top: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
 	align-items: center;
 }
 
@@ -79,8 +80,6 @@ input, select, textarea {
 	font-weight: 700;
 	font-size: 20px;
 	color: #343837;
-	/* margin-top: 20px; */
-	margin-left: 30px;
 }
 
 
@@ -90,7 +89,8 @@ input, select, textarea {
 	float: right;
 	width: 23px;
 	height: 23px;
-	margin-right: 40px;
+	margin-right: 10px;
+	margin-top: 2px;
 }
 
 .chat_wrapper img.chaticon {
@@ -220,7 +220,13 @@ body {
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
+	-moz-animation: none !important;
+	-webkit-animation: none !important;
+	-ms-animation: none !important;
 	animation: none !important;
+	-moz-transition: none !important;
+	-webkit-transition: none !important;
+	-ms-transition: none !important;
 	transition: none !important;
 }
 
@@ -264,7 +270,6 @@ p {
 	font-weight:600;
 	font-size:15px;
 	color: #343837;
-	margin:0 0 2em 0;
 }
 
 p.content {
@@ -1331,6 +1336,8 @@ ul.actions {
 
 ul.actions li {
 	vertical-align: middle;
+	margin-top:20px;
+	margin-bottom: 30px;
 }
 
 ul.actions.special {
@@ -1737,7 +1744,6 @@ table.alt tbody tr td {
 	-webkit-align-items: center;
 	-ms-align-items: center;
 	align-items: center;
-	margin-top: 40px;
 }
 
 .spotlight .content {

@@ -14,6 +14,11 @@ public class MemberController {
         return "main";
     }
 
+    @GetMapping("/mainplanner")
+    public String mainplanner() {
+        return "mainplanner";
+    }
+
     @GetMapping("/answer")
     public String answer() {
         return "answer";
