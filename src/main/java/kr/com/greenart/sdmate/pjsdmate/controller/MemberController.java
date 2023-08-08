@@ -1,15 +1,16 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
+import org.apache.catalina.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import javax.servlet.http.HttpSession;
 @Controller
 public class MemberController {
-    @PostMapping("/main")
-    public String main(Model model) {
+    @GetMapping("/main")
+    public String main(HttpSession session) {
         mainpageCard card = new mainpageCard();
         card.setSum(3000000);
         card.setBusinessName("테스트사업");
@@ -18,24 +19,28 @@ public class MemberController {
         card.setPlannerPk(1);
         card.setPlannerImg(null);
         card.setReviewCnt(3);
-        model.addAttribute("card", card);
+        System.out.println(card);
+        session.setAttribute("card", card);
 
 
-    }
 
-    @GetMapping("/answer")
-    public String answer() {
-        return "answer";
-    }
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-    @GetMapping("/")
-    public String start(){
-        return "start";
-    }
-    @GetMapping("/main")
-    public String main() {
+
+//        @GetMapping("/answer")
+//        public String answer () {
+//            return "answer";
+//        }
+//        @GetMapping("/login")
+//        public String login () {
+//            return "login";
+//        }
+//        @GetMapping("/")
+//        public String start () {
+//            return "start";
+//        }
+//        @GetMapping("/main")
+//        public String main () {
+//            return "main";
+//        }
         return "main";
+    }
 }
