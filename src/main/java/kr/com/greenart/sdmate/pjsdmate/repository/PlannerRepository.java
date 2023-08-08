@@ -12,5 +12,6 @@ public interface PlannerRepository {
     Optional<Planner> findByIdAndPwd(String id, String pwd);
     Optional<Planner> findByPwd(String pwd);
     List<Planner> findAll();
+    Optional<Planner> findByplannerNo(Integer plannerNo);
 
 }
