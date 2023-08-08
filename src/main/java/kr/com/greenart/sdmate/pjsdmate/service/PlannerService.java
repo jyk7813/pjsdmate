@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PlannerService {
+
     private final PlannerRepository plannerRepository;
 
     @Autowired
@@ -14,9 +15,9 @@ public class PlannerService {
         this.plannerRepository = plannerRepository;
     }
 
-    public Planner getPlannerByPK(int planner_no) {
-        Planner planner = plannerRepository.findByplannerNo(planner_no).get();
-        return  planner;
-    }
+    public Planner getPlannerById(int plannerNo) {
+        Planner planner = plannerRepository.findByplannerNo(plannerNo).get();
 
+        return planner;
+    }
 }

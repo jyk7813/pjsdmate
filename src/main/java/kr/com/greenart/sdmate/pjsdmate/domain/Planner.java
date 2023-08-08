@@ -4,23 +4,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Arrays;
 
 @Entity
 public class Planner {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer plannerNo;
     private String name;
-    private String identityNo;
-    private String businessNo;
+    private String identity_no;
+    private String business_no;
     private String id;
     private String pwd;
     private String phonenum;
     private String email;
-    private String businessName;
+    private String business_name;
     private int dealCnt;
     private double rating;
     private boolean active;
+    private String region;
     private byte[] image;
 
     @Override
@@ -28,16 +28,17 @@ public class Planner {
         return "Planner{" +
                 "plannerNo=" + plannerNo +
                 ", name='" + name + '\'' +
-                ", identityNo='" + identityNo + '\'' +
-                ", bussinessNo='" + businessNo + '\'' +
+                ", identity_no='" + identity_no + '\'' +
+                ", bussiness_no='" + business_no + '\'' +
                 ", id='" + id + '\'' +
                 ", pwd='" + pwd + '\'' +
-                ", phoneNum='" + phonenum + '\'' +
+                ", phonenum='" + phonenum + '\'' +
                 ", email='" + email + '\'' +
-                ", bussinessName='" + businessName + '\'' +
+                ", bussiness_name='" + business_name + '\'' +
                 ", dealCnt=" + dealCnt +
                 ", rating=" + rating +
                 ", active=" + active +
+                ", region='" + region + '\'' +
                 '}';
     }
 
@@ -57,20 +58,20 @@ public class Planner {
         this.name = name;
     }
 
-    public String getIdentityNo() {
-        return identityNo;
+    public String getIdentity_no() {
+        return identity_no;
     }
 
-    public void setIdentityNo(String identityNo) {
-        this.identityNo = identityNo;
+    public void setIdentity_no(String identity_no) {
+        this.identity_no = identity_no;
     }
 
-    public String getBusinessNo() {
-        return businessNo;
+    public String getBusiness_no() {
+        return business_no;
     }
 
-    public void setBusinessNo(String businessNo) {
-        this.businessNo = businessNo;
+    public void setBusiness_no(String bussiness_no) {
+        this.business_no = bussiness_no;
     }
 
     public String getId() {
@@ -105,12 +106,12 @@ public class Planner {
         this.email = email;
     }
 
-    public String getBusinessName() {
-        return businessName;
+    public String getBusiness_name() {
+        return business_name;
     }
 
-    public void setBusinessName(String businessName) {
-        this.businessName = businessName;
+    public void setBusiness_name(String bussiness_name) {
+        this.business_name = bussiness_name;
     }
 
     public int getDealCnt() {
@@ -135,6 +136,14 @@ public class Planner {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public byte[] getImage() {

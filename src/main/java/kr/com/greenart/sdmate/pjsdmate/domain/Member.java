@@ -1,31 +1,48 @@
 package kr.com.greenart.sdmate.pjsdmate.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Getter;
+
+import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 public class Member {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer member_no;
+    @Id
+   // @Column(name="member_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer memberNo;
     private String name;
     private String identity_no;
     private String id;
     private String pwd;
-    private String phoneNum;
+
+    private String phonenum;
+
     private String email;
     private boolean active;
     private byte[] image;
 
-
-    public Integer getMember_no() {
-        return member_no;
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberNo=" + memberNo +
+                ", name='" + name + '\'' +
+                ", identity_no='" + identity_no + '\'' +
+                ", id='" + id + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", phonenum='" + phonenum + '\'' +
+                ", email='" + email + '\'' +
+                ", active=" + active +
+                '}';
     }
 
-    public void setMember_no(Integer member_no) {
-        this.member_no = member_no;
+    public Integer getMemberNo() {
+        return memberNo;
+    }
+
+    public void setMemberNo(Integer memberNo) {
+        this.memberNo = memberNo;
     }
 
     public String getName() {
@@ -60,12 +77,12 @@ public class Member {
         this.pwd = pwd;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
+    public String getPhonenum() {
+        return phonenum;
     }
 
-    public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setPhonenum(String phonenum) {
+        this.phonenum = phonenum;
     }
 
     public String getEmail() {
@@ -91,19 +108,4 @@ public class Member {
     public void setImage(byte[] image) {
         this.image = image;
     }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "member_no=" + member_no +
-                ", name='" + name + '\'' +
-                ", identity_no='" + identity_no + '\'' +
-                ", id='" + id + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", phoneNum='" + phoneNum + '\'' +
-                ", email='" + email + '\'' +
-                ", active=" + active +
-                '}';
-    }
-
 }

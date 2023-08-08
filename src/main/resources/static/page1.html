@@ -1,0 +1,57 @@
+
+<div class="page" id="page1">
+  <div class="firstquestion">
+    <h2>지역선택</h2>
+ 
+   
+
+    <div class="selectBoxList">
+        <!-- selectBox1 -->
+        <p>도 / 시 을 선택해 주세요.</p>
+        <div class="box">
+            <div class="selectBox1" >
+                <button class="label">도 / 시 선택</button>
+                <ul class="optionList" id="regionList">
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <!-- selectBox2 -->
+        <p>시 / 군 / 구</p>
+        <div class="box">
+            <div class="selectBox2">
+                <button class="label">시 / 군 / 구 선택</button>
+                <ul class="optionList" id="cityList">
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+    <hr class="lowline">
+
+    <h2>하객 & 일자 선택</h2>
+    
+    <p>예상 하객 수를 선택해 주세요.</p>
+    <div style="line-height: 10px;"><br></div>
+    <div class="guest">
+      <input type="radio" id="underfifty" name="guest" value="underfifty" />
+      <label for="underfifty">50명 미만</label>
+      <input type="radio" id="underhundred" name="guest" value="underhundred" />
+      <label for="underhundred">100명 미만</label>
+      <input type="radio" id="underonefifty" name="guest" value="underonefifty" />
+      <label for="underonefifty">150명 미만</label>
+      <input type="radio" id="overtwohundred" name="guest" value="overtwohundred"/>
+      <label for="overtwohundred">200명 이상</label>
+    </div>
+    <div style="line-height: 30px;"><br></div>
+    <p>예약 일자를 선택해 주세요.</p>
+    <div style="line-height: 10px;"><br></div>
+    <input type="date" id="date" name="date" value="2021-01-01" min="2021-01-01" max="2025-12-31"/>
+    <div style="line-height: 32px;"><br></div>
+  </div>
+</div>
+<script src="/js/combobox.js"></script>
+<script src="/js/api.js"></script>
+

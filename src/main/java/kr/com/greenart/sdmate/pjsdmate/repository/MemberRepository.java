@@ -11,7 +11,9 @@ public interface MemberRepository {
 
     Optional<Member> findById(String id);
 
-    Optional<Member> findByMember_no(int member_no);
+    Optional<Member> findBymemberNo(Integer memberNo);
+
+    Optional<Member> findByName(String name);
 
     Optional<Member> findByEmail(String email);
 

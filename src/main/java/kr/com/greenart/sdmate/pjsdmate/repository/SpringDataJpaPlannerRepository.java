@@ -1,13 +1,13 @@
 package kr.com.greenart.sdmate.pjsdmate.repository;
 
-import kr.com.greenart.sdmate.pjsdmate.domain.Member;
+import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface DataJpaMemberRepository extends JpaRepository<Member,Integer>, MemberRepository{
+public interface SpringDataJpaPlannerRepository extends JpaRepository<Planner, Integer>, PlannerRepository {
     @Override
-    Optional<Member> findByMember_no(int member_no);
+    Optional<Planner> findByplannerNo(Integer plannerNo);
 }

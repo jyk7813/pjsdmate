@@ -6,7 +6,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="/css/main.css">
 	<noscript>
 		<link rel="stylesheet" href="/css/noscript.css" />
 	</noscript>
@@ -17,6 +17,11 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 	<body class="is-preload">
+	<!-- 세션 값 읽어오기 -->
+<!--	<div th:if="${session.card != null}">-->
+<!--		<p>Session Value 'card': <span th:text="${session.card}"></span></p>-->
+<!--	</div>-->
+
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -43,11 +48,11 @@
 
 				<header id="header" class="alt">
 						<h1 style="text-align:left">안녕하세요! 김지윤님<img src="/img/signature.png" alt=""></h1>
-						<p style="text-align:left">원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!<br/>
+					<p style="text-align:left">원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!</p>
 							<ul class="actions">
 								<li><a href="main.html" class="button primary">스드메이트 견적받기</a></li>
 							</ul>
-						</p>
+
 					</header>
 
 					<!-- Main -->
@@ -188,6 +193,20 @@
 									<script src="/js/breakpoints.min.js"></script>
 									<script src="/js/util.js"></script>
 									<script src="/js/main.js"></script>
+<!--								</header>-->
+<!--							</section>-->
+<!--			</div>-->
+
+
+
+
+
+<!--									<div th:if="${a != null}">-->
+<!--										<p>Value of 'a': <span th:text="${a}"></span></p>-->
+<!--									</div>-->
+
+<!--									<a th:href="@{/main}">Set Session</a>-->
+
 
 	</body>
 
@@ -195,6 +214,11 @@
 	
 	</html>
 	<script>
+
+/*		// console.log("야임마");
+		// var mainPageCardInfo = [[${#strings.escapeJson(session.card)}]];
+		// console.log(mainPageCardInfo);*/
+
 		// 햄버거 버튼 클릭 이벤트 
 		var burger = $('.menu-trigger');
 

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+  <header class="top" >
+  <div id = userstat>
+    <center>
+    <span id="member">일반인 </span>
+    <span>고객용</span><br/>
+  
+<!-- Rounded switch -->
+<label class="switch">
+  <input type="checkbox" class="checkbox">
+  <span class="slider round"></span>
+</label>
+</center>
+  </div>
+  </header>
+  <nav>
+    <div class="logo member">
+    </div>
+    <form action="main" method="post">
+      <div >
+        <input type="text" class="id" name="id" placeholder="ID">
+      </div>
+      <div >
+        <input type="password" class="pw" name="pw" placeholder="PASSWORD">
+      </div>
+      <div class="autologin">
+        <input type="checkbox" id="check1">
+        <label for="check1" id="autologtext">자동로그인</label>
+    </div>
+    <div class="snslogin">
+      <span class="kakaologin">
+        <input type="button" class="kakaoimg" >
+      </span>
+      <span class="naverlogin">
+        <input type="button" class="naverimg" >
+      </span>
+      <span class="google">
+        <input type="button" class="googleimg">
+      </span>
+    </div>
+      <div class="loginbtndiv">
+        <input type="submit" class="loginbtn member" value="">
+      </div>
+    </form>
+
+    <div class="find">
+      <a href="#">아이디 / 비밀번호 찾기</a>
+    </div>
+    <div class="join">
+      <a href="join.html">회원가입</a>
+    </div>
+  </nav>
+  
+  <footer class="info">
+    <div class="introduce">
+      <a href="#">sdmate | Team introduction</a>
+    </div>
+  </footer>
+</body>
+<script>
+  var userstat = document.getElementById('userstat');
+  var logo = document.querySelector('.logo');
+  var autologin = document.querySelector('.autologin');
+  var loginbtn = document.querySelector('.loginbtn');
+  var checkbox = document.querySelector('.checkbox');
+  let whatuser = null;
+
+checkbox.addEventListener('change', function(){
+  if(checkbox.checked){
+    whatuser =  'planner';
+    member.innerHTML = '플래너';
+    member.style.color = '#4BA698';
+    logo.className = 'logo planner';
+    loginbtn.className = 'loginbtn planner';
+    autologin.className = 'autologin planner';
+  }
+  else{
+    whatuser = 'member';
+    member.innerHTML = '일반인';
+    member.style.color = '#F28585';
+    logo.className = 'logo member';
+    loginbtn.className = 'loginbtn member';
+    autologin.className = 'autologin member';
+  }
+});
+
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+  }
+
+  var userstatParam = getURLParameter('userstat');
+
+  if (userstatParam) {
+    if (userstatParam === 'planner') {
+      checkbox.checked = true;
+
+      whatuser = 'planner';
+      member.innerHTML = '플래너';
+      member.style.color = '#4BA698';
+      logo.className = 'logo planner';
+      loginbtn.className = 'loginbtn planner';
+      autologin.className = 'autologin planner';
+    } else if (userstatParam === 'member') {
+      checkbox.checked = false;
+
+      whatuser = 'member';
+      member.innerHTML = '일반인';
+      member.style.color = '#F28585';
+      logo.className = 'logo member';
+      loginbtn.className = 'loginbtn member';
+      autologin.className = 'autologin member';
+    }
+  }
+
+
+
+</script>
+</html>

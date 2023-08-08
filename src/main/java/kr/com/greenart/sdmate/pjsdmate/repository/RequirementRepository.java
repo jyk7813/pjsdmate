@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface RequirementRepository {
     Requirement save(Requirement requirement);
 
-    Optional<Requirement> findByRequirement_no(Integer requirement_no);
+    Optional<Requirement> findByRequirementNo(Integer requirementNo);
 
     List<Requirement> findAll();
 
