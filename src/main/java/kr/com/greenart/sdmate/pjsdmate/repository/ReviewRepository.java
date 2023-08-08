@@ -9,7 +9,7 @@ public interface ReviewRepository {
 
     Review save(Review review);
 
-    Optional<Review> findByReview_no(Integer review_no);
+    Optional<Review> findByReviewNo(Integer reviewNo);
 
     List<Review> findAll();
 

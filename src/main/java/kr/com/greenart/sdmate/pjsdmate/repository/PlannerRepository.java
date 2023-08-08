@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface PlannerRepository {
     Planner save(Planner planner);
-    Optional<Planner> findById(String id);
+    Optional<Planner> findByplannerNo(Integer plannerNo);
     Optional<Planner> findByEmail(String email);
     Optional<Planner> findByIdAndPwd(String id, String pwd);
     Optional<Planner> findByPwd(String pwd);
