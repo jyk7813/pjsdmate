@@ -19,7 +19,23 @@ public class MemberController {
         card.setPlannerImg(null);
         card.setReviewCnt(3);
         model.addAttribute("card", card);
-        return "main";
+
 
     }
+
+    @GetMapping("/answer")
+    public String answer() {
+        return "answer";
+    }
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+    @GetMapping("/")
+    public String start(){
+        return "start";
+    }
+    @GetMapping("/main")
+    public String main() {
+        return "main";
 }
