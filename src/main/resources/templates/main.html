@@ -206,19 +206,16 @@
     </section>
 </div>
 
-세션 값 읽어오기
-<div th:if="${session.card != null}">
-    <p>Session Value 'card': <span th:text="${session.card}"></span></p>
-</div>
 </body>
 
 
 </html>
 
-<!--<script th:inline="javascript">-->
-<!--    var a = /*[[${session.getAttribute('a')}]]*/ null;-->
-<!--    console.log(a);-->
-<!--</script>-->
+<script th:inline="javascript">
+    let card = /*[[${#session.getAttribute('card') != null ? #session.getAttribute('card') : 'defaultValue'}]]*/ 'defaultValue';
+    console.log(card);
+    console.log(card.dealCnt);
+</script>
 
 
 <script>
