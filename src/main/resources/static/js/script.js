@@ -3,6 +3,8 @@ var pageContent = {};
 let label;
 let clickLabel;
 let handleSelect;
+let question = {};
+
 
 $(document).ready(function () {
   // 페이지 내용 미리 로드
@@ -22,6 +24,7 @@ $(document).ready(function () {
       if (currentPage < 7) {
         currentPage++;
         navigateToPage(currentPage);
+        console.log(question);
       }
     });
 

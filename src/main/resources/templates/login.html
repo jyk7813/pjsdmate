@@ -9,7 +9,7 @@
 </head>
 <body>
   <header class="top" >
-  <div id = userstat>
+  <div>
     <center>
     <span id="member">일반인 </span>
     <span>고객용</span><br/>
@@ -26,10 +26,11 @@
     <div class="logo member">
     </div>
     <form action="main" method="post">
-      <div >
+      <input type="hidden" id="userstat" name="userstat" value="member">
+      <div>
         <input type="text" class="id" name="id" placeholder="ID">
       </div>
-      <div >
+      <div>
         <input type="password" class="pw" name="pw" placeholder="PASSWORD">
       </div>
       <div class="autologin">
@@ -82,6 +83,7 @@ checkbox.addEventListener('change', function(){
     logo.className = 'logo planner';
     loginbtn.className = 'loginbtn planner';
     autologin.className = 'autologin planner';
+    userstat.value = 'planner';
   }
   else{
     whatuser = 'member';
@@ -90,6 +92,7 @@ checkbox.addEventListener('change', function(){
     logo.className = 'logo member';
     loginbtn.className = 'loginbtn member';
     autologin.className = 'autologin member';
+    userstat.value = 'member';
   }
 });
 
@@ -120,8 +123,5 @@ checkbox.addEventListener('change', function(){
       autologin.className = 'autologin member';
     }
   }
-
-
-
 </script>
 </html>

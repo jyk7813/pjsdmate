@@ -9,7 +9,7 @@ import java.util.Objects;
 @Entity
 public class Member {
     @Id
-   // @Column(name="member_no")
+    // @Column(name="member_no")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer memberNo;
     private String name;

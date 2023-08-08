@@ -1,0 +1,107 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+.back_btn {
+    position: absolute;
+    width: 29px;
+    height: 28px;
+    margin-left: 20px;
+}
+
+.page_name {
+    font-family: 'Noto Sans KR';
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    letter-spacing: -0.9px;
+    margin-bottom: 20px;
+    color: #343837;
+}
+
+br {
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.join_logo {
+    width: 139px;
+    height: 43px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.container1 {
+    width: 294px;
+}
+
+.form {
+    font-family: 'Noto Sans KR';
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+    margin-right: 10px;
+    letter-spacing: -0.7px;
+    color: #727272;
+}
+
+.write {
+    border: none;
+    background-color: rgba(243, 245, 246, 1);
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+.join {
+    text-align: center;
+}
+
+.join_btn {
+    background-color: rgba(242, 133, 133, 1);
+    width: 180px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+
+    font-family: 'Noto Sans KR';
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.join_btn2 {
+    background-color:rgba(75, 166, 152, 1);
+    width: 180px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+
+    font-family: 'Noto Sans KR';
+    color: rgba(255, 255, 255, 1);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+
+br {
+    padding: 0px;
+    margin-bottom: 10px;
+}

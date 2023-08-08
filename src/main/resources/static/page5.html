@@ -66,3 +66,47 @@
         <div style="line-height: 22px;"><br></div>
     </div>
 </div>
+<script>
+    var photo = document.querySelector('.photo');
+    var video = document.querySelector('.video');
+    var makeup = document.querySelector('.makeup');
+    var bridestudiodress = document.querySelector('.bridestudiodress');
+    var groomstudiodress = document.querySelector('.groomstudiodress');
+
+    photo.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q5_studio_photo = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    video.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q5_studio_video = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    makeup.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q5_studio_makeup = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    bridestudiodress.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_dress = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    groomstudiodress.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_suit = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+
+</script>
