@@ -73,6 +73,7 @@ public class ValidatorMember {
                 errors.put(fieldName+"중복 에러",fieldName+" 가(이) 중복 됩니다.");
             }
         }
+
         public Map<String,String> validateJoin(Member member,Integer Id_Count,Integer Email_Count){
             checkNull(member.getName(), "이름");
             // 주민 번호  생년 월 일로 바뀌고 적합성 검사 데이터 받아보고 생각하기로 했기때문에 보류

@@ -5,8 +5,6 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Collections;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,9 +32,10 @@ public class MemberController {
     }
 
     @GetMapping("/main")
-    public String main(Model model) {
-
-        List<mainpageCard> card = mainPageService.returnMainCard(1);
+    public String goMain(Model model,HttpSession session) {
+        Member member = (Member) session.getAttribute("member");
+        System.out.println(member);
+        List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
 
 
         model.addAttribute("card", card);
@@ -62,16 +60,14 @@ public class MemberController {
             return "login";
         }
 
-    @GetMapping("/mainplanner")
-    public String mainplanner() {
-        return "mainplanner";
-    }
+
 
     @GetMapping("/join")
     public String join(Model model) {
         model.addAttribute("member", new Member());
         return "member_join";
     }
+
     @PostMapping("/idCheck")
     @ResponseBody
     public Map<String, String> checkid(@RequestBody Map<String, String> requestData) {
@@ -88,13 +84,14 @@ public class MemberController {
 
 
     @PostMapping("/login")
-    public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response) {
+
+    public String Login(@RequestParam String id, @RequestParam String pw,@RequestParam String userstat,Model model, HttpSession session, HttpServletResponse response){
 
 
         List<String> list = memberService.validate(id, pw);
 
         //정규식을 검사하고 list 사이즈가 0 이라면
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             Member member = memberService.Login(id, pw);
             // 돌아온게 널이 아니라면
             if (member != null) {
@@ -103,7 +100,7 @@ public class MemberController {
                 if ((model.getAttribute("AutoLogin")) != null) {
 
                     // 쿠키 생성하는 행동을 하면 됩니다.
-                    Cookie cookie = new Cookie("username", "john");
+                    Cookie cookie = new Cookie("id", member.getId());
                     response.addCookie(cookie);
                 }
 
@@ -117,6 +114,7 @@ public class MemberController {
                 list.add("아이디 혹은 비밀번호가 틀렸습니다");
                 model.addAttribute("error", list);
 
+                return "login";
                 //null 이라면 아이디가 틀렸거나 비밀번호가 틀렸기 때문에 redirect 를 해줘야합니다
 
             }
@@ -126,52 +124,36 @@ public class MemberController {
 
         }
 
+        if(userstat.equals("planner")){
+            session.setAttribute("userstat","planner");
+            return "redirect:/planner/login?userstat=planner";
+        } else if (userstat.equals("member")) {
+            session.setAttribute("userstat","planner");
+            return "login";
+        }
         // model 객체에 addAttribute 해서 보냄
-        return "/login";
+        return "login";
     }
 
 
-    public String searchId(Model model){
-        // 값 꺼내오기
-        String name = (String)model.getAttribute("id");
-        String birth = (String) model.getAttribute("birth");
-        // 출력될 문장
-        String searchId = memberService.searchId(name, birth);
-        model.addAttribute("searchId",searchId);
-        return "Login";
-    }
-    public String searchPass(Model model){
-        //값꺼내오기
-        String name = (String)model.getAttribute("name");
-        String birth = (String)model.getAttribute("birth");
-        String id = (String)model.getAttribute("id");
-
-        String searchPass = memberService.searchPassWord(name,birth,id);
-        model.addAttribute("searchPass",searchPass);
-        return "Login";
-    }
-
-//    @PostMapping ("/join")
-//    public String join(Model model) {
-//        //요청에 member 를 String 으로 받아옴
-//        String json = (String)model.getAttribute("member");
-//        //json 을 memberservice 에서 적합성을 검사하고  에러가 있다면
-//        // list 에 담겨 져서 옴
-//        List<String> list = memberService.validate(json);
-//        //list size가 0 이라는 것은 적합성 검사를 전부 통과 했다는 말이기 떄문에
-//        //에러가 없는 것임으로 회원가입을 진행
-//        if(list.size()==0){
-//            model.addAttribute("success","회원 가입에 성공 했습니다");
-//            memberService.join(json);
-//            return "redirect:/member/login";
-//        }else{
-//            //list 사이즈가 0 이 아니라면 적합성 검사를 통과하지못했기 때문에
-//            // db 에 넣지 않고 에러를 담은 list 만 반환.
-//            model.addAttribute("error",list);
-//            // 그리고 if 문을 빠져나가서 회원 가입 창으로 다시 돌아옴.
-//        }
+//    public String searchId(Model model){
+//        // 값 꺼내오기
+//        String name = (String)model.getAttribute("id");
+//        String birth = (String) model.getAttribute("birth");
+//        // 출력될 문장
+//        String searchId = memberService.searchId(name, birth);
+//        model.addAttribute("searchId",searchId);
+//        return "Login";
+//    }
+//    public String searchPass(Model model){
+//        //값꺼내오기
+//        String name = (String)model.getAttribute("name");
+//        String birth = (String)model.getAttribute("birth");
+//        String id = (String)model.getAttribute("id");
 //
-//        return "redirect:/member/join";
+//        String searchPass = memberService.searchPassWord(name,birth,id);
+//        model.addAttribute("searchPass",searchPass);
+//        return "Login";
 //    }
 
     @PostMapping("/join")
@@ -195,12 +177,12 @@ public class MemberController {
         }
         // 추가로 발견된 중복 오류가 있는 경우
         if (result.hasErrors()) {
+
             return "member_join";
         }
 
         memberService.join(member);
         return "login";
     }
-
 
 }
