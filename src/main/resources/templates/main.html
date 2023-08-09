@@ -69,22 +69,25 @@
                 <div class="content">
                     <ul class="statistics">
                         <li class="style">
+                            <div class="plannerinfo">
                             <a href="http://www.naver.com">
                                 <strong>
-                                    견적금액&nbsp;&nbsp;&nbsp;<span>8,150,000</span>&nbsp;원<img class="strong image right"
+                                    견적금액&nbsp;&nbsp;&nbsp;<span th:text="${#session.getAttribute('card').sum}"></span>&nbsp;원<img class="strong image right"
                                                                                             src="/img/Polygon%2010.png"
                                                                                             alt="">
                                 </strong>
                             </a>
-                            <p class="planner">
-                                <a class="info" href="main.html">
-                                    <img class="signature" src="/img/signature.png" alt="">
-                                    &nbsp;&nbsp;4.4 (298개의 평점) / 최근거래 486개
-                                </a>
-                                <a class="profile" href="main.html">
-                                    <img class="profile" src="/img/sample1.png" alt="">선영이웨딩
-                                </a>
-                            </p>
+                                <p class="planner">
+                                    <a class="info" href="main.html">
+                                        <img class="signature" src="/img/signature.png" alt="">
+                                        &nbsp;&nbsp;<span th:text="${#session.getAttribute('card').rating}"></span>&nbsp;(<span th:text="${#session.getAttribute('card').reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${#session.getAttribute('card').dealCnt}"></span>개
+                                    </a>
+                                    <a class="profile" href="main.html">
+                                        <img class="profile" src="/img/sample1.png" alt="">
+                                        <span th:text="${#session.getAttribute('card').businessName}"></span>
+                                    </a>
+                                </p>
+                            </div>
                         </li>
 <!--                        <li class="style">-->
 <!--                            <a href="http://www.naver.com">-->
@@ -208,7 +211,7 @@
     let sum = card.sum;
 
     let plannerpk = card.plannerpk;
-    let businessname = card.businessname;
+    let businessName = card.businessName;
     let plannerimg = card.plannerimg;
 
     let rating = card.rating;

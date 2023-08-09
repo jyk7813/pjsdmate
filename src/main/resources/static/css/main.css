@@ -1209,8 +1209,8 @@ input[type="radio"]:focus + label:before {
 
 .image.right {
 	float: right;
-	margin-top: 12px;
 	margin-right: 10px;
+	margin-top: 8px;
 }
 
 .image.fit {
@@ -1562,10 +1562,7 @@ table.alt tbody tr td {
 }
 
 .statistics li {
-	-moz-flex: 1;
-	-webkit-flex: 1;
-	-ms-flex: 1;
-	flex: 1;
+	width: 100%;
 	padding: 1em 1em 0.7em 1.3em;
 	color: #343837;
 	text-align: left;
@@ -1577,6 +1574,15 @@ table.alt tbody tr td {
 	margin-bottom: 20px;
 	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.06);
 	border-radius: 20px
+}
+
+.statistics li.style div.plannerinfo{
+	display: inline-block;
+	float: right;
+	all: unset;
+	font-weight: 500;
+	font-size: 14px;
+	margin-top: 10px;
 }
 
 .statistics li.style p.planner {
@@ -1609,6 +1615,14 @@ table.alt tbody tr td {
 	font-weight: 500;
 	font-size: 18px;
 	margin-top: 5px;
+	align-content: center;
+}
+
+.statistics li.style p.planner a.profile span{
+	display: flex;
+	float: right;
+	font-weight: 500;
+	font-size: 18px;
 }
 
 .statistics li.style p.planner a.profile img{
@@ -1636,6 +1650,7 @@ table.alt tbody tr td {
 	letter-spacing: -0.9px;
 	padding: 0.2em 0.2em 0.4em 0.5em;
 	margin-bottom: 0.5em;
+	align-content: center;
 }
 
 .statistics li strong span{
