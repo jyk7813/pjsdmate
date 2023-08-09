@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
@@ -15,10 +16,13 @@ import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
+@Transactional
 class MemberServiceTest {
    @Autowired
    MemberService memberService;
     @Autowired MemberRepository memberRepository;
+    @Autowired ValidatorMember validatorMember;
+
 
 //    @Test
 //    void searchByid() {
@@ -38,11 +42,27 @@ class MemberServiceTest {
         Assertions.assertNull(missID);
     }
     @Test
-    void 정규식_체크(){
+    void 로그인_정규식_체크(){
         String id = "test";
-        String password = "123 ";
+        String password = "test1234";
         List<String> validate = memberService.validate(id, password);
         System.out.print(validate);
-
     }
+    @Test
+    void 카운트_돌아가는지(){
+        Integer i =memberRepository.countById("testJoin");
+        Integer x = memberRepository.countByEmail("test@naver.com");
+        Assertions.assertEquals(i,1);
+        Assertions.assertEquals(x,1);
+    }
+    @Test
+    void 전체정규식_테스트(){
+//           테스트를 위해서는 memberService 에서 validate 의
+        // json 파라미터를 Member member 로 변경 해줘야한다.
+//        Member member=memberRepository.findById("testJoin").get();
+//        List<String> list = memberService.validate(member);
+//        System.out.println(member);
+//        System.out.print(list);
+    }
+
 }
