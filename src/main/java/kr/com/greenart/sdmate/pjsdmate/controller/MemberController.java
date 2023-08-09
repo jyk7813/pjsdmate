@@ -122,6 +122,7 @@ public class MemberController {
                 list.add("아이디 혹은 비밀번호가 틀렸습니다");
                 model.addAttribute("error",list);
 
+                return "login";
                 //null 이라면 아이디가 틀렸거나 비밀번호가 틀렸기 때문에 redirect 를 해줘야합니다
 
             }
