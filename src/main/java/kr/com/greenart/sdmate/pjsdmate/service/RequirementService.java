@@ -19,4 +19,8 @@ public class RequirementService {
         Requirement requirement = requirementRepository.findByRequirementNo(requirementNo).get();
         return requirement;
     }
+
+    public void insertRequirement(Requirement requirement) {
+        requirementRepository.save(requirement);
+    }
 }
