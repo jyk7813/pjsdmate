@@ -5,17 +5,22 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;
@@ -26,7 +31,6 @@ public class MemberController {
         this.memberService = memberService;
         this.mainPageService = mainPageService;
     }
-
 
     @GetMapping("/main")
     public String main(Model model) {
@@ -50,10 +54,7 @@ public class MemberController {
 //        public String answer () {
 //            return "answer";
 //        }
-//        @GetMapping("/login")
-//        public String login () {
-//            return "login";
-//        }
+//
 //        @GetMapping("/")
 //        public String start () {
 //            return "start";
@@ -65,10 +66,32 @@ public class MemberController {
         return "main";
     }
 
+    @GetMapping("/login")
+        public String login () {
+            return "login";
+        }
+
     @GetMapping("/mainplanner")
     public String mainplanner() {
         return "mainplanner";
     }
+
+    @GetMapping("/join")
+    public String join() {
+        return "member_join";
+    }
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public Map<String, String> checkid(@RequestBody Map<String, String> requestData) {
+        String id = requestData.get("id");
+        boolean isDuplicated = memberService.isIdDuplicated(id);
+        if (isDuplicated) {
+            return Collections.singletonMap("result", "fail");
+        } else {
+            return Collections.singletonMap("result", "success");
+        }
+    }
+
 
 
     @GetMapping("/mainyxxn")
