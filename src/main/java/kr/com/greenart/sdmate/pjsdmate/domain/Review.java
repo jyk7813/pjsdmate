@@ -9,7 +9,6 @@ import javax.persistence.Id;
 public class Review {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reviewNo;
-
     private int planner_no;
     private int member_no;
     private String context;

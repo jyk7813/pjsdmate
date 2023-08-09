@@ -18,4 +18,8 @@ public class ReviewService {
         Review review = reviewRepository.findByReviewNo(reviewNo).get();
         return review;
     }
+
+    public int getReviewCnt(int plannerNo) {
+        return reviewRepository.countByplannerNo(plannerNo);
+    }
 }

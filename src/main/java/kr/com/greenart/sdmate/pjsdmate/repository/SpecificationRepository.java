@@ -12,4 +12,6 @@ public interface SpecificationRepository {
     Optional<Specification> findBySpecificationNo(Integer specificationNo);
 
     List<Specification> findAll();
+
+
 }
