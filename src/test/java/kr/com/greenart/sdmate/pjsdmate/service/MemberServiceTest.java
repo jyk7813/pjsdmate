@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,5 +65,18 @@ class MemberServiceTest {
 //        System.out.println(member);
 //        System.out.print(list);
     }
+    @Test
+    void 아이디_찾기테스트(){
+        Optional<Member> testJoin = memberRepository.findByNameAndIdentity_no("testJoin", "0000000000000");
+        Member member =testJoin.get();
+        System.out.println(member.getId()+" 요청하신 회원의 id 입니다");
 
+    }
+    @Test
+    void 비밀번호_찾기(){
+        Optional<Member> test = memberRepository.findByIdAndIdentity_noAndName("홍길동", "9309011234567", "test");
+        Member member = test.get();
+        String s = memberService.searchPassWord("홍길동", "9309011234567", "test");
+        System.out.println(s);
+    }
 }
