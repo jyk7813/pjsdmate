@@ -5,8 +5,6 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Collections;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +32,7 @@ public class MemberController {
     }
 
     @GetMapping("/main")
-    public String main(Model model,HttpSession session) {
+    public String goMain(Model model,HttpSession session) {
         Member member = (Member) session.getAttribute("member");
         System.out.println(member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
@@ -103,7 +100,7 @@ public class MemberController {
         List<String> list = memberService.validate(id, pw);
 
         //정규식을 검사하고 list 사이즈가 0 이라면
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             Member member = memberService.Login(id, pw);
             // 돌아온게 널이 아니라면
             if (member != null) {
@@ -148,25 +145,25 @@ public class MemberController {
     }
 
 
-    public String searchId(Model model){
-        // 값 꺼내오기
-        String name = (String)model.getAttribute("id");
-        String birth = (String) model.getAttribute("birth");
-        // 출력될 문장
-        String searchId = memberService.searchId(name, birth);
-        model.addAttribute("searchId",searchId);
-        return "Login";
-    }
-    public String searchPass(Model model){
-        //값꺼내오기
-        String name = (String)model.getAttribute("name");
-        String birth = (String)model.getAttribute("birth");
-        String id = (String)model.getAttribute("id");
-
-        String searchPass = memberService.searchPassWord(name,birth,id);
-        model.addAttribute("searchPass",searchPass);
-        return "Login";
-    }
+//    public String searchId(Model model){
+//        // 값 꺼내오기
+//        String name = (String)model.getAttribute("id");
+//        String birth = (String) model.getAttribute("birth");
+//        // 출력될 문장
+//        String searchId = memberService.searchId(name, birth);
+//        model.addAttribute("searchId",searchId);
+//        return "Login";
+//    }
+//    public String searchPass(Model model){
+//        //값꺼내오기
+//        String name = (String)model.getAttribute("name");
+//        String birth = (String)model.getAttribute("birth");
+//        String id = (String)model.getAttribute("id");
+//
+//        String searchPass = memberService.searchPassWord(name,birth,id);
+//        model.addAttribute("searchPass",searchPass);
+//        return "Login";
+//    }
 
     @PostMapping("/join")
     public String join(@Valid @ModelAttribute("member") Member member, BindingResult result, Model model) {
@@ -189,6 +186,7 @@ public class MemberController {
         }
         // 추가로 발견된 중복 오류가 있는 경우
         if (result.hasErrors()) {
+
             return "member_join";
         }
 
