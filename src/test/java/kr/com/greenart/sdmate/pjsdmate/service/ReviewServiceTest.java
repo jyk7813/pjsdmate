@@ -16,6 +16,7 @@ public class ReviewServiceTest {
     @Test
     void 리뷰찾기() {
         Review review = reviewService.getReviewByNo(1);
+
         System.out.print(review);
     }
 

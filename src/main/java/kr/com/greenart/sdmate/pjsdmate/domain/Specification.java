@@ -19,6 +19,10 @@ public class Specification {
     private int hirecost;
     private int state;
 
+    public int calculateSumExceptSpecNoAndState() {
+        return weddinghall + dress + parentsdress + photo + studio + snap + hirecost;
+    }
+
     @Override
     public String toString() {
         return "Specification{" +

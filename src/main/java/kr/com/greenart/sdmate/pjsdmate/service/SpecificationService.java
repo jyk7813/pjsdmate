@@ -5,6 +5,8 @@ import kr.com.greenart.sdmate.pjsdmate.repository.SpecificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SpecificationService {
     private final SpecificationRepository specificationRepository;
@@ -18,4 +20,5 @@ public class SpecificationService {
         Specification specification = specificationRepository.findBySpecificationNo(specificationNo).get();
         return specification;
     }
+
 }

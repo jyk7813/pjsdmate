@@ -32,6 +32,7 @@ public class MemberController {
         this.mainPageService = mainPageService;
     }
 
+
     @GetMapping("/main")
     public String main(Model model) {
 

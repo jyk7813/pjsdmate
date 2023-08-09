@@ -6,11 +6,23 @@ import javax.persistence.Id;
 public class mainpageCard {
     private int sum;
     private int plannerPk;
-    private long rating;
+    private double rating;
     private int reviewCnt;
     private int dealCnt;
     private byte[] plannerImg;
     private String businessName;
+
+    @Override
+    public String toString() {
+        return "mainpageCard{" +
+                "sum=" + sum +
+                ", plannerPk=" + plannerPk +
+                ", rating=" + rating +
+                ", reviewCnt=" + reviewCnt +
+                ", dealCnt=" + dealCnt +
+                ", businessName='" + businessName + '\'' +
+                '}';
+    }
 
     public int getSum() {
         return sum;
@@ -28,11 +40,11 @@ public class mainpageCard {
         this.plannerPk = plannerPk;
     }
 
-    public long getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(long rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -66,17 +78,5 @@ public class mainpageCard {
 
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
-    }
-
-    @Override
-    public String toString() {
-        return "mainpageCard{" +
-                "sum=" + sum +
-                ", plannerPk=" + plannerPk +
-                ", rating=" + rating +
-                ", reviewCnt=" + reviewCnt +
-                ", dealCnt=" + dealCnt +
-                ", businessName='" + businessName + '\'' +
-                '}';
     }
 }

@@ -10,4 +10,7 @@ import java.util.Optional;
 public interface SpringDataJpaReviewRepository extends JpaRepository<Review, Integer>, ReviewRepository {
     @Override
     Optional<Review> findByReviewNo(Integer reviewNo);
+
+    @Override
+    Integer countByplannerNo(Integer plannerNo);
 }
