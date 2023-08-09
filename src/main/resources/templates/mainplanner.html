@@ -62,29 +62,27 @@
 		<div class="chat_wrap">
 			<p class="newtext">내 지역 견적요청&nbsp;(10개)</p>
 			<p class="area"><a href="#" onclick="showPopup()">부산</a></p>
-		</div>
-
-		<div class="popup" id="cityPopup">
-			<ul>
-				<li><a href="#" onclick="changeCity('서울')">서울</a></li>
-				<li><a href="#" onclick="changeCity('부산')">부산</a></li>
-				<li><a href="#" onclick="changeCity('대구')">대구</a></li>
-				<li><a href="#" onclick="changeCity('인천')">인천</a></li>
-				<li><a href="#" onclick="changeCity('광주')">광주</a></li>
-				<li><a href="#" onclick="changeCity('대전')">대전</a></li>
-				<li><a href="#" onclick="changeCity('울산')">울산</a></li>
-				<li><a href="#" onclick="changeCity('제주')">제주</a></li>
-				<li><a href="#" onclick="changeCity('경기')">경기</a></li>
-				<li><a href="#" onclick="changeCity('충북')">충북</a></li>
-				<li><a href="#" onclick="changeCity('충남')">충남</a></li>
-				<li><a href="#" onclick="changeCity('전북')">전북</a></li>
-				<li><a href="#" onclick="changeCity('전남')">전남</a></li>
-				<li><a href="#" onclick="changeCity('경북')">경북</a></li>
-				<li><a href="#" onclick="changeCity('경남')">경남</a></li>
-
-				<!-- 다른 도시도 추가 가능 -->
-			</ul>
-			<p><a href="#" onclick="hidePopup()">닫기</a></p>
+			<div class="popup" id="cityPopup">
+				<div class="popup-content">
+					<ul>
+						<li><a href="#" onclick="changeCity('서울')">서울</a></li>
+						<li><a href="#" onclick="changeCity('부산')">부산</a></li>
+						<li><a href="#" onclick="changeCity('대구')">대구</a></li>
+						<li><a href="#" onclick="changeCity('인천')">인천</a></li>
+						<li><a href="#" onclick="changeCity('광주')">광주</a></li>
+						<li><a href="#" onclick="changeCity('대전')">대전</a></li>
+						<li><a href="#" onclick="changeCity('울산')">울산</a></li>
+						<li><a href="#" onclick="changeCity('제주')">제주</a></li>
+						<li><a href="#" onclick="changeCity('경기')">경기</a></li>
+						<li><a href="#" onclick="changeCity('충북')">충북</a></li>
+						<li><a href="#" onclick="changeCity('충남')">충남</a></li>
+						<li><a href="#" onclick="changeCity('전북')">전북</a></li>
+						<li><a href="#" onclick="changeCity('전남')">전남</a></li>
+						<li><a href="#" onclick="changeCity('경북')">경북</a></li>
+						<li><a href="#" onclick="changeCity('경남')">경남</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 
 		<section id="intro" class="main">
@@ -92,16 +90,17 @@
 				<div class="content">
 					<ul id="card" class="statistics">
 						<li th:each="card : ${plannercardList}" class="style" >
-							<div class="reqCard">
 							<a href="main.html">
-								<strong>
-									요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.price}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon 10.png" alt="" >
-								</strong>
+								<div class="reqCard">
+									<strong>
+										요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.price}">135</span>&nbsp;원
+										<img class="poligon" src="/img/Polygon 10.png" alt="" >
+									</strong>
+								</div>
 							</a>
 							<a class="profile" href="main.html">
 								<img class="profile" src="/img/p1.png" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p><span class="areainfo" th:text="${card.area}"></span>
 							</a>
-							</div>
 						</li>
 					</ul>
 				</div>
@@ -158,73 +157,12 @@
 	<script src="/js/breakpoints.min.js"></script>
 	<script src="/js/util.js"></script>
 	<script src="/js/main.js"></script>
+	<script src="/js/api.js"></script>
+	<script src="/js/cityselectpopup.js"></script>
+	<script src="/js/hammenu.js"></script>
 
 	</header>
 	</section>
 </div>
 </body>
-
-<script>
-	function showPopup() {
-		var popup = document.getElementById("cityPopup");
-		popup.style.display = "block";
-	}
-
-	function hidePopup() {
-		var popup = document.getElementById("cityPopup");
-		popup.style.display = "none";
-	}
-
-	function changeCity(city) {
-		var selectedCity = document.getElementById("selectedCity");
-		selectedCity.innerHTML = city;
-		hidePopup();
-	}
-</script>
-
-
 </html>
-<script>
-	// 햄버거 버튼 클릭 이벤트
-	var burger = $('.menu-trigger');
-
-	burger.each(function (index) {
-		var $this = $(this);
-
-		$this.on('click', function (e) {
-			e.preventDefault();
-			$(this).toggleClass('active-' + (index + 1));
-		})
-	});
-
-	var h = 0;
-
-	$(burger).on("click", function () {
-		if (h == 0) {
-			$('.ham-con').animate({
-				right: '0',
-				opacity: 1
-			}, 500);
-			$(this).addClass('active-1');
-			h++;
-		} else if (h == 1) {
-			$('.ham-con').animate({
-				right: '-20%',
-				opacity: 0
-			}, 500);
-			$(this).removeClass('active-1');
-			h--;
-		}
-		$(window).scroll(function() {
-			sct = $(window).scrollTop();
-			if(sct>30){
-				$('.ham-con').css({
-					opacity: 0,
-					right :'-20%'
-				}, 500);
-				$(burger).removeClass('active-1');
-				h=0;
-			}
-		});
-	})
-</script>

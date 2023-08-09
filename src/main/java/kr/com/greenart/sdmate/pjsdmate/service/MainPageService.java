@@ -70,7 +70,6 @@ public class MainPageService {
             eachCard.setReviewCnt(reviewRepository.countByplannerNo(plannerNumber));
             card.add(eachCard);
         }
-
         return card;
     }
 

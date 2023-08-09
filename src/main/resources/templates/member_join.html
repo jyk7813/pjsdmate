@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/join.css">
+
 </head>
 <body>
             <a href=""><img class="back_btn" src="/img/back_btn.png" alt="뒤로가기 버튼"></a>
@@ -14,61 +15,50 @@
     <div class="logo">
         <img class="join_logo" src="/img/logo1.png" alt=""><br>
     </div>
-    <center>
+            <form action="/member/join" method="post">
     <div class="container1">
         <div class="container">
 
             <span>
-                <div class="left_content"></div>
+                <div class="left_content">
                 <label class="form" id="customer_id" for="id">아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;디</label>
-                <input class="write" type="text" id="id" name="customer_id" value=""><br>
-
+                <input class="write" type="text" id="id" name="customer_id" minlength="4" maxlength="15" required>
+                <div class="id_check">
+                    <button class="id_check_btn" type="button">중복확인</button></div><br>
                 <label class="form" id="customer_name" for="name">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</label>
-                <input class="write" type="text" id="name" name="customer_name" value=""><br> 
+                <input class="write" type="text" id="name" name="customer_name" minlength="2" maxlength="10" required><br>
 
-                <label class="form" id="customer_resident_number" for="resident_number">주민등록&nbsp;번호</label>
-                <input class="write"type="text" id="resident_number" name="customer_resident_number" value=""><br>
+                <label class="form" for="birth">생&nbsp;&nbsp;&nbsp;년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;일</label>
+                <input class="write"type="date" id="birth" name="birth" required><br>
                 
                 <br>
                 <br>
                 <br>
 
                 <label class="form" id="customer_password" for="password">비&nbsp;&nbsp;&nbsp;밀&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번&nbsp;&nbsp;&nbsp;호</label>
-                <input class="write" type="text" id="password" name="customer_password" value=""><br>
+                <input class="write" type="password" id="password" name="customer_password" minlength="8" maxlength="15" required><br>
 
                 <label class="form" id="password_check" for="pwcheck">비밀번호 확인</label>
-                <input class="write" type="text" id="pwcheck" name="password_check" value=""><br>
+                <input class="write" type="password" id="pwcheck" name="password_check" required><br>
                 
                 <br>
                 <br>
                 <br>
 
                 <label class="form" id="email_form" for="email">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</label>
-                <input class="write" type="text" id="email" name="email" value=""><br>
+                <input class="write" type="email" id="email" name="email" required><br>
 
                 <label class="form" id="phone_number_form" for="phone_number">연&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;락&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;처</label>
-                <input class="write" type="text" id="Phone_number" name="Phone_number" value=""><br>
-                </div>
-            </span>
-
-            <span>
-                <div class="right_content">
-                
-                      
-                
-                
-             
+                <input class="write" type="tel" id="Phone_number" name="Phone_number" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="ex) 010-0000-0000" required><br>
                 </div>
             </span>
         </div>
     </div>
-</center>
-        
+
     <div class="join">
-        <input class="join_btn" type="button" id="join" name="join" value="가입하기">
+        <input class="join_btn" type="submit" id="join" name="join" value="가입하기">
     </div>
-
-
-    
+</form>
 </body>
+<script src = "/js/join.js"></script>
 </html> 

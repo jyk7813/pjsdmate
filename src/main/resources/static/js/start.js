@@ -16,6 +16,10 @@ checkbox.addEventListener('change', function() {
         loginbtn.classList.remove('member');
         loginbtn.classList.add('planner');
 
+        let changeAction = document.getElementById("handler");
+
+        changeAction.action="planner/login";
+
         centerText.innerHTML = `
             <input type="hidden" name="userstat" value="planner">
             <p><span class="text2bold" >플래너 고객</span>을 위한 페이지 입니다.</p>
@@ -32,6 +36,10 @@ checkbox.addEventListener('change', function() {
 
         loginbtn.classList.remove('planner');
         loginbtn.classList.add('member');
+
+        let changeAction = document.getElementById("handler");
+
+        changeAction.action="member/login";
 
 
         centerText.innerHTML = `
