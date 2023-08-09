@@ -151,6 +151,25 @@ public class MemberController {
         return "mainplanner";
     }
 
+    public String searchId(Model model){
+        // 값 꺼내오기
+        String name = (String)model.getAttribute("id");
+        String birth = (String) model.getAttribute("birth");
+        // 출력될 문장
+        String searchId = memberService.searchId(name, birth);
+        model.addAttribute("searchId",searchId);
+        return "Login";
+    }
+    public String searchPass(Model model){
+        //값꺼내오기
+        String name = (String)model.getAttribute("name");
+        String birth = (String)model.getAttribute("birth");
+        String id = (String)model.getAttribute("id");
+
+        String searchPass = memberService.searchPassWord(name,birth,id);
+        model.addAttribute("searchPass",searchPass);
+        return "Login";
+    }
 
     @GetMapping("/member/join")
     public String join(Model model) {
