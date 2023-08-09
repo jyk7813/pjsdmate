@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;
@@ -48,7 +47,7 @@ public class MemberController {
         System.out.println(card);*/
 
         model.addAttribute("card", card);
-        System.out.println("#################" + card.get(1).getPlannerImg());
+        System.out.println(card);
 
 //        @GetMapping("/answer")
 //        public String answer () {
@@ -94,20 +93,37 @@ public class MemberController {
 
 
 
+    @GetMapping("/mainyxxn")
+    public String mainyxxn(Model model) {
+        List<mainpageCard> cardList = new ArrayList<>();
+
+        for(int i = 1; i < 4; i++){
+            mainpageCard card = new mainpageCard();
+            card.setSum(3000000+i);
+            card.setBusinessName("테스트사업"+i);
+            card.setDealCnt(48+i);
+            card.setRating((long) 2.8+i);
+            card.setPlannerPk(1+i);
+            card.setPlannerImg(null);
+            card.setReviewCnt(3+i);
+            System.out.println(card);
+            cardList.add(card);
+        }
+    }
 
 
+    @PostMapping("/login")
+    public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
+        System.out.println("컨트롤러 돌아가유");
 
-    // 로그인 매핑을 해주세요
-      public String Login(Model model, HttpSession session, HttpServletResponse response){
+        System.out.println(id + "아이디");
+        System.out.println(pw + "비번");
 
-        String id =(String)model.getAttribute("id");
-        String pass =(String)model.getAttribute("password");
-
-        List<String> list =memberService.validate(id,pass);
+        List<String> list =memberService.validate(id,pw);
 
         //정규식을 검사하고 list 사이즈가 0 이라면
         if(list.size() ==0) {
-            Integer userPk = memberService.Login(id, pass);
+            Integer userPk = memberService.Login(id, pw);
             // 돌아온게 널이 아니라면
             if (userPk != null) {
 
@@ -121,6 +137,7 @@ public class MemberController {
 
                 //session 시작
                 session.setAttribute("userPk", userPk);
+                return "main";
             } else {
                 list.add("아이디 혹은 비밀번호가 틀렸습니다");
                 model.addAttribute("error",list);
@@ -133,8 +150,9 @@ public class MemberController {
             model.addAttribute("error",list);
 
         }
-            // model 객체에 addAttribute 해서 보냄
-        return "리턴될 페이지 적어주시면 됩니다.";
+
+        // model 객체에 addAttribute 해서 보냄
+        return "../login";
     }
 
     public String searchId(Model model){

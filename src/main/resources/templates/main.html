@@ -80,8 +80,8 @@
                                         <img class="signature" src="/img/signature.png" alt="">
                                         &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
                                     </a>
-<!--                                    <img th:src="@{'data:image/jpeg;base64,' + ${#strings.replace(#strings.newString(card.plannerImg), '\n', '')}}" alt="Planner Image">-->
                                     <a class="profile" href="main.html">
+                                        <img class="profile" th:src="${'data:image/jpeg;base64,' + card.plannerImg}" alt="Planner Image">
                                         <span th:text="${card.businessName}"></span>
                                     </a>
                                 </p>
