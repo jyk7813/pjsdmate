@@ -1,29 +1,43 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
+
 import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
+import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
+
     private final MemberService memberService;
 
-    public MemberController(MemberService memberService) {
+    private final MainPageService mainPageService;
+
+    public MemberController(MemberService memberService, MainPageService mainPageService) {
         this.memberService = memberService;
+        this.mainPageService = mainPageService;
     }
 
     @GetMapping("/main")
-    public String main(HttpSession session) {
-        mainpageCard card = new mainpageCard();
+    public String main(Model model) {
+
+        List<mainpageCard> card = mainPageService.returnMainCard(1);
+
+       /* mainpageCard card = new mainpageCard();
         card.setSum(3000000);
         card.setBusinessName("테스트사업");
         card.setDealCnt(48);
@@ -31,18 +45,16 @@ public class MemberController {
         card.setPlannerPk(1);
         card.setPlannerImg(null);
         card.setReviewCnt(3);
-        System.out.println(card);
-        session.setAttribute("card", card);
+        System.out.println(card);*/
+
+        model.addAttribute("card", card);
 
 
 //        @GetMapping("/answer")
 //        public String answer () {
 //            return "answer";
 //        }
-//        @GetMapping("/login")
-//        public String login () {
-//            return "login";
-//        }
+//
 //        @GetMapping("/")
 //        public String start () {
 //            return "start";
@@ -54,10 +66,32 @@ public class MemberController {
         return "main";
     }
 
+    @GetMapping("/login")
+        public String login () {
+            return "login";
+        }
+
     @GetMapping("/mainplanner")
     public String mainplanner() {
         return "mainplanner";
     }
+
+    @GetMapping("/join")
+    public String join() {
+        return "member_join";
+    }
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public Map<String, String> checkid(@RequestBody Map<String, String> requestData) {
+        String id = requestData.get("id");
+        boolean isDuplicated = memberService.isIdDuplicated(id);
+        if (isDuplicated) {
+            return Collections.singletonMap("result", "fail");
+        } else {
+            return Collections.singletonMap("result", "success");
+        }
+    }
+
 
 
     @GetMapping("/mainyxxn")
@@ -82,17 +116,18 @@ public class MemberController {
     }
 
 
-    // 로그인 매핑을 해주세요
-      public String Login(Model model, HttpSession session, HttpServletResponse response){
+    @PostMapping("/login")
+    public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
+        System.out.println("컨트롤러 돌아가유");
 
-        String id =(String)model.getAttribute("id");
-        String pass =(String)model.getAttribute("password");
+        System.out.println(id + "아이디");
+        System.out.println(pw + "비번");
 
-        List<String> list =memberService.validate(id,pass);
+        List<String> list =memberService.validate(id,pw);
 
         //정규식을 검사하고 list 사이즈가 0 이라면
         if(list.size() ==0) {
-            Integer userPk = memberService.Login(id, pass);
+            Integer userPk = memberService.Login(id, pw);
             // 돌아온게 널이 아니라면
             if (userPk != null) {
 
@@ -106,6 +141,7 @@ public class MemberController {
 
                 //session 시작
                 session.setAttribute("userPk", userPk);
+                return "main";
             } else {
                 list.add("아이디 혹은 비밀번호가 틀렸습니다");
                 model.addAttribute("error",list);
@@ -118,8 +154,9 @@ public class MemberController {
             model.addAttribute("error",list);
 
         }
-            // model 객체에 addAttribute 해서 보냄
-        return "리턴될 페이지 적어주시면 됩니다.";
+
+        // model 객체에 addAttribute 해서 보냄
+        return "../login";
     }
 
     @GetMapping("/mainplanneryxxn")
@@ -180,7 +217,7 @@ public class MemberController {
             // 그리고 if 문을 빠져나가서 회원 가입 창으로 다시 돌아옴.
         }
 
-        return "member_join"; 
+        return "member_join";
     }
 
 }

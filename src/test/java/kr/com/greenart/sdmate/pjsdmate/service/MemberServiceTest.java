@@ -31,6 +31,15 @@ class MemberServiceTest {
 //    }
 
     @Test
+    void 회원가입(){
+        Member member = new Member();
+        member.setName("테스트이름");
+        member.setId("id");
+        member.setPwd("test이름");
+    }
+    
+    
+    @Test
     void 로그인(){
         // 로그인 되면 1 번 pk 유저랑 같음
         //given
