@@ -48,6 +48,7 @@ public class MemberController {
         System.out.println(card);*/
 
         model.addAttribute("card", card);
+        System.out.println("#################" + card.get(1).getPlannerImg());
 
 //        @GetMapping("/answer")
 //        public String answer () {

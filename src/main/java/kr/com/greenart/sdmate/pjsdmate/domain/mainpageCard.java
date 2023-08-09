@@ -2,6 +2,7 @@ package kr.com.greenart.sdmate.pjsdmate.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Arrays;
 
 public class mainpageCard {
     private int sum;
@@ -15,12 +16,7 @@ public class mainpageCard {
     @Override
     public String toString() {
         return "mainpageCard{" +
-                "sum=" + sum +
-                ", plannerPk=" + plannerPk +
-                ", rating=" + rating +
-                ", reviewCnt=" + reviewCnt +
-                ", dealCnt=" + dealCnt +
-                ", businessName='" + businessName + '\'' +
+                "plannerImg=" + Arrays.toString(plannerImg) +
                 '}';
     }
 

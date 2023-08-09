@@ -52,6 +52,7 @@ public class MainPageService {
             eachCard.setBusinessName(planner.getBusiness_name());
             eachCard.setDealCnt(planner.getDealCnt());
             eachCard.setRating(planner.getRating());
+
             eachCard.setPlannerImg(planner.getImage());
             for (PlannerSpecificationPackage packageItem : packageList) {
                 if (packageItem.getPlannerNo() == plannerNumber) {
