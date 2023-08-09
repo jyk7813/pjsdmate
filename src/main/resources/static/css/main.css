@@ -1682,16 +1682,10 @@ table.alt tbody tr td {
 
 .spotlight {
 	display: flex;
-	-moz-align-items: center;
-	-webkit-align-items: center;
-	-ms-align-items: center;
 	align-items: center;
 }
 
 .spotlight .content {
-	-moz-flex: 1;
-	-webkit-flex: 1;
-	-ms-flex: 1;
 	flex: 1;
 }
 

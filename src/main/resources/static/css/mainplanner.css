@@ -97,33 +97,66 @@ input, select, textarea {
 
 .popup {
 	display: none;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(30%, -70%);
+	position: absolute;
+	top: calc(50% - 50px);
+	right: calc(50% - 235px);
+	transform: translateX(-50%);
 	background-color: rgba(255, 255, 255, 0.9);
 	border-radius: 20px;
 	padding: 20px;
-	width: 150px;
+	width: 100px;
 	height: 150px;
 	overflow-y: auto;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+	color: #343837;
+	font-weight: 500;
+	font-size: 10px;
+}
+
+.popup .popup-content {
+	overflow-y: auto;
+	max-height: 100%; /* 팝업 내부 컨테이너의 최대 높이 설정 */
+	padding-right: 5px; /* 오른쪽 여백 5px 추가 */
+	margin-right: -5px; /* 마진을 이용하여 스크롤바 영역을 왼쪽으로 5px 이동 */
+}
+
+.popup .popup-content::-webkit-scrollbar {
+	width: 10px;
+}
+
+.popup .popup-content::-webkit-scrollbar-thumb {
+	background-color: white;
+	border-radius: 10px;
+}
+
+.popup .popup-content::-webkit-scrollbar-track {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
 }
 
 .popup ul {
-	list-style-type: none; /* 앞 항목 표시 점 없애기 */
+	list-style-type: none;
 	padding: 0;
+	margin: 0;
 }
 
 .popup li {
 	margin: 0;
-	padding: 0;
+}
+
+.popup a {
+	color: #343837;
+	font-weight: 700;
+	font-size: 15px;
+	text-decoration: none;
 }
 
 .area a {
 	all: unset;
 	text-decoration: none;
-	color: #000;
+	color: #343837;
+	font-weight: 700;
+	font-size: 15px;
 }
 
 

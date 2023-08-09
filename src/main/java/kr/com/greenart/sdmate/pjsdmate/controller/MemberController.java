@@ -73,7 +73,7 @@ public class MemberController {
 
     @GetMapping("/mainyxxn")
     public String mainyxxn(Model model) {
-        List<mainpageCard> cardList = new ArrayList<>();
+        List<mainpageCard> cardListtest = new ArrayList<>();
 
         for(int i = 1; i < 4; i++){
             mainpageCard card = new mainpageCard();
@@ -85,9 +85,9 @@ public class MemberController {
             card.setPlannerImg(null);
             card.setReviewCnt(3+i);
             System.out.println(card);
-            cardList.add(card);
+            cardListtest.add(card);
         }
-        model.addAttribute("cardList", cardList);
+        model.addAttribute("cardListtest", cardListtest);
 
         return "main";
     }

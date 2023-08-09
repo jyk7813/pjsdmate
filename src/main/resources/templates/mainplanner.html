@@ -61,30 +61,28 @@
 	<div id="main">
 		<div class="chat_wrap">
 			<p class="newtext">내 지역 견적요청&nbsp;(10개)</p>
-			<a class="area"><a href="#" onclick="showPopup()">부산</a></a>
-		</div>
-
-		<div class="popup" id="cityPopup">
-			<ul>
-				<li><a href="#" onclick="changeCity('서울')">서울</a></li>
-				<li><a href="#" onclick="changeCity('부산')">부산</a></li>
-				<li><a href="#" onclick="changeCity('대구')">대구</a></li>
-				<li><a href="#" onclick="changeCity('인천')">인천</a></li>
-				<li><a href="#" onclick="changeCity('광주')">광주</a></li>
-				<li><a href="#" onclick="changeCity('대전')">대전</a></li>
-				<li><a href="#" onclick="changeCity('울산')">울산</a></li>
-				<li><a href="#" onclick="changeCity('제주')">제주</a></li>
-				<li><a href="#" onclick="changeCity('경기')">경기</a></li>
-				<li><a href="#" onclick="changeCity('충북')">충북</a></li>
-				<li><a href="#" onclick="changeCity('충남')">충남</a></li>
-				<li><a href="#" onclick="changeCity('전북')">전북</a></li>
-				<li><a href="#" onclick="changeCity('전남')">전남</a></li>
-				<li><a href="#" onclick="changeCity('경북')">경북</a></li>
-				<li><a href="#" onclick="changeCity('경남')">경남</a></li>
-
-				<!-- 다른 도시도 추가 가능 -->
-			</ul>
-			<p><a href="#" onclick="hidePopup()">닫기</a></p>
+			<p class="area"><a href="#" onclick="showPopup()">부산</a></p>
+			<div class="popup" id="cityPopup">
+				<div class="popup-content">
+					<ul>
+						<li><a href="#" onclick="changeCity('서울')">서울</a></li>
+						<li><a href="#" onclick="changeCity('부산')">부산</a></li>
+						<li><a href="#" onclick="changeCity('대구')">대구</a></li>
+						<li><a href="#" onclick="changeCity('인천')">인천</a></li>
+						<li><a href="#" onclick="changeCity('광주')">광주</a></li>
+						<li><a href="#" onclick="changeCity('대전')">대전</a></li>
+						<li><a href="#" onclick="changeCity('울산')">울산</a></li>
+						<li><a href="#" onclick="changeCity('제주')">제주</a></li>
+						<li><a href="#" onclick="changeCity('경기')">경기</a></li>
+						<li><a href="#" onclick="changeCity('충북')">충북</a></li>
+						<li><a href="#" onclick="changeCity('충남')">충남</a></li>
+						<li><a href="#" onclick="changeCity('전북')">전북</a></li>
+						<li><a href="#" onclick="changeCity('전남')">전남</a></li>
+						<li><a href="#" onclick="changeCity('경북')">경북</a></li>
+						<li><a href="#" onclick="changeCity('경남')">경남</a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
 
 		<section id="intro" class="main">
@@ -160,48 +158,12 @@
 	<script src="/js/util.js"></script>
 	<script src="/js/main.js"></script>
 	<script src="/js/api.js"></script>
+	<script src="/js/cityselectpopup.js"></script>
 
 	</header>
 	</section>
 </div>
 </body>
-
-<script>
-	document.addEventListener("DOMContentLoaded", function() {
-		var popup = document.getElementById("cityPopup");
-		var areaLink = document.querySelector(".area a");
-
-		areaLink.addEventListener("click", function(event) {
-			event.preventDefault();
-			showPopup();
-		});
-
-		popup.addEventListener("click", function(event) {
-			event.stopPropagation();
-		});
-
-		document.addEventListener("click", function(event) {
-			hidePopup();
-		});
-	});
-
-	function showPopup() {
-		var popup = document.getElementById("cityPopup");
-		popup.style.display = "block";
-	}
-
-	function hidePopup() {
-		var popup = document.getElementById("cityPopup");
-		popup.style.display = "none";
-	}
-
-	function changeCity(city) {
-		var selectedCity = document.getElementById("selectedCity");
-		selectedCity.innerHTML = city;
-		hidePopup();
-	}
-</script>
-
 
 </html>
 <script>
