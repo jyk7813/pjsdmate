@@ -1,6 +1,7 @@
 package kr.com.greenart.sdmate.pjsdmate.domain;
 
 import lombok.Getter;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
 import java.util.Arrays;

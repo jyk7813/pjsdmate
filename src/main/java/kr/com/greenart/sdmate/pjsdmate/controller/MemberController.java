@@ -87,7 +87,26 @@ public class MemberController {
 
 
     @GetMapping("/member/join")
-    public String join() { return "member_join"; }
+    public String join(Model model) {
+        //요청에 member 를 String 으로 받아옴
+        String json = (String)model.getAttribute("member");
+        //json 을 memberservice 에서 적합성을 검사하고  에러가 있다면
+        // list 에 담겨 져서 옴
+        List<String> list = memberService.validate(json);
+        //list size가 0 이라는 것은 적합성 검사를 전부 통과 했다는 말이기 떄문에
+        //에러가 없는 것임으로 회원가입을 진행
+        if(list.size()==0){
+            model.addAttribute("success","회원 가입에 성공 했습니다");
+            memberService.join(json);
+            return "login";
+        }else{
+            //list 사이즈가 0 이 아니라면 적합성 검사를 통과하지못했기 때문에
+            // db 에 넣지 않고 에러를 담은 list 만 반환.
+            model.addAttribute("error",list);
+            // 그리고 if 문을 빠져나가서 회원 가입 창으로 다시 돌아옴.
+        }
+
+        return "member_join"; }
 
 }
 
