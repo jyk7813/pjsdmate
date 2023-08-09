@@ -84,3 +84,84 @@
         <div style="line-height: 22px;"><br></div>
     </div>
 </div>
+<script>
+    var photo = document.querySelector('.photo');
+    var video = document.querySelector('.video');
+    var makeup = document.querySelector('.makeup');
+    var bridesnapdressdress = document.querySelector('#snapbridedress-dress');
+    var bridesnapdresshanbok = document.querySelector('#snapbridedress-hanbok');
+    var bridesnapdresssuit = document.querySelector('#snapbridedress-suit');
+    var bridesnapdressself = document.querySelector('#snapbridedress-self');
+    var groomsnapdresshanbok = document.querySelector('#snapgroomdress-hanbok');
+    var groomsnapdresssuit = document.querySelector('#snapgroomdress-suit');
+    var groomsnapdressself = document.querySelector('#snapgroomdress-self');
+    var place = document.querySelector('.place');
+
+    photo.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q6_snap_photo = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    video.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q6_snap_video = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    makeup.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q6_snap_makeup = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    bridesnapdressdress.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q6_snap_bride_dress_dress = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    bridesnapdresshanbok.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q6_snap_bride_dress_hanbok = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    bridesnapdresssuit.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q6_snap_bride_dress_suit = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    bridesnapdressself.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q6_snap_bride_dress_self = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    groomsnapdresshanbok.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q6_snap_groom_dress_hanbok = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    groomsnapdresssuit.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q6_snap_groom_dress_suit = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    groomsnapdressself.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q6_snap_groom_dress_self = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+    place.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q6_snap_place = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+</script>

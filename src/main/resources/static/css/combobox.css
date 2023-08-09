@@ -21,7 +21,7 @@ cursor: pointer;
 
 .selectBox1:before,
 .selectBox2:before {
-content: url('static/img/icoarrow.png');
+content: url('/img/icoarrow.png');
 position: absolute;
 top: 50%;
 transform: translateY(-50%); 

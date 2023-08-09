@@ -114,7 +114,7 @@
 					});
 
 		}
-console.log(`${ card }`);
+
 	// Scrolly.
 		$('.scrolly').scrolly({
 			speed: 1000

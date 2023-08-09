@@ -52,4 +52,39 @@
             <label for="groomsdad-custom">직접</label>
         </div>
         <div style="line-height: 32px;"><br></div>
+    </div>
 </div>
+<script>
+    var bridesmomdress = document.querySelector('.bridesmomdress');
+    var bridesdaddress = document.querySelector('.bridesdaddress');
+    var groomsmomdress = document.querySelector('.groomsmomdress');
+    var groomsdaddress = document.querySelector('.groomsdaddress');
+
+    bridesmomdress.addEventListener("click", function(e){
+        if(e.target && e.target.type === "radio"){
+            question.q3_Fmom_hanbok = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    bridesdaddress.addEventListener("click", function(e){
+        if(e.target && e.target.type === "radio"){
+            question.q3_Fdad_suit = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    groomsmomdress.addEventListener("click", function(e){
+        if(e.target && e.target.type === "radio"){
+            question.q3_Mmom_hanbok = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    groomsdaddress.addEventListener("click", function(e){
+        if(e.target && e.target.type === "radio"){
+            question.q3_Mdad_suit = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+</script>

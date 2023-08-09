@@ -23,6 +23,7 @@ public interface MemberRepository {
     Optional<Member> findByIdAndPwd(String id, String pwd);
 
     Optional<Member> findByPwd(String pwd);
+
     @Query("SELECT COUNT(m) FROM Member m WHERE m.id = :id")
     Integer countById(String id);
 

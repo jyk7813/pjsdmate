@@ -66,10 +66,11 @@ input, select, textarea {
 }
 
 .chat_wrap {
-	position: absolute;
-	display: inline-block;
 	width: 430px;
+	display: inline-block;
 	margin-top: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
 	align-items: center;
 }
 
@@ -79,8 +80,6 @@ input, select, textarea {
 	font-weight: 700;
 	font-size: 20px;
 	color: #343837;
-	/* margin-top: 20px; */
-	margin-left: 30px;
 }
 
 
@@ -90,7 +89,8 @@ input, select, textarea {
 	float: right;
 	width: 23px;
 	height: 23px;
-	margin-right: 40px;
+	margin-right: 10px;
+	margin-top: 2px;
 }
 
 .chat_wrapper img.chaticon {
@@ -146,8 +146,8 @@ div.textbox p.topbannertext {
 	font-weight: 400;
 	font-size: 15px;
 	color: #727272;
-	letter-spacing: -0.75px;s
-line-height: 22px;
+	letter-spacing: -0.75px;
+	line-height: 22px;
 }
 
 div.textbox p.topbannertext.strong {
@@ -187,10 +187,6 @@ div.guidebtn p.go{
 
 /* Basic */
 
-@-ms-viewport {
-	width: device-width;
-}
-
 body {
 	-ms-overflow-style: scrollbar;
 }
@@ -212,11 +208,7 @@ img.toplogo {
 }
 
 body {
-	background-color: #343837;
-	background-image: url("overlay.png"), -moz-linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
-	background-image: url("overlay.png"), -webkit-linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
-	background-image: url("overlay.png"), -ms-linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
-	background-image: url("overlay.png"), linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
+	background-color: #FFFFFF;
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -228,7 +220,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 /* Type */
 
 body {
-	background-color: #343837;
+	background-color: #FFFFFF;
 	color: #343837;
 }
 
@@ -264,7 +256,6 @@ p {
 	font-weight:600;
 	font-size:15px;
 	color: #343837;
-	margin:0 0 2em 0;
 }
 
 p.content {
@@ -1101,9 +1092,6 @@ input[type="radio"]:focus + label:before {
 	display: none;
 }
 
-.icon:before {
-	line-height: solid;
-}
 
 .icon.solid:before {
 	font-weight: 900;
@@ -1221,8 +1209,8 @@ input[type="radio"]:focus + label:before {
 
 .image.right {
 	float: right;
-	margin-top: 12px;
 	margin-right: 10px;
+	margin-top: 8px;
 }
 
 .image.fit {
@@ -1331,6 +1319,8 @@ ul.actions {
 
 ul.actions li {
 	vertical-align: middle;
+	margin-top:20px;
+	margin-bottom: 30px;
 }
 
 ul.actions.special {
@@ -1409,55 +1399,6 @@ ul.icons li:last-child {
 section.special, article.special {
 	text-align: center;
 }
-
-
-/*
-
-*/
-
-#test {
-	display: flex;
-	align-items: center; /* 세로 중앙 정렬 */
-}
-
-#imagedupli {
-	display: flex;
-	align-items: center; /* 세로 중앙 정렬 */
-	margin-left: auto; /* 오른쪽 여백 추가 */
-}
-
-#imgdiv {
-	position: relative;
-	background: url("/images/Ellipse 13.png") no-repeat;
-}
-
-#imgdiv img {
-	width: 30px; /* 이미지 너비 조절 */
-	height: 30px; /* 이미지 높이 조절 */
-	transform: translateX(-50%) translateY(-25%);
-	/* 부모 요소 기준으로 왼쪽으로 이동 */
-}
-
-#imgdiv p {
-	all:unset;
-	position: absolute;
-	color: #ffffff;
-	transform: translate(-100%, -100%);
-	top: 65%;
-	left: 50%;
-	font-size: 10px;
-}
-
-#imgdiv #imgdiv {
-	position: absolute;
-	top: 0;
-	left: 100%;
-}
-
-
-/*
-
-*/
 
 header.major p {
 	font-size: 1.25em;
@@ -1608,10 +1549,7 @@ table.alt tbody tr td {
 
 /* Statistics */
 
-.statistics {
-	display: -moz-flex;
-	display: -webkit-flex;
-	display: -ms-flex;
+#card#card.statistics {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -1620,25 +1558,31 @@ table.alt tbody tr td {
 	width: inherit;
 }
 
-.statistics li {
-	-moz-flex: 1;
-	-webkit-flex: 1;
-	-ms-flex: 1;
-	flex: 1;
+#card.statistics li {
+	width: 100%;
 	padding: 1em 1em 0.7em 1.3em;
 	color: #343837;
 	text-align: left;
 }
 
 
-.statistics li.style {
+#card.statistics li.style {
 	background: #ffffff;
 	margin-bottom: 20px;
 	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.06);
 	border-radius: 20px
 }
 
-.statistics li.style p.planner {
+#card.statistics li.style div.plannerinfo{
+	display: inline-block;
+	float: right;
+	all: unset;
+	font-weight: 500;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+#card.statistics li.style p.planner {
 	float: right;
 	all: unset;
 	position: relative;
@@ -1648,33 +1592,37 @@ table.alt tbody tr td {
 	padding: 0.5em 1.5em 0.5em 0.5em;
 }
 
-.statistics li.style p.planner a.info {
+#card.statistics li.style p.planner a.info {
 	font-weight: 500;
 	font-size: 14px;
 	margin-left: -6px;
 }
 
-.statistics li.style p.planner a.info img.signature{
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+#card.statistics li.style p.planner a.info img.signature{
+	display: inline-block;
 	float: left;
-	width:auto;
-	height: auto;
-	max-width: 20px;
-	max-height: 20px;
-	margin-top: 6px;
+	width:15px;
+	height: 15px;
+	margin-top: 4px;
 }
 
-.statistics li.style p.planner a.profile {
+#card.statistics li.style p.planner a.profile {
 	display: flex;
 	float: right;
 	font-weight: 500;
 	font-size: 18px;
 	margin-top: 5px;
+	align-content: center;
 }
 
-.statistics li.style p.planner a.profile img{
+#card.statistics li.style p.planner a.profile span{
+	display: flex;
+	float: right;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+#card.statistics li.style p.planner a.profile img{
 	vertical-align: middle;
 	border-radius: 100%;
 	margin-left: auto;
@@ -1683,12 +1631,12 @@ table.alt tbody tr td {
 	height: 30px;
 }
 
-.statistics li.style p.planner a.profile img.profile{
+#card.statistics li.style p.planner a.profile img.profile{
 	max-width: auto;
 	max-height: auto;
 }
 
-.statistics li strong, .statistics li b {
+#card.statistics li strong, #card.statistics li b {
 	background-color: #F3F3F3;
 	border-radius: 10px;
 	display: block;
@@ -1699,31 +1647,32 @@ table.alt tbody tr td {
 	letter-spacing: -0.9px;
 	padding: 0.2em 0.2em 0.4em 0.5em;
 	margin-bottom: 0.5em;
+	align-content: center;
 }
 
-.statistics li strong span{
+#card.statistics li strong span{
 	font-size: 18px;
 	font-weight: 800;
 }
 
 
-.statistics li:first-child {
+#card.statistics li:first-child {
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 
 }
 
-.statistics li:last-child {
+#card.statistics li:last-child {
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 
 }
 
-.statistics li .icon {
+#card.statistics li .icon {
 	display: inline-block;
 }
 
-.statistics li .icon:before {
+#card.statistics li .icon:before {
 	font-size: 2.75rem;
 	line-height: 1.3;
 }
@@ -1737,7 +1686,6 @@ table.alt tbody tr td {
 	-webkit-align-items: center;
 	-ms-align-items: center;
 	align-items: center;
-	margin-top: 40px;
 }
 
 .spotlight .content {
@@ -1867,7 +1815,7 @@ li.ham-btn {
 
 /* 햄버거 버튼 이벤트 */
 .menu-trigger.active-1 span:nth-of-type(1) {
-	-webkit-transform: translateY (10px) rotate (-45deg);
+	-webkit-transform: translateY(10px) rotate(-45deg);
 	transform: translateY(10px) rotate(-45deg);
 }
 
@@ -2014,8 +1962,6 @@ body.is-preload #header.alt > * {
 }
 
 body.is-preload #header.alt .logo {
-	-moz-transform: scale(0.8) rotate(-30deg);
-	-webkit-transform: scale(0.8) rotate(-30deg);
 	-ms-transform: scale(0.8) rotate(-30deg);
 	transform: scale(0.8) rotate(-30deg);
 }
@@ -2023,9 +1969,6 @@ body.is-preload #header.alt .logo {
 /* Nav */
 
 #nav {
-	-moz-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-	-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-	-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 	transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 	background-color: #ffffff;
 	color: #636363;
@@ -2033,7 +1976,6 @@ body.is-preload #header.alt .logo {
 	width: 64em;
 	max-width: calc(100% - 4em);
 	padding: 1em;
-	background-color: #343837;
 	border-top-left-radius: 0.25em;
 	border-top-right-radius: 0.25em;
 	cursor: default;

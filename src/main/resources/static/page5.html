@@ -66,3 +66,88 @@
         <div style="line-height: 22px;"><br></div>
     </div>
 </div>
+<script>
+    var photo = document.querySelector('.photo');
+    var video = document.querySelector('.video');
+    var makeup = document.querySelector('.makeup');
+    var bridestudiodressdress = document.querySelector('#studiobridedress-dress');
+    var bridestudiodresshanbok = document.querySelector('#studiobridedress-hanbok');
+    var bridestudiodresssuit = document.querySelector('#studiobridedress-suit');
+    var bridestudiodressself = document.querySelector('#studiobridedress-self');
+    var groomstudiodresshanbok = document.querySelector('#studiogroomdress-hanbok');
+    var groomstudiodresssuit = document.querySelector('#studiogroomdress-suit');
+    var groomstudiodressself = document.querySelector('#studiogroomdress-self');
+
+
+
+    photo.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q5_studio_photo = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    video.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q5_studio_video = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    makeup.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "radio") {
+            question.q5_studio_makeup = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    bridestudiodressdress.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_bride_dress_dress = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    bridestudiodresshanbok.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_bride_dress_hanbok = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    bridestudiodresssuit.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_bride_dress_suit = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    bridestudiodressself.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_bride_dress_self = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    groomstudiodresshanbok.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_groom_dress_hanbok = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    groomstudiodresssuit.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_groom_dress_suit = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+    groomstudiodressself.addEventListener("change", function(e) {
+        if (e.target && e.target.type === "checkbox") {
+            question.q5_studio_groom_dress_self = e.target.value;
+            console.log(e.target.value);
+        }
+    });
+
+</script>

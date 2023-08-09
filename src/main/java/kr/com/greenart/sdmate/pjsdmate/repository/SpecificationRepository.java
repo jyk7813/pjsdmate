@@ -9,7 +9,7 @@ public interface SpecificationRepository {
 
     Specification save(Specification specification);
 
-    Optional<Specification> findBySpecification_no(Integer specification_no);
+    Optional<Specification> findBySpecificationNo(Integer specificationNo);
 
     List<Specification> findAll();
 }
