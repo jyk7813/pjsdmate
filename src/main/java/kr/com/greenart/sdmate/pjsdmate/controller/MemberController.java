@@ -1,7 +1,9 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
+
 import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
+import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,15 +17,23 @@ import java.util.List;
 
 @Controller
 public class MemberController {
+
     private final MemberService memberService;
 
-    public MemberController(MemberService memberService) {
+    private final MainPageService mainPageService;
+
+    public MemberController(MemberService memberService, MainPageService mainPageService) {
         this.memberService = memberService;
+        this.mainPageService = mainPageService;
     }
 
+
     @GetMapping("/main")
-    public String main(HttpSession session) {
-        mainpageCard card = new mainpageCard();
+    public String main(Model model) {
+
+        List<mainpageCard> card = mainPageService.returnMainCard(1);
+
+       /* mainpageCard card = new mainpageCard();
         card.setSum(3000000);
         card.setBusinessName("테스트사업");
         card.setDealCnt(48);
@@ -31,8 +41,9 @@ public class MemberController {
         card.setPlannerPk(1);
         card.setPlannerImg(null);
         card.setReviewCnt(3);
-        System.out.println(card);
-        session.setAttribute("card", card);
+        System.out.println(card);*/
+
+        model.addAttribute("card", card);
 
 
 //        @GetMapping("/answer")
@@ -180,7 +191,7 @@ public class MemberController {
             // 그리고 if 문을 빠져나가서 회원 가입 창으로 다시 돌아옴.
         }
 
-        return "member_join"; 
+        return "member_join";
     }
 
 }
