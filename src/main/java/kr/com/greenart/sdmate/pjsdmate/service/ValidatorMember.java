@@ -91,8 +91,8 @@ public class ValidatorMember {
             checkMinLength(member.getPwd(),"비밀번호",8);
 
             // 형식이 존재하는 거는 형태 검사
-            EmailRegex(member.getEmail(),"이메일");
-            PhoneNumRegex(member.getPhonenum(),"전화번호");
+//            EmailRegex(member.getEmail(),"이메일");
+//            PhoneNumRegex(member.getPhonenum(),"전화번호");
 
             validateDupulicate(Id_Count,"아이디");
             validateDupulicate(Email_Count,"이메일");

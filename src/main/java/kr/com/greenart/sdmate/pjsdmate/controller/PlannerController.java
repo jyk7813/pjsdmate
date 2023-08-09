@@ -11,6 +11,10 @@ public class PlannerController {
     @GetMapping("/join")
     public String join() { return "planner_join"; }
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }
 
 
