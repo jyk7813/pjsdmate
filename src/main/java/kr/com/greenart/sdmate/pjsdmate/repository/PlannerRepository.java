@@ -26,4 +26,6 @@ public interface PlannerRepository {
     Optional<Planner> findByPwd(String pwd);
     List<Planner> findAll();
     Image getImgfindByplannerNo(Integer plannerNo);
+
+
 }

@@ -3,7 +3,7 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 import kr.com.greenart.sdmate.pjsdmate.domain.Member;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
-import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
+
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,9 +69,8 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-        public String login (HttpSession session) {
-//        session.getAttribute("usersta")
-        return "login";
+        public String login () {
+            return "login";
         }
 
 

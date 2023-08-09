@@ -24,6 +24,8 @@ public class Member {
     private boolean active;
     private byte[] image;
 
+    private int requirement_pk;
+
     @Override
     public String toString() {
         return "Member{" +
@@ -35,6 +37,8 @@ public class Member {
                 ", phonenum='" + phonenum + '\'' +
                 ", email='" + email + '\'' +
                 ", active=" + active +
+                ", image=" + Arrays.toString(image) +
+                ", requirement_pk=" + requirement_pk +
                 '}';
     }
 
@@ -108,5 +112,13 @@ public class Member {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public int getRequirement_pk() {
+        return requirement_pk;
+    }
+
+    public void setRequirement_pk(int requirement_pk) {
+        this.requirement_pk = requirement_pk;
     }
 }
