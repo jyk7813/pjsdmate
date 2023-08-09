@@ -67,74 +67,33 @@
         <section id="intro" class="main">
             <div class="spotlight">
                 <div class="content">
-                    <ul class="statistics">
-                        <li class="style">
+                    <ul id="card" class="statistics">
+                        <li th:each="card : ${cardList}" class="style">
                             <div class="plannerinfo">
-                            <a href="http://www.naver.com">
-                                <strong>
-                                    견적금액&nbsp;&nbsp;&nbsp;<span th:text="${#session.getAttribute('card').sum}"></span>&nbsp;원<img class="strong image right"
-                                                                                            src="/img/Polygon%2010.png"
-                                                                                            alt="">
-                                </strong>
-                            </a>
+                                <a href="http://www.naver.com">
+                                    <strong>
+                                        견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.sum}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon%2010.png" alt="">
+                                    </strong>
+                                </a>
                                 <p class="planner">
                                     <a class="info" href="main.html">
                                         <img class="signature" src="/img/signature.png" alt="">
-                                        &nbsp;&nbsp;<span th:text="${#session.getAttribute('card').rating}"></span>&nbsp;(<span th:text="${#session.getAttribute('card').reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${#session.getAttribute('card').dealCnt}"></span>개
+                                        &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
                                     </a>
                                     <a class="profile" href="main.html">
                                         <img class="profile" src="/img/sample1.png" alt="">
-                                        <span th:text="${#session.getAttribute('card').businessName}"></span>
+                                        <span th:text="${card.businessName}"></span>
                                     </a>
                                 </p>
                             </div>
                         </li>
-<!--                        <li class="style">-->
-<!--                            <a href="http://www.naver.com">-->
-<!--                                <strong>-->
-<!--                                    견적금액&nbsp;&nbsp;&nbsp;<span>14,500,000</span>&nbsp;원<img class="strong image right"-->
-<!--                                                                                             src="/img/Polygon%2010.png"-->
-<!--                                                                                             alt="">-->
-<!--                                </strong>-->
-<!--                            </a>-->
-<!--                            <p class="planner">-->
-<!--                                <a class="info" href="main.html">-->
-<!--                                    <img class="signature" src="/img/signature.png" alt="">-->
-<!--                                    &nbsp;&nbsp;4.9 (56개의 리뷰) / 최근거래 97개-->
-<!--                                </a>-->
-<!--                                <a class="profile" href="main.html">-->
-<!--                                    <img class="profile" src="/img/sample2.png" alt="">더블유웨딩-->
-<!--                                </a>-->
-<!--                            </p>-->
-<!--                        </li>-->
-<!--                        <li class="style">-->
-<!--                            <a href="http://www.naver.com">-->
-<!--                                <strong>-->
-<!--                                    견적금액&nbsp;&nbsp;&nbsp;<span>5,500,000</span>&nbsp;원<img class="strong image right"-->
-<!--                                                                                            src="/img/Polygon%2010.png"-->
-<!--                                                                                            alt="">-->
-<!--                                </strong>-->
-<!--                            </a>-->
-<!--                            <p class="planner">-->
-<!--                                <a class="info" href="main.html">-->
-<!--                                    <img class="signature" src="/img/signature.png" alt="">-->
-<!--                                    &nbsp;&nbsp;0 (0개의 리뷰) / 최근거래 0개-->
-<!--                                </a>-->
-<!--                                <a class="profile" href="main.html">-->
-<!--                                    <img class="profile" src="/img/sample3.png" alt="">아임웨딩-->
-<!--                                </a>-->
-<!--                            </p>-->
-<!--                        </li>-->
                     </ul>
                 </div>
-                <!-- <span class="image"><img src="/img/pic01.jpg"/></span> -->
             </div>
         </section>
 
         <!-- Menu -->
         <div class="ham-con">
-            <!-- <div class="navbar-nav">
-            <div class="search-con d-flex justify-content-center"></div> -->
             <div id="ham-menu-wrap">
                 <div class="ham-menu mt-5">
                     <ul class="ham-top-menu">
@@ -203,22 +162,24 @@
 
 </html>
 
-<script th:inline="javascript">
-    let card = /*[[${#session.getAttribute('card') != null ? #session.getAttribute('card') : 'defaultValue'}]]*/ 'defaultValue';
-    console.log(card);
-    console.log(card.dealCnt);
+<!--<script th:inline="javascript">-->
+<!--    let card = /*[[${#session.getAttribute('card') != null ? #session.getAttribute('card') : 'defaultValue'}]]*/ 'defaultValue';-->
+<!--    console.log(card);-->
+<!--    console.log(card.dealCnt);-->
 
-    let sum = card.sum;
+<!--    let sum = card.sum;-->
 
-    let plannerpk = card.plannerpk;
-    let businessName = card.businessName;
-    let plannerimg = card.plannerimg;
+<!--    let plannerpk = card.plannerpk;-->
+<!--    let businessName = card.businessName;-->
+<!--    let plannerimg = card.plannerimg;-->
 
-    let rating = card.rating;
-    let reviewCnt = card.reviewCnt;
-    let dealCnt = card.dealCnt;
-    // <span th:text="${#session.getAttribute('card').dealCnt}"></span>
-</script>
+<!--    let rating = card.rating;-->
+<!--    let reviewCnt = card.reviewCnt;-->
+<!--    let dealCnt = card.dealCnt;-->
+<!--    // <span th:text="${#session.getAttribute('card').dealCnt}"></span>-->
+<!--    }-->
+
+<!--</script>-->
 
 
 <script>
