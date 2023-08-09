@@ -2,17 +2,26 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
+import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class MemberController {
+
+    final private MemberService memberService;
+
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
+
     @GetMapping("/main")
     public String main(HttpSession session) {
         mainpageCard card = new mainpageCard();
@@ -75,7 +84,7 @@ public class MemberController {
 
 
     // 로그인 매핑을 해주세요
-    p  public String Login(Model model, HttpSession session, HttpServletResponse response){
+      public String Login(Model model, HttpSession session, HttpServletResponse response){
 
         String id =(String)model.getAttribute("id");
         String pass =(String)model.getAttribute("password");
