@@ -49,7 +49,6 @@ public class MemberController {
 
         model.addAttribute("card", card);
 
-
 //        @GetMapping("/answer")
 //        public String answer () {
 //            return "answer";
@@ -94,26 +93,7 @@ public class MemberController {
 
 
 
-    @GetMapping("/mainyxxn")
-    public String mainyxxn(Model model) {
-        List<mainpageCard> cardListtest = new ArrayList<>();
 
-        for(int i = 1; i < 4; i++){
-            mainpageCard card = new mainpageCard();
-            card.setSum(3000000+i);
-            card.setBusinessName("테스트사업"+i);
-            card.setDealCnt(48+i);
-            card.setRating((long) 2.8+i);
-            card.setPlannerPk(1+i);
-            card.setPlannerImg(null);
-            card.setReviewCnt(3+i);
-            System.out.println(card);
-            cardListtest.add(card);
-        }
-        model.addAttribute("cardListtest", cardListtest);
-
-        return "main";
-    }
 
 
     // 로그인 매핑을 해주세요
@@ -154,24 +134,6 @@ public class MemberController {
         }
             // model 객체에 addAttribute 해서 보냄
         return "리턴될 페이지 적어주시면 됩니다.";
-    }
-
-    @GetMapping("/mainplanneryxxn")
-    public String mainplanneryxxn(Model model) {
-        List<mainplannerpageCard> plannercardList = new ArrayList<>();
-
-        for(int i = 1; i < 4; i++){
-            mainplannerpageCard card = new mainplannerpageCard();
-            card.setPrice(3000000+i);
-            card.setMemberPk(i);
-            card.setMemberName("테스트"+i);
-            card.setArea("서울"+i);
-            System.out.println(card);
-            plannercardList.add(card);
-        }
-        model.addAttribute("plannercardList", plannercardList);
-
-        return "mainplanner";
     }
 
     public String searchId(Model model){
