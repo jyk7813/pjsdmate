@@ -41,7 +41,7 @@ public class Member {
     private byte[] image;
 
     @Column(name="requirement_pk")
-    private Integer requirementPk;
+    private int requirementPk;
 
     @Override
     public String toString() {
@@ -130,11 +130,11 @@ public class Member {
         this.image = image;
     }
 
-    public Integer getRequirementPk() {
+    public int getRequirementPk() {
         return requirementPk;
     }
 
-    public void setRequirementPk(Integer requirementPk) {
+    public void setRequirementPk(int requirementPk) {
         this.requirementPk = requirementPk;
     }
 }
