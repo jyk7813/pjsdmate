@@ -25,7 +25,7 @@
   <nav>
     <div class="logo member">
     </div>
-    <form action="./login" method="POST">
+    <form  method="POST">
       <input type="hidden" id="userstat" name="userstat" value="member">
       <div>
         <input type="text" class="id" name="id" placeholder="ID">
@@ -84,6 +84,7 @@ checkbox.addEventListener('change', function(){
     loginbtn.className = 'loginbtn planner';
     autologin.className = 'autologin planner';
     userstat.value = 'planner';
+
   }
   else{
     whatuser = 'member';
@@ -93,6 +94,7 @@ checkbox.addEventListener('change', function(){
     loginbtn.className = 'loginbtn member';
     autologin.className = 'autologin member';
     userstat.value = 'member';
+
   }
 });
 

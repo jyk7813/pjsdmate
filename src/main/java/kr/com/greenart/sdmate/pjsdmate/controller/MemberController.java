@@ -7,6 +7,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,9 +35,10 @@ public class MemberController {
     }
 
     @GetMapping("/main")
-    public String main(Model model) {
-
-        List<mainpageCard> card = mainPageService.returnMainCard(1);
+    public String main(Model model,HttpSession session) {
+        Member member = (Member) session.getAttribute("member");
+        System.out.println(member);
+        List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
 
        /* mainpageCard card = new mainpageCard();
         card.setSum(3000000);
@@ -67,14 +69,12 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-        public String login () {
-            return "login";
+        public String login (HttpSession session) {
+//        session.getAttribute("usersta")
+        return "login";
         }
 
-    @GetMapping("/mainplanner")
-    public String mainplanner() {
-        return "mainplanner";
-    }
+
 
     @GetMapping("/join")
     public String join() {
@@ -93,29 +93,10 @@ public class MemberController {
     }
 
 
-    @GetMapping("/mainyxxn")
-    public String mainyxxn(Model model) {
-        List<mainpageCard> cardList = new ArrayList<>();
 
-        for (int i = 1; i < 4; i++) {
-            mainpageCard card = new mainpageCard();
-            card.setSum(3000000 + i);
-            card.setBusinessName("테스트사업" + i);
-            card.setDealCnt(48 + i);
-            card.setRating((long) 2.8 + i);
-            card.setPlannerPk(1 + i);
-            card.setPlannerImg(null);
-            card.setReviewCnt(3 + i);
-            System.out.println(card);
-            cardList.add(card);
-        }
-        model.addAttribute("cardListtest", cardList);
-
-        return "main";
-    }
 
     @PostMapping("/login")
-    public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
+    public String Login(@RequestParam String id, @RequestParam String pw,@RequestParam String userstat,Model model, HttpSession session, HttpServletResponse response){
 
 
 
@@ -132,14 +113,13 @@ public class MemberController {
                 if ((model.getAttribute("AutoLogin")) != null) {
 
                     // 쿠키 생성하는 행동을 하면 됩니다.
-                    Cookie cookie = new Cookie("username", "john");
+                    Cookie cookie = new Cookie("id", member.getId());
                     response.addCookie(cookie);
                 }
 
                 session.setAttribute("member",member);
                 model.addAttribute("member",member);
                 //session 시작
-                session.setAttribute("userPk", member.getMemberNo());
 
                 return "redirect:/member/main";
             } else {
@@ -155,8 +135,15 @@ public class MemberController {
 
         }
 
+        if(userstat.equals("planner")){
+            session.setAttribute("userstat","planner");
+            return "redirect:/planner/login?userstat=planner";
+        } else if (userstat.equals("member")) {
+            session.setAttribute("userstat","planner");
+            return "login";
+        }
         // model 객체에 addAttribute 해서 보냄
-        return "/login";
+        return "login";
     }
 
     public String searchId(Model model){
