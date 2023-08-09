@@ -14,4 +14,6 @@ public interface PlannerRepository {
     List<Planner> findAll();
     Optional<Planner> findByplannerNo(Integer plannerNo);
     Image getImgfindByplannerNo(Integer plannerNo);
+
+
 }

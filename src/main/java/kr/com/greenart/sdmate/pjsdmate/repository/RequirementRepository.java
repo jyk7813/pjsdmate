@@ -12,5 +12,6 @@ public interface RequirementRepository {
 
     List<Requirement> findAll();
 
+    List<Requirement> findByQ1CityOrderByQ1DateAsc(String q1City);
 
 }

@@ -30,4 +30,7 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Int
 
     @Override
     Optional<Member> findByIdAndIdentity_noAndName(String name, String identity_no, String id);
+
+    @Override
+    Member findByRequirementPk(int requirementPk);
 }

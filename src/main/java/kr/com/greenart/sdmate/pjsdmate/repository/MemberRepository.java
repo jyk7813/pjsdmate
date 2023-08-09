@@ -34,5 +34,6 @@ public interface MemberRepository {
     @Query("SELECT COUNT(m) FROM Member m WHERE m.email = :email")
     Integer countByEmail(String email);
 
+    Member findByRequirementPk(int requirementPk);
 
 }

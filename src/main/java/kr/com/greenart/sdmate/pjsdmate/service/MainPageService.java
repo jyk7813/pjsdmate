@@ -53,13 +53,9 @@ public class MainPageService {
             eachCard.setBusinessName(planner.getBusiness_name());
             eachCard.setDealCnt(planner.getDealCnt());
             eachCard.setRating(planner.getRating());
-//            eachCard.setPlannerImg(planner.getImage());
-
             String encoded = Base64.getEncoder().encodeToString(planner.getImage());
             eachCard.setPlannerImg(encoded);
-            System.out.println(encoded);
-
-
+//            System.out.println(encoded);
 
             for (PlannerSpecificationPackage packageItem : packageList) {
                 if (packageItem.getPlannerNo() == plannerNumber) {
@@ -72,18 +68,4 @@ public class MainPageService {
         }
         return card;
     }
-
-
-
-//    public List<mainpageCard> returnMainCardList(int memberNo) {
-//        List<mainpageCard> list = null;
-//
-//
-//
-//        return list;
-//    }
-//    public int forCnt(int memberNo) {
-//
-//    }
-
 }
