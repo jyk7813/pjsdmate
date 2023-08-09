@@ -23,5 +23,5 @@ public interface MemberRepository {
 
     Optional<Member> findByPwd(String pwd);
 
-    int Count(String id);
+
 }
