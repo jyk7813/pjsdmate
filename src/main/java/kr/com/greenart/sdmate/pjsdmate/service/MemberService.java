@@ -3,6 +3,9 @@ package kr.com.greenart.sdmate.pjsdmate.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.com.greenart.sdmate.pjsdmate.domain.Member;
+import kr.com.greenart.sdmate.pjsdmate.exception.JoinEmailException;
+import kr.com.greenart.sdmate.pjsdmate.exception.JoinIdException;
+import kr.com.greenart.sdmate.pjsdmate.exception.JoinPhoneNumException;
 import kr.com.greenart.sdmate.pjsdmate.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,14 +53,16 @@ public class MemberService {
         }
         return null;
     }
-    public void join(String json){
-        Member member =parseObj(json);
-
-        member.setActive(true);
-
+//    public void join(String json){
+//        Member member =parseObj(json);
+//
+//        member.setActive(true);
+//
+//        memberRepository.save(member);
+//        // 아이디 중복 검사
+//    }
+    public void join(Member member){
         memberRepository.save(member);
-        // 아이디 중복 검사
-
     }
 
 
@@ -143,5 +148,21 @@ public class MemberService {
             throw new RuntimeException(e);
         }
         return member;
+    }
+
+    public boolean isEmailDuplicated(String email) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        if(optionalMember.isPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isPhoneNumDuplicated(String phonenum) {
+        Optional<Member> optionalMember = memberRepository.findByPhonenum(phonenum);
+        if(optionalMember.isPresent()){
+            return true;
+        }
+        return false;
     }
 }
