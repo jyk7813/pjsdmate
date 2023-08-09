@@ -91,27 +91,6 @@ public class MemberController {
         }
     }
 
-
-
-    @GetMapping("/mainyxxn")
-    public String mainyxxn(Model model) {
-        List<mainpageCard> cardList = new ArrayList<>();
-
-        for(int i = 1; i < 4; i++){
-            mainpageCard card = new mainpageCard();
-            card.setSum(3000000+i);
-            card.setBusinessName("테스트사업"+i);
-            card.setDealCnt(48+i);
-            card.setRating((long) 2.8+i);
-            card.setPlannerPk(1+i);
-            card.setPlannerImg(null);
-            card.setReviewCnt(3+i);
-            System.out.println(card);
-            cardList.add(card);
-        }
-    }
-
-
     @PostMapping("/login")
     public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
         System.out.println("컨트롤러 돌아가유");
