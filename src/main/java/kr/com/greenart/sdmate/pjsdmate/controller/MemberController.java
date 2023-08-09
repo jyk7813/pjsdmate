@@ -44,6 +44,7 @@ public class MemberController {
         System.out.println(card);*/
 
         model.addAttribute("card", card);
+        System.out.println(card);
 
 
 //        @GetMapping("/answer")

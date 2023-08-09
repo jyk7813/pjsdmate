@@ -2,6 +2,7 @@ package kr.com.greenart.sdmate.pjsdmate.repository;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 
+import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,5 +13,5 @@ public interface PlannerRepository {
     Optional<Planner> findByPwd(String pwd);
     List<Planner> findAll();
     Optional<Planner> findByplannerNo(Integer plannerNo);
-
+    Image getImgfindByplannerNo(Integer plannerNo);
 }

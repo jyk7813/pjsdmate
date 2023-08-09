@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,7 +38,7 @@ public class MainPageService {
     public List<mainpageCard> card = new ArrayList<>();
     public List<mainpageCard> returnMainCard(int memberNo) {
 
-        //List<mainpageCard> card = new ArrayList<>();
+        card = new ArrayList<>();
         List<PlannerSpecificationPackage> packageList = getpackageByPk(memberNo);
 
         List<Integer> plannerNumbers = packageList.stream()
@@ -52,7 +53,14 @@ public class MainPageService {
             eachCard.setBusinessName(planner.getBusiness_name());
             eachCard.setDealCnt(planner.getDealCnt());
             eachCard.setRating(planner.getRating());
-            eachCard.setPlannerImg(planner.getImage());
+//            eachCard.setPlannerImg(planner.getImage());
+
+            String encoded = Base64.getEncoder().encodeToString(planner.getImage());
+            eachCard.setPlannerImg(encoded);
+            System.out.println(encoded);
+
+
+
             for (PlannerSpecificationPackage packageItem : packageList) {
                 if (packageItem.getPlannerNo() == plannerNumber) {
                     Specification specification = specificationRepository.findBySpecificationNo(packageItem.getSpecificationNo()).get();

@@ -68,7 +68,7 @@
             <div class="spotlight">
                 <div class="content">
                     <ul id="card" class="statistics">
-                        <li th:each="card : ${cardList}" class="style">
+                        <li th:each="card : ${card}" class="style">
                             <div class="plannerinfo">
                                 <a href="http://www.naver.com">
                                     <strong>
@@ -81,7 +81,9 @@
                                         &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
                                     </a>
                                     <a class="profile" href="main.html">
-                                        <img class="profile" src="/img/sample1.png" alt="">
+<!--                                        <img class="profile" src="/img/sample1.png" alt="">-->
+                                        <img class="profile" th:src="${'data:image/jpeg;base64,' + card.plannerImg}" alt="Planner Image">
+<!--                                        <img th:src="@{'data:image/jpeg;base64,' + ${#strings.replace(#strings.newString(card.plannerImg), '\n', '')}}" alt="Planner Image">-->
                                         <span th:text="${card.businessName}"></span>
                                     </a>
                                 </p>
@@ -162,24 +164,7 @@
 
 </html>
 
-<!--<script th:inline="javascript">-->
-<!--    let card = /*[[${#session.getAttribute('card') != null ? #session.getAttribute('card') : 'defaultValue'}]]*/ 'defaultValue';-->
-<!--    console.log(card);-->
-<!--    console.log(card.dealCnt);-->
 
-<!--    let sum = card.sum;-->
-
-<!--    let plannerpk = card.plannerpk;-->
-<!--    let businessName = card.businessName;-->
-<!--    let plannerimg = card.plannerimg;-->
-
-<!--    let rating = card.rating;-->
-<!--    let reviewCnt = card.reviewCnt;-->
-<!--    let dealCnt = card.dealCnt;-->
-<!--    // <span th:text="${#session.getAttribute('card').dealCnt}"></span>-->
-<!--    }-->
-
-<!--</script>-->
 
 
 <script>
