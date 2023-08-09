@@ -1596,15 +1596,11 @@ table.alt tbody tr td {
 }
 
 .statistics li.style p.planner a.info img.signature{
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+	display: inline-block;
 	float: left;
-	width:auto;
-	height: auto;
-	max-width: 20px;
-	max-height: 20px;
-	margin-top: 6px;
+	width:15px;
+	height: 15px;
+	margin-top: 4px;
 }
 
 .statistics li.style p.planner a.profile {
