@@ -14,6 +14,8 @@ public interface MemberRepository {
 
     Optional<Member> findBymemberNo(Integer memberNo);
 
+    Optional<Member> findByPhonenum(String phonenum);
+
     Optional<Member> findByName(String name);
 
     Optional<Member> findByEmail(String email);
@@ -35,5 +37,6 @@ public interface MemberRepository {
     Integer countByEmail(String email);
 
     Member findByRequirementPk(int requirementPk);
-
+    @Query("SELECT COUNT(m) FROM Member m WHERE m.phonenum = :phonenum")
+    Integer countByPhonenum(String phonenum);
 }

@@ -5,13 +5,17 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +68,8 @@ public class MemberController {
     }
 
     @GetMapping("/join")
-    public String join() {
+    public String join(Model model) {
+        model.addAttribute("member", new Member());
         return "member_join";
     }
     @PostMapping("/idCheck")
@@ -80,37 +85,16 @@ public class MemberController {
     }
 
 
-    @GetMapping("/mainyxxn")
-    public String mainyxxn(Model model) {
-        List<mainpageCard> cardList = new ArrayList<>();
 
-        for (int i = 1; i < 4; i++) {
-            mainpageCard card = new mainpageCard();
-            card.setSum(3000000 + i);
-            card.setBusinessName("테스트사업" + i);
-            card.setDealCnt(48 + i);
-            card.setRating((long) 2.8 + i);
-            card.setPlannerPk(1 + i);
-            card.setPlannerImg(null);
-            card.setReviewCnt(3 + i);
-            System.out.println(card);
-            cardList.add(card);
-        }
-        model.addAttribute("cardListtest", cardList);
-
-        return "main";
-    }
 
     @PostMapping("/login")
-    public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
+    public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response) {
 
 
-
-
-        List<String> list =memberService.validate(id,pw);
+        List<String> list = memberService.validate(id, pw);
 
         //정규식을 검사하고 list 사이즈가 0 이라면
-        if(list.size() ==0) {
+        if (list.size() == 0) {
             Member member = memberService.Login(id, pw);
             // 돌아온게 널이 아니라면
             if (member != null) {
@@ -123,28 +107,29 @@ public class MemberController {
                     response.addCookie(cookie);
                 }
 
-                session.setAttribute("member",member);
-                model.addAttribute("member",member);
+                session.setAttribute("member", member);
+                model.addAttribute("member", member);
                 //session 시작
-                session.setAttribute("userPk", member.getMemberNo());
+
 
                 return "redirect:/member/main";
             } else {
                 list.add("아이디 혹은 비밀번호가 틀렸습니다");
-                model.addAttribute("error",list);
+                model.addAttribute("error", list);
 
                 //null 이라면 아이디가 틀렸거나 비밀번호가 틀렸기 때문에 redirect 를 해줘야합니다
 
             }
-        }else{
+        } else {
             // list 사이즈가 0 이상 이라면 정규식에 벗어난 단어 규칙임으로 페이지로 다시 돌려 보내고 alret 을 띄워야합니다.
-            model.addAttribute("error",list);
+            model.addAttribute("error", list);
 
         }
 
         // model 객체에 addAttribute 해서 보냄
         return "/login";
     }
+
 
     public String searchId(Model model){
         // 값 꺼내오기
@@ -166,27 +151,56 @@ public class MemberController {
         return "Login";
     }
 
-    @GetMapping("/member/join")
-    public String join(Model model) {
-        //요청에 member 를 String 으로 받아옴
-        String json = (String)model.getAttribute("member");
-        //json 을 memberservice 에서 적합성을 검사하고  에러가 있다면
-        // list 에 담겨 져서 옴
-        List<String> list = memberService.validate(json);
-        //list size가 0 이라는 것은 적합성 검사를 전부 통과 했다는 말이기 떄문에
-        //에러가 없는 것임으로 회원가입을 진행
-        if(list.size()==0){
-            model.addAttribute("success","회원 가입에 성공 했습니다");
-            memberService.join(json);
-            return "login";
-        }else{
-            //list 사이즈가 0 이 아니라면 적합성 검사를 통과하지못했기 때문에
-            // db 에 넣지 않고 에러를 담은 list 만 반환.
-            model.addAttribute("error",list);
-            // 그리고 if 문을 빠져나가서 회원 가입 창으로 다시 돌아옴.
+//    @PostMapping ("/join")
+//    public String join(Model model) {
+//        //요청에 member 를 String 으로 받아옴
+//        String json = (String)model.getAttribute("member");
+//        //json 을 memberservice 에서 적합성을 검사하고  에러가 있다면
+//        // list 에 담겨 져서 옴
+//        List<String> list = memberService.validate(json);
+//        //list size가 0 이라는 것은 적합성 검사를 전부 통과 했다는 말이기 떄문에
+//        //에러가 없는 것임으로 회원가입을 진행
+//        if(list.size()==0){
+//            model.addAttribute("success","회원 가입에 성공 했습니다");
+//            memberService.join(json);
+//            return "redirect:/member/login";
+//        }else{
+//            //list 사이즈가 0 이 아니라면 적합성 검사를 통과하지못했기 때문에
+//            // db 에 넣지 않고 에러를 담은 list 만 반환.
+//            model.addAttribute("error",list);
+//            // 그리고 if 문을 빠져나가서 회원 가입 창으로 다시 돌아옴.
+//        }
+//
+//        return "redirect:/member/join";
+//    }
+
+    @PostMapping("/join")
+    public String join(@Valid @ModelAttribute("member") Member member, BindingResult result, Model model) {
+        // 기본적인 Bean Validation 오류 검사
+        if (result.hasErrors()) {
+            System.out.println("result = " + result);
+            return "member_join";
+        }
+        // 이메일 중복 검사
+        if (memberService.isEmailDuplicated(member.getEmail())) {
+            result.rejectValue("email", "duplicated", "이미 사용 중인 이메일입니다.");
+        }
+        // 전화번호 중복 검사
+        if (memberService.isPhoneNumDuplicated(member.getPhonenum())) {
+            result.rejectValue("phonenum", "duplicated", "이미 사용 중인 전화번호입니다.");
+        }
+        // ID 중복 검사
+        if (memberService.isIdDuplicated(member.getId())) {
+            result.rejectValue("id", "duplicated", "이미 사용 중인 ID입니다.");
+        }
+        // 추가로 발견된 중복 오류가 있는 경우
+        if (result.hasErrors()) {
+            return "member_join";
         }
 
-        return "member_join";
+        memberService.join(member);
+        return "login";
     }
+
 
 }
