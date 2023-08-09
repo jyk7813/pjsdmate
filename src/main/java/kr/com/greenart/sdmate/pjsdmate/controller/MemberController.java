@@ -118,8 +118,7 @@ public class MemberController {
     public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
 
 
-        System.out.println(id + "아이디");
-        System.out.println(pw + "비번");
+
 
         List<String> list =memberService.validate(id,pw);
 
@@ -136,7 +135,8 @@ public class MemberController {
                     Cookie cookie = new Cookie("username", "john");
                     response.addCookie(cookie);
                 }
-                System.out.println("정규식을 통과했소");
+
+                session.setAttribute("member",member);
                 model.addAttribute("member",member);
                 //session 시작
                 session.setAttribute("userPk", member.getMemberNo());
