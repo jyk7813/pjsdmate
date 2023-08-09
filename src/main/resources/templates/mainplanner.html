@@ -66,38 +66,19 @@
 		<section id="intro" class="main">
 			<div class="spotlight">
 				<div class="content">
-					<ul class="statistics" >
-						<li class="style" >
+					<ul id="card" class="statistics">
+						<li th:each="card : ${plannercardList}" class="style" >
+							<div class="reqCard">
 							<a href="main.html">
 								<strong>
-									요청 견적금액&nbsp;&nbsp;&nbsp;<span>8,150,000</span>&nbsp;원<img class="strong image right" src="/img/Polygon 10.png" alt="" >
+									요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.price}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon 10.png" alt="" >
 								</strong>
 							</a>
 							<a class="profile" href="main.html">
-								<img class="profile" src="/img/p1.png" alt=""><p class="info">김민성 고객님</p><span class="areainfo">&nbsp;부산광역시 부산진구</span>
+								<img class="profile" src="/img/p1.png" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p><span class="areainfo" th:text="${card.area}"></span>
 							</a>
+							</div>
 						</li>
-						<li class="style" >
-							<a href="main.html">
-								<strong>
-									요청 견적금액&nbsp;&nbsp;&nbsp;<span>4,000,000</span>&nbsp;원<img class="strong image right" src="/img/Polygon 10.png" alt="" >
-								</strong>
-							</a>
-							<a class="profile" href="main.html">
-								<img class="profile" src="/img/p2.png" alt=""><p class="info">주하태 고객님</p><span class="areainfo">&nbsp;부산광역시 해운대구</span>
-							</a>
-						</li>
-						<li class="style" >
-							<a href="main.html">
-								<strong>
-									요청 견적금액&nbsp;&nbsp;&nbsp;<span>8,150,000</span>&nbsp;원<img class="strong image right" src="/img/Polygon 10.png" alt="" >
-								</strong>
-							</a>
-							<a class="profile" href="main.html">
-								<img class="profile" src="/img/p3.png" alt=""><p class="info">김지윤 고객님</p><span class="areainfo">&nbsp;부산광역시 중구</span>
-							</a>
-						</li>
-					</ul>
 					</ul>
 				</div>
 			</div>

@@ -1,6 +1,7 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
+import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,5 +71,23 @@ public class MemberController {
         model.addAttribute("cardList", cardList);
 
         return "main";
+    }
+
+    @GetMapping("/mainplanneryxxn")
+    public String mainplanneryxxn(Model model) {
+        List<mainplannerpageCard> plannercardList = new ArrayList<>();
+
+        for(int i = 1; i < 4; i++){
+            mainplannerpageCard card = new mainplannerpageCard();
+            card.setPrice(3000000+i);
+            card.setMemberPk(i);
+            card.setMemberName("테스트"+i);
+            card.setArea("서울"+i);
+            System.out.println(card);
+            plannercardList.add(card);
+        }
+        model.addAttribute("plannercardList", plannercardList);
+
+        return "mainplanner";
     }
 }
