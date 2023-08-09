@@ -1,19 +1,19 @@
 package kr.com.greenart.sdmate.pjsdmate.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Requirement {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer requirementNo;
-    private String q1_city;
-    private String q1_gu;
+    @Column(name="q1_city")
+    private String q1City;
+    @Column(name="q1_gu")
+    private String q1Gu;
     private String q1_guestno;
-    private Date q1_date;
+    @Column(name="q1_date")
+    private Date q1Date;
     private String q2_dress;
     private String q2_suit;
     private String q3_Fmom_hanbok;
@@ -43,16 +43,17 @@ public class Requirement {
     private String q6_snap_groom_hanbok;
     private String q6_snap_groom_self;
     private String q6_snap_place;
-    private int q7_estimate;
+    @Column(name="q7_estimate")
+    private int q7Estimate;
 
     @Override
     public String toString() {
         return "Requirement{" +
                 "requirementNo=" + requirementNo +
-                ", q1_city='" + q1_city + '\'' +
-                ", q1_gu='" + q1_gu + '\'' +
+                ", q1City='" + q1City + '\'' +
+                ", q1Gu='" + q1Gu + '\'' +
                 ", q1_guestno='" + q1_guestno + '\'' +
-                ", q1_date=" + q1_date +
+                ", q1Date=" + q1Date +
                 ", q2_dress='" + q2_dress + '\'' +
                 ", q2_suit='" + q2_suit + '\'' +
                 ", q3_Fmom_hanbok='" + q3_Fmom_hanbok + '\'' +
@@ -82,7 +83,7 @@ public class Requirement {
                 ", q6_snap_groom_hanbok='" + q6_snap_groom_hanbok + '\'' +
                 ", q6_snap_groom_self='" + q6_snap_groom_self + '\'' +
                 ", q6_snap_place='" + q6_snap_place + '\'' +
-                ", q7_estimate=" + q7_estimate +
+                ", q7Estimate=" + q7Estimate +
                 '}';
     }
 
@@ -94,20 +95,20 @@ public class Requirement {
         this.requirementNo = requirementNo;
     }
 
-    public String getQ1_city() {
-        return q1_city;
+    public String getQ1City() {
+        return q1City;
     }
 
-    public void setQ1_city(String q1_city) {
-        this.q1_city = q1_city;
+    public void setQ1City(String q1City) {
+        this.q1City = q1City;
     }
 
-    public String getQ1_gu() {
-        return q1_gu;
+    public String getQ1Gu() {
+        return q1Gu;
     }
 
-    public void setQ1_gu(String q1_gu) {
-        this.q1_gu = q1_gu;
+    public void setQ1Gu(String q1Gu) {
+        this.q1Gu = q1Gu;
     }
 
     public String getQ1_guestno() {
@@ -118,12 +119,12 @@ public class Requirement {
         this.q1_guestno = q1_guestno;
     }
 
-    public Date getQ1_date() {
-        return q1_date;
+    public Date getQ1Date() {
+        return q1Date;
     }
 
-    public void setQ1_date(Date q1_date) {
-        this.q1_date = q1_date;
+    public void setQ1Date(Date q1Date) {
+        this.q1Date = q1Date;
     }
 
     public String getQ2_dress() {
@@ -358,11 +359,11 @@ public class Requirement {
         this.q6_snap_place = q6_snap_place;
     }
 
-    public int getQ7_estimate() {
-        return q7_estimate;
+    public int getQ7Estimate() {
+        return q7Estimate;
     }
 
-    public void setQ7_estimate(int q7_estimate) {
-        this.q7_estimate = q7_estimate;
+    public void setQ7Estimate(int q7Estimate) {
+        this.q7Estimate = q7Estimate;
     }
 }

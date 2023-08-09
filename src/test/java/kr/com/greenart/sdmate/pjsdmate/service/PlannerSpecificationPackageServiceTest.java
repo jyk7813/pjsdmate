@@ -1,18 +1,13 @@
 package kr.com.greenart.sdmate.pjsdmate.service;
 
-import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
-import kr.com.greenart.sdmate.pjsdmate.domain.PlannerSpecificationPackage;
-import kr.com.greenart.sdmate.pjsdmate.domain.Specification;
-import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
-import kr.com.greenart.sdmate.pjsdmate.repository.PlannerRepository;
-import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRepository;
-import kr.com.greenart.sdmate.pjsdmate.repository.ReviewRepository;
-import kr.com.greenart.sdmate.pjsdmate.repository.SpecificationRepository;
+import kr.com.greenart.sdmate.pjsdmate.domain.*;
+import kr.com.greenart.sdmate.pjsdmate.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +17,8 @@ public class PlannerSpecificationPackageServiceTest {
     @Autowired
     MainPageService mainPageService;
     @Autowired
+    PlannerMainPageService plannerMainPageService;
+    @Autowired
     PlannerSpecificationPackageRepository plannerSpecificationPackageRepository;
     @Autowired
     PlannerRepository plannerRepository;
@@ -29,6 +26,43 @@ public class PlannerSpecificationPackageServiceTest {
     SpecificationRepository specificationRepository;
     @Autowired
     ReviewRepository reviewRepository;
+    @Autowired
+    RequirementRepository requirementRepository;
+    @Autowired
+    MemberRepository memberRepository;
+
+    @Test
+    void 플래너카드리스트리턴받기() {
+        List<PlannermainpageCard> list = plannerMainPageService.returnPlannerMainCard(2);
+
+        for(PlannermainpageCard plannermainpageCard : list) {
+            System.out.println(plannermainpageCard);
+        }
+//
+//        int plannerNo = 2;
+//       List<PlannermainpageCard> card = new ArrayList<>();
+//
+//        Planner planner = plannerRepository.findByplannerNo(plannerNo).get();
+//        String region = planner.getRegion();
+//        List<Requirement> requirementList = requirementRepository.findByQ1CityOrderByQ1DateAsc(region);
+//        for (Requirement requirement : requirementList) {
+//            System.out.println("혹시여기니?" + requirement);
+//            PlannermainpageCard eachCard = new PlannermainpageCard();
+//            eachCard.setEstimate(requirement.getQ7Estimate());
+//            eachCard.setCity(requirement.getQ1City());
+//            eachCard.setGu(requirement.getQ1Gu());
+//            Member member = memberRepository.findByRequirementPk(requirement.getRequirementNo());
+//            eachCard.setMemberPk(member.getMemberNo());
+//            eachCard.setMemberName(member.getName());
+//            String encoded = Base64.getEncoder().encodeToString(member.getImage());
+//            eachCard.setMemberImg(encoded);
+//            card.add(eachCard);
+//        }
+//
+//        for(PlannermainpageCard plannermainpageCard : card) {
+//            System.out.println(plannermainpageCard);
+//        }
+    }
 
     @Test
     void 리스트리턴받기() {

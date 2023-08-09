@@ -24,7 +24,8 @@ public class Member {
     private boolean active;
     private byte[] image;
 
-    private int requirement_pk;
+    @Column(name="requirement_pk")
+    private int requirementPk;
 
     @Override
     public String toString() {
@@ -37,8 +38,7 @@ public class Member {
                 ", phonenum='" + phonenum + '\'' +
                 ", email='" + email + '\'' +
                 ", active=" + active +
-                ", image=" + Arrays.toString(image) +
-                ", requirement_pk=" + requirement_pk +
+                ", requirementPk=" + requirementPk +
                 '}';
     }
 
@@ -114,11 +114,11 @@ public class Member {
         this.image = image;
     }
 
-    public int getRequirement_pk() {
-        return requirement_pk;
+    public int getRequirementPk() {
+        return requirementPk;
     }
 
-    public void setRequirement_pk(int requirement_pk) {
-        this.requirement_pk = requirement_pk;
+    public void setRequirementPk(int requirementPk) {
+        this.requirementPk = requirementPk;
     }
 }

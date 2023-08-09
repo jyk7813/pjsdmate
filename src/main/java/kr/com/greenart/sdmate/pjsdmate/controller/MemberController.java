@@ -3,12 +3,8 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 import kr.com.greenart.sdmate.pjsdmate.domain.Member;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
-
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -119,6 +115,7 @@ public class MemberController {
                 session.setAttribute("member",member);
                 model.addAttribute("member",member);
                 //session 시작
+                session.setAttribute("userPk", member.getMemberNo());
 
                 return "redirect:/member/main";
             } else {

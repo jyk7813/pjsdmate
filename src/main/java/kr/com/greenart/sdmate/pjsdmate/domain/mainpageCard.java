@@ -20,7 +20,6 @@ public class mainpageCard {
                 ", rating=" + rating +
                 ", reviewCnt=" + reviewCnt +
                 ", dealCnt=" + dealCnt +
-                ", plannerImg='" + plannerImg + '\'' +
                 ", businessName='" + businessName + '\'' +
                 '}';
     }
