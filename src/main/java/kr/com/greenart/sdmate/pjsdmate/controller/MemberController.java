@@ -37,7 +37,6 @@ public class MemberController {
 
 
         model.addAttribute("card", card);
-
 //        @GetMapping("/answer")
 //        public String answer () {
 //            return "answer";
