@@ -1,5 +1,6 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
+import kr.com.greenart.sdmate.pjsdmate.domain.Member;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;
@@ -65,9 +67,9 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-        public String login () {
-            return "login";
-        }
+    public String login() {
+        return "login";
+    }
 
     @GetMapping("/mainplanner")
     public String mainplanner() {
@@ -78,6 +80,7 @@ public class MemberController {
     public String join() {
         return "member_join";
     }
+
     @PostMapping("/idCheck")
     @ResponseBody
     public Map<String, String> checkid(@RequestBody Map<String, String> requestData) {
@@ -91,29 +94,30 @@ public class MemberController {
     }
 
 
-
     @GetMapping("/mainyxxn")
     public String mainyxxn(Model model) {
         List<mainpageCard> cardList = new ArrayList<>();
 
-        for(int i = 1; i < 4; i++){
+        for (int i = 1; i < 4; i++) {
             mainpageCard card = new mainpageCard();
-            card.setSum(3000000+i);
-            card.setBusinessName("테스트사업"+i);
-            card.setDealCnt(48+i);
-            card.setRating((long) 2.8+i);
-            card.setPlannerPk(1+i);
+            card.setSum(3000000 + i);
+            card.setBusinessName("테스트사업" + i);
+            card.setDealCnt(48 + i);
+            card.setRating((long) 2.8 + i);
+            card.setPlannerPk(1 + i);
             card.setPlannerImg(null);
-            card.setReviewCnt(3+i);
+            card.setReviewCnt(3 + i);
             System.out.println(card);
             cardList.add(card);
         }
-    }
+        model.addAttribute("cardListtest", cardList);
 
+        return "main";
+    }
 
     @PostMapping("/login")
     public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
-        System.out.println("컨트롤러 돌아가유");
+        
 
         System.out.println(id + "아이디");
         System.out.println(pw + "비번");
@@ -122,9 +126,9 @@ public class MemberController {
 
         //정규식을 검사하고 list 사이즈가 0 이라면
         if(list.size() ==0) {
-            Integer userPk = memberService.Login(id, pw);
+            Member member = memberService.Login(id, pw);
             // 돌아온게 널이 아니라면
-            if (userPk != null) {
+            if (member != null) {
 
                 // 자동로그인이 체크 되어 있다면
                 if ((model.getAttribute("AutoLogin")) != null) {
@@ -133,10 +137,12 @@ public class MemberController {
                     Cookie cookie = new Cookie("username", "john");
                     response.addCookie(cookie);
                 }
-
+                System.out.println("정규식을 통과했소");
+                model.addAttribute("member",member);
                 //session 시작
-                session.setAttribute("userPk", userPk);
-                return "main";
+                session.setAttribute("userPk", member.getMemberNo());
+
+                return "redirect:/member/main";
             } else {
                 list.add("아이디 혹은 비밀번호가 틀렸습니다");
                 model.addAttribute("error",list);
@@ -151,7 +157,7 @@ public class MemberController {
         }
 
         // model 객체에 addAttribute 해서 보냄
-        return "../login";
+        return "/login";
     }
 
     public String searchId(Model model){

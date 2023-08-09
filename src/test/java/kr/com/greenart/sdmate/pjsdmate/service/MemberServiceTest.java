@@ -43,11 +43,11 @@ class MemberServiceTest {
     void 로그인(){
         // 로그인 되면 1 번 pk 유저랑 같음
         //given
-        Integer current = memberService.Login("test","test1234");
-        Integer missID = memberService.Login("아이디 오타","test1234");
-        Integer missPass = memberService.Login("test","비밀번호 오타");
+        Member current = memberService.Login("test","test1234");
+        Member missID = memberService.Login("아이디 오타","test1234");
+        Member missPass = memberService.Login("test","비밀번호 오타");
         //then
-        Assertions.assertEquals(current,memberService.getMemberByPK(1).getMemberNo());
+        Assertions.assertEquals(current.getMemberNo(),memberService.getMemberByPK(1).getMemberNo());
         Assertions.assertNull(missID);
         Assertions.assertNull(missID);
     }

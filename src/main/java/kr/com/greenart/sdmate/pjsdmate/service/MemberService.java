@@ -35,7 +35,7 @@ public class MemberService {
 
 
     //id 를 받아서 멤버 테이블에서 조회하고 적합성 검사를 한뒤에
-    public Integer Login(String id,String pass){
+    public Member Login(String id,String pass){
 
 
         // 레포지토리에서 값 뺴오기
@@ -47,7 +47,7 @@ public class MemberService {
             Member checkMember = optionalMember.get();
             if(checkMember.getPwd().equals(pass)){
                 member = checkMember;
-                return member.getMemberNo();
+                return member;
             }
         }
         return null;
