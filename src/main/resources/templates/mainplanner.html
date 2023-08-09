@@ -61,7 +61,7 @@
 	<div id="main">
 		<div class="chat_wrap">
 			<p class="newtext">내 지역 견적요청&nbsp;(10개)</p>
-			<p class="area"><a href="#" onclick="showPopup()">부산</a></p>
+			<a class="area"><a href="#" onclick="showPopup()">부산</a></a>
 		</div>
 
 		<div class="popup" id="cityPopup">
@@ -92,16 +92,17 @@
 				<div class="content">
 					<ul id="card" class="statistics">
 						<li th:each="card : ${plannercardList}" class="style" >
-							<div class="reqCard">
 							<a href="main.html">
-								<strong>
-									요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.price}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon 10.png" alt="" >
-								</strong>
+								<div class="reqCard">
+									<strong>
+										요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.price}">135</span>&nbsp;원
+										<img class="poligon" src="/img/Polygon 10.png" alt="" >
+									</strong>
+								</div>
 							</a>
 							<a class="profile" href="main.html">
 								<img class="profile" src="/img/p1.png" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p><span class="areainfo" th:text="${card.area}"></span>
 							</a>
-							</div>
 						</li>
 					</ul>
 				</div>
@@ -158,6 +159,7 @@
 	<script src="/js/breakpoints.min.js"></script>
 	<script src="/js/util.js"></script>
 	<script src="/js/main.js"></script>
+	<script src="/js/api.js"></script>
 
 	</header>
 	</section>
@@ -165,6 +167,24 @@
 </body>
 
 <script>
+	document.addEventListener("DOMContentLoaded", function() {
+		var popup = document.getElementById("cityPopup");
+		var areaLink = document.querySelector(".area a");
+
+		areaLink.addEventListener("click", function(event) {
+			event.preventDefault();
+			showPopup();
+		});
+
+		popup.addEventListener("click", function(event) {
+			event.stopPropagation();
+		});
+
+		document.addEventListener("click", function(event) {
+			hidePopup();
+		});
+	});
+
 	function showPopup() {
 		var popup = document.getElementById("cityPopup");
 		popup.style.display = "block";
