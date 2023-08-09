@@ -163,9 +163,16 @@
 </html>
 
 
+<script th:inline="javascript">
 
+    console.log("도착했음");
+
+    var a = /*[[${#session.getAttribute('member') != null ? #session.getAttribute('member') : 'defaultValue'}]]*/ 'defaultValue';
+    console.log(a);
+</script>
 
 <script>
+
     // 햄버거 버튼 클릭 이벤트
     var burger = $('.menu-trigger');
 

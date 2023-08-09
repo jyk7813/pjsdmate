@@ -4,9 +4,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-console.log("도착했음");
 
-console.log(`${ member.name }`);
 
 
 (function($) {
