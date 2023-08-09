@@ -2,6 +2,7 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
+import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import org.springframework.stereotype.Controller;
