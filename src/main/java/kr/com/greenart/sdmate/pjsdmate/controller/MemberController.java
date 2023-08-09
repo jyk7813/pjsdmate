@@ -35,15 +35,6 @@ public class MemberController {
 
         List<mainpageCard> card = mainPageService.returnMainCard(1);
 
-       /* mainpageCard card = new mainpageCard();
-        card.setSum(3000000);
-        card.setBusinessName("테스트사업");
-        card.setDealCnt(48);
-        card.setRating((long) 2.8);
-        card.setPlannerPk(1);
-        card.setPlannerImg(null);
-        card.setReviewCnt(3);
-        System.out.println(card);*/
 
         model.addAttribute("card", card);
 

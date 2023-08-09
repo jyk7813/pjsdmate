@@ -33,7 +33,6 @@ public class PlannermainpageCard {
         return "PlannermainpageCard{" +
                 "memberPk=" + memberPk +
                 ", memberName='" + memberName + '\'' +
-                ", memberImg='" + memberImg + '\'' +
                 ", requirementPk=" + requirementPk +
                 ", estimate=" + estimate +
                 ", city='" + city + '\'' +

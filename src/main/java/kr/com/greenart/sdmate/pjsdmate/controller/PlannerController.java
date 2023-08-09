@@ -12,15 +12,15 @@ import java.util.List;
 @RequestMapping("/planner")
 public class PlannerController {
 
-//    @GetMapping("/mainn")
-//    public String main(Model model) {
+    @GetMapping("/main")
+    public String main(Model model) {
+
+//        List<mainpageCard> card = mainPageService.returnMainCard(1);
 //
-////        List<mainpageCard> card = mainPageService.returnMainCard(1);
-////
-////        model.addAttribute("card", card);
-//
-//        return "main";
-//    }
+//        model.addAttribute("card", card);
+
+        return "main";
+    }
 
 
     @GetMapping("/join")

@@ -27,7 +27,19 @@ public class Planner {
     @Override
     public String toString() {
         return "Planner{" +
-                "image=" + Arrays.toString(image) +
+                "plannerNo=" + plannerNo +
+                ", name='" + name + '\'' +
+                ", identity_no='" + identity_no + '\'' +
+                ", business_no='" + business_no + '\'' +
+                ", id='" + id + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", phonenum='" + phonenum + '\'' +
+                ", email='" + email + '\'' +
+                ", business_name='" + business_name + '\'' +
+                ", dealCnt=" + dealCnt +
+                ", rating=" + rating +
+                ", active=" + active +
+                ", region='" + region + '\'' +
                 '}';
     }
 

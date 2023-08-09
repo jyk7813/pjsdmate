@@ -32,14 +32,15 @@ public class PlannerMainPageService {
 
     public List<PlannermainpageCard> returnPlannerMainCard(int plannerNo) {
         card = new ArrayList<>();
-        PlannermainpageCard eachCard = new PlannermainpageCard();
+
         Planner planner = plannerRepository.findByplannerNo(plannerNo).get();
         String region = planner.getRegion();
         List<Requirement> requirementList = requirementRepository.findByQ1CityOrderByQ1DateAsc(region);
         for (Requirement requirement : requirementList) {
-            eachCard.setEstimate(requirement.getQ7_estimate());
-            eachCard.setCity(requirement.getQ1_city());
-            eachCard.setGu(requirement.getQ1_gu());
+            PlannermainpageCard eachCard = new PlannermainpageCard();
+            eachCard.setEstimate(requirement.getQ7Estimate());
+            eachCard.setCity(requirement.getQ1City());
+            eachCard.setGu(requirement.getQ1Gu());
             Member member = memberRepository.findByRequirementPk(requirement.getRequirementNo());
             eachCard.setMemberPk(member.getMemberNo());
             eachCard.setMemberName(member.getName());
