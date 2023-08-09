@@ -37,7 +37,7 @@ public class MainPageService {
     public List<mainpageCard> card = new ArrayList<>();
     public List<mainpageCard> returnMainCard(int memberNo) {
 
-        //List<mainpageCard> card = new ArrayList<>();
+        card = new ArrayList<>();
         List<PlannerSpecificationPackage> packageList = getpackageByPk(memberNo);
 
         List<Integer> plannerNumbers = packageList.stream()
@@ -62,7 +62,6 @@ public class MainPageService {
             eachCard.setReviewCnt(reviewRepository.countByplannerNo(plannerNumber));
             card.add(eachCard);
         }
-
         return card;
     }
 

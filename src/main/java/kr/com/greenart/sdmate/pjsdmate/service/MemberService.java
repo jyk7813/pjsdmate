@@ -6,10 +6,12 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Member;
 import kr.com.greenart.sdmate.pjsdmate.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
 @Service
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
@@ -108,6 +110,13 @@ public class MemberService {
         }
         validatorMember.cleanMap();
             return list;
+    }
+    public boolean isIdDuplicated(String id){
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if(optionalMember.isPresent()){
+            return true;
+        }
+        return false;
     }
 
 

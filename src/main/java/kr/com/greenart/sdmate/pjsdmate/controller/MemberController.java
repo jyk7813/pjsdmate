@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;
@@ -31,7 +30,6 @@ public class MemberController {
         this.memberService = memberService;
         this.mainPageService = mainPageService;
     }
-
 
     @GetMapping("/main")
     public String main(Model model) {
@@ -49,7 +47,6 @@ public class MemberController {
         System.out.println(card);*/
 
         model.addAttribute("card", card);
-
 
 //        @GetMapping("/answer")
 //        public String answer () {
@@ -111,9 +108,6 @@ public class MemberController {
             System.out.println(card);
             cardList.add(card);
         }
-        model.addAttribute("cardList", cardList);
-
-        return "main";
     }
 
 
@@ -158,24 +152,6 @@ public class MemberController {
 
         // model 객체에 addAttribute 해서 보냄
         return "../login";
-    }
-
-    @GetMapping("/mainplanneryxxn")
-    public String mainplanneryxxn(Model model) {
-        List<mainplannerpageCard> plannercardList = new ArrayList<>();
-
-        for(int i = 1; i < 4; i++){
-            mainplannerpageCard card = new mainplannerpageCard();
-            card.setPrice(3000000+i);
-            card.setMemberPk(i);
-            card.setMemberName("테스트"+i);
-            card.setArea("서울"+i);
-            System.out.println(card);
-            plannercardList.add(card);
-        }
-        model.addAttribute("plannercardList", plannercardList);
-
-        return "mainplanner";
     }
 
     public String searchId(Model model){

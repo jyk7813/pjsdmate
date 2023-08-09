@@ -68,7 +68,7 @@
             <div class="spotlight">
                 <div class="content">
                     <ul id="card" class="statistics">
-                        <li th:each="card : ${cardList}" class="style">
+                        <li th:each="card : ${card}" class="style">
                             <div class="plannerinfo">
                                 <a href="http://www.naver.com">
                                     <strong>
@@ -162,24 +162,7 @@
 
 </html>
 
-<!--<script th:inline="javascript">-->
-<!--    let card = /*[[${#session.getAttribute('card') != null ? #session.getAttribute('card') : 'defaultValue'}]]*/ 'defaultValue';-->
-<!--    console.log(card);-->
-<!--    console.log(card.dealCnt);-->
 
-<!--    let sum = card.sum;-->
-
-<!--    let plannerpk = card.plannerpk;-->
-<!--    let businessName = card.businessName;-->
-<!--    let plannerimg = card.plannerimg;-->
-
-<!--    let rating = card.rating;-->
-<!--    let reviewCnt = card.reviewCnt;-->
-<!--    let dealCnt = card.dealCnt;-->
-<!--    // <span th:text="${#session.getAttribute('card').dealCnt}"></span>-->
-<!--    }-->
-
-<!--</script>-->
 
 
 <script>
