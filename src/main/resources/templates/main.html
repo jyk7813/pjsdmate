@@ -81,7 +81,7 @@
                                         &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
                                     </a>
                                     <a class="profile" href="main.html">
-                                        <img class="profile" src="/img/sample1.png" alt="">
+                                        <img class="profile" th:src="${'data:image/jpeg;base64,' + card.plannerImg}" alt="Planner Image">
                                         <span th:text="${card.businessName}"></span>
                                     </a>
                                 </p>

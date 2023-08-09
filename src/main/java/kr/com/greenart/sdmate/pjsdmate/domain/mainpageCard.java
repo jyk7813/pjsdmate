@@ -9,20 +9,8 @@ public class mainpageCard {
     private double rating;
     private int reviewCnt;
     private int dealCnt;
-    private byte[] plannerImg;
+    private String plannerImg;
     private String businessName;
-
-    @Override
-    public String toString() {
-        return "mainpageCard{" +
-                "sum=" + sum +
-                ", plannerPk=" + plannerPk +
-                ", rating=" + rating +
-                ", reviewCnt=" + reviewCnt +
-                ", dealCnt=" + dealCnt +
-                ", businessName='" + businessName + '\'' +
-                '}';
-    }
 
     public int getSum() {
         return sum;
@@ -78,5 +66,18 @@ public class mainpageCard {
 
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
+    }
+
+    @Override
+    public String toString() {
+        return "mainpageCard{" +
+                "sum=" + sum +
+                ", plannerPk=" + plannerPk +
+                ", rating=" + rating +
+                ", reviewCnt=" + reviewCnt +
+                ", dealCnt=" + dealCnt +
+                ", plannerImg='" + plannerImg + '\'' +
+                ", businessName='" + businessName + '\'' +
+                '}';
     }
 }

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Arrays;
 
 @Entity
 public class Planner {
@@ -26,19 +27,7 @@ public class Planner {
     @Override
     public String toString() {
         return "Planner{" +
-                "plannerNo=" + plannerNo +
-                ", name='" + name + '\'' +
-                ", identity_no='" + identity_no + '\'' +
-                ", bussiness_no='" + business_no + '\'' +
-                ", id='" + id + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", phonenum='" + phonenum + '\'' +
-                ", email='" + email + '\'' +
-                ", bussiness_name='" + business_name + '\'' +
-                ", dealCnt=" + dealCnt +
-                ", rating=" + rating +
-                ", active=" + active +
-                ", region='" + region + '\'' +
+                "image=" + Arrays.toString(image) +
                 '}';
     }
 

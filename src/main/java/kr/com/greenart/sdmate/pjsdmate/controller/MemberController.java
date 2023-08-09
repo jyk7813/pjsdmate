@@ -67,9 +67,9 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
+        public String login () {
+            return "login";
+        }
 
     @GetMapping("/mainplanner")
     public String mainplanner() {
@@ -80,7 +80,6 @@ public class MemberController {
     public String join() {
         return "member_join";
     }
-
     @PostMapping("/idCheck")
     @ResponseBody
     public Map<String, String> checkid(@RequestBody Map<String, String> requestData) {
@@ -117,7 +116,7 @@ public class MemberController {
 
     @PostMapping("/login")
     public String Login(@RequestParam String id, @RequestParam String pw,Model model, HttpSession session, HttpServletResponse response){
-        
+
 
         System.out.println(id + "아이디");
         System.out.println(pw + "비번");
