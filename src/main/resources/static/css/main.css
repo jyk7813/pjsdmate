@@ -1209,8 +1209,8 @@ input[type="radio"]:focus + label:before {
 
 .image.right {
 	float: right;
-	margin-top: 12px;
 	margin-right: 10px;
+	margin-top: 8px;
 }
 
 .image.fit {
@@ -1549,10 +1549,7 @@ table.alt tbody tr td {
 
 /* Statistics */
 
-.statistics {
-	display: -moz-flex;
-	display: -webkit-flex;
-	display: -ms-flex;
+#card#card.statistics {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -1561,25 +1558,31 @@ table.alt tbody tr td {
 	width: inherit;
 }
 
-.statistics li {
-	-moz-flex: 1;
-	-webkit-flex: 1;
-	-ms-flex: 1;
-	flex: 1;
+#card.statistics li {
+	width: 100%;
 	padding: 1em 1em 0.7em 1.3em;
 	color: #343837;
 	text-align: left;
 }
 
 
-.statistics li.style {
+#card.statistics li.style {
 	background: #ffffff;
 	margin-bottom: 20px;
 	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.06);
 	border-radius: 20px
 }
 
-.statistics li.style p.planner {
+#card.statistics li.style div.plannerinfo{
+	display: inline-block;
+	float: right;
+	all: unset;
+	font-weight: 500;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+#card.statistics li.style p.planner {
 	float: right;
 	all: unset;
 	position: relative;
@@ -1589,33 +1592,37 @@ table.alt tbody tr td {
 	padding: 0.5em 1.5em 0.5em 0.5em;
 }
 
-.statistics li.style p.planner a.info {
+#card.statistics li.style p.planner a.info {
 	font-weight: 500;
 	font-size: 14px;
 	margin-left: -6px;
 }
 
-.statistics li.style p.planner a.info img.signature{
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+#card.statistics li.style p.planner a.info img.signature{
+	display: inline-block;
 	float: left;
-	width:auto;
-	height: auto;
-	max-width: 20px;
-	max-height: 20px;
-	margin-top: 6px;
+	width:15px;
+	height: 15px;
+	margin-top: 4px;
 }
 
-.statistics li.style p.planner a.profile {
+#card.statistics li.style p.planner a.profile {
 	display: flex;
 	float: right;
 	font-weight: 500;
 	font-size: 18px;
 	margin-top: 5px;
+	align-content: center;
 }
 
-.statistics li.style p.planner a.profile img{
+#card.statistics li.style p.planner a.profile span{
+	display: flex;
+	float: right;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+#card.statistics li.style p.planner a.profile img{
 	vertical-align: middle;
 	border-radius: 100%;
 	margin-left: auto;
@@ -1624,12 +1631,12 @@ table.alt tbody tr td {
 	height: 30px;
 }
 
-.statistics li.style p.planner a.profile img.profile{
+#card.statistics li.style p.planner a.profile img.profile{
 	max-width: auto;
 	max-height: auto;
 }
 
-.statistics li strong, .statistics li b {
+#card.statistics li strong, #card.statistics li b {
 	background-color: #F3F3F3;
 	border-radius: 10px;
 	display: block;
@@ -1640,31 +1647,32 @@ table.alt tbody tr td {
 	letter-spacing: -0.9px;
 	padding: 0.2em 0.2em 0.4em 0.5em;
 	margin-bottom: 0.5em;
+	align-content: center;
 }
 
-.statistics li strong span{
+#card.statistics li strong span{
 	font-size: 18px;
 	font-weight: 800;
 }
 
 
-.statistics li:first-child {
+#card.statistics li:first-child {
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 
 }
 
-.statistics li:last-child {
+#card.statistics li:last-child {
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 
 }
 
-.statistics li .icon {
+#card.statistics li .icon {
 	display: inline-block;
 }
 
-.statistics li .icon:before {
+#card.statistics li .icon:before {
 	font-size: 2.75rem;
 	line-height: 1.3;
 }
