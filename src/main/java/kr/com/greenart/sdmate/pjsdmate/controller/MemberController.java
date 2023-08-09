@@ -36,7 +36,6 @@ public class MemberController {
 
     @GetMapping("/main")
     public String main(Model model,HttpSession session) {
-        System.out.println(1);
         Member member = (Member) session.getAttribute("member");
         System.out.println(member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
