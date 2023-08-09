@@ -213,9 +213,7 @@ html {
 }
 
 img.toplogo {
-	max-width: 278px;
-	max-height: 87px;
-	width: 20%;
+	width: 100px;
 	height: auto;
 	margin-top: 30px;
 	margin-left: 30px;

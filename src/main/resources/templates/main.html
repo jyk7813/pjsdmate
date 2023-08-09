@@ -17,31 +17,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="is-preload">
-
-
-
-<!-- Wrapper -->
-<div id="wrapper">
-    <a href="main.html"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
-    <li class="ham-btn">
-        <a class="menu-trigger" href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-        </a>
-    </li>
-
-    <!-- Header -->
+<a href="main.html"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
+<li class="ham-btn">
+    <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+</li>
+<div class="topbannerbg">
     <div class="topbanner">
         <div class="textbox">
             <p class="topbannertext"> 어떻게 결혼 준비를 해야할 지 고민인가요?</p>
-            <p class="topbannertext strong"> 결혼준비 가이드를 확인하세요.</p>
+            <p class="topbannertext strong">결혼준비 가이드를 확인하세요.</p>
         </div>
         <img class="topimg" src="/img/guide.png">
         <div class="guidebtn">
             <a href="main.html"><p class="go">바로가기 →</p></a>
         </div>
     </div>
+</div>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
 
     <header id="header" class="alt">
         <h1 style="text-align:left">안녕하세요! 김지윤님<img src="/img/signature.png" alt=""></h1>
@@ -65,15 +65,6 @@
             </div>
         </div>
         <section id="intro" class="main">
-
-            <!-- <div class="new">
-                <p class="newtext">도착한 견적 알림&nbsp;(10개)</p>
-                    <img class="chaticon" src="/img/comment 1.png" alt="">
-                        <img class="newicon" src="/img/Ellipse 13.png" alt="">
-                        <p class="newmsg">11</p>
-            </div> -->
-
-
             <div class="spotlight">
                 <div class="content">
                     <ul class="statistics">
@@ -206,19 +197,16 @@
     </section>
 </div>
 
-세션 값 읽어오기
-<div th:if="${session.card != null}">
-    <p>Session Value 'card': <span th:text="${session.card}"></span></p>
-</div>
 </body>
 
 
 </html>
 
-<!--<script th:inline="javascript">-->
-<!--    var a = /*[[${session.getAttribute('a')}]]*/ null;-->
-<!--    console.log(a);-->
-<!--</script>-->
+<script th:inline="javascript">
+    let card = /*[[${#session.getAttribute('card') != null ? #session.getAttribute('card') : 'defaultValue'}]]*/ 'defaultValue';
+    console.log(card);
+    console.log(card.dealCnt);
+</script>
 
 
 <script>

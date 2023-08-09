@@ -22,7 +22,6 @@ public class MemberController {
         card.setReviewCnt(3);
         System.out.println(card);
         session.setAttribute("card", card);
-        session.setAttribute("a", "b");
 
 
 //        @GetMapping("/answer")
@@ -42,5 +41,10 @@ public class MemberController {
 //            return "main";
 //        }
         return "main";
+    }
+
+    @GetMapping("/mainplanner")
+    public String mainplanner() {
+        return "mainplanner";
     }
 }

@@ -146,8 +146,8 @@ div.textbox p.topbannertext {
 	font-weight: 400;
 	font-size: 15px;
 	color: #727272;
-	letter-spacing: -0.75px;s
-line-height: 22px;
+	letter-spacing: -0.75px;
+	line-height: 22px;
 }
 
 div.textbox p.topbannertext.strong {
@@ -187,10 +187,6 @@ div.guidebtn p.go{
 
 /* Basic */
 
-@-ms-viewport {
-	width: device-width;
-}
-
 body {
 	-ms-overflow-style: scrollbar;
 }
@@ -212,21 +208,11 @@ img.toplogo {
 }
 
 body {
-	background-color: #343837;
-	background-image: url("overlay.png"), -moz-linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
-	background-image: url("overlay.png"), -webkit-linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
-	background-image: url("overlay.png"), -ms-linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
-	background-image: url("overlay.png"), linear-gradient(45deg, #ffffff 15%, #ffffff 85%);
+	background-color: #FFFFFF;
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
-	-moz-animation: none !important;
-	-webkit-animation: none !important;
-	-ms-animation: none !important;
 	animation: none !important;
-	-moz-transition: none !important;
-	-webkit-transition: none !important;
-	-ms-transition: none !important;
 	transition: none !important;
 }
 
@@ -234,7 +220,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 /* Type */
 
 body {
-	background-color: #343837;
+	background-color: #FFFFFF;
 	color: #343837;
 }
 
@@ -1106,9 +1092,6 @@ input[type="radio"]:focus + label:before {
 	display: none;
 }
 
-.icon:before {
-	line-height: solid;
-}
 
 .icon.solid:before {
 	font-weight: 900;
@@ -1416,55 +1399,6 @@ ul.icons li:last-child {
 section.special, article.special {
 	text-align: center;
 }
-
-
-/*
-
-*/
-
-#test {
-	display: flex;
-	align-items: center; /* 세로 중앙 정렬 */
-}
-
-#imagedupli {
-	display: flex;
-	align-items: center; /* 세로 중앙 정렬 */
-	margin-left: auto; /* 오른쪽 여백 추가 */
-}
-
-#imgdiv {
-	position: relative;
-	background: url("/images/Ellipse 13.png") no-repeat;
-}
-
-#imgdiv img {
-	width: 30px; /* 이미지 너비 조절 */
-	height: 30px; /* 이미지 높이 조절 */
-	transform: translateX(-50%) translateY(-25%);
-	/* 부모 요소 기준으로 왼쪽으로 이동 */
-}
-
-#imgdiv p {
-	all:unset;
-	position: absolute;
-	color: #ffffff;
-	transform: translate(-100%, -100%);
-	top: 65%;
-	left: 50%;
-	font-size: 10px;
-}
-
-#imgdiv #imgdiv {
-	position: absolute;
-	top: 0;
-	left: 100%;
-}
-
-
-/*
-
-*/
 
 header.major p {
 	font-size: 1.25em;
@@ -1873,7 +1807,7 @@ li.ham-btn {
 
 /* 햄버거 버튼 이벤트 */
 .menu-trigger.active-1 span:nth-of-type(1) {
-	-webkit-transform: translateY (10px) rotate (-45deg);
+	-webkit-transform: translateY(10px) rotate(-45deg);
 	transform: translateY(10px) rotate(-45deg);
 }
 
@@ -2020,8 +1954,6 @@ body.is-preload #header.alt > * {
 }
 
 body.is-preload #header.alt .logo {
-	-moz-transform: scale(0.8) rotate(-30deg);
-	-webkit-transform: scale(0.8) rotate(-30deg);
 	-ms-transform: scale(0.8) rotate(-30deg);
 	transform: scale(0.8) rotate(-30deg);
 }
@@ -2029,9 +1961,6 @@ body.is-preload #header.alt .logo {
 /* Nav */
 
 #nav {
-	-moz-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-	-webkit-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
-	-ms-transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 	transition: background-color 0.2s ease, border-top-left-radius 0.2s ease, border-top-right-radius 0.2s ease, padding 0.2s ease;
 	background-color: #ffffff;
 	color: #636363;
@@ -2039,7 +1968,6 @@ body.is-preload #header.alt .logo {
 	width: 64em;
 	max-width: calc(100% - 4em);
 	padding: 1em;
-	background-color: #343837;
 	border-top-left-radius: 0.25em;
 	border-top-right-radius: 0.25em;
 	cursor: default;
