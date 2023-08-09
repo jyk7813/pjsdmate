@@ -17,149 +17,141 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="is-preload">
-<a href="main.html"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
-<li class="ham-btn">
-    <a class="menu-trigger" href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-    </a>
-</li>
-<div class="topbannerbg">
-    <div class="topbanner">
-        <div class="textbox">
-            <p class="topbannertext"> 어떻게 결혼 준비를 해야할 지 고민인가요?</p>
-            <p class="topbannertext strong">결혼준비 가이드를 확인하세요.</p>
-        </div>
-        <img class="topimg" src="/img/guide.png">
-        <div class="guidebtn">
-            <a href="main.html"><p class="go">바로가기 →</p></a>
-        </div>
-    </div>
-</div>
-
-<!-- Wrapper -->
-<div id="wrapper">
-
-    <!-- Header -->
-
-    <header id="header" class="alt">
-        <h1 style="text-align:left">안녕하세요! 김지윤님<img src="/img/signature.png" alt=""></h1>
-        <p style="text-align:left">원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!</p>
-        <ul class="actions">
-            <li><a href="main.html" class="button primary">스드메이트 견적받기</a></li>
-        </ul>
-
-    </header>
-
-    <!-- Main -->
-    <div id="main">
-        <div class="chat_wrap">
-            <p class="newtext">도착한 견적 알림&nbsp;(10개)</p>
-            <div class="chat_wrapper">
-                <a href="http://www.naver.com">
-                    <img class="new" src="/img/Ellipse%2013.png" alt=""/>
-                    <img class="chaticon" src="/img/comment%201.png" alt=""/>
-                    <div class="text">8</div>
-                </a>
+    <a href="main.html"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
+    <li class="ham-btn">
+        <a class="menu-trigger" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </li>
+    <div class="topbannerbg">
+        <div class="topbanner">
+            <div class="textbox">
+                <p class="topbannertext"> 어떻게 결혼 준비를 해야할 지 고민인가요?</p>
+                <p class="topbannertext strong">결혼준비 가이드를 확인하세요.</p>
             </div>
-        </div>
-        <section id="intro" class="main">
-            <div class="spotlight">
-                <div class="content">
-                    <ul id="card" class="statistics">
-                        <li th:each="card : ${card}" class="style">
-                            <div class="plannerinfo">
-                                <a href="http://www.naver.com">
-                                    <strong>
-                                        견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.sum}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon%2010.png" alt="">
-                                    </strong>
-                                </a>
-                                <p class="planner">
-                                    <a class="info" href="main.html">
-                                        <img class="signature" src="/img/signature.png" alt="">
-                                        &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
-                                    </a>
-                                    <a class="profile" href="main.html">
-                                        <img class="profile" th:src="${'data:image/jpeg;base64,' + card.plannerImg}" alt="Planner Image">
-                                        <span th:text="${card.businessName}"></span>
-                                    </a>
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Menu -->
-        <div class="ham-con">
-            <div id="ham-menu-wrap">
-                <div class="ham-menu mt-5">
-                    <ul class="ham-top-menu">
-                        <li><a href="#">마이페이지<i class="bi bi-caret-down-fill"></i></a>
-                            <ul class="ham-sub-menu">
-                                <li><a href="/board/category/1?page=0">회원정보수정</a></li>
-                            </ul>
-                            <br>
-                        </li>
-                    </ul>
-                    <ul class="ham-top-menu">
-                        <li><a href="#">견적 요청<i class="bi bi-caret-down-fill"></i></a>
-                            <ul class="ham-sub-menu">
-                                <li><a href="/item/category/1?page=0">채팅방 목록</a></li>
-                                <li><a href="/item/category/8?page=0">견적서 목록</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <img class="topimg" src="/img/guide.png">
+            <div class="guidebtn">
+                <a href="main.html"><p class="go">바로가기 →</p></a>
             </div>
         </div>
     </div>
-    <!-- Second Section -->
-    <section id="second" class="main special">
-        <header class="major">
 
-            <!-- Footer -->
-            <footer id="footer">
-                <section>
-                    <img src="/img/logo_pink.png" width="20%" ; style="margin-bottom: 20px;">
-                    <dl class="alt">
-                        <dd>부산광역시 부산진구 중앙대로 749 그린컴퓨터 서면 2별관</dd>
-                        <dd>(051) 715-6224</dd>
-                        <dd><a href="#">yxxn.dev@gmail.com</a></dd>
-                    </dl>
-                    <ul class="icons">
-                        <li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a>
-                        </li>
-                        <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a>
-                        </li>
-                        <li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-                        <li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
-                    </ul>
-                </section>
-                <p class="copyright" style="text-align: center;">&copy; Untitled. Design: <a href="https://html5up.net"
-                                                                                             style="text-decoration-line: none;"><img
-                        src="/img/logo_pink.png" width="15%" ;></a></p>
-            </footer>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-            <!-- Scripts -->
-            <script src="/js/jquery.min.js"></script>
-            <script src="/js/jquery.scrollex.min.js"></script>
-            <script src="/js/jquery.scrolly.min.js"></script>
-            <script src="/js/browser.min.js"></script>
-            <script src="/js/breakpoints.min.js"></script>
-            <script src="/js/util.js"></script>
-            <script src="/js/main.js"></script>
+        <!-- Header -->
 
+        <header id="header" class="alt">
+            <h1 style="text-align:left">안녕하세요! 김지윤님<img src="/img/signature.png" alt=""></h1>
+            <p style="text-align:left">원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!</p>
+            <ul class="actions">
+                <li><a href="main.html" class="button primary">스드메이트 견적받기</a></li>
+            </ul>
 
         </header>
-    </section>
-</div>
+
+        <!-- Main -->
+        <div id="main">
+            <div class="chat_wrap">
+                <p class="newtext">도착한 견적 알림&nbsp;(10개)</p>
+                <div class="chat_wrapper">
+                    <a href="http://www.naver.com">
+                        <img class="new" src="/img/Ellipse%2013.png" alt=""/>
+                        <img class="chaticon" src="/img/comment%201.png" alt=""/>
+                        <div class="text">8</div>
+                    </a>
+                </div>
+            </div>
+            <section id="intro" class="main">
+                <div class="spotlight">
+                    <div class="content">
+                        <ul id="card" class="statistics">
+                            <li th:each="card : ${card}" class="style">
+                                <div class="plannerinfo">
+                                    <a href="http://www.naver.com">
+                                        <strong>
+                                            견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.sum}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon%2010.png" alt="">
+                                        </strong>
+                                    </a>
+                                    <p class="planner">
+                                        <a class="info" href="main.html">
+                                            <img class="signature" src="/img/signature.png" alt="">
+                                            &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
+                                        </a>
+                                        <a class="profile" href="main.html">
+                                            <img class="profile" th:src="${'data:image/jpeg;base64,' + card.plannerImg}" alt="Planner Image">
+                                            <span th:text="${card.businessName}"></span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu -->
+            <div class="ham-con">
+                <div id="ham-menu-wrap">
+                    <div class="ham-menu mt-5">
+                        <ul class="ham-top-menu">
+                            <li><a href="#">마이페이지<i class="bi bi-caret-down-fill"></i></a>
+                                <ul class="ham-sub-menu">
+                                    <li><a href="/board/category/1?page=0">회원정보수정</a></li>
+                                </ul>
+                                <br>
+                            </li>
+                        </ul>
+                        <ul class="ham-top-menu">
+                            <li><a href="#">견적 요청<i class="bi bi-caret-down-fill"></i></a>
+                                <ul class="ham-sub-menu">
+                                    <li><a href="/item/category/1?page=0">채팅방 목록</a></li>
+                                    <li><a href="/item/category/8?page=0">견적서 목록</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <section>
+                        <img src="/img/logo_pink.png" width="20%" ; style="margin-bottom: 20px;">
+                        <dl class="alt">
+                            <dd>부산광역시 부산진구 중앙대로 749 그린컴퓨터 서면 2별관</dd>
+                            <dd>(051) 715-6224</dd>
+                            <dd><a href="#">yxxn.dev@gmail.com</a></dd>
+                        </dl>
+                        <ul class="icons">
+                            <li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                            <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a>
+                            </li>
+                            <li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                            <li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+                        </ul>
+                    </section>
+                    <p class="copyright" style="text-align: center;">&copy; Untitled. Design: <a href="https://html5up.net"
+                                                                                                 style="text-decoration-line: none;"><img
+                            src="/img/logo_pink.png" width="15%" ;></a></p>
+                </footer>
+
+                <!-- Scripts -->
+                <script src="/js/jquery.min.js"></script>
+                <script src="/js/jquery.scrollex.min.js"></script>
+                <script src="/js/jquery.scrolly.min.js"></script>
+                <script src="/js/browser.min.js"></script>
+                <script src="/js/breakpoints.min.js"></script>
+                <script src="/js/util.js"></script>
+                <script src="/js/main.js"></script>
+                <script src="/js/hammenu.js"></script>
+    </div>
 </body>
-
-
 </html>
 
 

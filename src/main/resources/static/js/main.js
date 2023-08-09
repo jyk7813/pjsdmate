@@ -5,8 +5,6 @@
 */
 
 
-
-
 (function($) {
 
 	var	$window = $(window),
