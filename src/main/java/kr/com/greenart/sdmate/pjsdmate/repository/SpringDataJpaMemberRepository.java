@@ -10,6 +10,9 @@ import java.util.Optional;
 public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Integer>, MemberRepository {
 
     @Override
+    Member save(Member member);
+
+    @Override
     Optional<Member> findBymemberNo(Integer memberNo);
 
     @Override
@@ -21,4 +24,10 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Int
 
     @Override
     Integer countById(String id);
+
+    @Override
+    Optional<Member> findByNameAndIdentity_no(String name, String identity_no);
+
+    @Override
+    Optional<Member> findByIdAndIdentity_noAndName(String name, String identity_no, String id);
 }

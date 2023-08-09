@@ -2,17 +2,25 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainplannerpageCard;
+import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class MemberController {
+    private final MemberService memberService;
+
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
+
     @GetMapping("/main")
     public String main(HttpSession session) {
         mainpageCard card = new mainpageCard();
@@ -75,7 +83,7 @@ public class MemberController {
 
 
     // 로그인 매핑을 해주세요
-    p  public String Login(Model model, HttpSession session, HttpServletResponse response){
+      public String Login(Model model, HttpSession session, HttpServletResponse response){
 
         String id =(String)model.getAttribute("id");
         String pass =(String)model.getAttribute("password");
@@ -132,6 +140,25 @@ public class MemberController {
         return "mainplanner";
     }
 
+    public String searchId(Model model){
+        // 값 꺼내오기
+        String name = (String)model.getAttribute("id");
+        String birth = (String) model.getAttribute("birth");
+        // 출력될 문장
+        String searchId = memberService.searchId(name, birth);
+        model.addAttribute("searchId",searchId);
+        return "Login";
+    }
+    public String searchPass(Model model){
+        //값꺼내오기
+        String name = (String)model.getAttribute("name");
+        String birth = (String)model.getAttribute("birth");
+        String id = (String)model.getAttribute("id");
+
+        String searchPass = memberService.searchPassWord(name,birth,id);
+        model.addAttribute("searchPass",searchPass);
+        return "Login";
+    }
 
     @GetMapping("/member/join")
     public String join(Model model) {

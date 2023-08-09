@@ -30,6 +30,8 @@ public class MemberService {
 
         return member;
     }
+
+
     //id 를 받아서 멤버 테이블에서 조회하고 적합성 검사를 한뒤에
     public Integer Login(String id,String pass){
 
@@ -48,6 +50,54 @@ public class MemberService {
         }
         return null;
     }
+    public void join(String json){
+        Member member =parseObj(json);
+
+        member.setActive(true);
+
+        memberRepository.save(member);
+        // 아이디 중복 검사
+
+    }
+
+
+    public String searchId(String name,String birth){
+        String str = null;
+        Optional<Member> optionalmember = memberRepository.findByNameAndIdentity_no(name, birth);
+        if(optionalmember.isPresent()){
+            Member member = optionalmember.get();
+            str = member.getId();
+            return "찾으시는 아이디는 "+str+" 입니다.";
+        }
+        str = "해당 아이디는 존재하지 않습니다";
+        return str;
+    }
+
+    public String searchPassWord(String name,String birth,String id){
+        String str = null;
+        Optional<Member> optionalMember = memberRepository.findByIdAndIdentity_noAndName(name, birth, id);
+        if(optionalMember.isPresent()){
+            Member member = optionalMember.get();
+            String pass = member.getPwd();
+
+            int halfLength = pass.length()/2;
+
+
+
+            StringBuilder result = new StringBuilder();
+            for(int i = 0; i<pass.length();i++){
+                if(i>=halfLength && i< pass.length()){
+                    result.append("*");
+                }else{
+                    result.append(pass.charAt(i));
+                }
+            }
+            return "찾으시는 비밀번호는 "+result.toString()+ " 입니다";
+
+        }
+        return "해당 하는 비밀번호는 존재하지 않습니다";
+    }
+
     // 적합성 검사 하고 에러 문구들을 List 형태로 반환.
     // 에러 문구를 컨트롤러에 반환 해야 하기 때문에 사용을 memberController 에서 합니다.
     public List<String> validate(String id, String pass){
@@ -60,15 +110,6 @@ public class MemberService {
             return list;
     }
 
-    public void join(String json){
-        Member member =parseObj(json);
-
-        member.setActive(true);
-        memberRepository.save(member);
-        // 아이디 중복 검사
-
-
-    }
 
     public List<String> validate(String json){
         Member member = parseObj(json);

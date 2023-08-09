@@ -19,8 +19,12 @@ public interface MemberRepository {
     Optional<Member> findByEmail(String email);
 
     List<Member> findAll();
+    @Query("SELECT m FROM Member m WHERE m.name = :name AND m.identity_no = :identity_no")
+    Optional<Member> findByNameAndIdentity_no(String name, String identity_no);
 
-    Optional<Member> findByIdAndPwd(String id, String pwd);
+    @Query("SELECT m FROM Member m WHERE m.name = :name AND m.identity_no = :identity_no AND m.id = :id")
+    Optional<Member> findByIdAndIdentity_noAndName(String name, String identity_no,String id);
+
 
     Optional<Member> findByPwd(String pwd);
 
@@ -29,4 +33,6 @@ public interface MemberRepository {
 
     @Query("SELECT COUNT(m) FROM Member m WHERE m.email = :email")
     Integer countByEmail(String email);
+
+
 }
