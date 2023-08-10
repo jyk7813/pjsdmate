@@ -6,10 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.io.IOException;
 
 
 @Controller
@@ -34,31 +36,39 @@ public class PlannerController {
         return "login";
     }
     @PostMapping("/login")
-    public String Login(@RequestParam String id, @RequestParam String pw,@RequestParam String userstat, Model
-            model, HttpSession session, HttpServletResponse response){
-        Planner planner = plannerService.login(id, pw);
-        if(planner !=null){
-
-            if((model.getAttribute("AutoLogin") != null)){
-                Cookie cookie = new Cookie("id",planner.getId());
-                response.addCookie(cookie);
+    public String Login(@RequestParam String id, @RequestParam String pw, @RequestParam String userstat, Model
+            model, HttpSession session, HttpServletResponse response, HttpServletRequest request){
+        if(userstat.equals("planner,member")||userstat.equals("member")) {
+            try {
+                request.setAttribute("id", id);
+                request.setAttribute("pw", pw);
+                request.getRequestDispatcher("/member/login").forward(request, response);
+                return "forward:/member/login";
+            } catch (ServletException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-            session.setAttribute("planner",planner);
+        }else {
+            Planner planner = plannerService.login(id, pw);
+            if (planner != null) {
 
-            session.setAttribute("userPk",planner.getPlannerNo());
-            return "redirect:/planner/main";
-        }else{
-            model.addAttribute("error","로그인 실패");
+                if ((model.getAttribute("AutoLogin") != null)) {
+                    Cookie cookie = new Cookie("id", planner.getId());
+                    response.addCookie(cookie);
+                }
+                session.setAttribute("planner", planner);
 
+                session.setAttribute("userPk", planner.getPlannerNo());
+
+                return "redirect:/planner/main";
+
+            } else {
+                model.addAttribute("error", "로그인 실패");
+
+            }
         }
 
-        if(userstat.equals("planner")){
-            session.setAttribute("userstat","planner");
-            return "redirect:/planner/login?userstat=planner";
-        } else if (userstat.equals("member")) {
-            session.setAttribute("userstat","member");
-            return "redirect:./member/login";
-        }
         return "redirect:./login?userstat=planner";
     }
 
