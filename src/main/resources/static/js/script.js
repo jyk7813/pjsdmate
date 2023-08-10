@@ -29,13 +29,12 @@ $(document).ready(function () {
       let data = JSON.stringify(question); // JSON 형식으로 변환
         console.log(data);
         $.ajax({
-          url: "/member/saveq", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+          url: "./saveq", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
           type: "POST", // HTTP 요청 방식(GET, POST)
           data: data, // HTTP 요청과 함께 서버로 보낼 데이터
           contentType: "application/json", // HTTP 요청과 함께 서버로 보낼 데이터의 타입
           success: function (data) { // HTTP 요청이 성공하면 요청한 데이터가 done() 메서드로 전달됨
             console.log(data); // {name: "홍길동", age: 20}
-            window.location.href = "/main";  // 성공 시, 페이지 이동
           },
           error: function (request, status, error) {
             console.log(error);

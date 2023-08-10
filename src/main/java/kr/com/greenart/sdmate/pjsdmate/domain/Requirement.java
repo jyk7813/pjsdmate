@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 public class Requirement {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer requirementNo;
+    private Integer requirement_no;
     @Column(name="q1_city")
     private String q1City;
     @Column(name="q1_gu")
@@ -49,7 +49,7 @@ public class Requirement {
     @Override
     public String toString() {
         return "Requirement{" +
-                "requirementNo=" + requirementNo +
+                "requirementNo=" + requirement_no +
                 ", q1City='" + q1City + '\'' +
                 ", q1Gu='" + q1Gu + '\'' +
                 ", q1_guestno='" + q1_guestno + '\'' +
@@ -88,11 +88,11 @@ public class Requirement {
     }
 
     public Integer getRequirementNo() {
-        return requirementNo;
+        return requirement_no;
     }
 
-    public void setRequirementNo(Integer requirementNo) {
-        this.requirementNo = requirementNo;
+    public void setRequirementNo(Integer requirement_no) {
+        this.requirement_no = requirement_no;
     }
 
     public String getQ1City() {
