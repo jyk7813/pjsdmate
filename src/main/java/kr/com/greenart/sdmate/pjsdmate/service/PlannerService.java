@@ -58,4 +58,35 @@ public class PlannerService {
         return planner;
     }
 
+    public boolean isEmailDuplicated(String email) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByEmail(email);
+        if(optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isIdDuplicated(String id) {
+        Optional<Planner> optionalPlanner = plannerRepository.findById(id);
+        if(optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBusinessNoDuplicated(String businessNo) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByBusiness_no(businessNo);
+        if (optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isPhoneNoDuplicated(String phonenum) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByphonenum(phonenum);
+        if (optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
 }

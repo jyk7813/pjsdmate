@@ -4,6 +4,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/planner")
@@ -28,8 +29,7 @@ public class PlannerController {
     public String mainplanner() {
         return "mainplanner";
     }
-    @GetMapping("/join")
-    public String join() { return "planner_join"; }
+
 
     @GetMapping("/login")
     public String login(){
@@ -71,9 +71,32 @@ public class PlannerController {
 
         return "redirect:./login?userstat=planner";
     }
+    @GetMapping("/join")
+    public String join() {
+        return "planner_join";
+    }
 
     @PostMapping("/join")
-    public String Join(Model model){
+    public String Join(@Valid @ModelAttribute("planner") Planner planner, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "planner_join";
+        }
+        // 이메일 중복 검사
+        if (plannerService.isEmailDuplicated(planner.getEmail())){
+            result.rejectValue("email", "Duplicated" , "이미 사용중인 이메일 입니다.");
+        }
+        // 아이디 중복 검사
+        if (plannerService.isIdDuplicated(planner.getId())){
+            result.rejectValue("id", "Duplicated" , "이미 사용중인 아이디 입니다.");
+        }
+        // 사업자 번호 중복 검사
+        if (plannerService.isBusinessNoDuplicated(planner.getBusiness_no())){
+            result.rejectValue("business_no", "Duplicated" , "이미 사용중인 사업자 번호 입니다.");
+        }
+        // 전화번호 중복 검사
+        if (plannerService.isPhoneNoDuplicated(planner.getPhonenum())){
+            result.rejectValue("phonenum", "Duplicated" , "이미 사용중인 전화번호 입니다.");
+        }
         String json = (String)model.getAttribute("planner");
 
         plannerService.join(json);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,75 +7,74 @@
     <link rel="stylesheet" href="/css/join.css">
 </head>
 <body>
-            <a href=""><img class="back_btn" src="/img/back_btn.png" alt="뒤로가기 버튼"></a>
-            <center><h1 class="page_name">스드메이트 회원가입</h1></center>
-    <hr>
-    
-    <div class="logo">
-        <img class="join_logo" src="/img/logo2.png" alt=""><br>
-    </div>
-    <center>
+<a href=""><img class="back_btn" src="/img/back_btn.png" alt="뒤로가기 버튼"></a>
+<center><h1 class="page_name">스드메이트 회원가입</h1></center>
+<hr>
+
+<div class="logo">
+    <img class="join_logo" src="/img/logo2.png" alt=""><br>
+</div>
+<form action="/member/join" method="POST">
     <div class="container1">
         <div class="container">
 
             <span>
-                <div class="left_content"></div>
-                <label class="form" id="planner_id_form" for="id">아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;디</label>
-                <input class="write" type="text" id="id" name="planner_id" value=""><br>
+                <div class="line">
+                    <label class="form" id="planner_id_form">아이디</label>
+                    <input class="write" type="text" id="id" name="planner_id" value=""><br>
+                </div>
+                <div class="line">
+                    <label class="form" id="planner_name_form">이름</label>
+                    <input class="write" type="text" id="name" name="planner_name" value=""><br>
+                </div>
+                <div class="line">
+                    <label class="form" id="planner_business_number" for="business_number">사업자번호</label>
+                    <input class="write" type="text" id="business_number" name="planner_business_number" value=""><br>
+                </div>
+                <div class="line">
+                    <label class="form" id="planner_resident_number" for="resident_number">주민등록번호</label>
+                    <input class="write" type="text" id="resident_number" name="planner_resident_number" value=""><br>
+                </div>
+                <br>
+                <br>
+                <div class="line">
+                    <label class="form" id="password_check" for="pwcheck">비밀번호 확인</label>
+                    <input class="write" type="text" id="pwcheck" name="password_check" value=""><br>
+                </div>
 
-                <label class="form" id="planner_name_form" for="name">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</label>
-                <input class="write" type="text" id="name" name="planner_name" value=""><br> 
-
-                <label class="form" id="planner_business_number" for="business_number">사&nbsp;업&nbsp;자&nbsp;번&nbsp;호</label>
-                <input class="write"type="text" id="business_numberr" name="planner_business_number" value=""><br>
-
-                <label class="form" id="planner_resident_number" for="resident_number">주민등록번호</label>
-                <input class="write"type="text" id="resident_number" name="planner_resident_number" value=""><br>
-                
                 <br>
                 <br>
                 <br>
-
-                <label class="form" id="password_form" for="password">비&nbsp;&nbsp;&nbsp;&nbsp;밀&nbsp;&nbsp;&nbsp;&nbsp;번&nbsp;&nbsp;&nbsp;&nbsp;호</label>
-                <input class="write" type="text" id="password" name="password" value=""><br>
-
-                <label class="form" id="password_check" for="pwcheck">비밀번호 확인</label>
-                <input class="write" type="text" id="pwcheck" name="password_check" value=""><br>
-                
-                <br>
-                <br>
                 <br>
 
-                <label class="form" id="email_form" for="email">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</label>
-                <input class="write" type="text" id="email" name="email" value=""><br>
+                <div class="line">
+                    <label class="form" id="password_form" for="password">비밀번호</label>
+                    <input class="write" type="text" id="password" name="password" value=""><br>
+                </div>
 
-                <label class="form" id="phone_number_form" for="phone_number">연&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;락&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;처</label>
-                <input class="write" type="text" id="Phone_number" name="Phone_number" value=""><br>
-
-                <label class="form" id="planner_business_address" for="business_address">사&nbsp;업&nbsp;장&nbsp;위&nbsp;치</label>
-                <input class="write"type="text" id="business_address" name="planner_business_address" value=""><br>
+                <div class="line">
+                    <label class="form" id="email_form" for="email">이메일</label>
+                    <input class="write" type="text" id="email" name="email" value=""><br>
+                </div>
+                <div class="line">
+                    <label class="form" id="phone_number_form" for="phone_number">연락처</label>
+                    <input class="write" type="text" id="Phone_number" name="Phone_number" value=""><br>
 
                 </div>
-            </span>
-
-            <span>
-                <div class="right_content">
-                
-                      
-                
-                
-             
+                <div class="line">
+                    <label class="form" id="planner_business_address" for="business_address">사업장위치</label>
+                    <input class="write" type="text" id="business_address" name="planner_business_address" value=""><br>
                 </div>
             </span>
         </div>
     </div>
-</center>
-        
+
+
     <div class="join">
         <input class="join_btn2" type="button" id="join" name="join" value="가입하기">
     </div>
 
 
-    
+</form>
 </body>
 </html> 

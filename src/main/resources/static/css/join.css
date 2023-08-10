@@ -52,20 +52,14 @@ br {
     font-family: 'Noto Sans KR';
     font-size: 16px;
     font-weight: 400;
-    text-align: right;
-    margin-right: 10px;
     letter-spacing: -0.7px;
     color: #727272;
-    margin-top: 8px;
 }
 
 .write {
     border: none;
     background-color: rgba(243, 245, 246, 1);
-    width: 180px;
-    height: 40px;
     border-radius: 10px;
-    margin-bottom: 10px;
 }
 
 
@@ -140,7 +134,9 @@ br {
 
 .line{
     display: flex;
-
+    justify-content: right;
+    width: 294px;
+    height: 40px;
 }
 
 .error{
