@@ -45,7 +45,7 @@ public class RequirementService {
             MemberRequirement memberRequirement = new MemberRequirement();
 
             memberRequirement.setMemberNo(memberPk);
-            memberRequirement.setRequiremnetNo(requirement.getRequirementNo());
+            memberRequirement.setRequiremnetNo(requirement.getRequirement_no());
 
             memberRequirementRepository.save(memberRequirement);
             return 1;
