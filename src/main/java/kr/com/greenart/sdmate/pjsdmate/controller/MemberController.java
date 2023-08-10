@@ -10,10 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -85,54 +89,58 @@ public class MemberController {
 
     @PostMapping("/login")
 
-    public String Login(@RequestParam String id, @RequestParam String pw,@RequestParam String userstat,Model model, HttpSession session, HttpServletResponse response){
+    public String Login(@RequestParam String id, @RequestParam String pw, @RequestParam String userstat, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request){
+        if(userstat.equals("planner,planner")||userstat.equals("planner")){
+            try {
+
+                request.setAttribute("id",id);
+                request.setAttribute("pw",pw);
+                request.getRequestDispatcher("/planner/login").forward(request, response);
+                return "forward:/planner/login";
+            } catch (ServletException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else {
 
 
-        List<String> list = memberService.validate(id, pw);
+            List<String> list = memberService.validate(id, pw);
 
-        //정규식을 검사하고 list 사이즈가 0 이라면
-        if (list.isEmpty()) {
-            Member member = memberService.Login(id, pw);
-            // 돌아온게 널이 아니라면
-            if (member != null) {
+            //정규식을 검사하고 list 사이즈가 0 이라면
+            if (list.isEmpty()) {
+                Member member = memberService.Login(id, pw);
+                // 돌아온게 널이 아니라면
+                if (member != null) {
 
-                // 자동로그인이 체크 되어 있다면
-                if ((model.getAttribute("AutoLogin")) != null) {
+                    // 자동로그인이 체크 되어 있다면
+                    if ((model.getAttribute("AutoLogin")) != null) {
 
-                    // 쿠키 생성하는 행동을 하면 됩니다.
-                    Cookie cookie = new Cookie("id", member.getId());
-                    response.addCookie(cookie);
+                        // 쿠키 생성하는 행동을 하면 됩니다.
+                        Cookie cookie = new Cookie("id", member.getId());
+                        response.addCookie(cookie);
+                    }
+
+                    session.setAttribute("member", member);
+                    //session 시작
+                    return "redirect:/member/main";
+
+                } else {
+                    list.add("아이디 혹은 비밀번호가 틀렸습니다");
+                    model.addAttribute("error", list);
+
+                    return "redirect:/member/login";
+                    //null 이라면 아이디가 틀렸거나 비밀번호가 틀렸기 때문에 redirect 를 해줘야합니다
+
                 }
-
-                session.setAttribute("member", member);
-                model.addAttribute("member", member);
-                //session 시작
-
-
-                return "redirect:/member/main";
             } else {
-                list.add("아이디 혹은 비밀번호가 틀렸습니다");
+                // list 사이즈가 0 이상 이라면 정규식에 벗어난 단어 규칙임으로 페이지로 다시 돌려 보내고 alret 을 띄워야합니다.
                 model.addAttribute("error", list);
 
-                return "login";
-                //null 이라면 아이디가 틀렸거나 비밀번호가 틀렸기 때문에 redirect 를 해줘야합니다
-
             }
-        } else {
-            // list 사이즈가 0 이상 이라면 정규식에 벗어난 단어 규칙임으로 페이지로 다시 돌려 보내고 alret 을 띄워야합니다.
-            model.addAttribute("error", list);
-
-        }
-
-        if(userstat.equals("planner")){
-            session.setAttribute("userstat","planner");
-            return "redirect:/planner/login?userstat=planner";
-        } else if (userstat.equals("member")) {
-            session.setAttribute("userstat","planner");
-            return "login";
         }
         // model 객체에 addAttribute 해서 보냄
-        return "login";
+        return "redirect:/member/login";
     }
 
 

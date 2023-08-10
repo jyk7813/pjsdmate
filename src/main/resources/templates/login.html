@@ -67,6 +67,20 @@
     </div>
   </footer>
 </body>
+<script th:inline="javascript">
+
+
+
+  var userstat = /*[[${#session.getAttribute("userstat") != null ? #session.getAttribute("userstat") : 'defaultValue'}]]*/ 'defaultValue';
+
+  console.log(userstat);
+  if(userstat == "member") {
+    console.log("멤버임")
+  }else if(userstat == "planner"){
+    console.log("플래너임")
+
+  }
+</script>
 <script>
   var userstat = document.getElementById('userstat');
   var logo = document.querySelector('.logo');
@@ -102,12 +116,16 @@ checkbox.addEventListener('change', function(){
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
   }
 
+
   var userstatParam = getURLParameter('userstat');
+
 
   if (userstatParam) {
     if (userstatParam === 'planner') {
-      checkbox.checked = true;
 
+
+      checkbox.checked = true;
+      userstat.value="planner"
       whatuser = 'planner';
       member.innerHTML = '플래너';
       member.style.color = '#4BA698';
@@ -115,8 +133,9 @@ checkbox.addEventListener('change', function(){
       loginbtn.className = 'loginbtn planner';
       autologin.className = 'autologin planner';
     } else if (userstatParam === 'member') {
-      checkbox.checked = false;
 
+      checkbox.checked = false;
+      userstat.value="member"
       whatuser = 'member';
       member.innerHTML = '일반인';
       member.style.color = '#F28585';

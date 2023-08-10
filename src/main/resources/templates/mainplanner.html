@@ -50,7 +50,7 @@
 	</div>
 
 	<header id="header" class="alt">
-		<h1 style="text-align:left">안녕하세요! 김지윤님<img src="/img/signature.png" alt=""></h1>
+		<h1 id="name" style="text-align:left"><img src="/img/signature.png" alt=""></h1>
 		<p style="text-align:left"><span>8</span>&nbsp;명의 고객에게 메시지가 도착했습니다!<br/>
 		<ul class="actions">
 			<li><a href="main.html" class="button primary">스드메이트 견적받기</a></li>
@@ -165,4 +165,16 @@
 	</section>
 </div>
 </body>
+<script th:inline="javascript">
+
+
+
+	var planner = /*[[${#session.getAttribute("planner") != null ? #session.getAttribute("planner") : 'defaultValue'}]]*/ 'defaultValue';
+
+	console.log(planner);
+	var nameTag = document.getElementById("name");
+
+
+	nameTag.innerText = "안녕하세요! " + planner.name + " 님";
+</script>
 </html>
