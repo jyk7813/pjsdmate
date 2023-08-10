@@ -43,6 +43,7 @@ public class MemberController {
 
     @GetMapping("/main")
     public String goMain(Model model,HttpSession session) {
+        System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
         System.out.println(member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
@@ -201,6 +202,6 @@ public class MemberController {
         Member member = (Member) session.getAttribute("member");
         System.out.println(requirement+"날아옴");
         requirementService.insertRequirement(requirement,member.getMemberNo());
-        return "./main";
+        return "redirect:/member/main";
     }
 }
