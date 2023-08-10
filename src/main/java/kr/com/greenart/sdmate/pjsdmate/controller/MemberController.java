@@ -198,9 +198,9 @@ public class MemberController {
     }
     @PostMapping("/saveq")
     public String RequiremnetSave(@RequestBody Requirement requirement, HttpSession session){
-//        Member member = (Member) session.getAttribute("member");
-//        requirementService.insertRequirement(requirement,member.getMemberNo());
+        Member member = (Member) session.getAttribute("member");
         System.out.println(requirement+"날아옴");
-        return "redirect:/member/main";
+        requirementService.insertRequirement(requirement,member.getMemberNo());
+        return "./main";
     }
 }
