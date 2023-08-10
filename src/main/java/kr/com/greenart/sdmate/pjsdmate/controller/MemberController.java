@@ -43,10 +43,6 @@ public class MemberController {
 
 
         model.addAttribute("card", card);
-//        @GetMapping("/answer")
-//        public String answer () {
-//            return "answer";
-//        }
 //
 //        @GetMapping("/")
 //        public String start () {
@@ -57,6 +53,7 @@ public class MemberController {
 //            return "main";
 //        }
         return "main";
+
     }
 
     @GetMapping("/login")
@@ -64,7 +61,10 @@ public class MemberController {
             return "login";
         }
 
-
+    @GetMapping("/answer")
+    public String answer () {
+        return "answer";
+    }
 
     @GetMapping("/join")
     public String join(Model model) {

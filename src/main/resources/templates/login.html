@@ -67,20 +67,7 @@
     </div>
   </footer>
 </body>
-<script th:inline="javascript">
 
-
-
-  var userstat = /*[[${#session.getAttribute("userstat") != null ? #session.getAttribute("userstat") : 'defaultValue'}]]*/ 'defaultValue';
-
-  console.log(userstat);
-  if(userstat == "member") {
-    console.log("멤버임")
-  }else if(userstat == "planner"){
-    console.log("플래너임")
-
-  }
-</script>
 <script>
   var userstat = document.getElementById('userstat');
   var logo = document.querySelector('.logo');
