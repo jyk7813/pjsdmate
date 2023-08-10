@@ -26,22 +26,23 @@ $(document).ready(function () {
         navigateToPage(currentPage);
         console.log(question);
       } else if (currentPage == 7) {
-      let data = JSON.stringify(question); // JSON 형식으로 변환
+        let data = JSON.stringify(question); // JSON 형식으로 변환
         console.log(data);
 
+        $.ajax({
+          url: "./saveq", // 클라이언트가 서버로 보낼 HTTP 요청의 URL 주소
+          type: "POST", // HTTP 요청 방식(GET, POST)
+          data: data, // 서버로 보낼 데이터
+          contentType: "application/json", // 보낼 데이터의 타입
+          success: function (data) { // 요청이 성공하면 서버에서 전달된 데이터가 처리됨
+            console.log(data); // {name: "홍길동", age: 20}
+            completeAndRedirect();
+          },
+          error: function (request, status, error) {
+            console.log(error);
+          }
+        });
       }
-    });
-    $.ajax({
-      url: "./saveq", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
-      type: "POST", // HTTP 요청 방식(GET, POST)
-      data: data, // HTTP 요청과 함께 서버로 보낼 데이터
-      contentType: "application/json", // HTTP 요청과 함께 서버로 보낼 데이터의 타입
-      success: function (data) { // HTTP 요청이 성공하면 요청한 데이터가 done() 메서드로 전달됨
-        console.log(data); // {name: "홍길동", age: 20}
-      },
-      error: function (request, status, error) {
-        console.log(error);
-      },
     });
 
 
@@ -54,7 +55,11 @@ $(document).ready(function () {
     });
   });
 });
-
+function completeAndRedirect() {
+  // 페이지 이동
+  window.location.href = "/member/main";
+}
+console.log("좀 나가 시ㅣㅣㅣㅣㅣㅣㅣㅣㅣ");
 function navigateToPage(pageNumber) {
   // 컨테이너에 미리 로드된 HTML 삽입
   $("#container").html(pageContent['page' + pageNumber]);
