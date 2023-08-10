@@ -1,10 +1,12 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Member;
+import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
+import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,10 +30,14 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    private final RequirementService requirementService;
+
+
     private final MainPageService mainPageService;
 
-    public MemberController(MemberService memberService, MainPageService mainPageService) {
+    public MemberController(MemberService memberService, RequirementService requirementService, MainPageService mainPageService) {
         this.memberService = memberService;
+        this.requirementService = requirementService;
         this.mainPageService = mainPageService;
     }
 
@@ -190,5 +196,11 @@ public class MemberController {
         memberService.join(member);
         return "login";
     }
-
+    @PostMapping("/saveq")
+    public String RequiremnetSave(@RequestBody Requirement requirement, HttpSession session){
+//        Member member = (Member) session.getAttribute("member");
+//        requirementService.insertRequirement(requirement,member.getMemberNo());
+        System.out.println(requirement+"날아옴");
+        return "redirect:/member/main";
+    }
 }

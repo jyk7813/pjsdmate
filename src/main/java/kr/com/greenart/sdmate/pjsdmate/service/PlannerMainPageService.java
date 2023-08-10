@@ -7,6 +7,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
 import kr.com.greenart.sdmate.pjsdmate.repository.MemberRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.RequirementRepository;
+import kr.com.greenart.sdmate.pjsdmate.repository.SpringDataJpaRequirementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,12 @@ import java.util.List;
 @Service
 public class PlannerMainPageService {
     private final PlannerRepository plannerRepository;
-    private final RequirementRepository requirementRepository;
+    private  final SpringDataJpaRequirementRepository requirementRepository;
 
     private final MemberRepository memberRepository;
 
     @Autowired
-    public PlannerMainPageService(PlannerRepository plannerRepository, RequirementRepository requirementRepository, MemberRepository memberRepository) {
+    public PlannerMainPageService(PlannerRepository plannerRepository, SpringDataJpaRequirementRepository requirementRepository, MemberRepository memberRepository) {
         this.plannerRepository = plannerRepository;
         this.requirementRepository = requirementRepository;
         this.memberRepository = memberRepository;
