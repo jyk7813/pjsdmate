@@ -5,6 +5,8 @@
 */
 
 
+var card = document.getElementById("saveValue");
+console.log(card);
 (function($) {
 
 	var	$window = $(window),
