@@ -1,0 +1,341 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * {
+    font-family: "Noto Sans KR", sans-serif;
+}
+body {
+    border: 1px solid black;
+}
+* {
+    /* 여기 잘해봐야함 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR";
+}
+#exceptTitle {
+    color: #343837;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.9px;
+    text-transform: lowercase;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#exceptMoney {
+    display: flex;
+
+    color: #727272;
+    font-family: Noto Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    text-transform: lowercase;
+
+    width: 370px;
+    height: 50px;
+    background: #f3f5f6;
+    border: 1px solid #d9d9d9;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 34px;
+    margin-bottom: 19px;
+    position: relative;
+    text-align: center;
+}
+.title {
+    /* display: inline-flex; */
+    color: #343837;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.9px;
+    text-transform: lowercase;
+    margin: auto;
+}
+#back {
+    position: absolute;
+    margin: 0px;
+  
+   
+}
+.lastline::after {
+    background-image: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
+    display: flex;
+    content: "";
+    width: 371px;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.image {
+    align-items: center;
+    text-align: center;
+}
+.image img {
+    border-radius: 100%;
+
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    border: solid 1px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+p {
+    text-align: center;
+}
+body {
+    min-width: 430px;
+    max-width: 430px;
+    height: auto;
+    margin: 0 auto;
+    font-family: "Noto Sans KR";
+}
+#main {
+    background-color: white;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.state {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8cc9f0;
+    margin: 10px;
+}
+#sum {
+    margin-bottom: 0px;
+}
+.except {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.package {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.package .questionTitle {
+    margin: 0;
+}
+.questionTitle .price{
+    color: #343837;
+font-family: Noto Sans;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: -1px;
+text-transform: lowercase;
+}
+
+.package .price {
+    margin-left: auto;
+}
+#positionDiv {
+    position: relative;
+}
+.margindiv {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.invi {
+    display: none;
+    position: relative;
+    flex-direction: column;
+}
+.invi.visible {
+    display: block;
+    animation-name: fadeIn;
+    animation-timing-function: ease;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+}
+.button-with-image {
+    background-image: url("images/detailOpen.png");
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+}
+.button-back {
+    background-image: url("images/button-back.png");
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 28px;
+    height: 28px;
+}
+
+.detailA {
+    width: 110px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #f3f5f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.detailB {
+    width: 175px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #f3f5f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.detailC {
+    width: 370px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #f3f5f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.Margin10px {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.Margin20px {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#detailF {
+    margin-bottom: 20px;
+}
+#estimateSum {
+    
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#estimateSum p:first-child {
+    margin-right: auto;
+}
+#sum {
+    margin-left: auto;
+}
+#hrefChat {
+    width: 100px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #f3f5f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#hrefReservation {
+    width: 250px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #F28585;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#plannerInfoDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#plannerInfoDiv img {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#plannerInfoDiv p {
+    color: #727272;
+text-align: center;
+font-family: Noto Sans;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.8px;
+text-transform: lowercase;
+margin: 0;
+margin-left: 3px;
+}
