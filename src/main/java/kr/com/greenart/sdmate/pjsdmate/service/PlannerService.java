@@ -22,6 +22,7 @@ public class PlannerService {
         this.objectMapper = objectMapper;
     }
 
+
     public Planner getPlannerById(int plannerNo) {
         Planner planner = plannerRepository.findByplannerNo(plannerNo).get();
 
