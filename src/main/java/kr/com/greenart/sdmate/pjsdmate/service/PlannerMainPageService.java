@@ -43,14 +43,11 @@ public class PlannerMainPageService {
         List<Requirement> requirementList = requirementRepository.findByQ1CityOrderByQ1DateAsc(region);
         //System.out.println(requirementList);
         for (Requirement requirement : requirementList) {
-            System.out.println("dasdfasdfsdf : " +requirement);
             PlannermainpageCard eachCard = new PlannermainpageCard();
             eachCard.setEstimate(requirement.getQ7Estimate());
             eachCard.setCity(requirement.getQ1City());
             eachCard.setGu(requirement.getQ1Gu());
-            // 여기까진돌아간다.
-            System.out.println("몇번이야!!" + requirement.getRequirementNo());
-            Member member = memberRepository.findByRequirementPk((int)requirement.getRequirementNo());
+            Member member = memberRepository.findByRequirementPk((int)requirement.getRequirement_no());
             eachCard.setMemberPk(member.getMemberNo());
             eachCard.setMemberName(member.getName());
             String encoded = null;
