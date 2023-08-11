@@ -31,10 +31,10 @@ public class RequirementService {
     }
 
 
-//    public Requirement getRequirementByNo(int requirementNo) {
-//        Requirement requirement = requirementRepository.findByrequirementNo(requirementNo).get();
-//        return requirement;
-//    }
+    public Requirement getRequirementByNo(int requirementNo) {
+        Requirement requirement = requirementRepository.findByrequirementNo(requirementNo).get();
+        return requirement;
+    }
 
     public Integer insertRequirement(Requirement requirement,Integer memberPk) {
 
@@ -45,7 +45,7 @@ public class RequirementService {
             MemberRequirement memberRequirement = new MemberRequirement();
 
             memberRequirement.setMemberNo(memberPk);
-            memberRequirement.setRequiremnetNo(requirement.getRequirement_no());
+            memberRequirement.setRequiremnetNo(requirement.getRequirementNo());
 
             memberRequirementRepository.save(memberRequirement);
             return 1;

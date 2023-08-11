@@ -94,9 +94,8 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-
     public String Login(@RequestParam String id, @RequestParam String pw, @RequestParam String userstat, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request){
-        System.out.println(userstat+"멤버 로그인에서 플래너 사이드 로그인으로 넘어가는 행동 ");
+
         if(userstat.equals("planner,planner")||userstat.equals("planner")||userstat.equals("member,planner")){
             try {
 

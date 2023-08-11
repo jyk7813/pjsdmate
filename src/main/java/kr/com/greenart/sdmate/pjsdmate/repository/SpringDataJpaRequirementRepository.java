@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface SpringDataJpaRequirementRepository extends JpaRepository<Requirement, Integer> {
     Requirement save(Requirement requirement);
 
-//    Optional<Requirement> findByrequirementNo(Integer requirement_no);
+    Optional<Requirement> findByrequirementNo(Integer requirementNo);
 //
     List<Requirement> findByQ1CityOrderByQ1DateAsc(String q1City);
 }

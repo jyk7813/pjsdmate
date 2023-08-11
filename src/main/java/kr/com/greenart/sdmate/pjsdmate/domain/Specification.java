@@ -19,8 +19,21 @@ public class Specification {
     private int hirecost;
     private int state;
 
+    private int requirement_no;
     public int calculateSumExceptSpecNoAndState() {
         return weddinghall + dress + parentsdress + photo + studio + snap + hirecost;
+    }
+
+    public int getRequirement_no() {
+        return requirement_no;
+    }
+
+    public void setRequirement_no(int requirement_no) {
+        this.requirement_no = requirement_no;
+    }
+
+    public int parseInt(String s){
+        return Integer.parseInt(s);
     }
 
     @Override
@@ -35,6 +48,7 @@ public class Specification {
                 ", snap=" + snap +
                 ", hirecost=" + hirecost +
                 ", state=" + state +
+                ", requirement_no=" + requirement_no +
                 '}';
     }
 
