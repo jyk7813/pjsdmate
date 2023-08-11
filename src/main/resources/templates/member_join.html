@@ -21,22 +21,23 @@
 
             <span>
                     <div class="line">
-                        <label class="form" id="customer_id" for="id">아&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;디</label>
+                        <label class="form" id="customer_id" for="id">아&nbsp;이&nbsp;디&nbsp;</label>
                         <input class="write" type="text" id="id" name="id">
                     </div>
                         <span th:if="${#fields.hasErrors('member.id')}" th:errors="*{member.id}" class="error"></span>
-
-                    <div class="id_check">
-                        <button class="id_check_btn" type="button">중복확인</button>
+                    <div class="emptyline"><br></div>
+                    <div class="id_check member">
+                        <button class="id_check_btn member" type="button">중복확인</button>
                     </div>
-                    <br>
+                    <div class="emptyline"><br></div>
                     <div class="line">
-                        <label class="form" id="customer_name" for="name">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름</label>
+                        <label class="form" id="customer_name" for="name">이&nbsp;름&nbsp;</label>
                         <input class="write" type="text" id="name" name="name"><br>
                     </div>
                         <span th:if="${#fields.hasErrors('member.name')}" th:errors="*{member.name}" class="error"></span>
+                    <div class="emptyline"><br></div>
                     <div class="line">
-                        <label class="form" for="birth">생&nbsp;&nbsp;&nbsp;&nbsp;년&nbsp;&nbsp;&nbsp;&nbsp;월&nbsp;&nbsp;&nbsp;&nbsp;일</label>
+                        <label class="form" for="birth">생&nbsp;년&nbsp;월&nbsp;일&nbsp;</label>
                         <input class="write"type="date" id="birth" name="identity_no" ><br>
                     </div>
                         <span th:if="${#fields.hasErrors('member.identity_no')}" th:errors="*{member.identity_no}" class="error"></span>
@@ -44,25 +45,28 @@
                     <br>
                     <br>
                     <div class="line">
-                        <label class="form" id="customer_password" for="password">비&nbsp;&nbsp;&nbsp;&nbsp;밀&nbsp;&nbsp;&nbsp;&nbsp;번&nbsp;&nbsp;&nbsp;&nbsp;호</label>
+                        <label class="form" id="customer_password" for="password">비&nbsp;밀&nbsp;번&nbsp;호&nbsp;</label>
                         <input class="write" type="password" id="password" name="pwd"><br>
                     </div>
                         <span th:if="${#fields.hasErrors('member.pwd')}" th:errors="*{member.pwd}" class="error"></span>
+                    <div class="emptyline"><br></div>
                     <div class="line">
-                        <label class="form" id="password_check" for="pwcheck">비&nbsp;밀&nbsp;번&nbsp;호&nbsp;확&nbsp;인</label>
-                        <input class="write" type="password" id="pwcheck" required><br>
+                        <label class="form" id="password_check" for="pwcheck">비&nbsp;밀&nbsp;번&nbsp;호&nbsp;확&nbsp;인&nbsp;</label>
+                        <input class="write" type="password" id="pwcheck" ><br>
                     </div>
                         <span class="error" id="pwcheckerror"></span>
+                    <div class="emptyline"><br></div>
                     <br>
                     <br>
                     <br>
                     <div class="line">
-                        <label class="form" id="email_form" for="email">이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;메&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일</label>
+                        <label class="form" id="email_form" for="email">이&nbsp;메&nbsp;일&nbsp;</label>
                         <input class="write" type="email" id="email" name="email" ><br>
                     </div>
                         <span th:if="${#fields.hasErrors('member.email')}" th:errors="*{member.email}" class="error"></span>
+                    <div class="emptyline"><br></div>
                     <div class="line">
-                        <label class="form" id="phone_number_form" for="phone_number">연&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;락&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;처</label>
+                        <label class="form" id="phone_number_form" for="phone_number">연&nbsp;락&nbsp;처&nbsp;</label>
                         <input class="write" type="tel" id="Phone_number" name="phonenum"><br>
                     </div>
                         <span th:if="${#fields.hasErrors('member.phonenum')}" th:errors="*{member.phonenum}" class="error"></span>
@@ -71,7 +75,7 @@
     </div>
 
     <div class="join">
-        <input class="join_btn" type="submit" id="join">
+        <input class="join_btn member" type="submit" id="join">
     </div>
 </form>
 </body>

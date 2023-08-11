@@ -7,10 +7,12 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PlannerService {
 
     private final PlannerRepository plannerRepository;
@@ -21,6 +23,7 @@ public class PlannerService {
         this.plannerRepository = plannerRepository;
         this.objectMapper = objectMapper;
     }
+
 
     public Planner getPlannerById(int plannerNo) {
         Planner planner = plannerRepository.findByplannerNo(plannerNo).get();
@@ -41,11 +44,8 @@ public class PlannerService {
         }
             return null;
     }
-    public void join(String json){
-        Planner planner = parseObj(json);
-
+    public void join(Planner planner){
         planner.setActive(true);
-
         plannerRepository.save(planner);
     }
     private Planner parseObj(String json){
@@ -58,4 +58,35 @@ public class PlannerService {
         return planner;
     }
 
+    public boolean isEmailDuplicated(String email) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByEmail(email);
+        if(optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isIdDuplicated(String id) {
+        Optional<Planner> optionalPlanner = plannerRepository.findById(id);
+        if(optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isBusinessNoDuplicated(String businessNo) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByBusiness_no(businessNo);
+        if (optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isPhoneNoDuplicated(String phonenum) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByphonenum(phonenum);
+        if (optionalPlanner.isPresent()){
+            return true;
+        }
+        return false;
+    }
 }

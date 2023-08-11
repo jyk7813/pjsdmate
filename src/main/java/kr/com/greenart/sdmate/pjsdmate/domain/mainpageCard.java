@@ -12,6 +12,8 @@ public class mainpageCard {
     private String plannerImg;
     private String businessName;
 
+    private int specificationNo;
+
     @Override
     public String toString() {
         return "mainpageCard{" +
@@ -21,6 +23,7 @@ public class mainpageCard {
                 ", reviewCnt=" + reviewCnt +
                 ", dealCnt=" + dealCnt +
                 ", businessName='" + businessName + '\'' +
+                ", specificationNo=" + specificationNo +
                 '}';
     }
 
@@ -78,5 +81,13 @@ public class mainpageCard {
 
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
+    }
+
+    public int getSpecificationNo() {
+        return specificationNo;
+    }
+
+    public void setSpecificationNo(int specificationNo) {
+        this.specificationNo = specificationNo;
     }
 }

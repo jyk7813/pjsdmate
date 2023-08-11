@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -26,13 +27,12 @@ public class PlannerSpecificationPackageServiceTest {
     SpecificationRepository specificationRepository;
     @Autowired
     ReviewRepository reviewRepository;
-    @Autowired
-    RequirementRepository requirementRepository;
+
     @Autowired
     MemberRepository memberRepository;
 
     @Test
-    void 플래너카드리스트리턴받기() {
+    void 플래너카드리스트리턴받기() throws IOException {
         List<PlannermainpageCard> list = plannerMainPageService.returnPlannerMainCard(2);
 
         for(PlannermainpageCard plannermainpageCard : list) {
@@ -103,7 +103,7 @@ public class PlannerSpecificationPackageServiceTest {
     }
 
     @Test
-    void 카드리턴받기() {
+    void 카드리턴받기() throws IOException {
         List<mainpageCard> card = mainPageService.returnMainCard(1);
         System.out.print("제발!!!!!!!!!!!!!!!!!!!" + card.size());
     }

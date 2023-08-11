@@ -65,11 +65,11 @@
 
     //위에 들어있는 값들이 변할때 마다 console.log에 찍히는지 확인해보기
     regionList.addEventListener("click", function () {
-        question.q1_city = regionLabel.textContent;
+        question.q1City = regionLabel.textContent;
         console.log(regionLabel.textContent);
     });
     cityList.addEventListener("click", function () {
-        question.q1_gu = cityLabel.textContent;
+        question.q1Gu = cityLabel.textContent;
         console.log(cityLabel.textContent);
     });
     guest.addEventListener("change", function(e) {
@@ -79,7 +79,7 @@
         }
     });
     date.addEventListener("change", function(e) {
-        question.q1_date = e.target.value;
+        question.q1Date = e.target.value;
         console.log(e.target.value);
     });
 

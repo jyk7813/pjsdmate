@@ -11,6 +11,10 @@ import kr.com.greenart.sdmate.pjsdmate.repository.SpecificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -33,10 +37,10 @@ public class MainPageService {
     }
 
     public List<PlannerSpecificationPackage> getpackageByPk(int memberNo) {
-        return plannerSpecificationPackageRepository.findByMemberNo(1);
+        return plannerSpecificationPackageRepository.findByMemberNo(memberNo);
     }
     public List<mainpageCard> card = new ArrayList<>();
-    public List<mainpageCard> returnMainCard(int memberNo) {
+    public List<mainpageCard> returnMainCard(int memberNo) throws IOException {
 
         card = new ArrayList<>();
         List<PlannerSpecificationPackage> packageList = getpackageByPk(memberNo);
@@ -53,13 +57,26 @@ public class MainPageService {
             eachCard.setBusinessName(planner.getBusiness_name());
             eachCard.setDealCnt(planner.getDealCnt());
             eachCard.setRating(planner.getRating());
-            String encoded = Base64.getEncoder().encodeToString(planner.getImage());
-            eachCard.setPlannerImg(encoded);
-//            System.out.println(encoded);
+
+//            String encoded = Base64.getEncoder().encodeToString(planner.getImage());
+//            eachCard.setPlannerImg(encoded);
+            String encoded = null;
+            try {
+                encoded = Base64.getEncoder().encodeToString(planner.getImage());
+            } catch (NullPointerException e) {
+                String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
+                Path path = Paths.get(imagePath);
+                byte[] imageBytes = Files.readAllBytes(path);
+                encoded = Base64.getEncoder().encodeToString(imageBytes);
+            } finally {
+                eachCard.setPlannerImg(encoded);
+            }
+
 
             for (PlannerSpecificationPackage packageItem : packageList) {
                 if (packageItem.getPlannerNo() == plannerNumber) {
                     Specification specification = specificationRepository.findBySpecificationNo(packageItem.getSpecificationNo()).get();
+                    eachCard.setSpecificationNo(specification.getSpecificationNo());
                     eachCard.setSum(specification.calculateSumExceptSpecNoAndState());
                 }
             }

@@ -5,6 +5,7 @@ let passwordCheck = document.querySelector('#pwcheck') ;// 비밀번호 확인
 let duplicateCheck = false; // 아이디 중복 체크 여부
 let joinBtn = document.querySelector('.join_btn') ; // 회원가입 버튼
 let pwcheckerror = document.querySelector('#pwcheckerror') ; // 비밀번호 확인 에러 메시지
+
 function extracted(e) {
     if (password.value != passwordCheck.value) {
         console.log(password.value, passwordCheck.value);
@@ -21,11 +22,14 @@ passwordCheck.addEventListener('keyup', function(e) {
 
 id_check.onclick = function idCheck() {
     let idValue = id.value ;
+    let result = checkURL();
+    let fetchURL = '/'+ result +'/idCheck';
+
     if(idValue == '') {
         id.setCustomValidity('아이디를 입력해주세요.') ;
         return ;
     }
-    fetch('/member/idCheck', {
+    fetch(fetchURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -63,4 +67,21 @@ joinBtn.addEventListener('click', function(e) {
         e.preventDefault();
     }
 }) ;
+
+function checkURL() {
+    const currentURL = window.location.href; // 현재 페이지의 URL을 가져옴
+
+    if (currentURL.includes('member')) {
+        return 'member';
+    } else if (currentURL.includes('planner')) {
+        return 'planner';
+    } else {
+        return 'none'; // member나 planner가 URL에 포함되지 않은 경우
+    }
+}
+
+
+
+
+
 

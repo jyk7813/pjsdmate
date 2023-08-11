@@ -1,10 +1,13 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Member;
+import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
 import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
+import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,15 +31,20 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    private final RequirementService requirementService;
+
+
     private final MainPageService mainPageService;
 
-    public MemberController(MemberService memberService, MainPageService mainPageService) {
+    public MemberController(MemberService memberService, RequirementService requirementService, MainPageService mainPageService) {
         this.memberService = memberService;
+        this.requirementService = requirementService;
         this.mainPageService = mainPageService;
     }
 
     @GetMapping("/main")
-    public String goMain(Model model,HttpSession session) {
+    public String goMain(Model model,HttpSession session) throws IOException {
+        System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
         System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
@@ -44,6 +52,7 @@ public class MemberController {
 
 
         model.addAttribute("card", card);
+
 //
 //        @GetMapping("/")
 //        public String start () {
@@ -54,7 +63,10 @@ public class MemberController {
 //            return "main";
 //        }
         return "main";
-
+    }
+    @GetMapping("/answer")
+    public String answer () {
+        return "answer";
     }
 
     @GetMapping("/login")
@@ -62,10 +74,7 @@ public class MemberController {
             return "login";
         }
 
-    @GetMapping("/answer")
-    public String answer () {
-        return "answer";
-    }
+
 
     @GetMapping("/join")
     public String join(Model model) {
@@ -85,13 +94,10 @@ public class MemberController {
         }
     }
 
-
-
-
     @PostMapping("/login")
-
     public String Login(@RequestParam String id, @RequestParam String pw, @RequestParam String userstat, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request){
-        if(userstat.equals("planner,planner")||userstat.equals("planner")){
+
+        if(userstat.equals("planner,planner")||userstat.equals("planner")||userstat.equals("member,planner")){
             try {
 
                 request.setAttribute("id",id);
@@ -193,5 +199,10 @@ public class MemberController {
         memberService.join(member);
         return "login";
     }
-
+    @PostMapping("/saveq")
+    public ResponseEntity<String> RequiremnetSave(@RequestBody Requirement requirement, HttpSession session){
+        Member member = (Member) session.getAttribute("member");
+        requirementService.insertRequirement(requirement,member.getMemberNo());
+        return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다.");
+    }
 }

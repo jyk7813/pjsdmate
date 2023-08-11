@@ -27,5 +27,20 @@ public interface PlannerRepository {
     List<Planner> findAll();
     Image getImgfindByplannerNo(Integer plannerNo);
 
+    //join
+    @Query("SELECT p FROM Planner p WHERE p.phonenum = :phonenum")
+    Optional<Planner> findByphonenum(String phonenum);
+
+    @Query("SELECT p FROM Planner p WHERE p.business_no = :business_no")
+    Optional<Planner> findByBusiness_no(String business_no);
+
+    @Query("SELECT p FROM Planner p WHERE p.email = :email")
+    Optional<Planner> findByEmail(String email);
+    //update
+
+
+
+
+
 
 }

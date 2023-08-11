@@ -1,26 +1,56 @@
 package kr.com.greenart.sdmate.pjsdmate.domain;
 
+import kr.com.greenart.sdmate.pjsdmate.annotation.AgeConstraint;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Arrays;
 
 @Entity
 public class Planner {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer plannerNo;
+    @NotNull(message = "이름을 입력해주세요")
+    @Size(min = 2, max = 10, message = "이름은 2자 이상 10자 이하로 입력해주세요")
+    @Pattern(regexp = "^[가-힣]*$", message = "이름은 한글만 입력해주세요")
     private String name;
+    @NotNull(message = "생일을 입력해 주세요")
+    //오늘 날짜 기준으로 만 19세 이상인지 확인해줘
+    @AgeConstraint
     private String identity_no;
+    @NotNull(message = "사업자번호를 입력해주세요")
+    @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{5}$", message = "올바른 사업자번호 형식을 입력해주세요")
     private String business_no;
+    @NotNull(message = "아이디를 입력해주세요")
+    @Size(min = 4, max = 20, message = "아이디는 4자 이상 20자 이하로 입력해주세요")
+    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "아이디는 영문과 숫자만 입력해주세요")
     private String id;
+    @NotNull(message = "비밀번호를 입력해주세요")
+    @Size(min = 8, max = 20, message = "비밀번호는 8자 이상 20자 이하로 입력해주세요")
+    @Pattern(regexp = "^[a-zA-Z0-9]*$", message = "비밀번호는 영문과 숫자만 입력해주세요")
     private String pwd;
+    @NotNull(message = "전화번호를 입력해주세요")
+    @Pattern(regexp = "^(010|011)-\\d{4}-\\d{4}$", message = "올바른 전화번호 형식을 입력해주세요")
+
     private String phonenum;
+    @NotNull(message = "이메일을 입력해주세요")
+    @Pattern(regexp = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+$", message = "올바른 이메일 형식을 입력해주세요")
     private String email;
+    @NotNull(message = "상호명을 입력해주세요")
+    @Size(min = 2, max = 20, message = "상호명은 2자 이상 20자 이하로 입력해주세요")
     private String business_name;
+
     private int dealCnt;
     private double rating;
     private boolean active;
+    @NotNull(message = "지역을 입력해주세요")
+    @Size(min = 2, max = 20, message = "지역은 2자 이상 20자 이하로 입력해주세요")
+    @Pattern(regexp = "^[가-힣]*$", message = "지역은 한글만 입력해주세요")
     private String region;
     private byte[] image;
 

@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 public class Requirement {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="requirement_no")
     private Integer requirementNo;
     @Column(name="q1_city")
     private String q1City;
@@ -25,13 +26,13 @@ public class Requirement {
     private String q5_studio_photo;
     private String q5_studio_video;
     private String q5_studio_makeup;
-    private boolean q5_studio_bride_dress;
-    private boolean q5_studio_bride_hanbok;
-    private boolean q5_studio_bride_suit;
-    private boolean q5_studio_bride_self;
-    private boolean q5_studio_groom_suit;
-    private boolean q5_studio_groom_hanbok;
-    private boolean q5_studio_groom_self;
+    private String q5_studio_bride_dress;
+    private String q5_studio_bride_hanbok;
+    private String q5_studio_bride_suit;
+    private String q5_studio_bride_self;
+    private String q5_studio_groom_suit;
+    private String q5_studio_groom_hanbok;
+    private String q5_studio_groom_self;
     private String q6_snap_photo;
     private String q6_snap_video;
     private String q6_snap_makeup;
@@ -65,13 +66,13 @@ public class Requirement {
                 ", q5_studio_photo='" + q5_studio_photo + '\'' +
                 ", q5_studio_video='" + q5_studio_video + '\'' +
                 ", q5_studio_makeup='" + q5_studio_makeup + '\'' +
-                ", q5_studio_bride_dress=" + q5_studio_bride_dress +
-                ", q5_studio_bride_hanbok=" + q5_studio_bride_hanbok +
-                ", q5_studio_bride_suit=" + q5_studio_bride_suit +
-                ", q5_studio_bride_self=" + q5_studio_bride_self +
-                ", q5_studio_groom_suit=" + q5_studio_groom_suit +
-                ", q5_studio_groom_hanbok=" + q5_studio_groom_hanbok +
-                ", q5_studio_groom_self=" + q5_studio_groom_self +
+                ", q5_studio_bride_dress='" + q5_studio_bride_dress + '\'' +
+                ", q5_studio_bride_hanbok='" + q5_studio_bride_hanbok + '\'' +
+                ", q5_studio_bride_suit='" + q5_studio_bride_suit + '\'' +
+                ", q5_studio_bride_self='" + q5_studio_bride_self + '\'' +
+                ", q5_studio_groom_suit='" + q5_studio_groom_suit + '\'' +
+                ", q5_studio_groom_hanbok='" + q5_studio_groom_hanbok + '\'' +
+                ", q5_studio_groom_self='" + q5_studio_groom_self + '\'' +
                 ", q6_snap_photo='" + q6_snap_photo + '\'' +
                 ", q6_snap_video='" + q6_snap_video + '\'' +
                 ", q6_snap_makeup='" + q6_snap_makeup + '\'' +
@@ -215,59 +216,59 @@ public class Requirement {
         this.q5_studio_makeup = q5_studio_makeup;
     }
 
-    public boolean isQ5_studio_bride_dress() {
+    public String getQ5_studio_bride_dress() {
         return q5_studio_bride_dress;
     }
 
-    public void setQ5_studio_bride_dress(boolean q5_studio_bride_dress) {
+    public void setQ5_studio_bride_dress(String q5_studio_bride_dress) {
         this.q5_studio_bride_dress = q5_studio_bride_dress;
     }
 
-    public boolean isQ5_studio_bride_hanbok() {
+    public String getQ5_studio_bride_hanbok() {
         return q5_studio_bride_hanbok;
     }
 
-    public void setQ5_studio_bride_hanbok(boolean q5_studio_bride_hanbok) {
+    public void setQ5_studio_bride_hanbok(String q5_studio_bride_hanbok) {
         this.q5_studio_bride_hanbok = q5_studio_bride_hanbok;
     }
 
-    public boolean isQ5_studio_bride_suit() {
+    public String getQ5_studio_bride_suit() {
         return q5_studio_bride_suit;
     }
 
-    public void setQ5_studio_bride_suit(boolean q5_studio_bride_suit) {
+    public void setQ5_studio_bride_suit(String q5_studio_bride_suit) {
         this.q5_studio_bride_suit = q5_studio_bride_suit;
     }
 
-    public boolean isQ5_studio_bride_self() {
+    public String getQ5_studio_bride_self() {
         return q5_studio_bride_self;
     }
 
-    public void setQ5_studio_bride_self(boolean q5_studio_bride_self) {
+    public void setQ5_studio_bride_self(String q5_studio_bride_self) {
         this.q5_studio_bride_self = q5_studio_bride_self;
     }
 
-    public boolean isQ5_studio_groom_suit() {
+    public String getQ5_studio_groom_suit() {
         return q5_studio_groom_suit;
     }
 
-    public void setQ5_studio_groom_suit(boolean q5_studio_groom_suit) {
+    public void setQ5_studio_groom_suit(String q5_studio_groom_suit) {
         this.q5_studio_groom_suit = q5_studio_groom_suit;
     }
 
-    public boolean isQ5_studio_groom_hanbok() {
+    public String getQ5_studio_groom_hanbok() {
         return q5_studio_groom_hanbok;
     }
 
-    public void setQ5_studio_groom_hanbok(boolean q5_studio_groom_hanbok) {
+    public void setQ5_studio_groom_hanbok(String q5_studio_groom_hanbok) {
         this.q5_studio_groom_hanbok = q5_studio_groom_hanbok;
     }
 
-    public boolean isQ5_studio_groom_self() {
+    public String getQ5_studio_groom_self() {
         return q5_studio_groom_self;
     }
 
-    public void setQ5_studio_groom_self(boolean q5_studio_groom_self) {
+    public void setQ5_studio_groom_self(String q5_studio_groom_self) {
         this.q5_studio_groom_self = q5_studio_groom_self;
     }
 

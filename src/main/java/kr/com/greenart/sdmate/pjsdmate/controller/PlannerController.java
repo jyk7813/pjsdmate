@@ -1,9 +1,12 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
+import kr.com.greenart.sdmate.pjsdmate.domain.PlannermainpageCard;
+import kr.com.greenart.sdmate.pjsdmate.service.PlannerMainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
@@ -12,24 +15,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/planner")
 public class PlannerController {
 
     private final PlannerService plannerService;
+    private final PlannerMainPageService plannerMainPageService;
 
-    public PlannerController(PlannerService plannerService) {
+    public PlannerController(PlannerService plannerService, PlannerMainPageService plannerMainPageService) {
         this.plannerService = plannerService;
+        this.plannerMainPageService = plannerMainPageService;
     }
-
+    @GetMapping("/viewMySpecification")
+    public String mySpecification(Model model)
+    {
+        return "mySpecification";
+    }
     @GetMapping("/main")
-    public String mainplanner() {
+    public String mainplanner(Model model, HttpSession session) throws IOException {
+        Planner planner = (Planner) session.getAttribute("planner");
+        System.out.println("플래너 pk : " + planner.getPlannerNo());
+        List<PlannermainpageCard> card = plannerMainPageService.returnPlannerMainCard(planner.getPlannerNo());
+        model.addAttribute("card", card);
+
         return "mainplanner";
     }
-    @GetMapping("/join")
-    public String join() { return "planner_join"; }
+
 
     @GetMapping("/login")
     public String login(){
@@ -59,8 +76,6 @@ public class PlannerController {
                 }
                 session.setAttribute("planner", planner);
 
-                session.setAttribute("userPk", planner.getPlannerNo());
-
                 return "redirect:/planner/main";
 
             } else {
@@ -71,13 +86,50 @@ public class PlannerController {
 
         return "redirect:./login?userstat=planner";
     }
+    @GetMapping("/join")
+    public String join(Model model) {
+        model.addAttribute("planner", new Planner());
+        return "planner_join";
+    }
 
     @PostMapping("/join")
-    public String Join(Model model){
-        String json = (String)model.getAttribute("planner");
+    public String Join(@Valid @ModelAttribute("planner") Planner planner, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "planner_join";
+        }
+        // 이메일 중복 검사
+        if (plannerService.isEmailDuplicated(planner.getEmail())){
+            result.rejectValue("email", "Duplicated" , "이미 사용중인 이메일 입니다.");
+        }
+        // 아이디 중복 검사
+        if (plannerService.isIdDuplicated(planner.getId())){
+            result.rejectValue("id", "Duplicated" , "이미 사용중인 아이디 입니다.");
+        }
+        // 사업자 번호 중복 검사
+        if (plannerService.isBusinessNoDuplicated(planner.getBusiness_no())){
+            result.rejectValue("business_no", "Duplicated" , "이미 사용중인 사업자 번호 입니다.");
+        }
+        // 전화번호 중복 검사
+        if (plannerService.isPhoneNoDuplicated(planner.getPhonenum())){
+            result.rejectValue("phonenum", "Duplicated" , "이미 사용중인 전화번호 입니다.");
+        }
+        if(result.hasErrors()){
+            return "planner_join";
+        }
 
-        plannerService.join(json);
-        return "login";
+        plannerService.join(planner);
+        return "redirect:/planner/login?userstat=planner";
+    }
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public Map<String, String> checkid(@RequestBody Map<String, String> requestData) {
+        String id = requestData.get("id");
+        boolean isDuplicated = plannerService.isIdDuplicated(id);
+        if (isDuplicated) {
+            return Collections.singletonMap("result", "fail");
+        } else {
+            return Collections.singletonMap("result", "success");
+        }
     }
 }
 
