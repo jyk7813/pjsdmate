@@ -60,6 +60,7 @@ public class MainPageService {
             for (PlannerSpecificationPackage packageItem : packageList) {
                 if (packageItem.getPlannerNo() == plannerNumber) {
                     Specification specification = specificationRepository.findBySpecificationNo(packageItem.getSpecificationNo()).get();
+                    eachCard.setSpecificationNo(specification.getSpecificationNo());
                     eachCard.setSum(specification.calculateSumExceptSpecNoAndState());
                 }
             }
