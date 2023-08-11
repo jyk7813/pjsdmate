@@ -49,8 +49,8 @@ public class PlannerMainPageService {
             eachCard.setCity(requirement.getQ1City());
             eachCard.setGu(requirement.getQ1Gu());
             // 여기까진돌아간다.
-            System.out.println("몇번이야!!" + requirement.getRequirement_no());
-            Member member = memberRepository.findByRequirementPk((int)requirement.getRequirement_no());
+            System.out.println("몇번이야!!" + requirement.getRequirementNo());
+            Member member = memberRepository.findByRequirementPk((int)requirement.getRequirementNo());
             eachCard.setMemberPk(member.getMemberNo());
             eachCard.setMemberName(member.getName());
             String encoded = null;
