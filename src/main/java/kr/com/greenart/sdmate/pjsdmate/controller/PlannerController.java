@@ -1,6 +1,8 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
+import kr.com.greenart.sdmate.pjsdmate.domain.PlannermainpageCard;
+import kr.com.greenart.sdmate.pjsdmate.service.PlannerMainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 import javax.validation.Valid;
 
 @Controller
@@ -20,13 +23,19 @@ import javax.validation.Valid;
 public class PlannerController {
 
     private final PlannerService plannerService;
+    private final PlannerMainPageService plannerMainPageService;
 
-    public PlannerController(PlannerService plannerService) {
+    public PlannerController(PlannerService plannerService, PlannerMainPageService plannerMainPageService) {
         this.plannerService = plannerService;
+        this.plannerMainPageService = plannerMainPageService;
     }
 
     @GetMapping("/main")
-    public String mainplanner() {
+    public String mainplanner(Model model, HttpSession session) {
+        Planner planner = (Planner) session.getAttribute("planner");
+        List<PlannermainpageCard> card = plannerMainPageService.returnPlannerMainCard(planner.getPlannerNo());
+        model.addAttribute("card", card);
+
         return "mainplanner";
     }
 

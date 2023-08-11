@@ -14,4 +14,5 @@ public interface SpecificationRepository {
     List<Specification> findAll();
 
 
+
 }
