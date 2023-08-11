@@ -5,7 +5,8 @@
 */
 
 
-var card = document.getElementById("saveValue");
+var card = document. document.querySelector('#saveValue');
+var pk = card.getAttribute("th:value");
 console.log(card);
 (function($) {
 

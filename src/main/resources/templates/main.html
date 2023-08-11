@@ -77,7 +77,7 @@
                                         </strong>
                                     </a>
                                     <p class="planner" >
-                                        <a id="saveValue" class="info" href="main.html" th:text="${ card.specificationNo }">
+                                        <a id="saveValue" class="info" href="main.html" th:value="${ card.specificationNo }">
                                             <img class="signature" src="/img/signature.png" alt="">
                                             &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
                                         </a>

@@ -45,6 +45,7 @@ public class PlannerService {
             return null;
     }
     public void join(Planner planner){
+        planner.setActive(true);
         plannerRepository.save(planner);
     }
     private Planner parseObj(String json){
