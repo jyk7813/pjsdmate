@@ -15,7 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 @Controller
@@ -82,7 +85,8 @@ public class PlannerController {
         return "redirect:./login?userstat=planner";
     }
     @GetMapping("/join")
-    public String join() {
+    public String join(Model model) {
+        model.addAttribute("planner", new Planner());
         return "planner_join";
     }
 
@@ -107,10 +111,23 @@ public class PlannerController {
         if (plannerService.isPhoneNoDuplicated(planner.getPhonenum())){
             result.rejectValue("phonenum", "Duplicated" , "이미 사용중인 전화번호 입니다.");
         }
-        String json = (String)model.getAttribute("planner");
+        if(result.hasErrors()){
+            return "planner_join";
+        }
 
-        plannerService.join(json);
-        return "login";
+        plannerService.join(planner);
+        return "redirect:/planner/login?userstat=planner";
+    }
+    @PostMapping("/idCheck")
+    @ResponseBody
+    public Map<String, String> checkid(@RequestBody Map<String, String> requestData) {
+        String id = requestData.get("id");
+        boolean isDuplicated = plannerService.isIdDuplicated(id);
+        if (isDuplicated) {
+            return Collections.singletonMap("result", "fail");
+        } else {
+            return Collections.singletonMap("result", "success");
+        }
     }
 }
 

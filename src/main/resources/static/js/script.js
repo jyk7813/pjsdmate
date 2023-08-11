@@ -28,7 +28,6 @@ $(document).ready(function () {
       } else if (currentPage == 7) {
         let data = JSON.stringify(question); // JSON 형식으로 변환
         console.log(data);
-
         $.ajax({
           url: "./saveq", // 클라이언트가 서버로 보낼 HTTP 요청의 URL 주소
           type: "POST", // HTTP 요청 방식(GET, POST)
@@ -59,7 +58,7 @@ function completeAndRedirect() {
   // 페이지 이동
   window.location.href = "/member/main";
 }
-console.log("좀 나가 시ㅣㅣㅣㅣㅣㅣㅣㅣㅣ");
+
 function navigateToPage(pageNumber) {
   // 컨테이너에 미리 로드된 HTML 삽입
   $("#container").html(pageContent['page' + pageNumber]);
