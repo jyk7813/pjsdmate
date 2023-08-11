@@ -1,5 +1,7 @@
 package kr.com.greenart.sdmate.pjsdmate.domain;
 
+import kr.com.greenart.sdmate.pjsdmate.annotation.AgeConstraint;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,8 @@ public class Planner {
     @Pattern(regexp = "^[가-힣]*$", message = "이름은 한글만 입력해주세요")
     private String name;
     @NotNull(message = "생일을 입력해 주세요")
+    //오늘 날짜 기준으로 만 19세 이상인지 확인해줘
+    @AgeConstraint
     private String identity_no;
     @NotNull(message = "사업자번호를 입력해주세요")
     @Pattern(regexp = "^\\d{3}-\\d{2}-\\d{5}$", message = "올바른 사업자번호 형식을 입력해주세요")

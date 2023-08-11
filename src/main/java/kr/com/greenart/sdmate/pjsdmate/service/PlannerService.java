@@ -7,10 +7,12 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
+@Transactional
 public class PlannerService {
 
     private final PlannerRepository plannerRepository;
@@ -42,11 +44,7 @@ public class PlannerService {
         }
             return null;
     }
-    public void join(String json){
-        Planner planner = parseObj(json);
-
-        planner.setActive(true);
-
+    public void join(Planner planner){
         plannerRepository.save(planner);
     }
     private Planner parseObj(String json){
