@@ -47,7 +47,7 @@ public class PlannerMainPageService {
             eachCard.setEstimate(requirement.getQ7Estimate());
             eachCard.setCity(requirement.getQ1City());
             eachCard.setGu(requirement.getQ1Gu());
-            Member member = memberRepository.findByRequirementPk((int)requirement.getRequirement_no());
+            Member member = memberRepository.findByRequirementPk((int)requirement.getRequirementNo());
             eachCard.setMemberPk(member.getMemberNo());
             eachCard.setMemberName(member.getName());
             String encoded = null;
