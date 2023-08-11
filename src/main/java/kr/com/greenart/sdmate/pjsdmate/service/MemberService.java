@@ -61,9 +61,11 @@ public class MemberService {
 //        memberRepository.save(member);
 //        // 아이디 중복 검사
 //    }
-    public void join(Member member){
-        memberRepository.save(member);
-    }
+public void join(Member member){
+
+    member.setActive(true);
+    memberRepository.save(member);
+}
 
 
     public String searchId(String name,String birth){
