@@ -53,20 +53,16 @@ public class PlannerMainPageService {
             Member member = memberRepository.findByRequirementPk((int)requirement.getRequirement_no());
             eachCard.setMemberPk(member.getMemberNo());
             eachCard.setMemberName(member.getName());
-            
             String encoded = null;
             try {
                 encoded = Base64.getEncoder().encodeToString(member.getImage());
-
             } catch (NullPointerException e) {
                 String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
                 Path path = Paths.get(imagePath);
                 byte[] imageBytes = Files.readAllBytes(path);
                 encoded = Base64.getEncoder().encodeToString(imageBytes);
-
             } finally {
                 eachCard.setMemberImg(encoded);
-
             }
             card.add(eachCard);
         }
