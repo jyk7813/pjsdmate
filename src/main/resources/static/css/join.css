@@ -54,12 +54,19 @@ br {
     font-weight: 400;
     letter-spacing: -0.7px;
     color: #727272;
+    width: 114px;
+    min-width: 114px;
+    text-align-last: justify;
+    position: relative;
+    padding-top : 5px;
+
 }
 
 .write {
     border: none;
     background-color: rgba(243, 245, 246, 1);
     border-radius: 10px;
+    width: 100%
 }
 
 
@@ -67,7 +74,7 @@ br {
     text-align: center;
 }
 
-.join_btn {
+.join_btn.member{
     background-color: rgba(242, 133, 133, 1);
     width: 180px;
     height: 60px;
@@ -84,7 +91,7 @@ br {
     margin-bottom: 50px;
 }
 
-.join_btn2 {
+.join_btn.planner {
     background-color:rgba(75, 166, 152, 1);
     width: 180px;
     height: 60px;
@@ -134,9 +141,10 @@ br {
 
 .line{
     display: flex;
-    justify-content: right;
+    justify-content: flex-start;
     width: 294px;
     height: 40px;
+    gap: 10px;
 }
 
 .error{
@@ -146,4 +154,7 @@ br {
     padding-bottom: 8px;
     font-family: Noto Sans;
 
+}
+.emptyline{
+    line-height: 10px;
 }

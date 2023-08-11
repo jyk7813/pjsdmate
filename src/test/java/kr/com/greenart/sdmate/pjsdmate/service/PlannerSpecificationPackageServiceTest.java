@@ -27,8 +27,7 @@ public class PlannerSpecificationPackageServiceTest {
     SpecificationRepository specificationRepository;
     @Autowired
     ReviewRepository reviewRepository;
-    @Autowired
-    RequirementRepository requirementRepository;
+
     @Autowired
     MemberRepository memberRepository;
 
@@ -104,7 +103,7 @@ public class PlannerSpecificationPackageServiceTest {
     }
 
     @Test
-    void 카드리턴받기() {
+    void 카드리턴받기() throws IOException {
         List<mainpageCard> card = mainPageService.returnMainCard(1);
         System.out.print("제발!!!!!!!!!!!!!!!!!!!" + card.size());
     }
