@@ -33,7 +33,7 @@ public class MainPageService {
     }
 
     public List<PlannerSpecificationPackage> getpackageByPk(int memberNo) {
-        return plannerSpecificationPackageRepository.findByMemberNo(1);
+        return plannerSpecificationPackageRepository.findByMemberNo(memberNo);
     }
     public List<mainpageCard> card = new ArrayList<>();
     public List<mainpageCard> returnMainCard(int memberNo) {

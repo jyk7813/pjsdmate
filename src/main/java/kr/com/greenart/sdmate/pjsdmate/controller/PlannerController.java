@@ -59,8 +59,6 @@ public class PlannerController {
                 }
                 session.setAttribute("planner", planner);
 
-                session.setAttribute("userPk", planner.getPlannerNo());
-
                 return "redirect:/planner/main";
 
             } else {
