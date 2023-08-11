@@ -7,6 +7,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -198,10 +199,9 @@ public class MemberController {
         return "login";
     }
     @PostMapping("/saveq")
-    public String RequiremnetSave(@RequestBody Requirement requirement, HttpSession session){
+    public ResponseEntity<String> RequiremnetSave(@RequestBody Requirement requirement, HttpSession session){
         Member member = (Member) session.getAttribute("member");
-        System.out.println(requirement+"날아옴");
         requirementService.insertRequirement(requirement,member.getMemberNo());
-        return "redirect:/member/main";
+        return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다.");
     }
 }

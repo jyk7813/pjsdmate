@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface SpringDateJpaMemberRequirementRepository extends JpaRepository<MemberRequirement,Integer>, MemberRequirementRepository {
+public interface SpringDateJpaMemberRequirementRepository extends JpaRepository<MemberRequirement, Integer>, MemberRequirementRepository {
+
 
     @Override
     MemberRequirement save(MemberRequirement memberRequirement);
