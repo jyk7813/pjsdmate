@@ -11,6 +11,10 @@ import kr.com.greenart.sdmate.pjsdmate.repository.SpringDataJpaRequirementReposi
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -31,22 +35,39 @@ public class PlannerMainPageService {
 
     public List<PlannermainpageCard> card = new ArrayList<>();
 
-    public List<PlannermainpageCard> returnPlannerMainCard(int plannerNo) {
+    public List<PlannermainpageCard> returnPlannerMainCard(int plannerNo) throws IOException {
         card = new ArrayList<>();
 
         Planner planner = plannerRepository.findByplannerNo(plannerNo).get();
         String region = planner.getRegion();
         List<Requirement> requirementList = requirementRepository.findByQ1CityOrderByQ1DateAsc(region);
+        //System.out.println(requirementList);
         for (Requirement requirement : requirementList) {
+            System.out.println("dasdfasdfsdf : " +requirement);
             PlannermainpageCard eachCard = new PlannermainpageCard();
             eachCard.setEstimate(requirement.getQ7Estimate());
             eachCard.setCity(requirement.getQ1City());
             eachCard.setGu(requirement.getQ1Gu());
+            // 여기까진돌아간다.
+            System.out.println("몇번이야!!" + requirement.getRequirement_no());
             Member member = memberRepository.findByRequirementPk((int)requirement.getRequirement_no());
             eachCard.setMemberPk(member.getMemberNo());
             eachCard.setMemberName(member.getName());
-            String encoded = Base64.getEncoder().encodeToString(member.getImage());
-            eachCard.setMemberImg(encoded);
+            
+            String encoded = null;
+            try {
+                encoded = Base64.getEncoder().encodeToString(member.getImage());
+
+            } catch (NullPointerException e) {
+                String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
+                Path path = Paths.get(imagePath);
+                byte[] imageBytes = Files.readAllBytes(path);
+                encoded = Base64.getEncoder().encodeToString(imageBytes);
+
+            } finally {
+                eachCard.setMemberImg(encoded);
+
+            }
             card.add(eachCard);
         }
         return card;

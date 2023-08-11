@@ -31,8 +31,9 @@ public class PlannerController {
     }
 
     @GetMapping("/main")
-    public String mainplanner(Model model, HttpSession session) {
+    public String mainplanner(Model model, HttpSession session) throws IOException {
         Planner planner = (Planner) session.getAttribute("planner");
+        System.out.println("플래너 pk : " + planner.getPlannerNo());
         List<PlannermainpageCard> card = plannerMainPageService.returnPlannerMainCard(planner.getPlannerNo());
         model.addAttribute("card", card);
 
