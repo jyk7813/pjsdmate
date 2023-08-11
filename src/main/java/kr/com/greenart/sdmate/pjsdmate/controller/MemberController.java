@@ -38,8 +38,9 @@ public class MemberController {
     @GetMapping("/main")
     public String goMain(Model model,HttpSession session) {
         Member member = (Member) session.getAttribute("member");
-        System.out.println(member);
+        System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
+        System.out.println(card);
 
 
         model.addAttribute("card", card);
