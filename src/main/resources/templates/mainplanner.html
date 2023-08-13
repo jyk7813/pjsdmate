@@ -90,10 +90,10 @@
 				<div class="content">
 					<ul id="card" class="statistics">
 						<li th:each="card : ${card}" class="style" >
-							<a href="main.html">
+							<a th:href="@{/viewRequirement(requirement=${ card.getRequirementPk()})}">
 								<div class="reqCard">
 									<strong>
-										요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.estimate}"></span>&nbsp;원
+										요청 견적금액&nbsp;&nbsp;&nbsp;<span  th:text="${card.estimate}"></span>&nbsp;원
 										<img class="poligon" src="/img/Polygon 10.png" alt="" >
 									</strong>
 								</div>

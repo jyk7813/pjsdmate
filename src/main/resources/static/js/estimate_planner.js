@@ -1,10 +1,10 @@
-fetch("./plannerInfo.html")
+fetch("/plannerInfo.html")
     .then((resp) => resp.text())
     .then((body) => {
         let container = document.getElementById("plannerInfo");
         container.insertAdjacentHTML("afterbegin", body);
     });
-fetch("./except.html")
+fetch("/except")
     .then((resp) => resp.text())
     .then((body) => {
         let container = document.getElementById("except");

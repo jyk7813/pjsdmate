@@ -131,6 +131,11 @@ public class PlannerController {
             return Collections.singletonMap("result", "success");
         }
     }
+    @GetMapping("/plannerInfo")
+    public  String viewPlanner(){
+     return "plannerInfo";
+    }
+
 }
 
 

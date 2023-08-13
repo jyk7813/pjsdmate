@@ -1,6 +1,7 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -14,5 +15,14 @@ public class RequirementController {
         // requirementService.insertRequirement(requirement);
 
         return "redirect:/main";
+    }
+
+    @GetMapping("/viewRequirement")
+    public String viewRequirement(){
+            return "estimate_planner";
+    }
+    @GetMapping("/except")
+    public String except(){
+        return "except";
     }
 }
