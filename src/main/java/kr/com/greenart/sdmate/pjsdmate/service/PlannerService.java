@@ -89,4 +89,21 @@ public class PlannerService {
         }
         return false;
     }
+
+    public Planner getPlannerByEmail(String email) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByEmail(email);
+        Planner planner = null;
+        if(optionalPlanner.isPresent()){
+            planner = optionalPlanner.get();
+        }
+        return planner;
+    }
+    public Planner getPlannerByUsername(String username) {
+        Optional<Planner> optionalPlanner = plannerRepository.findById(username);
+        Planner planner = null;
+        if(optionalPlanner.isPresent()){
+            planner = optionalPlanner.get();
+        }
+        return planner;
+    }
 }

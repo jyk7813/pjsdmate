@@ -1,0 +1,127 @@
+.Line10 {
+    width: 100%;
+    height: 0px;
+    left: 0px; 
+    top: 78px; 
+    position: absolute; 
+    border: 0.50px #D9D9D9 solid;
+}
+.ArrowRight1 {
+    
+    width: 28px; 
+    height: 28px; 
+    left: 20px; 
+    top: 30px; 
+    position: absolute; 
+    
+    transform-origin: 0 0;
+    
+}
+.Title{
+    left: 166px; 
+    top: 34px;
+    position: absolute; 
+    color: #343837; font-size: 
+    18px; font-family: Noto Sans; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-weight: 700; text-transform: lowercase; 
+    word-wrap: break-word
+}
+.Group91 {
+    width: 230px; 
+    height: 130px; 
+    left: 50%; 
+    transform : translate(-50%, 0);
+    top: 401px; 
+    position: absolute;
+}
+.Group89 {
+    width: 230px; 
+    height: 40px; 
+    left: 0px; 
+    top: 90px; 
+    position: absolute;
+}
+.Textinput {
+    width: 180px; 
+    height: 40px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute;
+}
+.input {
+    width: 180px; 
+    height: 40px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background: #F3F5F6; 
+    border-radius: 10px; 
+    border: 0.50px #D9D9D9 solid;
+}
+.Id {
+    left: 9px; 
+    top: 7px; 
+    position: absolute; 
+    text-align: center; 
+    color: #727272; 
+    font-size: 16px; 
+    font-family: Inter; 
+    font-weight: 400; 
+    text-transform: uppercase; 
+    line-height: 26px; 
+    word-wrap: break-word;
+}
+.Description{
+    left: 8px; 
+    top: 0px; 
+    position: absolute; 
+    text-align: center; 
+    color: black; 
+    font-size: 18px; 
+    font-family: Noto Sans; 
+    font-weight: 700; 
+    text-transform: lowercase; 
+    word-wrap: break-word;
+}
+.Okbtn {
+    width: 40px; 
+    height: 40px; 
+    left: 190px; 
+    top: 0px; 
+    position: absolute;
+}
+.OkbtnBackground.member {
+    width: 40px; 
+    height: 40px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background: #F28585; 
+    border-radius: 10px;
+
+}
+.OkbtnBackground.planner {
+    width: 40px; 
+    height: 40px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background: #4BA698; 
+    border-radius: 10px;
+
+}
+.OkbtnBackground {
+    left: 9px; 
+    top: 7px; 
+    position: absolute; 
+    text-align: center; 
+    color: white; 
+    font-size: 16px; 
+    font-family: Inter; 
+    font-weight: 400; 
+    text-transform: uppercase; 
+    line-height: 26px; 
+    word-wrap: break-word;
+}

@@ -205,4 +205,9 @@ public class MemberController {
         requirementService.insertRequirement(requirement,member.getMemberNo());
         return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다.");
     }
+    @GetMapping("/findpw")
+    public String findpw(){
+        return "findpwmember";
+    }
+
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="top" >
-  <div>
+  <div >
     <center>
     <span id="member">일반인 </span>
     <span>고객용</span><br/>
@@ -55,10 +55,12 @@
     </form>
 
     <div class="find">
-      <a href="#">아이디 / 비밀번호 찾기</a>
+      <a class="findId" href="/">아이디 </a>
+      <span>/</span>
+      <a class="findPw" href="findpw">비밀번호 찾기</a>
     </div>
     <div class="join">
-      <a href="join.html">회원가입</a>
+      <a class="join" href="join">회원가입</a>
     </div>
   </nav>
   
@@ -75,10 +77,33 @@
   var autologin = document.querySelector('.autologin');
   var loginbtn = document.querySelector('.loginbtn');
   var checkbox = document.querySelector('.checkbox');
+  var findId = document.querySelector('.findId');
+  var findPw = document.querySelector('.findPw');
+  var join = document.querySelector('.join');
   let whatuser = null;
 
 checkbox.addEventListener('change', function(){
   if(checkbox.checked){
+    checkPlanner();
+  }
+  else{
+    checkMember();
+  }
+});
+
+  window.addEventListener('DOMContentLoaded', function() {
+    let path = window.location.pathname;
+
+    if (path.includes('planner')) {
+      checkbox.checked = true;
+      checkPlanner();
+    } else if (path.includes('member')) {
+      checkbox.checked = false;
+      checkMember();
+    }
+  });
+
+  function checkPlanner(){
     whatuser =  'planner';
     member.innerHTML = '플래너';
     member.style.color = '#4BA698';
@@ -86,9 +111,13 @@ checkbox.addEventListener('change', function(){
     loginbtn.className = 'loginbtn planner';
     autologin.className = 'autologin planner';
     userstat.value = 'planner';
-
+    findId.href = '/planner/findid';
+    findPw.href = '/planner/findpw';
+    join.href = '/planner/join';
+    history.pushState({user: 'planner'}, '', '/planner/login');
   }
-  else{
+
+  function checkMember(){
     whatuser = 'member';
     member.innerHTML = '일반인';
     member.style.color = '#F28585';
@@ -96,41 +125,11 @@ checkbox.addEventListener('change', function(){
     loginbtn.className = 'loginbtn member';
     autologin.className = 'autologin member';
     userstat.value = 'member';
+    findId.href = '/member/findid';
+    findPw.href = '/member/findpw';
+    join.href = '/member/join';
+    history.pushState({user: 'member'}, '', '/member/login');
 
-  }
-});
-
-  function getURLParameter(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
-  }
-
-
-  var userstatParam = getURLParameter('userstat');
-
-
-  if (userstatParam) {
-    if (userstatParam === 'planner') {
-
-
-      checkbox.checked = true;
-      userstat.value="planner"
-      whatuser = 'planner';
-      member.innerHTML = '플래너';
-      member.style.color = '#4BA698';
-      logo.className = 'logo planner';
-      loginbtn.className = 'loginbtn planner';
-      autologin.className = 'autologin planner';
-    } else if (userstatParam === 'member') {
-
-      checkbox.checked = false;
-      userstat.value="member"
-      whatuser = 'member';
-      member.innerHTML = '일반인';
-      member.style.color = '#F28585';
-      logo.className = 'logo member';
-      loginbtn.className = 'loginbtn member';
-      autologin.className = 'autologin member';
-    }
   }
 </script>
 

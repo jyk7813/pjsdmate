@@ -138,6 +138,10 @@ public class PlannerController {
             return Collections.singletonMap("result", "success");
         }
     }
+    @GetMapping("/findpw")
+    public String findpw(){
+        return "findpwplanner";
+    }
 }
 
 
