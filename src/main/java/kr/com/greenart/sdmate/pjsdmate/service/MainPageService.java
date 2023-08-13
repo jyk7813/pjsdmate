@@ -58,8 +58,6 @@ public class MainPageService {
             eachCard.setDealCnt(planner.getDealCnt());
             eachCard.setRating(planner.getRating());
 
-//            String encoded = Base64.getEncoder().encodeToString(planner.getImage());
-//            eachCard.setPlannerImg(encoded);
             String encoded = null;
             try {
                 encoded = Base64.getEncoder().encodeToString(planner.getImage());

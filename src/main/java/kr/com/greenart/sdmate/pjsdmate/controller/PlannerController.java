@@ -35,6 +35,7 @@ public class PlannerController {
     @GetMapping("/viewMySpecification")
     public String mySpecification(Model model)
     {
+
         return "mySpecification";
     }
     @GetMapping("/main")
