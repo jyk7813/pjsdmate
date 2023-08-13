@@ -6,7 +6,8 @@ import java.util.Date;
 @Entity
 public class Requirement {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer requirement_no;
+    @Column(name="requirement_no")
+    private Integer requirementNo;
     @Column(name="q1_city")
     private String q1City;
     @Column(name="q1_gu")
@@ -49,7 +50,7 @@ public class Requirement {
     @Override
     public String toString() {
         return "Requirement{" +
-                "requirementNo=" + requirement_no +
+                "requirementNo=" + requirementNo +
                 ", q1City='" + q1City + '\'' +
                 ", q1Gu='" + q1Gu + '\'' +
                 ", q1_guestno='" + q1_guestno + '\'' +
@@ -65,13 +66,13 @@ public class Requirement {
                 ", q5_studio_photo='" + q5_studio_photo + '\'' +
                 ", q5_studio_video='" + q5_studio_video + '\'' +
                 ", q5_studio_makeup='" + q5_studio_makeup + '\'' +
-                ", q5_studio_bride_dress=" + q5_studio_bride_dress +
-                ", q5_studio_bride_hanbok=" + q5_studio_bride_hanbok +
-                ", q5_studio_bride_suit=" + q5_studio_bride_suit +
-                ", q5_studio_bride_self=" + q5_studio_bride_self +
-                ", q5_studio_groom_suit=" + q5_studio_groom_suit +
-                ", q5_studio_groom_hanbok=" + q5_studio_groom_hanbok +
-                ", q5_studio_groom_self=" + q5_studio_groom_self +
+                ", q5_studio_bride_dress='" + q5_studio_bride_dress + '\'' +
+                ", q5_studio_bride_hanbok='" + q5_studio_bride_hanbok + '\'' +
+                ", q5_studio_bride_suit='" + q5_studio_bride_suit + '\'' +
+                ", q5_studio_bride_self='" + q5_studio_bride_self + '\'' +
+                ", q5_studio_groom_suit='" + q5_studio_groom_suit + '\'' +
+                ", q5_studio_groom_hanbok='" + q5_studio_groom_hanbok + '\'' +
+                ", q5_studio_groom_self='" + q5_studio_groom_self + '\'' +
                 ", q6_snap_photo='" + q6_snap_photo + '\'' +
                 ", q6_snap_video='" + q6_snap_video + '\'' +
                 ", q6_snap_makeup='" + q6_snap_makeup + '\'' +
@@ -87,12 +88,12 @@ public class Requirement {
                 '}';
     }
 
-    public Integer getRequirement_no() {
-        return requirement_no;
+    public Integer getRequirementNo() {
+        return requirementNo;
     }
 
-    public void setRequirement_no(Integer requirement_no) {
-        this.requirement_no = requirement_no;
+    public void setRequirementNo(Integer requirementNo) {
+        this.requirementNo = requirementNo;
     }
 
     public String getQ1City() {

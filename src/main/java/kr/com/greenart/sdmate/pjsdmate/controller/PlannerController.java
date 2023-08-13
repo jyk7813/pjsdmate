@@ -32,7 +32,11 @@ public class PlannerController {
         this.plannerService = plannerService;
         this.plannerMainPageService = plannerMainPageService;
     }
-
+    @GetMapping("/viewMySpecification")
+    public String mySpecification(Model model)
+    {
+        return "mySpecification";
+    }
     @GetMapping("/main")
     public String mainplanner(Model model, HttpSession session) throws IOException {
         Planner planner = (Planner) session.getAttribute("planner");

@@ -69,21 +69,23 @@
                 <div class="spotlight">
                     <div class="content">
                         <ul id="card" class="statistics">
-                            <li th:each="card : ${card}" class="style">
+                            <li th:each="c : ${card}" class="style" >
                                 <div class="plannerinfo">
-                                    <a href="/viewSpecification">
+                                    <a id="linkToController" th:href="@{/viewSpecification(specification=${c.specificationNo})}">
                                         <strong>
-                                            견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.sum}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon%2010.png" alt="">
+                                            견적금액&nbsp;&nbsp;&nbsp;<span th:text="${c.sum}"></span>&nbsp;원<img class="strong image right" src="/img/Polygon%2010.png" alt="">
+                                            <input id="saveValue" type="hidden">
                                         </strong>
                                     </a>
                                     <p class="planner" >
-                                        <a id="saveValue" class="info" href="main.html" th:value="${ card.specificationNo }">
+                                        <a  class="info" href="main.html" >
+
                                             <img class="signature" src="/img/signature.png" alt="">
-                                            &nbsp;&nbsp;<span th:text="${card.rating}"></span>&nbsp;(<span th:text="${card.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${card.dealCnt}"></span>개
+                                            &nbsp;&nbsp;<span th:text="${c.rating}"></span>&nbsp;(<span th:text="${c.reviewCnt}"></span>개의 평점) / 최근거래 <span th:text="${c.dealCnt}"></span>개
                                         </a>
                                         <a class="profile" href="main.html">
-                                            <img class="profile" th:src="${'data:image/jpeg;base64,' + card.plannerImg}" alt="Planner Image">
-                                            <span th:text="${card.businessName}"></span>
+                                            <img class="profile" th:src="${'data:image/jpeg;base64,' + c.plannerImg}" alt="Planner Image">
+                                            <span th:text="${c.businessName}"></span>
                                         </a>
                                     </p>
                                 </div>

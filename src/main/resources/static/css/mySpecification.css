@@ -1,0 +1,182 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * {
+    font-family: "Noto Sans KR", sans-serif;
+}
+body {
+    /* border: 1px solid black; */
+}
+* {
+    /* 여기 잘해봐야함 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR";
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 34px;
+    margin-bottom: 19px;
+    position: relative;
+    text-align: center;
+}
+.title {
+    /* display: inline-flex; */
+    color: #343837;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.9px;
+    text-transform: lowercase;
+    margin: auto;
+}
+#back {
+    position: absolute;
+    margin: 0px;
+    left: 22px;
+}
+#lastline::after {
+    background-image: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
+    display: flex;
+    content: "";
+    width: 371px;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#bigBox {
+    min-width: 430px;
+    max-width: 430px;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 0px;
+}
+body {
+    height: auto;
+    margin: 0 auto;
+    font-family: "Noto Sans KR";
+}
+#main {
+    background-color: white;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+    padding-top: 10px;
+    padding-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.margindiv {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.button-back {
+    background-image: url(/img/icoBack.png);
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+#detailA {
+    margin-top: 20px;
+}
+
+.Margin10px {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.Margin20px {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#card {
+    width: 370px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+    flex-direction: column;
+
+    /* justify-content: center; */
+    align-items: center;
+}
+#cardMiddle {
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+#cardBtn {
+    text-align: left;
+    width: 350px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #f3f3f3;
+    color: #343837;
+
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.9px;
+    text-transform: lowercase;
+    border: none;
+}
+#price {
+    width: 350px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: #343837;
+
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.9px;
+    text-transform: lowercase;
+}
+#cardMiddle p {
+    color: #343837;
+    font-family: Noto Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+}
+#buttonBox {
+    position: relative;
+}
+#buttonImg {
+    position: absolute;
+    left: 333px;
+    right: 18px;
+
+    bottom: 28px;
+}

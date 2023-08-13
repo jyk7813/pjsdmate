@@ -5,9 +5,8 @@
 */
 
 
-var card = document. document.querySelector('#saveValue');
-var pk = card.getAttribute("th:value");
-console.log(card);
+/* var card = document. document.querySelector("#saveValue");*/
+
 (function($) {
 
 	var	$window = $(window),
@@ -127,3 +126,14 @@ console.log(card);
 })(jQuery);
 
 console.log(document.t)
+
+var requestController = document.getElementById("linkToController");
+
+requestController.addEventListener(onclick(link()));
+
+
+function link(){
+	let pk = document.getElementById("saveValue");
+
+		requestController.href="/viewSpecification?specification="+pk.value();
+}
