@@ -89,23 +89,38 @@
 			<div class="spotlight">
 				<div class="content">
 					<ul id="card" class="statistics">
-						<li th:each="card : ${plannercardList}" class="style" >
+						<li th:each="card : ${card}" class="style" >
 							<a href="main.html">
 								<div class="reqCard">
 									<strong>
-										요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.price}">135</span>&nbsp;원
+										요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.estimate}"></span>&nbsp;원
 										<img class="poligon" src="/img/Polygon 10.png" alt="" >
 									</strong>
 								</div>
 							</a>
 							<a class="profile" href="main.html">
-								<img class="profile" src="/img/p1.png" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p><span class="areainfo" th:text="${card.area}"></span>
+								<img class="profile" src="/img/p1.png" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p>
+								<span class="areainfo" th:text="${card.city}"></span><span class="areainfo" th:text="${card.gu}"></span>
 							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</section>
+<!--						<li th:each="card : ${plannercardList}" class="style" >-->
+<!--							<a href="main.html">-->
+<!--								<div class="reqCard">-->
+<!--									<strong>-->
+<!--										요청 견적금액&nbsp;&nbsp;&nbsp;<span th:text="${card.price}">135</span>&nbsp;원-->
+<!--										<img class="poligon" src="/img/Polygon 10.png" alt="" >-->
+<!--									</strong>-->
+<!--								</div>-->
+<!--							</a>-->
+<!--							<a class="profile" href="main.html">-->
+<!--								<img class="profile" src="/img/p1.png" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p><span class="areainfo" th:text="${card.area}"></span>-->
+<!--							</a>-->
+<!--						</li>-->
+
 
 		<!-- Menu -->
 		<div class="ham-con">

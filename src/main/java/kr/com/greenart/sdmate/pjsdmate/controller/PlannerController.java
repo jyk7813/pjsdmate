@@ -43,7 +43,7 @@ public class PlannerController {
         System.out.println("플래너 pk : " + planner.getPlannerNo());
         List<PlannermainpageCard> card = plannerMainPageService.returnPlannerMainCard(planner.getPlannerNo());
         model.addAttribute("card", card);
-
+        System.out.println(card);
         return "mainplanner";
     }
 
