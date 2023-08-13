@@ -1,15 +1,17 @@
 package kr.com.greenart.sdmate.pjsdmate.service;
 
+import kr.com.greenart.sdmate.pjsdmate.domain.PlannerSpecificationPackage;
 import kr.com.greenart.sdmate.pjsdmate.domain.Specification;
+import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.SpecificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class SpecificationService {
     private final SpecificationRepository specificationRepository;
+
+
 
     @Autowired
     public SpecificationService(SpecificationRepository specificationRepository) {
@@ -20,5 +22,7 @@ public class SpecificationService {
         Specification specification = specificationRepository.findBySpecificationNo(specificationNo).get();
         return specification;
     }
+
+
 
 }

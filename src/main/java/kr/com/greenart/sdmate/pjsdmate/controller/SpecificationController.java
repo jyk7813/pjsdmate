@@ -1,7 +1,9 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
+import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
 import kr.com.greenart.sdmate.pjsdmate.domain.Specification;
+import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
 import kr.com.greenart.sdmate.pjsdmate.service.SpecificationService;
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,12 @@ public class SpecificationController {
 
     private final SpecificationService specificationService;
     private final RequirementService requirementService;
-    public SpecificationController(SpecificationService specificationService, RequirementService requirementService) {
+
+    private final PlannerService plannerService;
+    public SpecificationController(SpecificationService specificationService, RequirementService requirementService, PlannerService plannerService) {
         this.specificationService = specificationService;
         this.requirementService = requirementService;
+        this.plannerService = plannerService;
     }
 
     @GetMapping("/viewSpecification")
@@ -25,8 +30,13 @@ public class SpecificationController {
     Specification objSpecification =  specificationService.getSpecificationByNo(Integer.parseInt(specification));
     int sum = objSpecification.calculateSumExceptSpecNoAndState();
     Requirement requirement = requirementService.getRequirementByNo(objSpecification.getRequirement_no());
+
+
+    Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
+
     System.out.println(requirement);
     model.addAttribute("sum",sum);
+    model.addAttribute("planner", planner);
     model.addAttribute("specification",objSpecification);
     model.addAttribute("requirement",requirement);
     return "estimate_member";

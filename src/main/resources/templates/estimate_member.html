@@ -9,6 +9,9 @@
     <body>
         <div id="title">
             <button id="back" class="button-back"></button>
+                    <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
+                    <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
+                    <input id="rating" type="hidden" th:value="${ planner.getRating()}">
             <span class="title"> 상세견적 및 플래너 정보 </span>
         </div>
         <hr />
@@ -163,4 +166,15 @@
         </div>
     </body>
     <script src="/js/estimate_member.js"></script>
+    <script th:inline="javascript">
+
+
+        var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';
+
+
+        var nameTag = document.getElementById("exceptTitle");
+
+
+        nameTag.innerText = member.name + " 님이 원하는 견적";
+    </script>
 </html>

@@ -2,9 +2,10 @@ package kr.com.greenart.sdmate.pjsdmate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.com.greenart.sdmate.pjsdmate.domain.Member;
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
+import kr.com.greenart.sdmate.pjsdmate.domain.PlannerSpecificationPackage;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerRepository;
+import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +19,13 @@ public class PlannerService {
     private final PlannerRepository plannerRepository;
     private final ObjectMapper objectMapper;
 
+    private final PlannerSpecificationPackageRepository plannerSpecificationPackageRepository;
+
     @Autowired
-    public PlannerService(PlannerRepository plannerRepository, ObjectMapper objectMapper) {
+    public PlannerService(PlannerRepository plannerRepository, ObjectMapper objectMapper, PlannerSpecificationPackageRepository plannerSpecificationPackageRepository) {
         this.plannerRepository = plannerRepository;
         this.objectMapper = objectMapper;
+        this.plannerSpecificationPackageRepository = plannerSpecificationPackageRepository;
     }
 
 
@@ -88,5 +92,14 @@ public class PlannerService {
             return true;
         }
         return false;
+    }
+
+    public Planner findBySepcificationInPackage(int specificationNo){
+        Integer plannerPk = plannerSpecificationPackageRepository.findBySpecificationNo(specificationNo).getPlannerNo();
+        if(plannerRepository.findByplannerNo(plannerPk).isPresent()){
+            Planner planner = plannerRepository.findByplannerNo(plannerPk).get();
+                return planner;
+        };
+        return null;
     }
 }
