@@ -12,7 +12,7 @@ public interface MemberRepository {
 
     Optional<Member>findById(String id);
 
-    Optional<Member> findBymemberNo(Integer memberNo);
+    Optional<Member> findByMemberNo(Integer memberNo);
 
     Optional<Member> findByPhonenum(String phonenum);
 

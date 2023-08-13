@@ -14,21 +14,21 @@
         
         <div id="bigBox">
             <div id="main">
-                <div id="card">
+                <div id="card" th:each="card : ${cardList}">
                     <div id="buttonBox">
-                        <button id="cardBtn" class="Margin10px">&nbsp;&nbsp;요청 견적금액 8500000원</button>
-                        <img id="buttonImg" src="/img/Polygon10.png">
+                        <button id="cardBtn" class="Margin10px" th:text="'요청 견적금액 ' + ${card.requirementPrice}"></button>
+                        <img id="buttonImg" src="/img/Polygon10.png" >
                     </div>
                     <div id="cardMiddle">
-                        <img id="image" src="/img/Ellipse%2013.png">
+                        <img id="memberImage" th:src="${'data:image/jpeg;base64,' + card.memberImg}">
                         <p>&nbsp;</p>
-                        <p id="Name">김민성 고객님</p>
+                        <p id="Name" th:text="${card.memberName}">&nbsp;고객님</p>
                         <p>&nbsp;/&nbsp;</p>
-                        <p id="City">부산광역시</p>
+                        <p id="City" th:text="${card.city}"></p>
                         <p>&nbsp;</p>
-                        <p id="Gu">서구</p>
+                        <p id="Gu" th:text="${card.gu}"></p>
                     </div>
-                    <p id="price">5000000원</p>
+                    <p id="price" th:text="${card.specificationPrice}">원</p>
                 </div>
             </div>
         </div>

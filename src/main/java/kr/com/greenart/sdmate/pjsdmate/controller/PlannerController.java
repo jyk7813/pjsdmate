@@ -1,7 +1,9 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
+import kr.com.greenart.sdmate.pjsdmate.domain.MySpecification;
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.domain.PlannermainpageCard;
+import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerMainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import org.springframework.stereotype.Controller;
@@ -28,14 +30,18 @@ public class PlannerController {
     private final PlannerService plannerService;
     private final PlannerMainPageService plannerMainPageService;
 
-    public PlannerController(PlannerService plannerService, PlannerMainPageService plannerMainPageService) {
+    private final MySpecificationService mySpecificationService;
+
+    public PlannerController(PlannerService plannerService, PlannerMainPageService plannerMainPageService, MySpecificationService mySpecificationService) {
         this.plannerService = plannerService;
         this.plannerMainPageService = plannerMainPageService;
+        this.mySpecificationService = mySpecificationService;
     }
     @GetMapping("/viewMySpecification")
-    public String mySpecification(Model model)
-    {
-
+    public String mySpecification(Model model) throws IOException {
+        List<MySpecification> cardList;
+        cardList = mySpecificationService.returnMySpeList(1);
+        model.addAttribute("cardList", cardList);
         return "mySpecification";
     }
     @GetMapping("/main")

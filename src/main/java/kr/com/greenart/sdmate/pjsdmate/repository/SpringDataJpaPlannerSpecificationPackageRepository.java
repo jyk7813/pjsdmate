@@ -9,4 +9,7 @@ public interface SpringDataJpaPlannerSpecificationPackageRepository
     extends JpaRepository<PlannerSpecificationPackage, Integer>, PlannerSpecificationPackageRepository {
     @Override
     List<PlannerSpecificationPackage> findByMemberNo(int memberNo);
+
+    @Override
+    List<PlannerSpecificationPackage> findByPlannerNo(int plannerNo);
 }

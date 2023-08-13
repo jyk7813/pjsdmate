@@ -31,7 +31,7 @@ public class MemberService {
         this.objectMapper = objectMapper;
     }
     public Member getMemberByPK(int member_no){
-        Member member = memberRepository.findBymemberNo(member_no).get();
+        Member member = memberRepository.findByMemberNo(member_no).get();
 
         return member;
     }

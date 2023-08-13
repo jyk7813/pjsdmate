@@ -7,4 +7,7 @@ import java.util.List;
 public interface PlannerSpecificationPackageRepository {
 
     List<PlannerSpecificationPackage> findByMemberNo(int memberNo);
+
+    List<PlannerSpecificationPackage> findByPlannerNo(int plannerNo);
+
 }
