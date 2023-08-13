@@ -142,6 +142,10 @@ public class PlannerController {
     public String findpw(){
         return "findpwplanner";
     }
+    @GetMapping("/findid")
+    public String findid(){
+        return "findidplanner";
+    }
 }
 
 

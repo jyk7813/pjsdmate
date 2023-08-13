@@ -209,5 +209,9 @@ public class MemberController {
     public String findpw(){
         return "findpwmember";
     }
+    @GetMapping("/findid")
+    public String findid(){
+        return "findidmember";
+    }
 
 }
