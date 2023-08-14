@@ -49,6 +49,11 @@ public class SpecificationController {
     public String plannerInfo(){
     return "plannerInfo";
     }
+    @GetMapping("/userInfo")
+    public  String viewUser(){
+        return "userInfo";
+    }
+
 
     @GetMapping("/viewMySpecification")
     public String Myspecification(@RequestParam String specificationNo, String requirementNo, Model model){
