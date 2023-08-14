@@ -17,6 +17,7 @@ fetch("/plannerInfo")
 
     });
 
+
 let showAButton = document.getElementById("showA");
 let aaDiv = document.getElementById("A");
 showAButton.addEventListener("click", function () {
