@@ -11,6 +11,7 @@ public class MySpecification {
     private String city;
     private String gu;
 
+    private int specificationNo;
     private int specificationPrice;
 
     @Override
@@ -18,9 +19,11 @@ public class MySpecification {
         return "MySpecification{" +
                 "requirementPk=" + requirementPk +
                 ", requirementPrice=" + requirementPrice +
+                ", memberImg='" + memberImg + '\'' +
                 ", memberName='" + memberName + '\'' +
                 ", city='" + city + '\'' +
                 ", gu='" + gu + '\'' +
+                ", specificationNo=" + specificationNo +
                 ", specificationPrice=" + specificationPrice +
                 '}';
     }
@@ -71,6 +74,14 @@ public class MySpecification {
 
     public void setGu(String gu) {
         this.gu = gu;
+    }
+
+    public int getSpecificationNo() {
+        return specificationNo;
+    }
+
+    public void setSpecificationNo(int specificationNo) {
+        this.specificationNo = specificationNo;
     }
 
     public int getSpecificationPrice() {
