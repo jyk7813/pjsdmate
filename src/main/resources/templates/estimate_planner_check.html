@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<<html xmlns:th="http://www.thymeleaf.org">>
     <head>
         <meta charset="utf-8" />
         <title>견적 리스트 보기</title>
@@ -17,7 +17,7 @@
             <div id="exceptMoney">
                 <p>500만원 ~ 1,000만원</p>
             </div>
-            <p id="lastline"></p>
+            <p class="lastline"></p>
 
             <div id="detailA">
                 <div class="margindiv">
@@ -134,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <p id="lastline"></p>
+            <p class="lastline"></p>
             <div id="estimateSum" class="Margin20px">
                 <p>
                     총 예상 견적
@@ -143,7 +143,7 @@
                     0원
                 </p>
             </div>
-            <p id="lastline"></p>
+            <p class="lastline"></p>
 
             <div id="footDiv" class="margindiv row">
                 <button class ="Stage" id="Consultation_reservation">상담예약</button>
@@ -157,4 +157,4 @@
         </div>
     </body>
     <script src="/js/estimate_planner_check.js"></script>
-</html>
+</>

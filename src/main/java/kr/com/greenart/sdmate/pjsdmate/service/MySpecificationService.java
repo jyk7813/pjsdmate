@@ -79,7 +79,7 @@ public class MySpecificationService {
             Requirement requirement = requirementRepository.findByRequirementNo(requirementNo).get();
             eachCard.setSpecificationNo(plannerSpecificationPackage.getSpecificationNo());
             eachCard.setRequirementPk(requirement.getRequirementNo());
-            eachCard.setRequirementPrice(returnString(requirement.getQ7Estimate()));
+            eachCard.setRequirementPrice(requirement.getQ7Estimate());
             String encoded = null;
             try {
                 encoded = Base64.getEncoder().encodeToString(member.getImage());
