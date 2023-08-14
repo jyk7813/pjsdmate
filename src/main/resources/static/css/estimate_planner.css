@@ -73,8 +73,9 @@ body {
     margin: auto;
 }
 #back {
+    background-image: url("/img/icoBack.png");
+    margin-right: 350px;
     position: absolute;
-    margin: 0px;
   
    
 }

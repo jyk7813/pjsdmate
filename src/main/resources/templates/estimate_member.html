@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="title">
-            <button id="back" class="button-back"></button>
+            <button id="back" onclick="history.go(-1)" class="button-back" ></button>
                     <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
                     <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
                     <input id="rating" type="hidden" th:value="${ planner.getRating()}">
