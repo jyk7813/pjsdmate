@@ -32,7 +32,7 @@ public class RequirementService {
 
 
     public Requirement getRequirementByNo(int requirementNo) {
-        Requirement requirement = requirementRepository.findByrequirementNo(requirementNo).get();
+        Requirement requirement = requirementRepository.findByRequirementNo(requirementNo).get();
         return requirement;
     }
 

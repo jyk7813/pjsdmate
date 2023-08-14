@@ -5,11 +5,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"charset="utf-8"></script>
 
 </head>
 <body>
   <header class="top" >
-  <div>
+  <div >
     <center>
     <span id="member">일반인 </span>
     <span>고객용</span><br/>
@@ -42,7 +43,7 @@
         <input type="button" class="kakaoimg" >
       </span>
       <span class="naverlogin">
-        <input type="button" class="naverimg" >
+        <input type="button" class="naverimg" id="naverIdLogin_loginButton">
       </span>
       <span class="google">
         <input type="button" class="googleimg">
@@ -54,10 +55,12 @@
     </form>
 
     <div class="find">
-      <a href="#">아이디 / 비밀번호 찾기</a>
+      <a class="findId" href="findid">아이디 </a>
+      <span>/</span>
+      <a class="findPw" href="findpw">비밀번호 찾기</a>
     </div>
     <div class="join">
-      <a href="./join">회원가입</a>
+      <a class="join" href="join">회원가입</a>
     </div>
   </nav>
   
@@ -74,10 +77,33 @@
   var autologin = document.querySelector('.autologin');
   var loginbtn = document.querySelector('.loginbtn');
   var checkbox = document.querySelector('.checkbox');
+  var findId = document.querySelector('.findId');
+  var findPw = document.querySelector('.findPw');
+  var join = document.querySelector('.join');
   let whatuser = null;
 
 checkbox.addEventListener('change', function(){
   if(checkbox.checked){
+    checkPlanner();
+  }
+  else{
+    checkMember();
+  }
+});
+
+  window.addEventListener('DOMContentLoaded', function() {
+    let path = window.location.pathname;
+
+    if (path.includes('planner')) {
+      checkbox.checked = true;
+      checkPlanner();
+    } else if (path.includes('member')) {
+      checkbox.checked = false;
+      checkMember();
+    }
+  });
+
+  function checkPlanner(){
     whatuser =  'planner';
     member.innerHTML = '플래너';
     member.style.color = '#4BA698';
@@ -85,9 +111,13 @@ checkbox.addEventListener('change', function(){
     loginbtn.className = 'loginbtn planner';
     autologin.className = 'autologin planner';
     userstat.value = 'planner';
-
+    findId.href = '/planner/findid';
+    findPw.href = '/planner/findpw';
+    join.href = '/planner/join';
+    history.pushState({user: 'planner'}, '', '/planner/login');
   }
-  else{
+
+  function checkMember(){
     whatuser = 'member';
     member.innerHTML = '일반인';
     member.style.color = '#F28585';
@@ -95,41 +125,65 @@ checkbox.addEventListener('change', function(){
     loginbtn.className = 'loginbtn member';
     autologin.className = 'autologin member';
     userstat.value = 'member';
+    findId.href = '/member/findid';
+    findPw.href = '/member/findpw';
+    join.href = '/member/join';
+    history.pushState({user: 'member'}, '', '/member/login');
 
   }
-});
+</script>
 
-  function getURLParameter(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+<!--네아로테스트-->
+
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+
+<script>
+
+  var naverLogin = new naver.LoginWithNaverId(
+          {
+            clientId: "jWuCzV5R1Ree_x5LJ_Aw", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+            callbackUrl: "http://localhost:8080/", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+            isPopup: false,
+            callbackHandle: true
+          }
+  );
+
+  naverLogin.init();
+
+  window.addEventListener('load', function () {
+    naverLogin.getLoginStatus(function (status) {
+      if (status) {
+        var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
+
+        console.log(naverLogin.user);
+
+        if( email == undefined || email == null) {
+          alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+          naverLogin.reprompt();
+          return;
+        }
+      } else {
+        console.log("callback 처리에 실패하였습니다.");
+      }
+    });
+  });
+
+
+  var testPopUp;
+  function openPopUp() {
+    testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+  }
+  function closePopUp(){
+    testPopUp.close();
   }
 
+  function naverLogout() {
+    openPopUp();
+    setTimeout(function() {
+      closePopUp();
+    }, 1000);
 
-  var userstatParam = getURLParameter('userstat');
 
-
-  if (userstatParam) {
-    if (userstatParam === 'planner') {
-
-
-      checkbox.checked = true;
-      userstat.value="planner"
-      whatuser = 'planner';
-      member.innerHTML = '플래너';
-      member.style.color = '#4BA698';
-      logo.className = 'logo planner';
-      loginbtn.className = 'loginbtn planner';
-      autologin.className = 'autologin planner';
-    } else if (userstatParam === 'member') {
-
-      checkbox.checked = false;
-      userstat.value="member"
-      whatuser = 'member';
-      member.innerHTML = '일반인';
-      member.style.color = '#F28585';
-      logo.className = 'logo member';
-      loginbtn.className = 'loginbtn member';
-      autologin.className = 'autologin member';
-    }
   }
 </script>
 </html>

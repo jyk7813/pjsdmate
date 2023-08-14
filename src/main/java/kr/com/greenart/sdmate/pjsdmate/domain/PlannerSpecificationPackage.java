@@ -11,8 +11,11 @@ public class PlannerSpecificationPackage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer no;
+    @Column(name = "planner_no")
     private int plannerNo;
+    @Column(name = "specification_no")
     private int specificationNo;
+    @Column(name = "member_no")
     private int memberNo;
     private Date datetime;
 

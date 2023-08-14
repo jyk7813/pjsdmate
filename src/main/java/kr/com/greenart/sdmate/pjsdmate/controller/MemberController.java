@@ -46,8 +46,9 @@ public class MemberController {
     public String goMain(Model model,HttpSession session) throws IOException {
         System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
-        System.out.println(member);
+        System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
+        System.out.println(card);
 
 
         model.addAttribute("card", card);
@@ -205,4 +206,13 @@ public class MemberController {
         requirementService.insertRequirement(requirement,member.getMemberNo());
         return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다.");
     }
+    @GetMapping("/findpw")
+    public String findpw(){
+        return "findpwmember";
+    }
+    @GetMapping("/findid")
+    public String findid(){
+        return "findidmember";
+    }
+
 }

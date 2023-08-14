@@ -9,10 +9,10 @@ import java.util.Optional;
 
 
 @Repository
-public interface SpringDataJpaRequirementRepository extends JpaRepository<Requirement, Integer> {
+public interface SpringDataJpaRequirementRepository extends JpaRepository<Requirement, Integer>, RequirementRepository{
     Requirement save(Requirement requirement);
 
-    Optional<Requirement> findByrequirementNo(Integer requirementNo);
+    Optional<Requirement> findByRequirementNo(Integer requirementNo);
 //
     List<Requirement> findByQ1CityOrderByQ1DateAsc(String q1City);
 }
