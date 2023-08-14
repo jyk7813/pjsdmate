@@ -2,9 +2,11 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
+import kr.com.greenart.sdmate.pjsdmate.domain.SendRequirement;
 import kr.com.greenart.sdmate.pjsdmate.domain.Specification;
 import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
+import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
 import kr.com.greenart.sdmate.pjsdmate.service.SpecificationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SpecificationController {
 
     private final SpecificationService specificationService;
-    private final MySpecificationService.RequirementService requirementService;
+    private final RequirementService requirementService;
 
     private final PlannerService plannerService;
-    public SpecificationController(SpecificationService specificationService, MySpecificationService.RequirementService requirementService, PlannerService plannerService) {
+    public SpecificationController(SpecificationService specificationService, RequirementService requirementService, PlannerService plannerService) {
         this.specificationService = specificationService;
         this.requirementService = requirementService;
         this.plannerService = plannerService;
@@ -31,6 +33,7 @@ public class SpecificationController {
     int sum = objSpecification.calculateSumExceptSpecNoAndState();
     Requirement requirement = requirementService.getRequirementByNo(objSpecification.getRequirement_no());
 
+    SendRequirement sendRequirement = requirementService.setttingRequirement(requirement);
 
     Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
 
@@ -38,7 +41,7 @@ public class SpecificationController {
     model.addAttribute("sum",sum);
     model.addAttribute("planner", planner);
     model.addAttribute("specification",objSpecification);
-    model.addAttribute("requirement",requirement);
+    model.addAttribute("requirement",sendRequirement);
     return "estimate_member";
     }
     @GetMapping("/plannerInfo")

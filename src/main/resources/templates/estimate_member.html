@@ -19,7 +19,7 @@
             <div id="plannerInfo"></div>
             <div id="exceptTitle">김민성 고객님이 원하는 견적</div>
             <div id="exceptMoney">
-                <p th:text="${ requirement.q7Estimate  }">원</p>
+                <p th:text="${ requirement.q7Estimate  }+'원'"></p>
             </div>
             <p class="lastline"></p>
 
@@ -29,7 +29,7 @@
                         <button id="showA" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">예식장 & 뷔페 예상견적</p>
-                            <p class="price" th:text="${ specification.weddinghall }">원</p>
+                            <p class="price" th:text="${ specification.weddinghall }+'원'"></p>
                         </div>
                     </div>
                     <div id="A" class="invi">
@@ -112,6 +112,8 @@
                             <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q5_studio_video }"></p>
                         </div>
                         <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q5_studio_makeup }"></p>
+                        <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ5_bride_cloth()}"></p>
+                        <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ5_groom_cloth()}"></p>
                     </div>
                 </div>
             </div>
@@ -133,15 +135,12 @@
                             <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q6_snap_makeup }"></p>
                             <p class="detailB Margin10px" th:text="'장소:'+ ${  requirement.q6_snap_place }"></p>
                         </div>
-                        <p class="detailC Margin10px">신부의상:드레스,한복,직접준비</p>
-                        <p class="detailC Margin10px">신랑의상:직접준비</p>
+                        <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ6_snap_bride_cloth()}"></p>
+                        <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ6_snap_groom_cloth()}"></p>
                     </div>
                 </div>
             </div>
-            <div>
-                <p class="questionTitle">고용비</p>
-                <p class="price" th:text="${ specification.hirecost }+'원'" >원</p>
-            </div>
+
             <p class="lastline"></p>
             <div id="estimateSum" class="Margin20px">
                 <p>
