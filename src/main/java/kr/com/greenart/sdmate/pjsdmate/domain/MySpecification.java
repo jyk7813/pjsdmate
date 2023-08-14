@@ -3,7 +3,7 @@ package kr.com.greenart.sdmate.pjsdmate.domain;
 public class MySpecification {
     private int requirementPk;
 
-    private int requirementPrice;
+    private String requirementPrice;
 
     private String memberImg;
     private String memberName;
@@ -11,16 +11,19 @@ public class MySpecification {
     private String city;
     private String gu;
 
+    private int specificationNo;
     private int specificationPrice;
 
     @Override
     public String toString() {
         return "MySpecification{" +
                 "requirementPk=" + requirementPk +
-                ", requirementPrice=" + requirementPrice +
+                ", requirementPrice='" + requirementPrice + '\'' +
+                ", memberImg='" + memberImg + '\'' +
                 ", memberName='" + memberName + '\'' +
                 ", city='" + city + '\'' +
                 ", gu='" + gu + '\'' +
+                ", specificationNo=" + specificationNo +
                 ", specificationPrice=" + specificationPrice +
                 '}';
     }
@@ -33,11 +36,11 @@ public class MySpecification {
         this.requirementPk = requirementPk;
     }
 
-    public int getRequirementPrice() {
+    public String getRequirementPrice() {
         return requirementPrice;
     }
 
-    public void setRequirementPrice(int requirementPrice) {
+    public void setRequirementPrice(String requirementPrice) {
         this.requirementPrice = requirementPrice;
     }
 
@@ -71,6 +74,14 @@ public class MySpecification {
 
     public void setGu(String gu) {
         this.gu = gu;
+    }
+
+    public int getSpecificationNo() {
+        return specificationNo;
+    }
+
+    public void setSpecificationNo(int specificationNo) {
+        this.specificationNo = specificationNo;
     }
 
     public int getSpecificationPrice() {

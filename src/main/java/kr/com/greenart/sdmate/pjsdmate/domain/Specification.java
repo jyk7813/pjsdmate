@@ -37,7 +37,7 @@ public class Specification {
     }
 
     @Override
-    public String toString() {
+    public String  toString() {
         return "Specification{" +
                 "specificationNo=" + specificationNo +
                 ", weddinghall=" + weddinghall +

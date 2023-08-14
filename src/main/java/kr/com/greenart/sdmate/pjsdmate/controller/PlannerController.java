@@ -49,6 +49,7 @@ public class PlannerController {
         Planner planner = (Planner) session.getAttribute("planner");
         System.out.println("플래너 pk : " + planner.getPlannerNo());
         List<PlannermainpageCard> card = plannerMainPageService.returnPlannerMainCard(planner.getPlannerNo());
+        System.out.println("requirmentPk:"+card.get(0).getRequirementPk());
         model.addAttribute("card", card);
         System.out.println(card);
         return "mainplanner";

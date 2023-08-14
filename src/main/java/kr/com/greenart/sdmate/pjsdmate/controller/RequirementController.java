@@ -19,7 +19,9 @@ public class RequirementController {
 
     @GetMapping("/viewRequirement")
     public String viewRequirement(){
-            return "estimate_planner";
+
+
+        return "estimate_planner";
     }
     @GetMapping("/except")
     public String except(){

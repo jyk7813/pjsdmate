@@ -4,7 +4,7 @@ fetch("/userInfo")
         let container = document.getElementById("userInfo");
         container.insertAdjacentHTML("afterbegin", body);
     });
-
+let specification = {};
 let showAButton = document.getElementById("showA");
 let aaDiv = document.getElementById("A");
 showAButton.addEventListener("click", function () {
@@ -40,14 +40,25 @@ let ffDiv = document.getElementById("F");
 showFButton.addEventListener("click", function () {
     ffDiv.classList.toggle("visible");
 });
+function CreateObj(value,ValueName) {
+        let inputValue = value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+        let num = parseInt(inputValue);
+        if (!(Object.is(num, NaN))) {
+           specification.ValueName = num;
+        }
+    }
+
+
+
 // 견적 보내기
+
 let sendReq = document.getElementById("sendRequest");
 sendReq.addEventListener("click",function(){
-    const inputElements = document.getElementsByClassName('price');
-    for (const inputElement of inputElements) {
-        console.log(inputElement.value);
-    }
+
+
 });
+
+
 
 
 function validateNumberInput(event){
@@ -59,27 +70,37 @@ function validateNumberInput(event){
     }
 
         inputElement.value = formattedValue;
-    
+
 
     setTimeout(checkSum,1000);
-  
+
 }
 
 
 
-function checkSum(){
+function checkSum() {
     let inputElements = document.getElementsByClassName('price');
     let total = document.getElementById("sum");
-    var sum =0;
+    var sum = 0;
     for (const inputElement of inputElements) {
         let inputValue = inputElement.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
         let num = parseInt(inputValue);
-        if(!(Object.is(num,NaN))){
-            sum = sum+num;
+        if (!(Object.is(num, NaN))) {
+            sum = sum + num;
         }
     }
-        
-    let formattedValue = sum.toLocaleString(); 
-    total.innerText= formattedValue+ " 원";
-}
 
+    let formattedValue = sum.toLocaleString();
+    total.innerText = formattedValue + " 원";
+
+
+    /*        $(sendRequest).on("click", function () {*/
+
+    // 버튼 클릭 시 AJAX POST 요청 보내기
+
+
+
+    function link() {
+        window.location.href = "/planner/main";
+    }
+}
