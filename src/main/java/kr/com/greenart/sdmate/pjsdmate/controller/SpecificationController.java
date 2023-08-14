@@ -1,10 +1,6 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
-import kr.com.greenart.sdmate.pjsdmate.domain.Member;
-import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
-import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
-import kr.com.greenart.sdmate.pjsdmate.domain.SendRequirement;
-import kr.com.greenart.sdmate.pjsdmate.domain.Specification;
+import kr.com.greenart.sdmate.pjsdmate.domain.*;
 import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
@@ -29,7 +25,7 @@ public class SpecificationController {
     private final MySpecificationService mySpecificationService;
 
     private final PlannerService plannerService;
-    public SpecificationController(SpecificationService specificationService, MySpecificationService.RequirementService requirementService, MySpecificationService mySpecificationService, PlannerService plannerService) {
+    public SpecificationController(SpecificationService specificationService,RequirementService requirementService, MySpecificationService mySpecificationService, PlannerService plannerService) {
         this.specificationService = specificationService;
         this.requirementService = requirementService;
         this.mySpecificationService = mySpecificationService;
@@ -70,7 +66,10 @@ public class SpecificationController {
         Specification specification = mySpecificationService.returnSpecification(Integer.parseInt(specificationNo));
         Requirement requirement = mySpecificationService.returnRequirement(Integer.parseInt(requirementNo));
         Member member = mySpecificationService.returnMember(Integer.parseInt(requirementNo));
-
+        SendRequirement sendRequirement = new SendRequirement();
+        sendRequirement.setting(sendRequirement, requirement);
+        SendSpecification sendSpecification = new SendSpecification();
+        sendSpecification.setting(sendSpecification, specification);
         String encoded=null;
         try {
             encoded = Base64.getEncoder().encodeToString(member.getImage());
@@ -80,8 +79,8 @@ public class SpecificationController {
             byte[] imageBytes = Files.readAllBytes(path);
             encoded = Base64.getEncoder().encodeToString(imageBytes);
         }
-        model.addAttribute("specification", specification);
-        model.addAttribute("requirement", requirement);
+        model.addAttribute("specification", sendSpecification);
+        model.addAttribute("requirement", sendRequirement);
         model.addAttribute("member", member);
         model.addAttribute("encoded", encoded);
 

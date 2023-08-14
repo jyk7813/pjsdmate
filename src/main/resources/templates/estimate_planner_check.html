@@ -22,7 +22,7 @@
 
                                 <p id="userArea" th:text="${requirement.q1City + ' ' + requirement.q1Gu}"></p>
                             </div>
-                            <p id="lastline"></p>
+                            <p class="lastline"></p>
                         </div>
                     </section>
                 </div>
@@ -30,7 +30,7 @@
             </div>
             <div id="exceptTitle" th:text="${ member.name + ' 고객님이 원하는 견적' }"></div>
             <div id="exceptMoney">
-                <p th:text="requirement.q7Estimate + '만원'"></p>
+                <p th:text="${#numbers.formatDecimal(requirement.q7Estimate, 0, 'COMMA', 0, 'POINT') + '원'}"></p>
             </div>
             <p class="lastline"></p>
 
@@ -40,16 +40,16 @@
                         <button id="showA" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">예식장 & 뷔페 예상견적</p>
-                            <p class="price" id="wedding_hall_price">원</p>
+                            <p class="price" id="wedding_hall_price" th:text="${specification.weddinghall}"></p>
                         </div>
                     </div>
                     <div id="A" class="invi">
                         <div class="row">
-                            <p class="detailA Margin10px">부산광역시</p>
-                            <p class="detailA Margin10px">부산진구</p>
-                            <p class="detailA Margin10px">150명 이하</p>
+                            <p class="detailA Margin10px" th:text="${requirement.q1City}"></p>
+                            <p class="detailA Margin10px" th:text="${requirement.q1Gu}"></p>
+                            <p class="detailA Margin10px" th:text="${requirement.q1_guestno}"></p>
                         </div>
-                        <p class="detailC Margin10px">2023년 11월 11일</p>
+                        <p class="detailC Margin10px" th:text="${requirement.q1Date}"></p>
                     </div>
                 </div>
             </div>
@@ -59,13 +59,13 @@
                         <button id="showB" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식의상 예상견적</p>
-                            <p class="price" id="cloth_price">원</p>
+                            <p class="price" id="cloth_price" th:text="${specification.dress}"></p>
                         </div>
                     </div>
                     <div id="B" class="invi">
                         <div class="row">
-                            <p class="detailB Margin10px">신부 드레스:대여</p>
-                            <p class="detailB Margin10px">신랑 정장:직접</p>
+                            <p class="detailB Margin10px" th:text="${'신부 드레스:'+requirement.q2_dress}"></p>
+                            <p class="detailB Margin10px" th:text="${'신랑 정장:'+requirement.q2_suit}"></p>
                         </div>
                     </div>
                 </div>
@@ -76,17 +76,17 @@
                         <button id="showC" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식 부모님 의상 예상견적</p>
-                            <p class="price" id="parents_cloth_price">원</p>
+                            <p class="price" id="parents_cloth_price" th:text="${specification.parentsdress}"></p>
                         </div>
                     </div>
                     <div id="C" class="invi">
                         <div class="row">
-                            <p class="detailB Margin10px">신부어머니 한복:대여</p>
-                            <p class="detailB Margin10px">신부아버지 정장:직접</p>
+                            <p class="detailB Margin10px" th:text="${'신부어머니 한복:'+requirement.q3_Fmom_hanbok}"></p>
+                            <p class="detailB Margin10px" th:text="${'신부아버지 정장:'+requirement.q3_Fdad_suit}"></p>
                         </div>
                         <div class="row">
-                            <p class="detailB Margin10px">신랑어머니 한복:직접</p>
-                            <p class="detailB Margin10px">신랑아버지 정장:직접</p>
+                            <p class="detailB Margin10px" th:text="${'신랑어머니 한복:'+requirement.q3_Mmom_hanbok}"></p>
+                            <p class="detailB Margin10px" th:text="${'신랑아버지 정장:'+requirement.q3_Mdad_suit}"></p>
                         </div>
                     </div>
                 </div>
@@ -97,13 +97,13 @@
                         <button id="showD" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식촬영 예상견적</p>
-                            <p class="price" id="shot">원</p>
+                            <p class="price" id="shot" th:text="${specification.photo}"></p>
                         </div>
                     </div>
                     <div id="D" class="invi">
                         <div class="row">
-                            <p class="detailB Margin10px">사진:필요</p>
-                            <p class="detailB Margin10px">동영상:필요</p>
+                            <p class="detailB Margin10px" th:text="${'사진:'+requirement.q4_wedding_photo}"></p>
+                            <p class="detailB Margin10px" th:text="${'동영상:'+requirement.q4_wedding_video}"></p>
                         </div>
                     </div>
                 </div>
@@ -114,15 +114,17 @@
                         <button id="showE" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">스튜디오 촬영 예상견적</p>
-                            <p class="price" id="studio">원</p>
+                            <p class="price" id="studio" th:text="${specification.studio}"></p>
                         </div>
                     </div>
                     <div id="E" class="invi">
                         <div class="row">
-                            <p class="detailB Margin10px">사진:필요</p>
-                            <p class="detailB Margin10px">동영상:필요</p>
+                            <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q5_studio_photo }"></p>
+                            <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q5_studio_video }"></p>
                         </div>
-                        <p class="detailB Margin10px">메이크업:둘다필요</p>
+                        <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q5_studio_makeup }"></p>
+                        <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ5_bride_cloth()}"></p>
+                        <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ5_groom_cloth()}"></p>
                     </div>
                 </div>
             </div>
@@ -132,20 +134,20 @@
                         <button id="showF" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">스냅 촬영 예상견적</p>
-                            <p class="price" id="snap_shot">원</p>
+                            <p class="price" id="snap_shot" th:text="${specification.snap}"></p>
                         </div>
                     </div>
                     <div id="F" class="invi">
                         <div class="row">
-                            <p class="detailB Margin10px">사진:필요</p>
-                            <p class="detailB Margin10px">동영상:필요</p>
+                            <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q6_snap_photo }"></p>
+                            <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q6_snap_video }"></p>
                         </div>
                         <div class="row">
-                            <p class="detailB Margin10px">메이크업:둘다필요</p>
-                            <p class="detailB Margin10px">장소:지역내</p>
+                            <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q6_snap_makeup }"></p>
+                            <p class="detailB Margin10px" th:text="'장소:'+ ${  requirement.q6_snap_place }"></p>
                         </div>
-                        <p class="detailC Margin10px">신부의상:드레스,한복,직접준비</p>
-                        <p class="detailC Margin10px">신랑의상:직접준비</p>
+                        <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ6_snap_bride_cloth()}"></p>
+                        <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ6_snap_groom_cloth()}"></p>
                     </div>
                 </div>
             </div>
@@ -154,12 +156,12 @@
                 <p>
                     총 예상 견적
                 </p>
-                <p id="sum">
-                    0원
+                <p id="sum" th:text="${specification.sum}">
+
                 </p>
             </div>
             <p class="lastline"></p>
-
+            <p id="hiddenParagraph" hidden th:text="${specification.state}"></p>
             <div id="footDiv" class="margindiv row">
                 <button class ="Stage" id="Consultation_reservation">상담예약</button>
                 <div class="vertical-dotted-line"></div>
@@ -172,4 +174,27 @@
         </div>
     </body>
     <script src="/js/estimate_planner_check.js"></script>
+<script th:inline="javascript">
+    var hiddenParagraph = document.getElementById("hiddenParagraph");
+    var reservation = document.getElementById("Consultation_reservation");
+    var contract = document.getElementById("contract");
+    var sendRequest = document.getElementById("sendRequest");
+
+    var textValue = hiddenParagraph.textContent;
+    if(textValue === "0") {
+        reservation.classList.add("stateOn");
+        contract.classList.add("stateOff");
+        sendRequest.classList.add("stateOff");
+    }
+    if(textValue === "1") {
+        reservation.classList.add("stateOff");
+        contract.classList.add("stateOn");
+        sendRequest.classList.add("stateOff");
+    }
+    if(textValue === "2") {
+        reservation.classList.add("stateOff");
+        contract.classList.add("stateOff");
+        sendRequest.classList.add("stateOn");
+    }
+</script>
 </html>
