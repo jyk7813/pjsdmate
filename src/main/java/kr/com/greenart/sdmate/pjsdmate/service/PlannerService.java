@@ -100,7 +100,7 @@ public class PlannerService {
             Planner planner = plannerRepository.findByplannerNo(plannerPk).get();
             return planner;
         }
-        ;
+
         return null;
     }
     public Planner getPlannerByEmail(String email) {

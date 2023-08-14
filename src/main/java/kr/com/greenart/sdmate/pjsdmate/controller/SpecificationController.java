@@ -3,8 +3,8 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
 import kr.com.greenart.sdmate.pjsdmate.domain.Specification;
+import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
-import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
 import kr.com.greenart.sdmate.pjsdmate.service.SpecificationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SpecificationController {
 
     private final SpecificationService specificationService;
-    private final RequirementService requirementService;
+    private final MySpecificationService.RequirementService requirementService;
 
     private final PlannerService plannerService;
-    public SpecificationController(SpecificationService specificationService, RequirementService requirementService, PlannerService plannerService) {
+    public SpecificationController(SpecificationService specificationService, MySpecificationService.RequirementService requirementService, PlannerService plannerService) {
         this.specificationService = specificationService;
         this.requirementService = requirementService;
         this.plannerService = plannerService;
@@ -44,5 +44,10 @@ public class SpecificationController {
     @GetMapping("/plannerInfo")
     public String plannerInfo(){
     return "plannerInfo";
+    }
+
+    @GetMapping("/viewMySpecification")
+    public String Myspecification(){
+        return "estimate_planner_check";
     }
 }

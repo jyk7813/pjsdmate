@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class RequirementServiceTest {
     @Autowired
-    RequirementService requirementService;
+    MySpecificationService.RequirementService requirementService;
     @Autowired
     RequirementRepository requirementRepository;
 

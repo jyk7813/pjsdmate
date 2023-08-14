@@ -6,10 +6,10 @@ let member;
 
 okbtn.addEventListener("click", () => {
     checkUserStat();
-    console.log(inputname);
+
     inputname = document.querySelector(".input").getAttribute("name");
     var url = "/api/"+userstat+"/find"+inputname;
-    console.log(url);
+
 
 
     fetch(url, {

@@ -1,14 +1,12 @@
 package kr.com.greenart.sdmate.pjsdmate.service;
 
-import kr.com.greenart.sdmate.pjsdmate.domain.Member;
-import kr.com.greenart.sdmate.pjsdmate.domain.MySpecification;
-import kr.com.greenart.sdmate.pjsdmate.domain.PlannerSpecificationPackage;
-import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
-import kr.com.greenart.sdmate.pjsdmate.repository.MemberRepository;
-import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRepository;
-import kr.com.greenart.sdmate.pjsdmate.repository.RequirementRepository;
-import kr.com.greenart.sdmate.pjsdmate.repository.SpecificationRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import kr.com.greenart.sdmate.pjsdmate.domain.*;
+import kr.com.greenart.sdmate.pjsdmate.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -68,5 +66,61 @@ public class MySpecificationService {
             cardList.add(eachCard);
         }
         return cardList;
+    }
+
+    @Service
+    public static class RequirementService {
+
+        private final SpringDataJpaRequirementRepository requirementRepository;
+        private final ObjectMapper objectMapper;
+
+        private final MemberRequirementRepository memberRequirementRepository;
+
+
+
+
+        @Autowired
+        public RequirementService(SpringDataJpaRequirementRepository requirementRepository, ObjectMapper objectMapper, MemberRequirementRepository memberRequirementRepository) {
+            this.requirementRepository = requirementRepository;
+            this.objectMapper = objectMapper;
+            this.memberRequirementRepository = memberRequirementRepository;
+        }
+
+
+        public Requirement getRequirementByNo(int requirementNo) {
+            Requirement requirement = requirementRepository.findByRequirementNo(requirementNo).get();
+            return requirement;
+        }
+
+        public Integer insertRequirement(Requirement requirement,Integer memberPk) {
+
+            if(requirement != null){
+    //            Requirement requirement = optionalRequirementrequirement.get();
+                requirementRepository.save(requirement);
+
+                MemberRequirement memberRequirement = new MemberRequirement();
+
+                memberRequirement.setMemberNo(memberPk);
+                memberRequirement.setRequiremnetNo(requirement.getRequirementNo());
+
+                memberRequirementRepository.save(memberRequirement);
+                return 1;
+            }
+            return 0;
+        }
+        private Requirement parseObj(String json){
+            Requirement requirement = null;
+            try {
+                requirement = objectMapper.readValue(json, Requirement.class);
+
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException(e);
+            }
+            return requirement;
+        }
+        @GetMapping("/userInfo")
+        public String userInfo(){
+            return "userInfo";
+        }
     }
 }

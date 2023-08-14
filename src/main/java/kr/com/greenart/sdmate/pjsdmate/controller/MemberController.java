@@ -6,7 +6,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
-import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
+import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,12 +31,12 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    private final RequirementService requirementService;
+    private final MySpecificationService.RequirementService requirementService;
 
 
     private final MainPageService mainPageService;
 
-    public MemberController(MemberService memberService, RequirementService requirementService, MainPageService mainPageService) {
+    public MemberController(MemberService memberService, MySpecificationService.RequirementService requirementService, MainPageService mainPageService) {
         this.memberService = memberService;
         this.requirementService = requirementService;
         this.mainPageService = mainPageService;
