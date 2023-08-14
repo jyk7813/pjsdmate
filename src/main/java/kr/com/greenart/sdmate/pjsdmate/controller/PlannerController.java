@@ -152,6 +152,16 @@ public class PlannerController {
     public String findid(){
         return "findidplanner";
     }
+
+    @GetMapping("/logout")
+    public String logoutPlanner(){
+        return "planner_logout";
+    }
+    @GetMapping("/logoutYes")
+    public String YesLogoutPlanner(HttpSession session){
+        session.removeAttribute("planner");
+        return"./login";
+    }
 }
 
 
