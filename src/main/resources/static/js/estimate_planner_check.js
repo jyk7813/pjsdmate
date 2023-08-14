@@ -3,7 +3,6 @@ fetch("/userInfo")
     .then((body) => {
         let container = document.getElementById("userInfo");
         container.insertAdjacentHTML("afterbegin", body);
-        console.log("진입함");
     });
 
 let showAButton = document.getElementById("showA");

@@ -12,10 +12,25 @@
         </div>
         <hr />
         <div id="main">
-            <div id="userInfo"></div>
-            <div id="exceptTitle">김민성 고객님이 원하는 견적</div>
+            <div id="userInfo">
+                <div id="userimage">
+                    <section id="identity">
+                        <div class="image">
+                            <img th:src="${'data:image/jpeg;base64,' + encoded}" alt="기본이미지">
+                            <p th:text="${member.name + ' 고객님'}"></p>
+                            <div id="userInfoDiv">
+
+                                <p id="userArea" th:text="${requirement.q1City + ' ' + requirement.q1Gu}"></p>
+                            </div>
+                            <p id="lastline"></p>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+            <div id="exceptTitle" th:text="${ member.name + ' 고객님이 원하는 견적' }"></div>
             <div id="exceptMoney">
-                <p>500만원 ~ 1,000만원</p>
+                <p th:text="requirement.q7Estimate + '만원'"></p>
             </div>
             <p class="lastline"></p>
 
@@ -157,4 +172,4 @@
         </div>
     </body>
     <script src="/js/estimate_planner_check.js"></script>
-</>
+</html>
