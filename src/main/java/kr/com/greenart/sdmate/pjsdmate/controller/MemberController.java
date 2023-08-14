@@ -70,8 +70,12 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-        public String login () {
-
+        public String login (HttpSession session) {
+        if(session.getAttribute("member")!=null){
+            System.out.println("세션값이 널이 아님");
+        }else if(session.getAttribute("member")==null){
+            System.out.println("세션값이 널임");
+        }
         return "login";
         }
 
@@ -213,6 +217,15 @@ public class MemberController {
     @GetMapping("/findid")
     public String findid(){
         return "findidmember";
+    }
+    @GetMapping("/logout")
+    public String logOut(){
+        return "member_logout";
+    }
+    @GetMapping("/logoutYes")
+    public String logOut(HttpSession session){
+        session.removeAttribute("member");
+        return "./login";
     }
 
 }

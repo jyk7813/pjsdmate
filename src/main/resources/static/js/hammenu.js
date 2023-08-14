@@ -1,3 +1,9 @@
+
+
+
+function goOut(){
+    window.location.href="./logout";
+}
 var burger = $('.menu-trigger');
 
 burger.each(function (index) {
