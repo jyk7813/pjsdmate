@@ -2,7 +2,19 @@ fetch("/plannerInfo")
     .then((resp) => resp.text())
     .then((body) => {
         let container = document.getElementById("plannerInfo");
+
+        let name = document.getElementById("name").value;
+        let dealCnt = document.getElementById("dealCnt").value;
+        let rating =document.getElementById("rating").value;
         container.insertAdjacentHTML("afterbegin", body);
+
+
+        let BsName = document.getElementById("plannerBsName");
+        let ratingAndDealCnt = document.getElementById("ratingAndDealCnt");
+        BsName.innerText= name;
+        let text = "평점"+rating+"/"+"최근 거래"+dealCnt+"건";
+        ratingAndDealCnt.innerText = text;
+
     });
 
 let showAButton = document.getElementById("showA");
