@@ -4,13 +4,13 @@
         <p>고객님이 생각하시는 예상 견적은 얼마인가요?</p>
         <div style="line-height: 10px"><br /></div>
         <div class="price">
-            <input type="radio" id="fiveM-under" name="price" value="fiveM-under" />
+            <input type="radio" id="fiveM-under" name="price" value="500" />
             <label for="fiveM-under">~500만원 이하</label>
-            <input type="radio" id="fiveMbtwtenM" name="price" value="fiveMbtwtenM"/>
+            <input type="radio" id="fiveMbtwtenM" name="price" value="1000"/>
             <label for="fiveMbtwtenM">500만원 ~ 1000만원</label>
-            <input type="radio" id="tenMbtwfifteenM" name="price" value="tenMbtwfifteenM"/>
+            <input type="radio" id="tenMbtwfifteenM" name="price" value="1500"/>
             <label for="tenMbtwfifteenM">1000만원 ~ 1500만원</label>
-            <input type="radio" id="fifteemMbtwtwentyM" name="price" value="fifteemMbtwtwentyM"/>
+            <input type="radio" id="fifteemMbtwtwentyM" name="price" value="2000/>
             <label for="fifteemMbtwtwentyM">1500만원 ~ 2000만원</label>
             <input type="radio" id="nomatter" name="price" value="nomatter" />
             <label for="nomatter">상관없음 (프리미엄)</label>
@@ -23,7 +23,8 @@
 
     price.addEventListener("change", function(e) {
         if (e.target && e.target.type === "radio") {
-            question.q7_price = e.target.value;
+            let q7 = parseInt(e.target.value);
+            question.q7Estimate = q7;
             console.log(e.target.value);
         }
     });

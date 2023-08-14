@@ -2,8 +2,11 @@ package kr.com.greenart.sdmate.pjsdmate.repository;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,4 +18,6 @@ public interface SpringDataJpaRequirementRepository extends JpaRepository<Requir
     Optional<Requirement> findByRequirementNo(Integer requirementNo);
 //
     List<Requirement> findByQ1CityOrderByQ1DateAsc(String q1City);
+
+
 }

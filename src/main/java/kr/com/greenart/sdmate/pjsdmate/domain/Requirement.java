@@ -45,7 +45,7 @@ public class Requirement {
     private String q6_snap_groom_self;
     private String q6_snap_place;
     @Column(name="q7_estimate")
-    private int q7Estimate;
+    private Integer q7Estimate;
 
     @Override
     public String toString() {
@@ -87,6 +87,8 @@ public class Requirement {
                 ", q7Estimate=" + q7Estimate +
                 '}';
     }
+
+
 
     public Integer getRequirementNo() {
         return requirementNo;
@@ -360,11 +362,11 @@ public class Requirement {
         this.q6_snap_place = q6_snap_place;
     }
 
-    public int getQ7Estimate() {
+    public Integer getQ7Estimate() {
         return q7Estimate;
     }
 
-    public void setQ7Estimate(int q7Estimate) {
+    public void setQ7Estimate(Integer q7Estimate) {
         this.q7Estimate = q7Estimate;
     }
 }
