@@ -48,7 +48,7 @@
                         <button id="showB" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식의상 예상견적</p>
-                            <p class="price" th:text="${ specification.dress }'원'" >원</p>
+                            <p class="price" th:text="${ specification.dress }+'원'" ></p>
                         </div>
                     </div>
                     <div id="B" class="invi">
@@ -65,7 +65,7 @@
                         <button id="showC" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식 부모님 의상 예상견적</p>
-                            <p class="price" th:text="${ specification.parentsdress }'원'" >원</p>
+                            <p class="price" th:text="${ specification.parentsdress }+'원'" >원</p>
                         </div>
                     </div>
                     <div id="C" class="invi">
@@ -121,7 +121,7 @@
                         <button id="showF" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">스냅 촬영 예상견적</p>
-                            <p class="price" th:text="${ specification.snap }'원'"   >원</p>
+                            <p class="price" th:text="${ specification.snap }+'원'"   >원</p>
                         </div>
                     </div>
                     <div id="F" class="invi">
@@ -140,14 +140,14 @@
             </div>
             <div>
                 <p class="questionTitle">고용비</p>
-                <p class="price" th:text="${ specification.hirecost }'원'" >원</p>
+                <p class="price" th:text="${ specification.hirecost }+'원'" >원</p>
             </div>
             <p class="lastline"></p>
             <div id="estimateSum" class="Margin20px">
                 <p>
                     총 예상 견적
                 </p>
-                <p id="sum" th:text="${ sum }'원'" ">
+                <p id="sum" th:text="${ sum }+'원'">
 
                 </p>
             </div>

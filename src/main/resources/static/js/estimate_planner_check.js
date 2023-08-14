@@ -1,4 +1,4 @@
-fetch("/userInfo")
+fetch("./userInfo.html")
     .then((resp) => resp.text())
     .then((body) => {
         let container = document.getElementById("userInfo");
@@ -40,46 +40,3 @@ let ffDiv = document.getElementById("F");
 showFButton.addEventListener("click", function () {
     ffDiv.classList.toggle("visible");
 });
-// 견적 보내기
-let sendReq = document.getElementById("sendRequest");
-sendReq.addEventListener("click",function(){
-    const inputElements = document.getElementsByClassName('price');
-    for (const inputElement of inputElements) {
-        console.log(inputElement.value);
-    }
-});
-
-
-function validateNumberInput(event){
-    let inputElement = document.getElementById(event.target.id);
-    let inputValue = inputElement.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
-    let formattedValue = inputValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    if (parseInt(inputValue) > 10000000) {
-        formattedValue = '10,000,000';
-    }
-
-        inputElement.value = formattedValue;
-    
-
-    setTimeout(checkSum,1000);
-  
-}
-
-
-
-function checkSum(){
-    let inputElements = document.getElementsByClassName('price');
-    let total = document.getElementById("sum");
-    var sum =0;
-    for (const inputElement of inputElements) {
-        let inputValue = inputElement.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
-        let num = parseInt(inputValue);
-        if(!(Object.is(num,NaN))){
-            sum = sum+num;
-        }
-    }
-        
-    let formattedValue = sum.toLocaleString(); 
-    total.innerText= formattedValue+ " 원";
-}
-
