@@ -16,7 +16,11 @@
             <div id="main">
                 <div id="card" th:each="card : ${cardList}">
                     <div id="buttonBox">
-                        <button id="cardBtn" class="Margin10px" th:text="'요청 견적금액 ' + ${card.requirementPrice}" onclick="window.location.href='/viewMySpecification'"></button>
+<!--                        <button id="cardBtn" class="Margin10px" th:text="'요청 견적금액 ' + ${card.requirementPrice}" onclick="window.location.href='/viewMySpecification'"></button>-->
+                        <a id="cardBtn" th:text="'요청 견적금액 ' + ${card.requirementPrice}" th:href="@{/viewMySpecification(specificationNo=${card.specificationNo},
+                                                                                                                             requirementNo=${card.requirementPk}
+                                                                                                                             )}"></a>
+
                         <img id="buttonImg" src="/img/Polygon10.png" >
                     </div>
                     <div id="cardMiddle">

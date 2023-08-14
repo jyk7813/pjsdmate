@@ -33,6 +33,19 @@ public class MySpecificationService {
 
     public List<MySpecification> cardList = new ArrayList<>();
 
+    public Member returnMember(int requirementNo) {
+        Member member = memberRepository.findByRequirementPk(requirementNo);
+        return member;
+    }
+    public Requirement returnRequirement(int requirementNo) {
+        Requirement requirement = requirementRepository.findByRequirementNo(requirementNo).get();
+        return requirement;
+    }
+    public Specification returnSpecification(int specificationNo) {
+        Specification specification = specificationRepository.findBySpecificationNo(specificationNo).get();
+        return specification;
+    }
+
     public List<MySpecification> returnMySpeList(int plannerNo) throws IOException {
         cardList = new ArrayList<>();
 
@@ -44,6 +57,7 @@ public class MySpecificationService {
             Member member = memberRepository.findByMemberNo(memberNo).get();
             int requirementNo = member.getRequirementPk();
             Requirement requirement = requirementRepository.findByRequirementNo(requirementNo).get();
+            eachCard.setSpecificationNo(plannerSpecificationPackage.getSpecificationNo());
             eachCard.setRequirementPk(requirement.getRequirementNo());
             eachCard.setRequirementPrice(requirement.getQ7Estimate());
             String encoded = null;
