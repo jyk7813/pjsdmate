@@ -7,11 +7,13 @@
     </head>
     <body>
         <div id="title">
-            <button id="back" class="button-back" onclick="history.back()"></button>
+            <button id="back" class="button-back"></button>
             <span class="title">예상 견적 작성 </span>
             <button class="Comment1" id="hrefChat"></button>
             <p id="mno" th:text="${member.getMemberNo()}" hidden></p>
             <p id="pno" th:text="${planner.getPlannerNo()}" hidden></p>
+            <p id="rno" th:text="${requirement.getRequirementNo()}" hidden></p>
+            <p id="sno" th:text="${specification.getSpecificationNo()}" hidden></p>
         </div>
         <hr />
         <div id="main">
@@ -177,6 +179,19 @@
         </div>
     </body>
     <script src="/js/estimate_planner_check.js"></script>
+
+    <script>
+
+        let backBtn = document.getElementById("back");
+        backBtn.addEventListener("click",backsend);
+        function backsend(){
+            let pnoText = document.getElementById("pno").textContent;
+            let pno = "plannerNo="+pnoText;
+
+            window.location.href= "/planner/viewMySpecification?" + pno;
+        }
+    </script>
+
 <script th:inline="javascript">
     var hiddenParagraph = document.getElementById("hiddenParagraph");
     var reservation = document.getElementById("Consultation_reservation");

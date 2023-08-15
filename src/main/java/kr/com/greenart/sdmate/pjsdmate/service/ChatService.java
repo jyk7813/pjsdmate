@@ -5,6 +5,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Mchat;
 import kr.com.greenart.sdmate.pjsdmate.domain.Pchat;
 import kr.com.greenart.sdmate.pjsdmate.repository.MchatRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.PchatRepository;
+import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,12 @@ public class ChatService {
     private final MchatRepository mchatRepository;
     private final PchatRepository pchatRepository;
 
+    private final PlannerSpecificationPackageRepository plannerSpecificationPackageRepository;
     @Autowired
-    public ChatService(MchatRepository mchatRepository, PchatRepository pchatRepository) {
+    public ChatService(MchatRepository mchatRepository, PchatRepository pchatRepository, PlannerSpecificationPackageRepository plannerSpecificationPackageRepository) {
         this.mchatRepository = mchatRepository;
         this.pchatRepository = pchatRepository;
+        this.plannerSpecificationPackageRepository = plannerSpecificationPackageRepository;
     }
 
     public void saveMessage(Mchat mchat) {
@@ -29,6 +32,11 @@ public class ChatService {
     }
     public void savePMessage(Pchat pchat) {
         pchatRepository.save(pchat);
+    }
+
+
+    public int returnSpeNo(int memberNo, int plannerNo) {
+        return plannerSpecificationPackageRepository.findByMemberNoAndPlannerNo(memberNo, plannerNo).getSpecificationNo();
     }
 
     public List<ChatHistory> getChatHistory(int memberNo, int plannerNo) {

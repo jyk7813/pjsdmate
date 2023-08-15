@@ -56,12 +56,13 @@
         <!-- Main -->
         <div id="main">
             <div class="chat_wrap">
-                <p class="newtext">도착한 견적 알림&nbsp;(10개)</p>
+                <p class="newtext" th:text="${stateString}"></p>
                 <div class="chat_wrapper">
-                    <a href="http://www.naver.com">
-                        <img class="new" src="/img/Ellipse%2013.png" alt=""/>
-                        <img class="chaticon" src="/img/comment%201.png" alt=""/>
-                        <div class="text">8</div>
+                    <a>
+                        <img id="connectChat" class="chaticon" src="/img/comment%201.png" alt=""/>
+                        <p id="mno" th:text="${memberNo}" hidden></p>
+                        <p id="pno" th:text="${plannerNo}" hidden></p>
+
                     </a>
                 </div>
             </div>
@@ -169,6 +170,20 @@
 
 
     nameTag.innerText = "안녕하세요! " + member.name + " 님";
+
+    let chatBtn = document.getElementById("connectChat");
+
+    chatBtn.addEventListener("click",link);
+
+    function link(){
+        let mnoText = document.getElementById("mno").textContent;
+        let pnoText = document.getElementById("pno").textContent;
+        let mno = "memberNo="+mnoText;
+        let pno = "plannerNo="+pnoText;
+        console.log(mno);
+        window.location.href="/memberChat?" + mno + "&" + pno;
+
+    }
 </script>
 
 <script>

@@ -141,7 +141,7 @@ padding: 10px;
     align-self: flex-end;
     margin-right: 20px;
     color: white;
-    
+    margin-bottom: 6px;
 }
 .plannerChat {
     border-radius: 0px 15px 15px 15px;
@@ -149,6 +149,7 @@ padding: 10px;
     align-self: flex-start;
     margin-left: 20px;
     color: #343837;
+    margin-bottom: 6px;
 }
 
 .chat-container {

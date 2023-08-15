@@ -11,8 +11,8 @@
     <p id="pno" th:text="${plannerNo}" hidden></p>
 
         <div id="title">
-            <button id="back" class="button-back" onclick="history.back"></button>
-            <span class="title">임태경 플래너님과 채팅</span>
+            <button id="back" class="button-back"></button>
+            <span class="title" th:text="${plannerName} + '님과 채팅'"></span>
         </div>
         <hr />
         <div id="bigBox">
@@ -56,12 +56,10 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-
-    $(document).ready(function() {
-        // 버튼 클릭 이벤트 처리
-        $('.button-back').click(function() {
-            // 뒤로 가기 실행
-            window.history.back();
-        });
-    });
+    let backBtn = document.getElementById("back");
+    backBtn.addEventListener("click",backsend);
+    function backsend(){
+        let pnoText = document.getElementById("pno").textContent;
+        window.location.href= "/viewSpecification?specification="+pnoText;
+    }
 </script>

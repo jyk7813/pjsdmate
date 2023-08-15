@@ -14,4 +14,5 @@ public interface PlannerSpecificationPackageRepository {
 
     PlannerSpecificationPackage save(PlannerSpecificationPackage plannerSpecificationPackage);
 
+    PlannerSpecificationPackage findByMemberNoAndPlannerNo(int memberNo, int plannerNo);
 }
