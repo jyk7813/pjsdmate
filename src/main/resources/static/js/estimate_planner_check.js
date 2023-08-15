@@ -1,3 +1,4 @@
+/*
 fetch("/userInfo")
     .then((resp) => resp.text())
     .then((body) => {
@@ -5,6 +6,7 @@ fetch("/userInfo")
         container.insertAdjacentHTML("afterbegin", body);
     });
 
+*/
 
 let showAButton = document.getElementById("showA");
 let aaDiv = document.getElementById("A");
