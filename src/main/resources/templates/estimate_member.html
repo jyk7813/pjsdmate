@@ -10,6 +10,9 @@
 <body>
 <div id="title">
     <button id="back" onclick="history.go(-1)" class="button-back"></button>
+    <form id="postForm" action="/plannerInfo" method="post">
+        <input id="planner" type="hidden" name="id" th:value="${ planner.getId() }">
+    </form>
     <input id="name" type="hidden" th:value="${ planner.getBusiness_name()}">
     <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
     <input id="rating" type="hidden" th:value="${ planner.getRating()}">

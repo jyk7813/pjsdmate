@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/chat")
 public class ChatController {
 
 
@@ -17,3 +18,4 @@ public class ChatController {
         return "Mchat";
     }
 }
+
