@@ -41,7 +41,9 @@ public interface MemberRepository {
     Member findByRequirementPk(int requirementPk);
     @Query("SELECT COUNT(m) FROM Member m WHERE m.phonenum = :phonenum")
     Integer countByPhonenum(String phonenum);
-
+    @Transactional
+    @Modifying
+    @Query("UPDATE Member m SET m.requirementPk = ?2 WHERE m.memberNo = ?1")
     int updateRequirementPk(int memberPk,int requirementPk);
 
 }

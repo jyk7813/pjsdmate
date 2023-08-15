@@ -48,20 +48,21 @@ public class MemberController {
         Member member = (Member) session.getAttribute("member");
         System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
-        System.out.println(card);
+        int cardSize = card.size();
+        String stateString=null;
+        if(cardSize==1) {
+            stateString = "계약중인 견적서";
+            model.addAttribute("plannerNo", card.get(0).getPlannerPk());
 
-
+        } else {
+            stateString = "도착한 견적 알림 (" + cardSize + ")";
+        }
+        if(session.getAttribute("need")!=null){
+            session.removeAttribute("need");
+        }
+        model.addAttribute("memberNo", member.getMemberNo());
         model.addAttribute("card", card);
-
-//
-//        @GetMapping("/")
-//        public String start () {
-//            return "start";
-//        }
-//        @GetMapping("/main")
-//        public String main () {
-//            return "main";
-//        }
+        model.addAttribute("stateString", stateString);
         return "main";
     }
     @GetMapping("/answer")
@@ -71,11 +72,7 @@ public class MemberController {
 
     @GetMapping("/login")
         public String login (HttpSession session) {
-        if(session.getAttribute("member")!=null){
-            System.out.println("세션값이 널이 아님");
-        }else if(session.getAttribute("member")==null){
-            System.out.println("세션값이 널임");
-        }
+
         return "login";
         }
 
