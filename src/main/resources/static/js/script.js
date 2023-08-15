@@ -39,6 +39,7 @@ $(document).ready(function () {
           },
           error: function (request, status, error) {
             console.log(error);
+            alert("기입하지 않은 항목이 있습니다.");
           }
         });
       }

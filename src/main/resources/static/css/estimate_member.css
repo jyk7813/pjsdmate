@@ -2,9 +2,6 @@
 .notosanskr * {
     font-family: "Noto Sans KR", sans-serif;
 }
-body {
-    border: 1px solid black;
-}
 * {
     /* 여기 잘해봐야함 */
     margin: 0;
@@ -117,18 +114,20 @@ p {
     text-align: center;
 }
 body {
-    min-width: 430px;
-    max-width: 430px;
+    align-items: center;
     height: auto;
     margin: 0 auto;
     font-family: "Noto Sans KR", sans-serif;
 }
 #main {
+    width: 430px;
     background-color: white;
     /* margin-top: 30px;
     margin-bottom: 30px; */
     padding-top: 30px;
     padding-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .box {
     display: flex;
@@ -307,6 +306,7 @@ body {
     flex-shrink: 0;
     border-radius: 15px;
     border: 1px solid #d9d9d9;
+    color: white;
     background: #F28585;
     display: flex;
     align-items: center;
