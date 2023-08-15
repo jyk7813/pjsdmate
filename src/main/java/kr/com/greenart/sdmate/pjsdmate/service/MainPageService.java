@@ -40,6 +40,7 @@ public class MainPageService {
     public List<mainpageCard> returnMainCard(int memberNo) throws IOException {
         int cnt=0;
         int rePlannerNo=0;
+        int endCnt=0;
         card = new ArrayList<>();
         List<PlannerSpecificationPackage> packageList = getpackageByPk(memberNo);
         for (PlannerSpecificationPackage plannerSpecificationPackage : packageList) {
@@ -63,7 +64,6 @@ public class MainPageService {
                 eachCard.setBusinessName(planner.getBusiness_name());
                 eachCard.setDealCnt(planner.getDealCnt());
                 eachCard.setRating(planner.getRating());
-
                 String encoded = null;
                 try {
                     encoded = Base64.getEncoder().encodeToString(planner.getImage());
@@ -75,8 +75,6 @@ public class MainPageService {
                 } finally {
                     eachCard.setPlannerImg(encoded);
                 }
-
-
                 for (PlannerSpecificationPackage packageItem : packageList) {
                     if (packageItem.getPlannerNo() == plannerNumber) {
                         Specification specification = specificationRepository.findBySpecificationNo(packageItem.getSpecificationNo()).get();
@@ -86,6 +84,11 @@ public class MainPageService {
                     }
                 }
                 eachCard.setReviewCnt(reviewRepository.countByplannerNo(plannerNumber));
+
+
+
+
+
                 card.add(eachCard);
             }
         } else {
@@ -121,6 +124,9 @@ public class MainPageService {
             eachCard.setReviewCnt(reviewRepository.countByplannerNo(plannerNumber));
             card.add(eachCard);
         }
+         cnt=0;
+        rePlannerNo=0;
+        endCnt=0;
         return card;
     }
 }
