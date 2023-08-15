@@ -51,6 +51,7 @@ public class SendRequirement {
     }
     public SendRequirement setting(SendRequirement sendRequirement, Requirement requirement){
 
+        sendRequirement.setRequirementNo(requirement.getRequirementNo());
         String Q1_guestNo="";
         if(requirement.getQ1_guestno().equals("1")){
                 Q1_guestNo= "50명 이하";
