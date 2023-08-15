@@ -100,6 +100,7 @@
     position: absolute; 
     background: #F28585; 
     border-radius: 10px;
+    border: none;
 
 }
 .OkbtnBackground.planner {
