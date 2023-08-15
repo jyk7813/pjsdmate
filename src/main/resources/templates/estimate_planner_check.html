@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<<html xmlns:th="http://www.thymeleaf.org">>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <title>견적 리스트 보기</title>
@@ -33,7 +33,7 @@
             </div>
             <div id="exceptTitle" th:text="${ member.name + ' 고객님이 원하는 견적' }"></div>
             <div id="exceptMoney">
-                <p th:text="${#numbers.formatDecimal(requirement.q7Estimate, 0, 'COMMA', 0, 'POINT') + '원'}"></p>
+                <p th:text="${requirement.q7Estimate}"></p>
             </div>
             <p class="lastline"></p>
 
