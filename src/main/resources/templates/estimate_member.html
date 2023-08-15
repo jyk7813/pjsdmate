@@ -8,6 +8,7 @@
 </head>
 <body>
 <div id="title">
+
     <button id="back" onclick="history.go(-1)" class="button-back" ></button>
     <form id="postForm" action="/plannerInfo" method="post">
         <input id="planner" type="hidden" name="id" th:value="${ planner.getId() }">
@@ -16,6 +17,7 @@
     </form>
     <!--            <input id="img" type="hidden" th:value="${ planner.getImage() }">-->
     <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
+
     <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
     <input id="rating" type="hidden" th:value="${ planner.getRating()}">
     <span class="title"> 상세견적 및 플래너 정보 </span>
@@ -23,9 +25,9 @@
 <hr/>
 <div id="main">
     <div id="plannerInfo"></div>
-    <div id="exceptTitle">김민성 고객님이 원하는 견적</div>
+    <div id="exceptTitle" th:text="${ member.name }+'고객님이 원하는 견적'"></div>
     <div id="exceptMoney">
-        <p th:text="${ requirement.q7Estimate  }+'원'"></p>
+        <p th:text="${ requirement.q7Estimate  }"></p>
     </div>
     <p class="lastline"></p>
 
@@ -35,7 +37,7 @@
                 <button id="showA" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">예식장 & 뷔페 예상견적</p>
-                    <p class="price" th:text="${ specification.weddinghall }+'원'"></p>
+                    <p class="price" th:text="${ specification.weddinghall }"></p>
                 </div>
             </div>
             <div id="A" class="invi">
@@ -54,7 +56,7 @@
                 <button id="showB" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">본식의상 예상견적</p>
-                    <p class="price" th:text="${ specification.dress }+'원'"></p>
+                    <p class="price" th:text="${ specification.dress }"></p>
                 </div>
             </div>
             <div id="B" class="invi">
@@ -71,7 +73,7 @@
                 <button id="showC" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">본식 부모님 의상 예상견적</p>
-                    <p class="price" th:text="${ specification.parentsdress }+'원'">원</p>
+                    <p class="price" th:text="${ specification.parentsdress }">원</p>
                 </div>
             </div>
             <div id="C" class="invi">
@@ -92,7 +94,7 @@
                 <button id="showD" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">본식촬영 예상견적</p>
-                    <p class="price" th:text="${ specification.photo }+'원'"></p>
+                    <p class="price" th:text="${ specification.photo }"></p>
                 </div>
             </div>
             <div id="D" class="invi">
@@ -109,7 +111,7 @@
                 <button id="showE" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">스튜디오 촬영 예상견적</p>
-                    <p class="price" th:text="${ specification.studio }+'원'">원</p>
+                    <p class="price" th:text="${ specification.studio }">원</p>
                 </div>
             </div>
             <div id="E" class="invi">
@@ -129,7 +131,7 @@
                 <button id="showF" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">스냅 촬영 예상견적</p>
-                    <p class="price" th:text="${ specification.snap }+'원'">원</p>
+                    <p class="price" th:text="${ specification.snap }">원</p>
                 </div>
             </div>
             <div id="F" class="invi">
@@ -152,7 +154,7 @@
         <p>
             총 예상 견적
         </p>
-        <p id="sum" th:text="${ sum }+'원'">
+        <p id="sum" th:text="${ sum }">
 
 
         </p>

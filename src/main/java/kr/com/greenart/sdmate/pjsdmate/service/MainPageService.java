@@ -1,9 +1,6 @@
 package kr.com.greenart.sdmate.pjsdmate.service;
 
-import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
-import kr.com.greenart.sdmate.pjsdmate.domain.PlannerSpecificationPackage;
-import kr.com.greenart.sdmate.pjsdmate.domain.Specification;
-import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
+import kr.com.greenart.sdmate.pjsdmate.domain.*;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.ReviewRepository;
@@ -75,7 +72,8 @@ public class MainPageService {
                 if (packageItem.getPlannerNo() == plannerNumber) {
                     Specification specification = specificationRepository.findBySpecificationNo(packageItem.getSpecificationNo()).get();
                     eachCard.setSpecificationNo(specification.getSpecificationNo());
-                    eachCard.setSum(specification.calculateSumExceptSpecNoAndState());
+                    SendSpecification sendSpecification = new SendSpecification();
+                    eachCard.setSum(sendSpecification.format(specification.calculateSumExceptSpecNoAndState()));
                 }
             }
             eachCard.setReviewCnt(reviewRepository.countByplannerNo(plannerNumber));

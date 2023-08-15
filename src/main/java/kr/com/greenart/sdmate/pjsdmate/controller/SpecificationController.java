@@ -48,13 +48,21 @@ public class SpecificationController {
         Member member = memberService.getRequirement(requirement.getRequirementNo());
         SendRequirement sendRequirement = requirementService.setttingRequirement(requirement);
 
+        SendSpecification sendSpecification = new SendSpecification();
+        SendSpecification send = sendSpecification.setting(sendSpecification,objSpecification);
+
+        String settingSum =sendSpecification.format(sum);
+
         Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
 
-        System.out.println(requirement);
-        model.addAttribute("member", member);
-        model.addAttribute("sum",sum);
+
+        Member member = memberService.getRequirement(requirement.getRequirementNo());
+
+        model.addAttribute("sum",settingSum);
+
         model.addAttribute("planner", planner);
-        model.addAttribute("specification",objSpecification);
+        model.addAttribute("member",member);
+        model.addAttribute("specification",send);
         model.addAttribute("requirement",sendRequirement);
         return "estimate_member";
     }
@@ -64,9 +72,8 @@ public class SpecificationController {
 //    }
     @PostMapping ("/plannerInfo")
     public String plannerInfo(@RequestParam String id, Model model){
-        System.out.println(id);
         Planner planner = plannerService.getPlannerByUsername(id);
-        System.out.println(planner);
+
         model.addAttribute("planner", planner);
         return "planner";
     }

@@ -1,6 +1,8 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
+import kr.com.greenart.sdmate.pjsdmate.domain.Member;
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
+import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ public class ImageController {
 
     @Autowired
     private PlannerService plannerService;
+    @Autowired
+    private MemberService memberService;
 
     @PostMapping("/encodeImage")
     public ResponseEntity<Map<String, String>> encodeImage(@RequestBody Map<String, String> payload) throws IOException {
@@ -35,16 +39,39 @@ public class ImageController {
         byte[] image = null;
         try {
             image = planner.getImage();
+            encodedImage = Base64.getEncoder().encodeToString(image);
         } catch (NullPointerException e) {
             String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
             Path path = Paths.get(imagePath);
             byte[] imageBytes = Files.readAllBytes(path);
             encodedImage = Base64.getEncoder().encodeToString(imageBytes);
-        } finally {
-            encodedImage = Base64.getEncoder().encodeToString(image);
         }
         response.put("image", encodedImage);
         return ResponseEntity.ok(response);
 
+    }
+
+    @PostMapping("/encodeImage2")
+    public ResponseEntity<Map<String, String>> encodeImage2(@RequestBody Map<String, String> payload) throws IOException {
+        Map<String, String> response = new HashMap<>();
+        System.out.println("여기냐" + payload);
+        System.out.println("여기냐" + payload.get("id"));
+        Member member = memberService.getMemberById(payload.get("id"));
+        System.out.println("여기냐" + member);
+        String encodedImage = null;
+        byte[] image = null;
+        try {
+            image = member.getImage();
+            encodedImage = Base64.getEncoder().encodeToString(image);
+        } catch (NullPointerException e) {
+            String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
+            Path path = Paths.get(imagePath);
+            byte[] imageBytes = Files.readAllBytes(path);
+            encodedImage = Base64.getEncoder().encodeToString(imageBytes);
+        }
+
+        response.put("image", encodedImage);
+        System.out.println("여기냐" + response);
+        return ResponseEntity.ok(response);
     }
 }

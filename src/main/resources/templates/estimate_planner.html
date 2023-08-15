@@ -15,11 +15,11 @@
         <div id="main">
             <div id="userInfo"></div>
             <div id="exceptTitle" th:text="${ member.name }+' 고객님이 원하는 견적'"></div>
-
+            <input id="memberId" type="hidden" th:value="${ member.id }">
             <input id= "userName" type="hidden" th:value="${ member.name }">
             <input id="userArea"type="hidden" th:value="${ requirement.q1City } + ' ' +${ requirement.q1Gu} ">
             <div id="exceptMoney">
-                <p th:text="${ requirement.q7Estimate  }+'원'"></p>
+                <p th:text="${ requirement.q7Estimate  }"></p>
             </div>
             <p class="lastline"></p>
 

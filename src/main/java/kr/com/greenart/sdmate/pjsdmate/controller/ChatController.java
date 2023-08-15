@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Controller
+@RequestMapping("/chat")
 public class ChatController {
     private final ChatService chatService;
 
@@ -71,3 +72,4 @@ public class ChatController {
         return "Pchat";
     }
 }
+

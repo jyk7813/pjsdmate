@@ -39,13 +39,13 @@ public class SendRequirement {
     private String q6_snap_groom_cloth;
     private String q6_snap_place;
 
-    private Integer q7Estimate;
+    private String q7Estimate;
 
-    public Integer getQ7Estimate() {
+    public String getQ7Estimate() {
         return q7Estimate;
     }
 
-    public void setQ7Estimate(Integer q7Estimate) {
+    public void setQ7Estimate(String q7Estimate) {
         this.q7Estimate = q7Estimate;
 
     }
@@ -123,7 +123,18 @@ public class SendRequirement {
         sendRequirement.setQ6_snap_video(requirement.getQ6_snap_video());
         sendRequirement.setQ6_snap_makeup(requirement.getQ6_snap_makeup());
         sendRequirement.setQ6_snap_place(requirement.getQ6_snap_place());
-        sendRequirement.setQ7Estimate(requirement.getQ7Estimate());
+
+        if(requirement.getQ7Estimate()==500){
+            sendRequirement.setQ7Estimate("~500만원");
+        }else if(requirement.getQ7Estimate()==1000){
+            sendRequirement.setQ7Estimate("500만원~1000만원");
+        }else if(requirement.getQ7Estimate()==1500){
+            sendRequirement.setQ7Estimate("1000만원~1500만원");
+        }else if(requirement.getQ7Estimate()==2000){
+            sendRequirement.setQ7Estimate("1500만원~2000원");
+        }else if(requirement.getQ7Estimate()==9999){
+            sendRequirement.setQ7Estimate("상관없음");
+        }
         return sendRequirement;
     }
 

@@ -10,9 +10,36 @@ fetch("/userInfo")
         let infoName =document.getElementById("infoName");
         let infoArea = document.getElementById("InfoArea");
 
+        let memberId = document.getElementById("memberId").value;
+
+        let inputimg = document.querySelector(".inputimg");
+
         infoName.innerText=userName.value;
         infoArea.innerText=userArea.value;
 
+        fetch('/encodeImage2',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: memberId })  // 입력된 값을 JSON 형태로 전송합니다.
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                inputimg.src = "data:image/jpeg;base64," + data.image;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                if(error.message === "Network response was not ok"){
+                    alert("입력하신 정보가 올바르지 않습니다.");
+                }
+            });
 
     });
 
@@ -128,15 +155,20 @@ function save(){
         specification.requirement_no = urlWithoutParams;
         specification.state = 0;
 
+        let data = JSON.stringify(specification);
     $.ajax({
         type: "POST",
         url: "/saveSpecification",
-        data: JSON.stringify(specification),
+        data: data,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(response) {
-          console.log(response.ok);
+        success: function(data) {
+          console.log(data);
 
+        },
+        error: function (request, status, error) {
+            console.log(error);
+            link();
         }
     });
 }
