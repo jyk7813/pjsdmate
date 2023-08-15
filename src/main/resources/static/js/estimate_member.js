@@ -88,3 +88,10 @@ let ffDiv = document.getElementById("F");
 showFButton.addEventListener("click", function () {
     ffDiv.classList.toggle("visible");
 });
+let chatBtn = document.getElementById("hrefChat");
+
+chatBtn.addEventListener("click",link);
+
+function link(){
+    window.location.href="/memberChat";
+}

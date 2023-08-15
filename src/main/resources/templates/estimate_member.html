@@ -168,8 +168,6 @@
 <script src="/js/estimate_member.js"></script>
 <script th:inline="javascript">
 
-
-
     var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';
 
 
@@ -178,4 +176,5 @@
 
     nameTag.innerText = member.name + " 님이 원하는 견적";
 </script>
+
 </html>
