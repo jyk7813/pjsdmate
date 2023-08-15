@@ -19,15 +19,11 @@ public class ChatController {
     private final PlannerService plannerService;
 
     private final MemberService memberService;
-    private final RequirementService requirementService;
-    private final SpecificationService specificationService;
 
-    public ChatController(ChatService chatService, PlannerService plannerService, MemberService memberService, RequirementService requirementService, SpecificationService specificationService) {
+    public ChatController(ChatService chatService, PlannerService plannerService, MemberService memberService) {
         this.chatService = chatService;
         this.plannerService = plannerService;
         this.memberService = memberService;
-        this.requirementService = requirementService;
-        this.specificationService = specificationService;
     }
 
     @GetMapping("/memberChat")
