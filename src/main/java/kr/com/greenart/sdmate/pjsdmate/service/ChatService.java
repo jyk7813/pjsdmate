@@ -24,6 +24,10 @@ public class ChatService {
         this.pchatRepository = pchatRepository;
     }
 
+    public void saveMessage(Mchat mchat) {
+        mchatRepository.save(mchat);
+    }
+
     public List<ChatHistory> getChatHistory(int memberNo, int plannerNo) {
         List<ChatHistory> histories = new ArrayList<>();
 

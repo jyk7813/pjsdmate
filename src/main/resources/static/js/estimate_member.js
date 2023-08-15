@@ -93,5 +93,11 @@ let chatBtn = document.getElementById("hrefChat");
 chatBtn.addEventListener("click",link);
 
 function link(){
-    window.location.href="/memberChat";
+    let mnoText = document.getElementById("mno").textContent;
+    let pnoText = document.getElementById("pno").textContent;
+    let mno = "memberNo="+mnoText;
+    let pno = "plannerNo="+pnoText;
+    console.log(mno);
+    window.location.href="/memberChat?" + mno + "&" + pno;
+
 }

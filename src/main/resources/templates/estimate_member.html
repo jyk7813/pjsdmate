@@ -11,6 +11,8 @@
     <button id="back" onclick="history.go(-1)" class="button-back" ></button>
     <form id="postForm" action="/plannerInfo" method="post">
         <input id="planner" type="hidden" name="id" th:value="${ planner.getId() }">
+        <p id="mno" th:text="${member.getMemberNo()}" hidden></p>
+        <p id="pno" th:text="${planner.getPlannerNo()}" hidden></p>
     </form>
     <!--            <input id="img" type="hidden" th:value="${ planner.getImage() }">-->
     <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">

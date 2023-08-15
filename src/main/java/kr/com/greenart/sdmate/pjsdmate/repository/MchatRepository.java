@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface MchatRepository {
     List<Mchat> findByMemberNoAndPlannerNo(int memberNo, int plannerNo);
+    Mchat save(Mchat mchat);
 }

@@ -45,12 +45,13 @@ public class SpecificationController {
         Specification objSpecification =  specificationService.getSpecificationByNo(Integer.parseInt(specification));
         int sum = objSpecification.calculateSumExceptSpecNoAndState();
         Requirement requirement = requirementService.getRequirementByNo(objSpecification.getRequirement_no());
-
+        Member member = memberService.getRequirement(requirement.getRequirementNo());
         SendRequirement sendRequirement = requirementService.setttingRequirement(requirement);
 
         Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
 
         System.out.println(requirement);
+        model.addAttribute("member", member);
         model.addAttribute("sum",sum);
         model.addAttribute("planner", planner);
         model.addAttribute("specification",objSpecification);

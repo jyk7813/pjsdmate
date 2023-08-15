@@ -77,8 +77,8 @@ body {
     margin-right: 350px;
     position: absolute;
 
-  
-   
+
+
 }
 .lastline::after {
     background-image: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
@@ -171,13 +171,13 @@ body {
 }
 .questionTitle .price{
     color: #343837;
-font-family: Noto Sans;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-letter-spacing: -1px;
-text-transform: lowercase;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1px;
+    text-transform: lowercase;
 }
 
 .package .price {
@@ -205,10 +205,10 @@ text-transform: lowercase;
 @keyframes fadeIn {
     0% {
         opacity: 0;
-      }
-      100% {
+    }
+    100% {
         opacity: 1;
-      }
+    }
 }
 .button-with-image {
     background-image: url("/img/detailOpen.png");
@@ -278,7 +278,7 @@ text-transform: lowercase;
     margin-bottom: 20px;
 }
 #estimateSum {
-    
+
     display: flex;
     align-items: center;
     margin-left: 30px;
@@ -330,14 +330,14 @@ text-transform: lowercase;
 }
 #plannerInfoDiv p {
     color: #727272;
-text-align: center;
-font-family: Noto Sans;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: -0.8px;
-text-transform: lowercase;
-margin: 0;
-margin-left: 3px;
+    text-align: center;
+    font-family: Noto Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    text-transform: lowercase;
+    margin: 0;
+    margin-left: 3px;
 }
