@@ -3,8 +3,19 @@ fetch("/userInfo")
     .then((body) => {
         let container = document.getElementById("userInfo");
         container.insertAdjacentHTML("afterbegin", body);
+
+        let userName = document.getElementById("userName");
+        let userArea = document.getElementById("userArea");
+
+        let infoName =document.getElementById("infoName");
+        let infoArea = document.getElementById("InfoArea");
+
+        infoName.innerText=userName.value;
+        infoArea.innerText=userArea.value;
+
+
     });
-let specification = {};
+
 let showAButton = document.getElementById("showA");
 let aaDiv = document.getElementById("A");
 showAButton.addEventListener("click", function () {
@@ -50,14 +61,6 @@ function CreateObj(value,ValueName) {
 
 
 
-// 견적 보내기
-
-let sendReq = document.getElementById("sendRequest");
-sendReq.addEventListener("click",function(){
-
-
-});
-
 
 
 
@@ -69,7 +72,7 @@ function validateNumberInput(event){
         formattedValue = '10,000,000';
     }
 
-        inputElement.value = formattedValue;
+    inputElement.value = formattedValue;
 
 
     setTimeout(checkSum,1000);
@@ -93,14 +96,55 @@ function checkSum() {
     let formattedValue = sum.toLocaleString();
     total.innerText = formattedValue + " 원";
 
-
-    /*        $(sendRequest).on("click", function () {*/
-
-    // 버튼 클릭 시 AJAX POST 요청 보내기
-
-
-
-    function link() {
-        window.location.href = "/planner/main";
-    }
 }
+let specification = {};
+
+
+
+
+
+let sendBtn = document.getElementById("sendRequest");
+sendBtn.addEventListener("click",save);
+
+function save(){
+    let wedding_hall_price = document.getElementById("wedding_hall_price");
+    let cloth = document.getElementById("cloth_price");
+    let parents_cloth = document.getElementById("parents_cloth_price");
+    let shot = document.getElementById("shot");
+    let studio = document.getElementById("studio");
+    let snap_shot = document.getElementById("snap_shot");
+    var currentURL = window.location.href;
+
+    var urlWithoutParams = currentURL.split("requirement=")[1];
+
+
+
+        specification.weddinghall= parseToInt(wedding_hall_price.value);
+        specification.dress = parseToInt(cloth.value);
+        specification.parentsdress =parseToInt(parents_cloth.value);
+        specification.photo = parseToInt(shot.value);
+        specification.studio = parseToInt(studio.value);
+        specification.snap = parseToInt(snap_shot.value);
+        specification.requirement_no = urlWithoutParams;
+        specification.state = 0;
+
+    $.ajax({
+        type: "POST",
+        url: "/saveSpecification",
+        data: JSON.stringify(specification),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(response) {
+          console.log(response.ok);
+
+        }
+    });
+}
+function link(){
+    window.location.href="/planner/main";
+}
+function parseToInt(x){
+    let inputValue = x.replace(/[^0-9]/g, '');
+    return parseInt(inputValue);
+}
+
