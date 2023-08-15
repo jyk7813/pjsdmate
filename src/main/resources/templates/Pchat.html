@@ -3,44 +3,30 @@
 <head>
     <meta charset="utf-8" />
     <title>견적 리스트 보기</title>
-    <link rel="stylesheet" th:href="@{/css/Pchat.css}"/>
+    <!--         <link rel="stylesheet" th:href="@{/css/Mchat.css}"/>-->
 
 </head>
 <body>
+<p id="mno" th:text="${memberNo}" hidden></p>
+<p id="pno" th:text="${plannerNo}" hidden></p>
+
 <div id="title">
     <button id="back" class="button-back" onclick="history.back"></button>
-    <span class="title">주하태 고객님과 채팅</span>
+    <span class="title">임태경 플래너님과 채팅</span>
 </div>
 <hr />
 <div id="bigBox">
     <div id="main">
-        <p class="plannerChat">네 민성님! 제가 보낸 견적에서 궁금하신 점은 언제
-            든 편하게 메시지 보내 주세요.
-            항상 빠르고 친절한 답변 드리겠습니다.</p>
-        <p class="plannerChat">어떤 부분이 궁금하신가요?</p>
-        <p class="memberChat">알빠노</p>
-        <p class="plannerChat">제안된 헌법개정안은 대통령이 20일 이상의 기간 이를 공고하여야 한다. 대통령은 전시·사변 또는 이에 준하는 국가비상사태에 있어서
-            병력으로써 군사상의 필요에 응하거나 공공의 안녕질서를 유지할 필요가 있을 때에는 법률이 정하는 바에 의하여 계엄을 선포할 수 있다.</p>
-        <p class="memberChat">헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 대법원장과 대법관이 아닌
-            법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다.</p>
-        <p class="memberChat">헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 대법원장과 대법관이 아닌
-            법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다.</p>
-        <p class="memberChat">헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 대법원장과 대법관이 아닌
-            법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다.</p>
-        <p class="memberChat">헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 대법원장과 대법관이 아닌
-            법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다.</p>
-        <p class="memberChat">헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 대법원장과 대법관이 아닌
-            법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다.</p>
-        <p class="plannerChat">헌법재판소의 조직과 운영 기타 필요한 사항은 법률로 정한다. 대법원장과 대법관이 아닌
-            법관은 대법관회의의 동의를 얻어 대법원장이 임명한다. 모든 국민은 그 보호하는 자녀에게 적어도 초등교육과 법률이 정하는 교육을 받게 할 의무를 진다.</p>
-
+        <div id="card" th:each="histories : ${histories}" th:class="${histories.who == 'M' ? 'memberChat' : 'plannerChat'}">
+            <p th:text="${histories.content}"></p>
+        </div>
         <div class="chat-container">
             <!-- 여기에 채팅 메시지들을 표시하는 부분이 들어갑니다. -->
         </div>
 
         <div class="chat-input">
-            <input type="text" placeholder="메시지를 입력하세요">
-            <button>전송</button>
+            <input id="messageInput" type="text" placeholder="메시지를 입력하세요">
+            <button id="submitButton">전송</button>
         </div>
 
 
@@ -49,8 +35,25 @@
 </div>
 
 </body>
-
+<link rel="stylesheet" th:href="@{/css/Pchat.css}"/>
 </html>
+<script>
+    let chatBtn = document.getElementById("submitButton");
+    chatBtn.addEventListener("click",send);
+
+    function send(){
+        let messageInput = document.getElementById("messageInput");
+        let messageValue = messageInput.value;
+
+        let mnoText = document.getElementById("mno").textContent;
+        let pnoText = document.getElementById("pno").textContent;
+        let mno = "memberNo="+mnoText;
+        let pno = "plannerNo="+pnoText;
+        let message = "message="+messageValue;
+        console.log(message);
+        window.location.href="/plannerChat?" + mno + "&" + pno + "&" + message;
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 

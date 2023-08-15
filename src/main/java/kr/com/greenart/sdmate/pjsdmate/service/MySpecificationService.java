@@ -1,12 +1,8 @@
 package kr.com.greenart.sdmate.pjsdmate.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.com.greenart.sdmate.pjsdmate.domain.*;
 import kr.com.greenart.sdmate.pjsdmate.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,12 +19,15 @@ public class MySpecificationService {
     private final MemberRepository memberRepository;
     private final RequirementRepository requirementRepository;
 
-    public MySpecificationService(PlannerSpecificationPackageRepository plannerSpecificationPackageRepository, SpecificationRepository specificationRepository, MemberRepository memberRepository, RequirementRepository requirementRepository) {
+    private final PlannerRepository plannerRepository;
+
+    public MySpecificationService(PlannerSpecificationPackageRepository plannerSpecificationPackageRepository, SpecificationRepository specificationRepository, MemberRepository memberRepository, RequirementRepository requirementRepository, PlannerRepository plannerRepository) {
         this.plannerSpecificationPackageRepository = plannerSpecificationPackageRepository;
         this.specificationRepository = specificationRepository;
         this.memberRepository = memberRepository;
 
         this.requirementRepository = requirementRepository;
+        this.plannerRepository = plannerRepository;
     }
 
     public List<MySpecification> cardList = new ArrayList<>();
@@ -44,6 +43,10 @@ public class MySpecificationService {
     public Specification returnSpecification(int specificationNo) {
         Specification specification = specificationRepository.findBySpecificationNo(specificationNo).get();
         return specification;
+    }
+    public int returnPlannerNoBySpeNo(int specificationNo) {
+        PlannerSpecificationPackage plannerSpecificationPackage = plannerSpecificationPackageRepository.findBySpecificationNo(specificationNo);
+        return plannerSpecificationPackage.getPlannerNo();
     }
 
     public String returnString(int value) {

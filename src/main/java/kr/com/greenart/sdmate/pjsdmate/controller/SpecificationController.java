@@ -79,6 +79,8 @@ public class SpecificationController {
     @GetMapping("/viewMySpecification")
     public String Myspecification(@RequestParam String specificationNo, String requirementNo, Model model) throws IOException {
 
+        int plannerNo = mySpecificationService.returnPlannerNoBySpeNo(Integer.parseInt(specificationNo));
+        Planner planner = plannerService.getPlannerById(plannerNo);
         Specification specification = mySpecificationService.returnSpecification(Integer.parseInt(specificationNo));
         Requirement requirement = mySpecificationService.returnRequirement(Integer.parseInt(requirementNo));
         Member member = mySpecificationService.returnMember(Integer.parseInt(requirementNo));
@@ -95,6 +97,8 @@ public class SpecificationController {
             byte[] imageBytes = Files.readAllBytes(path);
             encoded = Base64.getEncoder().encodeToString(imageBytes);
         }
+
+        model.addAttribute("planner", planner);
         model.addAttribute("specification", sendSpecification);
         model.addAttribute("requirement", sendRequirement);
         model.addAttribute("member", member);
