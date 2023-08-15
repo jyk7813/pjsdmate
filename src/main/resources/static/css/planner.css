@@ -37,7 +37,7 @@
     left: 22px;
 }
 .button-back {
-    background-image: url("images/button-back.png");
+    background-image: url("/img/button-back.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -146,18 +146,21 @@ text-transform: lowercase;
     text-align: center;
 }
 .rate {
-    background: url("images/rateBg.png") no-repeat;
+    background: url("/img/rateBg.png") no-repeat;
     background-size: 100% 100%;
     width: 160px;
     height: 22px;
     position: relative;
+    border: none;
 }
 #rateimg {
-    background: url("images/rate.png") no-repeat;
+    background: url("/img/rate.png") no-repeat;
     background-position: 0% 0%;
-    background-size: 160px 20px;
+    background-size: 160px 22px;
     width: auto;
     height: 22px;
+    border : none !important;
+    outline: none;
 }
 #rateDiv {
     display: flex;
@@ -165,6 +168,7 @@ text-transform: lowercase;
     justify-content: center;
     flex-direction: row;
     margin-bottom: 24px;
+    border: none;
 }
 #valueOfN {
     margin-left: 12px;
