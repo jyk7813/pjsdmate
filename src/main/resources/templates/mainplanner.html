@@ -45,19 +45,18 @@
 	<!-- Header -->
 	<div class="chat_wrapper">
 		<a href="main.html">
-			<img class="new" src="/img/Ellipse 13.png" alt=""/>
+<!--			<img class="new" src="/img/Ellipse 13.png" alt=""/>-->
 			<img class="chaticon" src="/img/comment 1.png" alt=""/>
-			<div class="text">8</div>
+<!--			<div class="text">8</div>-->
 		</a>
 	</div>
 
 	<header id="header" class="alt">
 		<h1 id="name" style="text-align:left"><img src="/img/signature.png" alt=""></h1>
-		<p style="text-align:left"><span>8</span>&nbsp;명의 고객에게 메시지가 도착했습니다!<br/>
+		<p style="text-align:left"><span></span>내가 보낸 견적서를 확인해보세요!<br/>
 		<ul class="actions">
 
 			<li>
-<!--				<a href="./viewMySpecification?plannerNo=" class="button primary">내가 보낸 견적서 확인하기</a>-->
 				<a th:href="@{'./viewMySpecification?plannerNo=' + ${planner.getPlannerNo()}}"
 				   class="button primary">내가 보낸 견적서 확인하기</a>
 			</li>
@@ -107,7 +106,7 @@
 								</div>
 							</a>
 							<a class="profile" href="main.html">
-								<img class="profile" src="/img/p1.png" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p>
+								<img class="profile" th:src="${'data:image/jpeg;base64,' + card.memberImg}" alt=""><p class="info"><span th:text="${card.memberName}"></span>고객님</p>
 								<span class="areainfo" th:text="${card.city}"></span><span class="areainfo" th:text="${card.gu}"></span>
 							</a>
 						</li>

@@ -5,13 +5,13 @@
 body {
     /* border: 1px solid black; */
 }
-* {
-    /* 여기 잘해봐야함 */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-}
+/** {*/
+/*    !* 여기 잘해봐야함 *!*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    !*box-sizing: border-box;*!*/
+/*    font-family: "Noto Sans KR", sans-serif;*/
+/*}*/
 
 #title {
     display: flex;
@@ -108,7 +108,7 @@ body {
 }
 #card {
     width: 370px;
-    height: auto;
+    height: 112px;
     flex-shrink: 0;
     border-radius: 20px;
     background: #fff;
@@ -116,26 +116,32 @@ body {
 
     display: flex;
     flex-direction: column;
-
+    justify-content: space-evenly;
     /* justify-content: center; */
     align-items: center;
     margin-bottom: 15px;
 }
 #cardMiddle {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     width: 350px;
     margin-bottom: 10px;
     margin-left: 10px;
 }
 #cardBtn {
-    text-align: left;
+
     width: 350px;
-    height: 50px;
+
     flex-shrink: 0;
     border-radius: 10px;
     background: #f3f3f3;
     color: #343837;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+
 
     font-family: "Noto Sans KR", sans-serif;
     font-size: 18px;
@@ -148,10 +154,9 @@ body {
 
 }
 #price {
-    width: 350px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+
     color: #343837;
+    right: 10px;
 
     font-family: "Noto Sans KR", sans-serif;
     font-size: 18px;
@@ -161,7 +166,36 @@ body {
     letter-spacing: -0.9px;
     text-transform: lowercase;
 }
-#cardMiddle p {
+/*#cardMiddle p {*/
+/*    color: #343837;*/
+/*    font-family: "Noto Sans KR", sans-serif;*/
+/*    font-size: 16px;*/
+/*    font-style: normal;*/
+/*    font-weight: 500;*/
+/*    line-height: normal;*/
+/*    letter-spacing: -0.8px;*/
+/*    text-transform: lowercase;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+#buttonBox {
+    position: relative;
+}
+#buttonImg {
+    position: absolute;
+    right: 10px;
+    /*right: 18px;*/
+    top: 20px;
+
+    bottom: 28px;
+}
+#memberImage {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    flex-shrink: 0;
+}
+span {
     color: #343837;
     font-family: "Noto Sans KR", sans-serif;
     font-size: 16px;
@@ -172,20 +206,4 @@ body {
     text-transform: lowercase;
     display: flex;
     align-items: center;
-}
-#buttonBox {
-    position: relative;
-}
-#buttonImg {
-    position: absolute;
-    left: 333px;
-    right: 18px;
-
-    bottom: 28px;
-}
-#memberImage {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
-    flex-shrink: 0;
 }
