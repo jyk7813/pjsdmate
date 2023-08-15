@@ -4,11 +4,10 @@ package kr.com.greenart.sdmate.pjsdmate.controller;
 import kr.com.greenart.sdmate.pjsdmate.domain.ChatHistory;
 import kr.com.greenart.sdmate.pjsdmate.domain.Mchat;
 import kr.com.greenart.sdmate.pjsdmate.domain.Pchat;
-import kr.com.greenart.sdmate.pjsdmate.service.ChatService;
+import kr.com.greenart.sdmate.pjsdmate.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
@@ -17,9 +16,18 @@ import java.util.List;
 @Controller
 public class ChatController {
     private final ChatService chatService;
+    private final PlannerService plannerService;
 
-    public ChatController(ChatService chatService) {
+    private final MemberService memberService;
+    private final RequirementService requirementService;
+    private final SpecificationService specificationService;
+
+    public ChatController(ChatService chatService, PlannerService plannerService, MemberService memberService, RequirementService requirementService, SpecificationService specificationService) {
         this.chatService = chatService;
+        this.plannerService = plannerService;
+        this.memberService = memberService;
+        this.requirementService = requirementService;
+        this.specificationService = specificationService;
     }
 
     @GetMapping("/memberChat")
@@ -40,7 +48,8 @@ public class ChatController {
 
         }
         List<ChatHistory> histories = chatService.getChatHistory(Integer.parseInt(memberNo), Integer.parseInt(plannerNo));
-
+        String plannerName = plannerService.getPlannerById(Integer.parseInt(plannerNo)).getName();
+        model.addAttribute("plannerName", plannerName);
         model.addAttribute("histories", histories);
         model.addAttribute("memberNo", memberNo);
         model.addAttribute("plannerNo", plannerNo);
@@ -65,7 +74,14 @@ public class ChatController {
 
         }
         List<ChatHistory> histories = chatService.getChatHistory(Integer.parseInt(memberNo), Integer.parseInt(plannerNo));
+        String memberName = memberService.getMemberByPK(Integer.parseInt(memberNo)).getName();
+        int requirementNo =  memberService.getMemberByPK(Integer.parseInt(memberNo)).getRequirementPk();
+        int specificationNo = chatService.returnSpeNo(Integer.parseInt(memberNo), Integer.parseInt(plannerNo));
 
+
+        model.addAttribute("requirementNo", requirementNo);
+        model.addAttribute("specificationNo", specificationNo);
+        model.addAttribute("memberName", memberName);
         model.addAttribute("histories", histories);
         model.addAttribute("memberNo", memberNo);
         model.addAttribute("plannerNo", plannerNo);

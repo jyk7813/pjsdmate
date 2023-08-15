@@ -93,8 +93,8 @@ let chatBtn = document.getElementById("hrefChat");
 chatBtn.addEventListener("click",link);
 
 function link(){
-    let mnoText = document.getElementById("mno").textContent;
-    let pnoText = document.getElementById("pno").textContent;
+    let mnoText = document.getElementById("mno").value;
+    let pnoText = document.getElementById("pno").value;
     let mno = "memberNo="+mnoText;
     let pno = "plannerNo="+pnoText;
     console.log(mno);

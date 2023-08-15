@@ -26,7 +26,7 @@ id_check.onclick = function idCheck() {
     let fetchURL = '/'+ result +'/idCheck';
 
     if(idValue == '') {
-        id.setCustomValidity('아이디를 입력해주세요.') ;
+        alert('아이디를 입력해주세요.') ;
         return ;
     }
     fetch(fetchURL, {

@@ -66,7 +66,7 @@ function convertEmailPage (){
     var description = document.querySelector(".Description");
     description.innerHTML = "찾고자 하는 계정의 이메일을 <br> 입력해주세요.";
     inputdata.setAttribute("name", "email");
-    inputdata.setAttribute("placeholder", "E-MAIL.");
+    inputdata.setAttribute("placeholder", "E-MAIL");
     inputdata.value = "";
 
 }

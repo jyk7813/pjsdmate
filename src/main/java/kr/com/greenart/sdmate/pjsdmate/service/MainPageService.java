@@ -38,16 +38,58 @@ public class MainPageService {
     }
     public List<mainpageCard> card = new ArrayList<>();
     public List<mainpageCard> returnMainCard(int memberNo) throws IOException {
-
+        int cnt=0;
+        int rePlannerNo=0;
         card = new ArrayList<>();
         List<PlannerSpecificationPackage> packageList = getpackageByPk(memberNo);
+        for (PlannerSpecificationPackage plannerSpecificationPackage : packageList) {
+            Specification specification = specificationRepository.findBySpecificationNo(plannerSpecificationPackage.getSpecificationNo()).get();
+            if(specification.getState() == 1) {
+                rePlannerNo = plannerSpecificationPackage.getPlannerNo();
+                cnt++;
+            }
+        }
 
         List<Integer> plannerNumbers = packageList.stream()
                 .sorted((p1, p2) -> p2.getDatetime().compareTo(p1.getDatetime()))
                 .map(PlannerSpecificationPackage::getPlannerNo)
                 .collect(Collectors.toList());
 
-        for (Integer plannerNumber : plannerNumbers) {
+        if (cnt == 0) {
+            for (Integer plannerNumber : plannerNumbers) {
+                mainpageCard eachCard = new mainpageCard();
+                Planner planner = plannerRepository.findByplannerNo(plannerNumber).get();
+                eachCard.setPlannerPk(planner.getPlannerNo());
+                eachCard.setBusinessName(planner.getBusiness_name());
+                eachCard.setDealCnt(planner.getDealCnt());
+                eachCard.setRating(planner.getRating());
+
+                String encoded = null;
+                try {
+                    encoded = Base64.getEncoder().encodeToString(planner.getImage());
+                } catch (NullPointerException e) {
+                    String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
+                    Path path = Paths.get(imagePath);
+                    byte[] imageBytes = Files.readAllBytes(path);
+                    encoded = Base64.getEncoder().encodeToString(imageBytes);
+                } finally {
+                    eachCard.setPlannerImg(encoded);
+                }
+
+
+                for (PlannerSpecificationPackage packageItem : packageList) {
+                    if (packageItem.getPlannerNo() == plannerNumber) {
+                        Specification specification = specificationRepository.findBySpecificationNo(packageItem.getSpecificationNo()).get();
+                        eachCard.setSpecificationNo(specification.getSpecificationNo());
+                        SendSpecification sendSpecification = new SendSpecification();
+                        eachCard.setSum(sendSpecification.format(specification.calculateSumExceptSpecNoAndState()));
+                    }
+                }
+                eachCard.setReviewCnt(reviewRepository.countByplannerNo(plannerNumber));
+                card.add(eachCard);
+            }
+        } else {
+            int plannerNumber = rePlannerNo;
             mainpageCard eachCard = new mainpageCard();
             Planner planner = plannerRepository.findByplannerNo(plannerNumber).get();
             eachCard.setPlannerPk(planner.getPlannerNo());

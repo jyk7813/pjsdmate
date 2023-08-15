@@ -120,18 +120,22 @@ span {
     text-align: center;
 }
 body {
-    min-width: 430px;
-    max-width: 430px;
+
     height: auto;
     margin: 0 auto;
     font-family: "Noto Sans KR", sans-serif;
+    border: none;
 }
 #main {
+    width: 430px;
     background-color: white;
     /* margin-top: 30px;
     margin-bottom: 30px; */
     padding-top: 30px;
     padding-bottom: 30px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 .box {
     display: flex;
@@ -227,7 +231,9 @@ text-transform: lowercase;
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
-    background-position: center;
+    left: 30px;
+    top: 0px;
+
     width: 28px;
     height: 28px;
 }
@@ -366,10 +372,12 @@ margin-left: 3px;
   .Comment1 {
       background-image: url(/img/commentmini.png);
       background-repeat: no-repeat;
-
+      background-position: center;
+      background-color: transparent;
+      border: none;
       width: 24px;
       height: 23px;
-      left: 381px;
-      top: 20px;
+      right: 30px;
+      top: 0px;
       position: absolute;
   }

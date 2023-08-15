@@ -10,11 +10,12 @@
 <body>
 <div id="title">
 
-    <button id="back" onclick="history.go(-1)" class="button-back" ></button>
+    <button id="back" class="button-back" ></button>
     <form id="postForm" action="/plannerInfo" method="post">
         <input id="planner" type="hidden" name="id" th:value="${ planner.getId() }">
-        <p id="mno" th:text="${member.getMemberNo()}" hidden></p>
-        <p id="pno" th:text="${planner.getPlannerNo()}" hidden></p>
+        <input id="member" type="hidden" name="memberId" th:value="${ member.getId() }">
+        <input id="mno" type="hidden" name="memberNo" th:value="${member.getMemberNo()}">
+        <input id="pno" type="hidden" name="plannerNO" th:value="${planner.getPlannerNo()}">
     </form>
     <!--            <input id="img" type="hidden" th:value="${ planner.getImage() }">-->
     <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
@@ -23,7 +24,7 @@
     <input id="rating" type="hidden" th:value="${ planner.getRating()}">
     <span class="title"> 상세견적 및 플래너 정보 </span>
 </div>
-<hr/>
+<hr style="width: 100%"/>
 <div id="main">
     <div id="plannerInfo"></div>
     <div id="exceptTitle" th:text="${ member.name }+'고객님이 원하는 견적'"></div>
@@ -47,7 +48,7 @@
                     <p class="detailA Margin10px" th:text="${ requirement.q1Gu }"></p>
                     <p class="detailA Margin10px" th:text="${ requirement.q1_guestno }"></p>
                 </div>
-                <p class="detailC Margin10px" th:text="${ requirement.getQ1Date()}"></p>
+                <p class="detailC Margin10px" th:text="${#dates.format(requirement.getQ1Date(), 'yyyy-MM-dd')}"></p>
             </div>
         </div>
     </div>
@@ -161,11 +162,7 @@
         </p>
     </div>
     <p class="lastline"></p>
-<!--                <div class="box">-->
-<!--                    <p class="state">상담예약</p>-->
-<!--                    <p class="state">계약완료</p>-->
-<!--                    <p class="state">계약종료</p>-->
-<!--                </div>-->
+
     <div id="footDiv" class="margindiv row">
         <button id="hrefChat">채팅하기</button>
         <button id="hrefReservation" >계약하기</button>
@@ -189,5 +186,14 @@
 
 
 
+</script>
+
+<script>
+    let backBtn = document.getElementById("back");
+    backBtn.addEventListener("click",backsend);
+    function backsend(){
+        // let pnoText = document.getElementById("pno").textContent;
+        window.location.href= "/member/main";
+    }
 </script>
 </html>

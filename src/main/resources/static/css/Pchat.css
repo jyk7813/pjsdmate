@@ -142,6 +142,7 @@ body {
     align-self: flex-start;
     margin-right: 20px;
     color: #343837;
+    margin-bottom: 6px;
 
 }
 .plannerChat {
@@ -150,6 +151,7 @@ body {
     align-self: flex-end;
     margin-left: 20px;
     color: white;
+    margin-bottom: 6px;
 
 }
 

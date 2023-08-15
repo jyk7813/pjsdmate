@@ -44,24 +44,25 @@ public class MemberController {
 
     @GetMapping("/main")
     public String goMain(Model model,HttpSession session) throws IOException {
+        System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
+        System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
+        int cardSize = card.size();
+        String stateString=null;
+        if(cardSize==1) {
+            stateString = "계약중인 견적서";
+            model.addAttribute("plannerNo", card.get(0).getPlannerPk());
 
+        } else {
+            stateString = "도착한 견적 알림 (" + cardSize + ")";
+        }
         if(session.getAttribute("need")!=null){
             session.removeAttribute("need");
         }
-
+        model.addAttribute("memberNo", member.getMemberNo());
         model.addAttribute("card", card);
-
-//
-//        @GetMapping("/")
-//        public String start () {
-//            return "start";
-//        }
-//        @GetMapping("/main")
-//        public String main () {
-//            return "main";
-//        }
+        model.addAttribute("stateString", stateString);
         return "main";
     }
     @GetMapping("/answer")
