@@ -166,7 +166,7 @@ public class MemberController {
 //        String birth = (String)model.getAttribute("birth");
 //        String id = (String)model.getAttribute("id");
 //
-//        String searchPass = memberService.searchPassWord(name,birth,id);
+//      /
 //        model.addAttribute("searchPass",searchPass);
 //        return "Login";
 //    }
