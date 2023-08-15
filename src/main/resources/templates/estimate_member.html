@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html>
+
 <head>
     <meta charset="utf-8" />
     <title>견적 리스트 보기</title>
@@ -18,12 +18,12 @@
     <input id="rating" type="hidden" th:value="${ planner.getRating()}">
     <span class="title"> 상세견적 및 플래너 정보 </span>
 </div>
-<hr />
+<hr/>
 <div id="main">
     <div id="plannerInfo"></div>
     <div id="exceptTitle">김민성 고객님이 원하는 견적</div>
     <div id="exceptMoney">
-        <p th:text="${ requirement.q7Estimate  }+'만원'">원</p>
+        <p th:text="${ requirement.q7Estimate  }+'원'"></p>
     </div>
     <p class="lastline"></p>
 
@@ -33,7 +33,7 @@
                 <button id="showA" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">예식장 & 뷔페 예상견적</p>
-                    <p class="price" th:text="${ specification.weddinghall }+'원'">원</p>
+                    <p class="price" th:text="${ specification.weddinghall }+'원'"></p>
                 </div>
             </div>
             <div id="A" class="invi">
@@ -52,12 +52,12 @@
                 <button id="showB" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">본식의상 예상견적</p>
-                    <p class="price" th:text="${ specification.dress }+'원'" ></p>
+                    <p class="price" th:text="${ specification.dress }+'원'"></p>
                 </div>
             </div>
             <div id="B" class="invi">
                 <div class="row">
-                    <p class="detailB Margin10px" th:text="'신부 드레스: '+ ${  requirement.q2_dress }"> </p>
+                    <p class="detailB Margin10px" th:text="'신부 드레스: '+ ${  requirement.q2_dress }"></p>
                     <p class="detailB Margin10px" th:text="'신랑 정장: '+ ${  requirement.q2_suit }"></p>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <button id="showC" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">본식 부모님 의상 예상견적</p>
-                    <p class="price" th:text="${ specification.parentsdress }+'원'" >원</p>
+                    <p class="price" th:text="${ specification.parentsdress }+'원'">원</p>
                 </div>
             </div>
             <div id="C" class="invi">
@@ -90,7 +90,7 @@
                 <button id="showD" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">본식촬영 예상견적</p>
-                    <p class="price" th:text="${ specification.photo }+'원'" ></p>
+                    <p class="price" th:text="${ specification.photo }+'원'"></p>
                 </div>
             </div>
             <div id="D" class="invi">
@@ -107,7 +107,7 @@
                 <button id="showE" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">스튜디오 촬영 예상견적</p>
-                    <p class="price" th:text="${ specification.studio }+'원'" >원</p>
+                    <p class="price" th:text="${ specification.studio }+'원'">원</p>
                 </div>
             </div>
             <div id="E" class="invi">
@@ -127,7 +127,7 @@
                 <button id="showF" class="button-with-image"></button>
                 <div class="package">
                     <p class="questionTitle">스냅 촬영 예상견적</p>
-                    <p class="price" th:text="${ specification.snap }+'원'"   >원</p>
+                    <p class="price" th:text="${ specification.snap }+'원'">원</p>
                 </div>
             </div>
             <div id="F" class="invi">
@@ -152,10 +152,10 @@
         </p>
         <p id="sum" th:text="${ sum }+'원'">
 
+
         </p>
     </div>
     <p class="lastline"></p>
-    <!--
                 <div class="box">
                     <p class="state">상담예약</p>
                     <p class="state">계약완료</p>
@@ -168,10 +168,9 @@
 
 </div>
 </body>
-
-
 <script src="/js/estimate_member.js"></script>
 <script th:inline="javascript">
+
 
 
     var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';
