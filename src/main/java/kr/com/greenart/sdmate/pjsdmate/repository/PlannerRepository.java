@@ -2,8 +2,10 @@ package kr.com.greenart.sdmate.pjsdmate.repository;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import org.hibernate.sql.Select;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.awt.*;
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +41,10 @@ public interface PlannerRepository {
     //update
 
 
-
+    @Transactional
+    @Modifying
+    @Query("UPDATE Planner p SET p.rating = ?2, p.dealCnt = ?3 WHERE p.plannerNo = ?1")
+    int updateRating(Integer plannerNo,double rating,int dealCnt);
 
 
 

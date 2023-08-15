@@ -3,6 +3,7 @@ package kr.com.greenart.sdmate.pjsdmate.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
+import kr.com.greenart.sdmate.pjsdmate.domain.PlannerSpecificationPackage;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,4 +120,29 @@ public class PlannerService {
         return planner;
     }
 
+    public void updataRating(int rating,int pk){
+        PlannerSpecificationPackage packageRepositoryBySpecificationNo = plannerSpecificationPackageRepository.findBySpecificationNo(pk);
+        Planner planner = plannerRepository.findByplannerNo(packageRepositoryBySpecificationNo.getPlannerNo()).get();
+
+        double nowRating = planner.getRating();
+        int totalRating =(int)nowRating*planner.getDealCnt();
+        totalRating= totalRating+rating;
+
+        double updataRating = (double)totalRating/(planner.getDealCnt()+1);
+
+        plannerRepository.updateRating(planner.getPlannerNo(),updataRating,planner.getDealCnt()+1);
+    }
+    public void updataLastRating(int rating,int pk){
+        PlannerSpecificationPackage packageRepositoryBySpecificationNo = plannerSpecificationPackageRepository.findBySpecificationNo(pk);
+        Planner planner = plannerRepository.findByplannerNo(packageRepositoryBySpecificationNo.getPlannerNo()).get();
+
+        double nowRating = planner.getRating();
+        int totalRating =(int)nowRating*planner.getDealCnt();
+        totalRating= totalRating+rating;
+
+        double updataRating = (double)totalRating/(planner.getDealCnt()+1);
+
+        plannerRepository.updateRating(planner.getPlannerNo(),updataRating,planner.getDealCnt());
+
+    }
 }

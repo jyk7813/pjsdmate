@@ -121,4 +121,11 @@ public class SpecificationController {
         return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다");
     }
 
+    @PostMapping("/checkState")
+    public ResponseEntity<String> checkState(@RequestBody String specificationNo){
+
+        Specification specificationByNo = specificationService.getSpecificationByNo(Integer.parseInt(specificationNo));
+
+        return ResponseEntity.ok(""+specificationByNo.getState());
+    }
 }
