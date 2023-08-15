@@ -67,10 +67,13 @@ public class SpecificationController {
 //        return "plannerInfo";
 //    }
     @PostMapping ("/plannerInfo")
-    public String plannerInfo(@RequestParam String id, Model model){
+    public String plannerInfo(@RequestParam String id,@RequestParam String memberId, Model model){
+        System.out.println("너는 누구?"+id);
         Planner planner = plannerService.getPlannerByUsername(id);
-
+        System.out.println(planner);
+        Member member = memberService.getMemberById(memberId);
         model.addAttribute("planner", planner);
+        model.addAttribute("member", member);
         return "planner";
     }
     @GetMapping("/userInfo")
