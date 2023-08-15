@@ -214,7 +214,7 @@ text-transform: lowercase;
       }
 }
 .button-with-image {
-    background-image: url("images/detailOpen.png");
+    background-image: url(/img/detailOpen.png);
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -223,7 +223,7 @@ text-transform: lowercase;
     height: 20px;
 }
 .button-back {
-    background-image: url("images/button-back.png");
+    background-image: url(/img/button-back.png);
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -301,7 +301,6 @@ text-transform: lowercase;
     flex-shrink: 0;
     border-radius: 15px;
     border: 1px solid #d9d9d9;
-    background: #4BA698;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -355,4 +354,22 @@ margin-left: 3px;
     height: 100%; /* 점선의 높이를 100%로 설정하여 수직 점선을 만듭니다. */
     border-left: 1px dotted #000; /* 점선 스타일을 설정합니다. 점선 색상은 여기서는 검은색(#000)입니다. */
     transform: translateX(-50%); /* 컨테이너의 중앙에 위치하도록 가상 요소를 이동시킵니다. */
+  }
+  .stateOn {
+      background: #4BA698;
+      color: #FFF;
+  }
+  .stateOff {
+      background: #F3F5F6;
+      color: #727272;
+  }
+  .Comment1 {
+      background-image: url(/img/commentmini.png);
+      background-repeat: no-repeat;
+
+      width: 24px;
+      height: 23px;
+      left: 381px;
+      top: 20px;
+      position: absolute;
   }

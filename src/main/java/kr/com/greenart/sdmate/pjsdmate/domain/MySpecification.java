@@ -3,7 +3,7 @@ package kr.com.greenart.sdmate.pjsdmate.domain;
 public class MySpecification {
     private int requirementPk;
 
-    private int requirementPrice;
+    private String requirementPrice;
 
     private String memberImg;
     private String memberName;
@@ -18,7 +18,7 @@ public class MySpecification {
     public String toString() {
         return "MySpecification{" +
                 "requirementPk=" + requirementPk +
-                ", requirementPrice=" + requirementPrice +
+                ", requirementPrice='" + requirementPrice + '\'' +
                 ", memberImg='" + memberImg + '\'' +
                 ", memberName='" + memberName + '\'' +
                 ", city='" + city + '\'' +
@@ -36,11 +36,11 @@ public class MySpecification {
         this.requirementPk = requirementPk;
     }
 
-    public int getRequirementPrice() {
+    public String getRequirementPrice() {
         return requirementPrice;
     }
 
-    public void setRequirementPrice(int requirementPrice) {
+    public void setRequirementPrice(String requirementPrice) {
         this.requirementPrice = requirementPrice;
     }
 

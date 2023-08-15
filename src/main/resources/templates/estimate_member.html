@@ -149,10 +149,10 @@
         </p>
         <p id="sum" th:text="${ sum }+'원'">
 
+
         </p>
     </div>
     <p class="lastline"></p>
-    <!--
                 <div class="box">
                     <p class="state">상담예약</p>
                     <p class="state">계약완료</p>
@@ -167,6 +167,7 @@
 </body>
 <script src="/js/estimate_member.js"></script>
 <script th:inline="javascript">
+
 
 
     var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';

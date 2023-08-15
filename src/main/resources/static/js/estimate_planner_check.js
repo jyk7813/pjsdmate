@@ -3,8 +3,8 @@ fetch("/userInfo")
     .then((body) => {
         let container = document.getElementById("userInfo");
         container.insertAdjacentHTML("afterbegin", body);
-        console.log("진입함");
     });
+
 
 let showAButton = document.getElementById("showA");
 let aaDiv = document.getElementById("A");
@@ -40,4 +40,9 @@ let showFButton = document.getElementById("showF");
 let ffDiv = document.getElementById("F");
 showFButton.addEventListener("click", function () {
     ffDiv.classList.toggle("visible");
+});
+
+let CommentButton = document.querySelector(".Comment1");
+CommentButton.addEventListener("click", function () {
+    console.log("채팅방 이동")
 });

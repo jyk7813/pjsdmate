@@ -39,7 +39,6 @@ public class Member {
     private String email;
     private boolean active;
     private byte[] image;
-
     @Column(name="requirement_pk")
     private Integer requirementPk;
 
