@@ -39,17 +39,21 @@ public class PlannerController {
         this.mySpecificationService = mySpecificationService;
     }
     @GetMapping("/viewMySpecification")
-    public String mySpecification(Model model) throws IOException {
+    public String mySpecification(@RequestParam(name = "plannerNo", required = false) String plannerNo, Model model) throws IOException {
         List<MySpecification> cardList;
-        cardList = mySpecificationService.returnMySpeList(1);
+        cardList = mySpecificationService.returnMySpeList(Integer.parseInt(plannerNo));
         model.addAttribute("cardList", cardList);
         return "mySpecification";
     }
     @GetMapping("/main")
     public String mainplanner(Model model, HttpSession session) throws IOException {
         Planner planner = (Planner) session.getAttribute("planner");
+        System.out.println("플래너 pk : " + planner.getPlannerNo());
         List<PlannermainpageCard> card = plannerMainPageService.returnPlannerMainCard(planner.getPlannerNo());
+        System.out.println("requirmentPk:"+card.get(0).getRequirementPk());
+        model.addAttribute("planner", planner);
         model.addAttribute("card", card);
+        System.out.println(card);
         return "mainplanner";
     }
 

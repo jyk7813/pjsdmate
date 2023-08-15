@@ -17,6 +17,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="is-preload">
+
+
 <a href="./main"><img class="toplogo" src="/img/logo_green.png" alt="" /></a>
 <li class="ham-btn" onclick="goOut()">
 	<a class="menu-trigger"	>
@@ -53,7 +55,13 @@
 		<h1 id="name" style="text-align:left"><img src="/img/signature.png" alt=""></h1>
 		<p style="text-align:left"><span>8</span>&nbsp;명의 고객에게 메시지가 도착했습니다!<br/>
 		<ul class="actions">
-			<li><a href="./viewMySpecification" class="button primary">내가 보낸 견적서 확인하기</a></li>
+
+			<li>
+<!--				<a href="./viewMySpecification?plannerNo=" class="button primary">내가 보낸 견적서 확인하기</a>-->
+				<a th:href="@{'./viewMySpecification?plannerNo=' + ${planner.getPlannerNo()}}"
+				   class="button primary">내가 보낸 견적서 확인하기</a>
+			</li>
+
 		</ul>
 	</header>
 
