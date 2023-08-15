@@ -1,22 +1,10 @@
-fetch("/plannerInfo")
+fetch("/userInfo")
     .then((resp) => resp.text())
     .then((body) => {
-        let container = document.getElementById("plannerInfo");
-
-        let name = document.getElementById("name").value;
-        let dealCnt = document.getElementById("dealCnt").value;
-        let rating =document.getElementById("rating").value;
+        let container = document.getElementById("userInfo");
         container.insertAdjacentHTML("afterbegin", body);
-
-
-        let BsName = document.getElementById("plannerBsName");
-        let ratingAndDealCnt = document.getElementById("ratingAndDealCnt");
-        BsName.innerText= name;
-        let text = "평점"+rating+"/"+"최근 거래"+dealCnt+"건";
-        ratingAndDealCnt.innerText = text;
-
+        console.log("진입함");
     });
-
 
 let showAButton = document.getElementById("showA");
 let aaDiv = document.getElementById("A");

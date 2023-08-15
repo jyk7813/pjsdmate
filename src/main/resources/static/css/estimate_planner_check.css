@@ -4,17 +4,18 @@
 }
 body {
     border: 1px solid black;
+    
 }
 * {
     /* 여기 잘해봐야함 */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Noto Sans KR";
+    font-family: "Noto Sans KR", sans-serif;
 }
 #exceptTitle {
     color: #343837;
-    font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -30,7 +31,7 @@ body {
     display: flex;
 
     color: #727272;
-    font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -63,7 +64,7 @@ body {
 .title {
     /* display: inline-flex; */
     color: #343837;
-    font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -73,9 +74,8 @@ body {
     margin: auto;
 }
 #back {
-    background-image: url("/img/icoBack.png");
-    margin-right: 350px;
     position: absolute;
+    margin: 0px;
   
    
 }
@@ -124,7 +124,7 @@ body {
     max-width: 430px;
     height: auto;
     margin: 0 auto;
-    font-family: "Noto Sans KR";
+    font-family: "Noto Sans KR", sans-serif;
 }
 #main {
     background-color: white;
@@ -174,7 +174,7 @@ body {
 }
 .questionTitle .price{
     color: #343837;
-font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
 font-size: 20px;
 font-style: normal;
 font-weight: 700;
@@ -294,7 +294,8 @@ text-transform: lowercase;
     margin-left: auto;
 }
 
-#sendRequest {
+.Stage {
+    color: #FFFF;
     width: 370px;
     height: 50px;
     flex-shrink: 0;
@@ -324,7 +325,7 @@ text-transform: lowercase;
 #userInfoDiv p {
     color: #727272;
 text-align: center;
-font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
 font-size: 16px;
 font-style: normal;
 font-weight: 500;
@@ -334,82 +335,24 @@ text-transform: lowercase;
 margin: 0;
 margin-left: 3px;
 }
-#wedding_hall_price{
-    width: 111px;
-    height: 27px;
-    text-align: right;
-    padding-top: 5px;
-    font-size: 16px;
- 
-    border:none;
-    border-bottom: 1px solid #d9d9d9;
-}
-#wedding_hall_price:focus{
-    
-    outline: none;
-}
-#cloth_price{
-    width: 111px;
-    height: 27px;
-    text-align: right;
-    padding-top: 5px;
-    font-size: 16px;
-    border:none;
-    border-bottom: 1px solid #d9d9d9;
-}
-#cloth_price:focus{
-    
-    outline: none;
-}
-#parents_cloth_price{
-    width: 111px;
-    height: 27px;
-    text-align: right;
-    padding-top: 5px;
-    font-size: 16px;
-    border:none;
-    border-bottom: 1px solid #d9d9d9;
-}
-#parents_cloth_price:focus{
-    
-    outline: none;
-}
-#shot{
-    width: 111px;
-    height: 27px;
-    text-align: right;
-    padding-top: 5px;
-    font-size: 16px;
-    border:none;
-    border-bottom: 1px solid #d9d9d9;
-}
-#shot:focus{
-    
-    outline: none;
-}
-#studio{
-    width: 111px;
-    height: 27px;
-    text-align: right;
-    padding-top: 5px;
-    font-size: 16px;
-    border:none;
-    border-bottom: 1px solid #d9d9d9;
-}
-#studio:focus{
-    
-    outline: none;
-}
-#snap_shot{
-    width: 111px;
-    height: 27px;
-    text-align: right;
-    padding-top: 5px;
-    font-size: 16px;
-    border:none;
-    border-bottom: 1px solid #d9d9d9;
-}
-#snap_shot:focus{
-    
-    outline: none;
-}
+#footDiv {
+    display: flex;
+    flex-direction: column; /* 수직 정렬을 위해 컬럼 방향으로 정렬합니다. */
+    align-items: center; /* 수직 정렬을 센터로 설정합니다. */
+  }
+  .vertical-dotted-line {
+    position: relative;
+    width: 20px; /* 수직 점선의 두께를 조정합니다. */
+    height: 30px; /* 수직 점선의 높이를 조정합니다. */
+  }
+  
+  .vertical-dotted-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%; /* 점선의 위치를 조정합니다. 여기서는 컨테이너 중앙에 위치하도록 50%로 설정합니다. */
+    width: 1px; /* 수직 점선의 두께와 일치시킵니다. */
+    height: 100%; /* 점선의 높이를 100%로 설정하여 수직 점선을 만듭니다. */
+    border-left: 1px dotted #000; /* 점선 스타일을 설정합니다. 점선 색상은 여기서는 검은색(#000)입니다. */
+    transform: translateX(-50%); /* 컨테이너의 중앙에 위치하도록 가상 요소를 이동시킵니다. */
+  }

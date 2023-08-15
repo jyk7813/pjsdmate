@@ -8,6 +8,7 @@ import kr.com.greenart.sdmate.pjsdmate.exception.JoinIdException;
 import kr.com.greenart.sdmate.pjsdmate.exception.JoinPhoneNumException;
 import kr.com.greenart.sdmate.pjsdmate.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +32,7 @@ public class MemberService {
         this.objectMapper = objectMapper;
     }
     public Member getMemberByPK(int member_no){
-        Member member = memberRepository.findBymemberNo(member_no).get();
+        Member member = memberRepository.findByMemberNo(member_no).get();
 
         return member;
     }
@@ -166,5 +167,22 @@ public void join(Member member){
             return true;
         }
         return false;
+    }
+
+
+    public Member getMemberById(String id) {
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if(optionalMember.isPresent()){
+            return optionalMember.get();
+        }
+        return null;
+    }
+
+    public Member getMemberByEmail(String email) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        if(optionalMember.isPresent()){
+            return optionalMember.get();
+        }
+        return null;
     }
 }

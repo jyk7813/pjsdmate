@@ -6,6 +6,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.mainpageCard;
 
 import kr.com.greenart.sdmate.pjsdmate.service.MainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
+import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
 import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -33,7 +34,6 @@ public class MemberController {
 
     private final RequirementService requirementService;
 
-
     private final MainPageService mainPageService;
 
     public MemberController(MemberService memberService, RequirementService requirementService, MainPageService mainPageService) {
@@ -46,8 +46,9 @@ public class MemberController {
     public String goMain(Model model,HttpSession session) throws IOException {
         System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
-        System.out.println(member);
+        System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
+        System.out.println(card);
 
 
         model.addAttribute("card", card);
@@ -69,8 +70,12 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-        public String login () {
-
+        public String login (HttpSession session) {
+        if(session.getAttribute("member")!=null){
+            System.out.println("세션값이 널이 아님");
+        }else if(session.getAttribute("member")==null){
+            System.out.println("세션값이 널임");
+        }
         return "login";
         }
 
@@ -205,4 +210,22 @@ public class MemberController {
         requirementService.insertRequirement(requirement,member.getMemberNo());
         return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다.");
     }
+    @GetMapping("/findpw")
+    public String findpw(){
+        return "findpwmember";
+    }
+    @GetMapping("/findid")
+    public String findid(){
+        return "findidmember";
+    }
+    @GetMapping("/logout")
+    public String logOut(){
+        return "member_logout";
+    }
+    @GetMapping("/logoutYes")
+    public String logOut(HttpSession session){
+        session.removeAttribute("member");
+        return "./login";
+    }
+
 }

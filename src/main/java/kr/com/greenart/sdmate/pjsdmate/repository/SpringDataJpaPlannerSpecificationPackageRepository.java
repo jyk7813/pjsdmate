@@ -13,4 +13,6 @@ public interface SpringDataJpaPlannerSpecificationPackageRepository
     List<PlannerSpecificationPackage> findByMemberNo(int memberNo);
 
     PlannerSpecificationPackage findBySpecificationNo(int specificationNo);
+    @Override
+    List<PlannerSpecificationPackage> findByPlannerNo(int plannerNo);
 }

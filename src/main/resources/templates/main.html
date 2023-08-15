@@ -17,9 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="is-preload">
-    <a href="main.html"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
-    <li class="ham-btn">
-        <a class="menu-trigger" href="#">
+    <a href="./main"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
+    <li class="ham-btn" onclick="goOut()">
+        <a class="menu-trigger" >
             <span></span>
             <span></span>
             <span></span>
@@ -31,7 +31,7 @@
                 <p class="topbannertext"> 어떻게 결혼 준비를 해야할 지 고민인가요?</p>
                 <p class="topbannertext strong">결혼준비 가이드를 확인하세요.</p>
             </div>
-            <img class="topimg" src="/img/guide.png">
+            <img class="topimg" src="/img/guide.png" >
             <div class="guidebtn">
                 <a href="main.html"><p class="go">바로가기 →</p></a>
             </div>
@@ -159,6 +159,7 @@
 
 
 <script th:inline="javascript">
+
 
 
     var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';

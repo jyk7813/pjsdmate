@@ -94,12 +94,29 @@ public class PlannerService {
         return false;
     }
 
-    public Planner findBySepcificationInPackage(int specificationNo){
+    public Planner findBySepcificationInPackage(int specificationNo) {
         Integer plannerPk = plannerSpecificationPackageRepository.findBySpecificationNo(specificationNo).getPlannerNo();
-        if(plannerRepository.findByplannerNo(plannerPk).isPresent()){
+        if (plannerRepository.findByplannerNo(plannerPk).isPresent()) {
             Planner planner = plannerRepository.findByplannerNo(plannerPk).get();
-                return planner;
-        };
+            return planner;
+        }
+
         return null;
+    }
+    public Planner getPlannerByEmail(String email) {
+        Optional<Planner> optionalPlanner = plannerRepository.findByEmail(email);
+        Planner planner = null;
+        if(optionalPlanner.isPresent()){
+            planner = optionalPlanner.get();
+        }
+        return planner;
+    }
+    public Planner getPlannerByUsername(String username) {
+        Optional<Planner> optionalPlanner = plannerRepository.findById(username);
+        Planner planner = null;
+        if(optionalPlanner.isPresent()){
+            planner = optionalPlanner.get();
+        }
+        return planner;
     }
 }

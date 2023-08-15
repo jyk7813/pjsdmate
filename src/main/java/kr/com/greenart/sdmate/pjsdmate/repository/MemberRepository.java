@@ -1,8 +1,10 @@
 package kr.com.greenart.sdmate.pjsdmate.repository;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.Member;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +14,7 @@ public interface MemberRepository {
 
     Optional<Member>findById(String id);
 
-    Optional<Member> findBymemberNo(Integer memberNo);
+    Optional<Member> findByMemberNo(Integer memberNo);
 
     Optional<Member> findByPhonenum(String phonenum);
 
@@ -39,4 +41,7 @@ public interface MemberRepository {
     Member findByRequirementPk(int requirementPk);
     @Query("SELECT COUNT(m) FROM Member m WHERE m.phonenum = :phonenum")
     Integer countByPhonenum(String phonenum);
+
+    int updateRequirementPk(int memberPk,int requirementPk);
+
 }

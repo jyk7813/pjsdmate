@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<<html xmlns:th="http://www.thymeleaf.org">>
     <head>
         <meta charset="utf-8" />
         <title>견적 리스트 보기</title>
-        <link rel="stylesheet" href="/css/estimate_planner.css" />
+        <link rel="stylesheet" href="/css/estimate_planner_check.css" />
     </head>
     <body>
         <div id="title">
-            <button id="back" class="button-back" onclick="history.go(-1)"></button>
+            <button id="back" class="button-back" onclick="history.back()"></button>
             <span class="title">예상 견적 작성 </span>
         </div>
         <hr />
@@ -17,7 +17,7 @@
             <div id="exceptMoney">
                 <p>500만원 ~ 1,000만원</p>
             </div>
-            <p id="lastline"></p>
+            <p class="lastline"></p>
 
             <div id="detailA">
                 <div class="margindiv">
@@ -25,7 +25,7 @@
                         <button id="showA" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">예식장 & 뷔페 예상견적</p>
-                            <input type="text" class="price" id="wedding_hall_price" oninput="validateNumberInput(event)">원</p>
+                            <p class="price" id="wedding_hall_price">원</p>
                         </div>
                     </div>
                     <div id="A" class="invi">
@@ -44,7 +44,7 @@
                         <button id="showB" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식의상 예상견적</p>
-                            <input type="text" class="price" id="cloth_price" oninput="validateNumberInput(event)">원</p>
+                            <p class="price" id="cloth_price">원</p>
                         </div>
                     </div>
                     <div id="B" class="invi">
@@ -61,7 +61,7 @@
                         <button id="showC" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식 부모님 의상 예상견적</p>
-                            <input type="text" class="price" id="parents_cloth_price" oninput="validateNumberInput(event)">원</p>
+                            <p class="price" id="parents_cloth_price">원</p>
                         </div>
                     </div>
                     <div id="C" class="invi">
@@ -82,7 +82,7 @@
                         <button id="showD" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">본식촬영 예상견적</p>
-                            <input type="text" class="price" id="shot" oninput="validateNumberInput(event)">원</p>
+                            <p class="price" id="shot">원</p>
                         </div>
                     </div>
                     <div id="D" class="invi">
@@ -99,7 +99,7 @@
                         <button id="showE" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">스튜디오 촬영 예상견적</p>
-                            <input type="text" class="price" id="studio" oninput="validateNumberInput(event)">원</p>
+                            <p class="price" id="studio">원</p>
                         </div>
                     </div>
                     <div id="E" class="invi">
@@ -117,7 +117,7 @@
                         <button id="showF" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">스냅 촬영 예상견적</p>
-                            <input type="text" class="price" id="snap_shot" oninput="validateNumberInput(event)">원</p>
+                            <p class="price" id="snap_shot">원</p>
                         </div>
                     </div>
                     <div id="F" class="invi">
@@ -134,7 +134,7 @@
                     </div>
                 </div>
             </div>
-            <p id="lastline"></p>
+            <p class="lastline"></p>
             <div id="estimateSum" class="Margin20px">
                 <p>
                     총 예상 견적
@@ -143,14 +143,18 @@
                     0원
                 </p>
             </div>
-            <p id="lastline"></p>
+            <p class="lastline"></p>
 
             <div id="footDiv" class="margindiv row">
-                <button id="sendRequest" >견적보내기</button>
+                <button class ="Stage" id="Consultation_reservation">상담예약</button>
+                <div class="vertical-dotted-line"></div>
+                <button class ="Stage" id="contract">계약완료</button>
+                <div class="vertical-dotted-line"></div>
+                <button class ="Stage" id="sendRequest">계약종료</button>
                
             </div>
 
         </div>
     </body>
-    <script src="/js/estimate_planner.js"></script>
-</html>
+    <script src="/js/estimate_planner_check.js"></script>
+</>

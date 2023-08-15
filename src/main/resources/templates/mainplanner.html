@@ -17,9 +17,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="is-preload">
-<a href="main.html"><img class="toplogo" src="/img/logo_green.png" alt="" /></a>
-<li class="ham-btn">
-	<a class="menu-trigger" href="#">
+<a href="./main"><img class="toplogo" src="/img/logo_green.png" alt="" /></a>
+<li class="ham-btn" onclick="goOut()">
+	<a class="menu-trigger"	>
 		<span></span>
 		<span></span>
 		<span></span>
@@ -90,7 +90,7 @@
 				<div class="content">
 					<ul id="card" class="statistics">
 						<li th:each="card : ${card}" class="style" >
-							<a th:href="@{/viewRequirement(requirement=${ card.getRequirementPk()})}">
+							<a th:href="@{/viewRequirement(requirement=${ card.requirementPk })}">
 								<div class="reqCard">
 									<strong>
 										요청 견적금액&nbsp;&nbsp;&nbsp;<span  th:text="${card.estimate}"></span>&nbsp;원

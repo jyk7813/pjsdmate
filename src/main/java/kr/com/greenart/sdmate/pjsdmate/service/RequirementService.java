@@ -2,52 +2,45 @@ package kr.com.greenart.sdmate.pjsdmate.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kr.com.greenart.sdmate.pjsdmate.domain.MemberRequirement;
 import kr.com.greenart.sdmate.pjsdmate.domain.Requirement;
+import kr.com.greenart.sdmate.pjsdmate.domain.SendRequirement;
+import kr.com.greenart.sdmate.pjsdmate.repository.MemberRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.MemberRequirementRepository;
-import kr.com.greenart.sdmate.pjsdmate.repository.RequirementRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.SpringDataJpaRequirementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
 public class RequirementService {
-
     private final SpringDataJpaRequirementRepository requirementRepository;
     private final ObjectMapper objectMapper;
 
-    private final MemberRequirementRepository memberRequirementRepository;
+  private final MemberRepository memberRepository;
 
 
 
 
     @Autowired
-    public RequirementService(SpringDataJpaRequirementRepository requirementRepository, ObjectMapper objectMapper, MemberRequirementRepository memberRequirementRepository) {
+    public RequirementService(SpringDataJpaRequirementRepository requirementRepository, ObjectMapper objectMapper, MemberRequirementRepository memberRequirementRepository, MemberRepository memberRepository) {
         this.requirementRepository = requirementRepository;
         this.objectMapper = objectMapper;
-        this.memberRequirementRepository = memberRequirementRepository;
+        this.memberRepository = memberRepository;
     }
 
 
     public Requirement getRequirementByNo(int requirementNo) {
-        Requirement requirement = requirementRepository.findByrequirementNo(requirementNo).get();
+        Requirement requirement = requirementRepository.findByRequirementNo(requirementNo).get();
         return requirement;
     }
 
     public Integer insertRequirement(Requirement requirement,Integer memberPk) {
 
         if(requirement != null){
-//            Requirement requirement = optionalRequirementrequirement.get();
-            requirementRepository.save(requirement);
+          requirementRepository.save(requirement);
 
-            MemberRequirement memberRequirement = new MemberRequirement();
+          memberRepository.updateRequirementPk(memberPk,requirement.getRequirementNo());
 
-            memberRequirement.setMemberNo(memberPk);
-            memberRequirement.setRequiremnetNo(requirement.getRequirementNo());
-
-            memberRequirementRepository.save(memberRequirement);
             return 1;
         }
         return 0;
@@ -62,4 +55,15 @@ public class RequirementService {
         }
         return requirement;
     }
+
+    public SendRequirement setttingRequirement(Requirement requirement){
+        SendRequirement sendRequirement = new SendRequirement();
+        SendRequirement setting = sendRequirement.setting(sendRequirement, requirement);
+        return setting;
+    }
+    @GetMapping("/userInfo")
+    public String userInfo(){
+        return "userInfo";
+    }
 }
+
