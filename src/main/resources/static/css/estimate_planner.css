@@ -10,11 +10,11 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Noto Sans KR";
+    font-family: "Noto Sans KR", sans-serif;
 }
 #exceptTitle {
     color: #343837;
-    font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -30,7 +30,7 @@ body {
     display: flex;
 
     color: #727272;
-    font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -63,7 +63,7 @@ body {
 .title {
     /* display: inline-flex; */
     color: #343837;
-    font-family: Noto Sans;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -124,7 +124,7 @@ body {
     max-width: 430px;
     height: auto;
     margin: 0 auto;
-    font-family: "Noto Sans KR";
+    font-family: "Noto Sans KR", sans-serif;
 }
 #main {
     background-color: white;
@@ -174,13 +174,13 @@ body {
 }
 .questionTitle .price{
     color: #343837;
-font-family: Noto Sans;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-letter-spacing: -1px;
-text-transform: lowercase;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -1px;
+    text-transform: lowercase;
 }
 
 .package .price {
@@ -214,7 +214,7 @@ text-transform: lowercase;
       }
 }
 .button-with-image {
-    background-image: url("img/icoarrow.png");
+    background-image: url("/img/detailOpen.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -323,16 +323,16 @@ text-transform: lowercase;
 }
 #userInfoDiv p {
     color: #727272;
-text-align: center;
-font-family: Noto Sans;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: -0.8px;
-text-transform: lowercase;
-margin: 0;
-margin-left: 3px;
+    text-align: center;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    text-transform: lowercase;
+    margin: 0;
+    margin-left: 3px;
 }
 #wedding_hall_price{
     width: 111px;

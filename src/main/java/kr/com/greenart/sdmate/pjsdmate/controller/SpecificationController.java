@@ -52,11 +52,7 @@ public class SpecificationController {
         SendSpecification send = sendSpecification.setting(sendSpecification,objSpecification);
 
         String settingSum =sendSpecification.format(sum);
-
         Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
-
-
-        Member member = memberService.getRequirement(requirement.getRequirementNo());
 
         model.addAttribute("sum",settingSum);
 
