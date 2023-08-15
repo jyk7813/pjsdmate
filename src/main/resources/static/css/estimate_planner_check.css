@@ -363,3 +363,13 @@ margin-left: 3px;
       background: #F3F5F6;
       color: #727272;
   }
+  .Comment1 {
+      background-image: url(/img/commentmini.png);
+      background-repeat: no-repeat;
+
+      width: 24px;
+      height: 23px;
+      left: 381px;
+      top: 20px;
+      position: absolute;
+  }

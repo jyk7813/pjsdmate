@@ -5,6 +5,7 @@ fetch("/userInfo")
         container.insertAdjacentHTML("afterbegin", body);
     });
 
+
 let showAButton = document.getElementById("showA");
 let aaDiv = document.getElementById("A");
 showAButton.addEventListener("click", function () {
@@ -39,4 +40,9 @@ let showFButton = document.getElementById("showF");
 let ffDiv = document.getElementById("F");
 showFButton.addEventListener("click", function () {
     ffDiv.classList.toggle("visible");
+});
+
+let CommentButton = document.querySelector(".Comment1");
+CommentButton.addEventListener("click", function () {
+    console.log("채팅방 이동")
 });
