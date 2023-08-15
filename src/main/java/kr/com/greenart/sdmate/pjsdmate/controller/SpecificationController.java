@@ -56,7 +56,6 @@ public class SpecificationController {
         Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
 
 
-        Member member = memberService.getRequirement(requirement.getRequirementNo());
 
         model.addAttribute("sum",settingSum);
 
