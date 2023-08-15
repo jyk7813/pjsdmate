@@ -46,3 +46,16 @@ let CommentButton = document.querySelector(".Comment1");
 CommentButton.addEventListener("click", function () {
     console.log("채팅방 이동")
 });
+
+let chatBtn = document.getElementById("hrefChat");
+
+chatBtn.addEventListener("click",link);
+function link(){
+    let mnoText = document.getElementById("mno").textContent;
+    let pnoText = document.getElementById("pno").textContent;
+    let mno = "memberNo="+mnoText;
+    let pno = "plannerNo="+pnoText;
+    console.log(mno);
+    window.location.href="/plannerChat?" + mno + "&" + pno;
+
+}

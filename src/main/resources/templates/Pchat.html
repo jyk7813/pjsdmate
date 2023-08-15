@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>견적 리스트 보기</title>
+    <!--         <link rel="stylesheet" th:href="@{/css/Mchat.css}"/>-->
+
+</head>
+<body>
+<p id="mno" th:text="${memberNo}" hidden></p>
+<p id="pno" th:text="${plannerNo}" hidden></p>
+
+<div id="title">
+    <button id="back" class="button-back" onclick="history.back"></button>
+    <span class="title">임태경 플래너님과 채팅</span>
+</div>
+<hr />
+<div id="bigBox">
+    <div id="main">
+        <div id="card" th:each="histories : ${histories}" th:class="${histories.who == 'M' ? 'memberChat' : 'plannerChat'}">
+            <p th:text="${histories.content}"></p>
+        </div>
+        <div class="chat-container">
+            <!-- 여기에 채팅 메시지들을 표시하는 부분이 들어갑니다. -->
+        </div>
+
+        <div class="chat-input">
+            <input id="messageInput" type="text" placeholder="메시지를 입력하세요">
+            <button id="submitButton">전송</button>
+        </div>
+
+
+    </div>
+
+</div>
+
+</body>
+<link rel="stylesheet" th:href="@{/css/Pchat.css}"/>
+</html>
+<script>
+    let chatBtn = document.getElementById("submitButton");
+    chatBtn.addEventListener("click",send);
+
+    function send(){
+        let messageInput = document.getElementById("messageInput");
+        let messageValue = messageInput.value;
+
+        let mnoText = document.getElementById("mno").textContent;
+        let pnoText = document.getElementById("pno").textContent;
+        let mno = "memberNo="+mnoText;
+        let pno = "plannerNo="+pnoText;
+        let message = "message="+messageValue;
+        console.log(message);
+        window.location.href="/plannerChat?" + mno + "&" + pno + "&" + message;
+    }
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+        // 버튼 클릭 이벤트 처리
+        $('.button-back').click(function() {
+            // 뒤로 가기 실행
+            window.history.back();
+        });
+    });
+</script>

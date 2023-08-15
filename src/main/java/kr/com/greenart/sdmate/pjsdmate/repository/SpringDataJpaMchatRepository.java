@@ -10,4 +10,7 @@ import java.util.List;
 public interface SpringDataJpaMchatRepository extends JpaRepository<Mchat, Integer>, MchatRepository {
     @Override
     List<Mchat> findByMemberNoAndPlannerNo(int memberNo, int plannerNo);
+
+    @Override
+    Mchat save(Mchat mchat);
 }

@@ -9,7 +9,9 @@
         <div id="title">
             <button id="back" class="button-back" onclick="history.back()"></button>
             <span class="title">예상 견적 작성 </span>
-            <div class="Comment1"></div>
+            <button class="Comment1" id="hrefChat"></button>
+            <p id="mno" th:text="${member.getMemberNo()}" hidden></p>
+            <p id="pno" th:text="${planner.getPlannerNo()}" hidden></p>
         </div>
         <hr />
         <div id="main">

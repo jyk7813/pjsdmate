@@ -45,7 +45,7 @@ public class SpecificationController {
         Specification objSpecification =  specificationService.getSpecificationByNo(Integer.parseInt(specification));
         int sum = objSpecification.calculateSumExceptSpecNoAndState();
         Requirement requirement = requirementService.getRequirementByNo(objSpecification.getRequirement_no());
-
+        Member member = memberService.getRequirement(requirement.getRequirementNo());
         SendRequirement sendRequirement = requirementService.setttingRequirement(requirement);
 
         SendSpecification sendSpecification = new SendSpecification();
@@ -55,9 +55,11 @@ public class SpecificationController {
 
         Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
 
+
         Member member = memberService.getRequirement(requirement.getRequirementNo());
 
         model.addAttribute("sum",settingSum);
+
         model.addAttribute("planner", planner);
         model.addAttribute("member",member);
         model.addAttribute("specification",send);
@@ -84,6 +86,8 @@ public class SpecificationController {
     @GetMapping("/viewMySpecification")
     public String Myspecification(@RequestParam String specificationNo, String requirementNo, Model model) throws IOException {
 
+        int plannerNo = mySpecificationService.returnPlannerNoBySpeNo(Integer.parseInt(specificationNo));
+        Planner planner = plannerService.getPlannerById(plannerNo);
         Specification specification = mySpecificationService.returnSpecification(Integer.parseInt(specificationNo));
         Requirement requirement = mySpecificationService.returnRequirement(Integer.parseInt(requirementNo));
         Member member = mySpecificationService.returnMember(Integer.parseInt(requirementNo));
@@ -100,6 +104,8 @@ public class SpecificationController {
             byte[] imageBytes = Files.readAllBytes(path);
             encoded = Base64.getEncoder().encodeToString(imageBytes);
         }
+
+        model.addAttribute("planner", planner);
         model.addAttribute("specification", sendSpecification);
         model.addAttribute("requirement", sendRequirement);
         model.addAttribute("member", member);
