@@ -34,22 +34,22 @@ fetch("/planner/plannerInfo")
             },
             body: JSON.stringify({ id: plannerId })  // 입력된 값을 JSON 형태로 전송합니다.
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                inputimg.src = "data:image/jpeg;base64," + data.image;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                if(error.message === "Network response was not ok"){
-                    alert("입력하신 정보가 올바르지 않습니다.");
-                }
-            });
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            inputimg.src = "data:image/jpeg;base64," + data.image;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            if(error.message === "Network response was not ok"){
+                alert("입력하신 정보가 올바르지 않습니다.");
+            }
+        });
 
     });
 
