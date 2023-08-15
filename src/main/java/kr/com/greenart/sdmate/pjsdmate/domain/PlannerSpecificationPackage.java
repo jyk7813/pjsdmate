@@ -19,6 +19,14 @@ public class PlannerSpecificationPackage {
     private int memberNo;
     private Date datetime;
 
+    public PlannerSpecificationPackage setting(PlannerSpecificationPackage plannerSpecificationPackage,int specificationNo,int plannerNo,int memberNo){
+
+        this.specificationNo=specificationNo;
+        this.memberNo=memberNo;
+        this.plannerNo=plannerNo;
+        datetime=new Date();
+        return plannerSpecificationPackage;
+    }
 
     @Override
     public boolean equals(Object o) {

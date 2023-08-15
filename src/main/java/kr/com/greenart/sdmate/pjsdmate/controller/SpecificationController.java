@@ -1,19 +1,23 @@
 package kr.com.greenart.sdmate.pjsdmate.controller;
 
 import kr.com.greenart.sdmate.pjsdmate.domain.*;
-import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
-import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
-import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
-import kr.com.greenart.sdmate.pjsdmate.service.SpecificationService;
+
+import kr.com.greenart.sdmate.pjsdmate.service.*;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
+
 
 @Controller
 public class SpecificationController {
@@ -24,30 +28,34 @@ public class SpecificationController {
     private final MySpecificationService mySpecificationService;
 
     private final PlannerService plannerService;
-    public SpecificationController(SpecificationService specificationService,RequirementService requirementService, MySpecificationService mySpecificationService, PlannerService plannerService) {
+
+
+    private final MemberService memberService;
+    public SpecificationController(SpecificationService specificationService, RequirementService requirementService, MySpecificationService mySpecificationService, PlannerService plannerService, MemberService memberService) {
         this.specificationService = specificationService;
         this.requirementService = requirementService;
         this.mySpecificationService = mySpecificationService;
         this.plannerService = plannerService;
+        this.memberService = memberService;
     }
 
     @GetMapping("/viewSpecification")
     public String viewSpecification(@RequestParam String specification, Model model){
 
-    Specification objSpecification =  specificationService.getSpecificationByNo(Integer.parseInt(specification));
-    int sum = objSpecification.calculateSumExceptSpecNoAndState();
-    Requirement requirement = requirementService.getRequirementByNo(objSpecification.getRequirement_no());
+        Specification objSpecification =  specificationService.getSpecificationByNo(Integer.parseInt(specification));
+        int sum = objSpecification.calculateSumExceptSpecNoAndState();
+        Requirement requirement = requirementService.getRequirementByNo(objSpecification.getRequirement_no());
 
-    SendRequirement sendRequirement = requirementService.setttingRequirement(requirement);
+        SendRequirement sendRequirement = requirementService.setttingRequirement(requirement);
 
-    Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
+        Planner planner = plannerService.findBySepcificationInPackage(objSpecification.getSpecificationNo());
 
-    System.out.println(requirement);
-    model.addAttribute("sum",sum);
-    model.addAttribute("planner", planner);
-    model.addAttribute("specification",objSpecification);
-    model.addAttribute("requirement",sendRequirement);
-    return "estimate_member";
+        System.out.println(requirement);
+        model.addAttribute("sum",sum);
+        model.addAttribute("planner", planner);
+        model.addAttribute("specification",objSpecification);
+        model.addAttribute("requirement",sendRequirement);
+        return "estimate_member";
     }
 //    @GetMapping("/plannerInfo")
 //    public String plannerInfo(){
@@ -93,4 +101,13 @@ public class SpecificationController {
 
         return "estimate_planner_check";
     }
+    @PostMapping("/saveSpecification")
+    public ResponseEntity<String> saveSpecification(@RequestBody Specification specification, HttpSession session){
+        Planner planner = (Planner) session.getAttribute("planner");
+        Member member = memberService.getRequirement(specification.getRequirement_no());
+        specificationService.save(specification,planner,member);
+
+        return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다");
+    }
+
 }
