@@ -9,7 +9,7 @@ public class PlannermainpageCard {
     private String memberImg;
 
     private int requirementPk;
-    private int estimate;
+    private String estimate;
 
     private String city;
 
@@ -72,11 +72,11 @@ public class PlannermainpageCard {
         this.requirementPk = requirementPk;
     }
 
-    public int getEstimate() {
+    public String getEstimate() {
         return estimate;
     }
 
-    public void setEstimate(int estimate) {
+    public void setEstimate(String estimate) {
         this.estimate = estimate;
     }
 

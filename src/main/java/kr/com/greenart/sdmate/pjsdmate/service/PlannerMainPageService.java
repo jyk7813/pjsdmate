@@ -41,10 +41,21 @@ public class PlannerMainPageService {
         Planner planner = plannerRepository.findByplannerNo(plannerNo).get();
         String region = planner.getRegion();
         List<Requirement> requirementList = requirementRepository.findByQ1CityOrderByQ1DateAsc(region);
-        //System.out.println(requirementList);
+
         for (Requirement requirement : requirementList) {
             PlannermainpageCard eachCard = new PlannermainpageCard();
-            eachCard.setEstimate(requirement.getQ7Estimate());
+            if(requirement.getQ7Estimate()==500){
+                eachCard.setEstimate("~500만원");
+            }else if(requirement.getQ7Estimate()==1000){
+                eachCard.setEstimate("500만원~1000만원");
+            }else if(requirement.getQ7Estimate()==1500){
+                eachCard.setEstimate("1000만원~1500만원");
+            }else if(requirement.getQ7Estimate()==2000){
+                eachCard.setEstimate("1500만원~2000원");
+            }else if(requirement.getQ7Estimate()==9999){
+                eachCard.setEstimate("상관없음");
+            }
+
             eachCard.setCity(requirement.getQ1City());
             eachCard.setGu(requirement.getQ1Gu());
             System.out.println("요구서 번호 : " + requirement.getRequirementNo());

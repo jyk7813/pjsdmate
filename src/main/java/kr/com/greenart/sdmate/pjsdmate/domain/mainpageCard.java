@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 public class mainpageCard {
-    private int sum;
+    private String sum;
     private int plannerPk;
     private double rating;
     private int reviewCnt;
@@ -27,11 +27,11 @@ public class mainpageCard {
                 '}';
     }
 
-    public int getSum() {
+    public String getSum() {
         return sum;
     }
 
-    public void setSum(int sum) {
+    public void setSum(String sum) {
         this.sum = sum;
     }
 

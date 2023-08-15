@@ -155,15 +155,20 @@ function save(){
         specification.requirement_no = urlWithoutParams;
         specification.state = 0;
 
+        let data = JSON.stringify(specification);
     $.ajax({
         type: "POST",
         url: "/saveSpecification",
-        data: JSON.stringify(specification),
+        data: data,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: function(response) {
-          console.log(response.ok);
+        success: function(data) {
+          console.log(data);
 
+        },
+        error: function (request, status, error) {
+            console.log(error);
+            link();
         }
     });
 }
