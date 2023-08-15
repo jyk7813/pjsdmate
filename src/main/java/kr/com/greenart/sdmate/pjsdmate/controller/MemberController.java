@@ -52,9 +52,13 @@ public class MemberController {
         String stateString=null;
         if(cardSize==1) {
             stateString = "계약중인 견적서";
+
             model.addAttribute("plannerNo", card.get(0).getPlannerPk());
 
-        } else {
+        }else if( cardSize == 0){
+            stateString = "결혼 축하드립니다.";
+        }
+        else {
             stateString = "도착한 견적 알림 (" + cardSize + ")";
         }
         if(session.getAttribute("need")!=null){

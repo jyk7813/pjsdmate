@@ -44,6 +44,9 @@ public class MainPageService {
         List<PlannerSpecificationPackage> packageList = getpackageByPk(memberNo);
         for (PlannerSpecificationPackage plannerSpecificationPackage : packageList) {
             Specification specification = specificationRepository.findBySpecificationNo(plannerSpecificationPackage.getSpecificationNo()).get();
+            if(specification.getState() ==2 ){
+                return new ArrayList<>();
+            }
             if(specification.getState() == 1) {
                 rePlannerNo = plannerSpecificationPackage.getPlannerNo();
                 cnt++;
@@ -86,6 +89,7 @@ public class MainPageService {
                     }
                 }
                 eachCard.setReviewCnt(reviewRepository.countByplannerNo(plannerNumber));
+
                 card.add(eachCard);
             }
         } else {
