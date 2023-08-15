@@ -211,7 +211,7 @@ body {
     }
 }
 .button-with-image {
-    background-image: url("/img/detailOpen.png");
+    background-image: url("/img/ detailOpen.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -308,6 +308,7 @@ body {
     border-radius: 15px;
     border: 1px solid #d9d9d9;
     background: #F28585;
+    color : #d9d9d9;
     display: flex;
     align-items: center;
     justify-content: center;

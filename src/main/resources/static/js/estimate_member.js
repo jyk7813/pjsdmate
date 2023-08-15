@@ -101,3 +101,51 @@ function link(){
     window.location.href="/memberChat?" + mno + "&" + pno;
 
 }
+
+var currentURL = window.location.href;
+
+var urlWithoutParams = currentURL.split("?")[1];
+
+
+let reservation = document.getElementById("hrefReservation");
+
+reservation.addEventListener("click",linkReview);
+
+function linkReview(){
+    window.location.href="/review?"+urlWithoutParams;
+}
+
+
+var currentURL = window.location.href;
+
+var specificationNo = currentURL.split("specification=")[1];
+
+
+
+
+$.ajax({
+    type: "POST",
+    url: "/checkState",
+    data: specificationNo,
+    contentType: "text/html; charset=utf-8",
+    dataType: "text",
+    success: function(data) {
+        console.log(data);
+        if(data==1){
+            let btn = document.getElementById("hrefReservation");
+            btn.innerText="계약 종료 하기";
+            btn.addEventListener("click",linkLast)
+        }
+    },
+    error: function (request, status, error) {
+        console.log(error);
+
+    }
+});
+
+function linkLast(){
+    var currentURL = window.location.href;
+
+    var urlWithoutParams = currentURL.split("?")[1];
+    window.location.href="/LastReview?"+urlWithoutParams;
+}

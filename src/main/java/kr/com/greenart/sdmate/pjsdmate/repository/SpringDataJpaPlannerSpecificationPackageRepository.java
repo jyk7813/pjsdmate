@@ -18,4 +18,5 @@ public interface SpringDataJpaPlannerSpecificationPackageRepository
 
     @Override
     PlannerSpecificationPackage save(PlannerSpecificationPackage plannerSpecificationPackage);
+
 }

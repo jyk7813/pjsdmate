@@ -37,8 +37,6 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Int
     @Override
     Member findByRequirementPk(int requirementPk);
 
-    @Transactional
-    @Modifying
-    @Query("UPDATE Member m SET m.requirementPk = ?2 WHERE m.memberNo = ?1")
+    @Override
     int updateRequirementPk(int memberPk,int requirementPk);
 }

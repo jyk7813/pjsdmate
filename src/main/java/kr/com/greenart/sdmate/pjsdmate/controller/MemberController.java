@@ -44,12 +44,12 @@ public class MemberController {
 
     @GetMapping("/main")
     public String goMain(Model model,HttpSession session) throws IOException {
-        System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
-        System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
-        System.out.println(card);
 
+        if(session.getAttribute("need")!=null){
+            session.removeAttribute("need");
+        }
 
         model.addAttribute("card", card);
 
@@ -71,11 +71,7 @@ public class MemberController {
 
     @GetMapping("/login")
         public String login (HttpSession session) {
-        if(session.getAttribute("member")!=null){
-            System.out.println("세션값이 널이 아님");
-        }else if(session.getAttribute("member")==null){
-            System.out.println("세션값이 널임");
-        }
+
         return "login";
         }
 

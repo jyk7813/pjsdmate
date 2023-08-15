@@ -1,0 +1,149 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * {
+    font-family: "Noto Sans KR", sans-serif;
+}
+body {
+    border: 1px solid black;
+}
+* {
+    /* 여기 잘해봐야함 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+#back{
+    border: none;
+    width: 28px;
+    height: 28px;
+    background-color: #ffff;
+    background-image: url("/img/button-back.png");
+}
+
+#title {
+    display: flex;
+    margin-top: 34px;
+    margin-bottom: 19px;
+    margin-right: 30px;
+}
+.title {
+    
+    /* display: inline-flex; */
+    color: #343837;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.9px;
+    text-transform: lowercase;
+    margin: auto;
+}
+
+#checkCount{
+    margin-left: 100px;
+}
+
+.review{
+    font-size: 16px;
+
+}
+span {
+    text-align: center;
+}
+body {
+    min-width: 430px;
+    max-width: 430px;
+    height: auto;
+    margin: 0 auto;
+    font-family: "Noto Sans KR", sans-serif;
+    border-color: #d9d9d9;
+    border-radius: 15px 15px 15px 15px;
+}
+#ment{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin-left: 130px;
+}
+.blank {
+    background-color: white;
+    height: 150px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.margindiv {
+    display: flex;
+    align-items: center; /* 요소들을 수직 방향으로 중앙 정렬합니다. */
+  }
+.miniblank{
+    margin-bottom: 30px;
+}
+#middleBlank{
+    margin-bottom: 50px;
+}
+
+/* 숨겨진 기본 체크박스를 표시하지 않음 */
+.margindiv input[type="checkbox"] {
+    display: none;
+  }
+  
+  
+  /* 체크박스 커스텀 스타일 */
+  label {
+    margin-left: 100px;
+    margin-right: 15px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  /* 체크박스가 체크되었을 때의 스타일 */
+  input[type="checkbox"]:checked + label {
+    background-color: #F28585; /* 체크되었을 때의 배경색 */
+    border-color: #d9d9d9; /* 체크되었을 때의 테두리 색 */
+  }
+#sendRequest {
+    color: #ffff;
+    margin-left: 145px;
+    width: 120px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #F28585;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#checkStar{
+    margin-left: 100px;
+}
+#plannerName {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin-left: 175px;
+}
+#photoreview{
+    color: black;
+    margin-left: 15px;
+    width: 120px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#footer{
+    display: flex;
+    align-items: center;
+}
