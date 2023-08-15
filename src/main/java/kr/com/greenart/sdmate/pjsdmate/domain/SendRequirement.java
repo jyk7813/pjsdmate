@@ -47,8 +47,8 @@ public class SendRequirement {
 
     public void setQ7Estimate(Integer q7Estimate) {
         this.q7Estimate = q7Estimate;
-    }
 
+    }
     public SendRequirement setting(SendRequirement sendRequirement, Requirement requirement){
 
         String Q1_guestNo="";

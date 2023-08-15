@@ -169,6 +169,10 @@ public void join(Member member){
         return false;
     }
 
+    public Member getRequirement(int requirmentPk){
+        Member member = memberRepository.findByRequirementPk(requirmentPk);
+            return member;
+    }
 
     public Member getMemberById(String id) {
         Optional<Member> optionalMember = memberRepository.findById(id);

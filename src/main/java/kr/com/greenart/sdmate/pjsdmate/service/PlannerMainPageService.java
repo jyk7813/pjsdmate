@@ -51,6 +51,7 @@ public class PlannerMainPageService {
             Member member = memberRepository.findByRequirementPk((int)requirement.getRequirementNo());
             eachCard.setMemberPk(member.getMemberNo());
             eachCard.setMemberName(member.getName());
+            eachCard.setRequirementPk(requirement.getRequirementNo());
             String encoded = null;
             try {
                 encoded = Base64.getEncoder().encodeToString(member.getImage());

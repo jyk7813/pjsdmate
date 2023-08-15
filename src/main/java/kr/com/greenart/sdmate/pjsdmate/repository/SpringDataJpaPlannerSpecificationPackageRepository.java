@@ -15,4 +15,7 @@ public interface SpringDataJpaPlannerSpecificationPackageRepository
     PlannerSpecificationPackage findBySpecificationNo(int specificationNo);
     @Override
     List<PlannerSpecificationPackage> findByPlannerNo(int plannerNo);
+
+    @Override
+    PlannerSpecificationPackage save(PlannerSpecificationPackage plannerSpecificationPackage);
 }

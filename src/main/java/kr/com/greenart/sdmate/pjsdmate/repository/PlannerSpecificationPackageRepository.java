@@ -12,4 +12,6 @@ public interface PlannerSpecificationPackageRepository {
   
     List<PlannerSpecificationPackage> findByPlannerNo(int plannerNo);
 
+    PlannerSpecificationPackage save(PlannerSpecificationPackage plannerSpecificationPackage);
+
 }

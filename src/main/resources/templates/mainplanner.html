@@ -90,7 +90,7 @@
 				<div class="content">
 					<ul id="card" class="statistics">
 						<li th:each="card : ${card}" class="style" >
-							<a th:href="@{/viewRequirement(requirement=${ card.getRequirementPk()})}">
+							<a th:href="@{/viewRequirement(requirement=${ card.requirementPk })}">
 								<div class="reqCard">
 									<strong>
 										요청 견적금액&nbsp;&nbsp;&nbsp;<span  th:text="${card.estimate}"></span>&nbsp;원

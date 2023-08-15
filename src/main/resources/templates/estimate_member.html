@@ -1,185 +1,185 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>견적 리스트 보기</title>
-        <link rel="stylesheet" href="/css/estimate_member.css" />
-    </head>
-    <body>
-        <div id="title">
-            <button id="back" onclick="history.go(-1)" class="button-back" ></button>
-            <form id="postForm" action="/plannerInfo" method="post">
-            <input id="planner" type="hidden" name="id" th:value="${ planner.getId() }">
-            </form>
-<!--            <input id="img" type="hidden" th:value="${ planner.getImage() }">-->
-            <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
-            <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
-            <input id="rating" type="hidden" th:value="${ planner.getRating()}">
-            <span class="title"> 상세견적 및 플래너 정보 </span>
+<head>
+    <meta charset="utf-8" />
+    <title>견적 리스트 보기</title>
+    <link rel="stylesheet" href="/css/estimate_member.css" />
+</head>
+<body>
+<div id="title">
+    <button id="back" onclick="history.go(-1)" class="button-back" ></button>
+    <form id="postForm" action="/plannerInfo" method="post">
+        <input id="planner" type="hidden" name="id" th:value="${ planner.getId() }">
+    </form>
+    <!--            <input id="img" type="hidden" th:value="${ planner.getImage() }">-->
+    <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
+    <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
+    <input id="rating" type="hidden" th:value="${ planner.getRating()}">
+    <span class="title"> 상세견적 및 플래너 정보 </span>
+</div>
+<hr />
+<div id="main">
+    <div id="plannerInfo"></div>
+    <div id="exceptTitle">김민성 고객님이 원하는 견적</div>
+    <div id="exceptMoney">
+        <p th:text="${ requirement.q7Estimate  }+'만원'">원</p>
+    </div>
+    <p class="lastline"></p>
+
+    <div id="detailA">
+        <div class="margindiv">
+            <div class="except">
+                <button id="showA" class="button-with-image"></button>
+                <div class="package">
+                    <p class="questionTitle">예식장 & 뷔페 예상견적</p>
+                    <p class="price" th:text="${ specification.weddinghall }+'원'">원</p>
+                </div>
+            </div>
+            <div id="A" class="invi">
+                <div class="row">
+                    <p class="detailA Margin10px" th:text="${ requirement.q1City }"></p>
+                    <p class="detailA Margin10px" th:text="${ requirement.q1Gu }"></p>
+                    <p class="detailA Margin10px" th:text="${ requirement.q1_guestno }"></p>
+                </div>
+                <p class="detailC Margin10px" th:text="${ requirement.getQ1Date()}"></p>
+            </div>
         </div>
-        <hr />
-        <div id="main">
-            <div id="plannerInfo"></div>
-            <div id="exceptTitle">김민성 고객님이 원하는 견적</div>
-            <div id="exceptMoney">
-                <p th:text="${ requirement.q7Estimate  }+'만원'">원</p>
-            </div>
-            <p class="lastline"></p>
-
-            <div id="detailA">
-                <div class="margindiv">
-                    <div class="except">
-                        <button id="showA" class="button-with-image"></button>
-                        <div class="package">
-                            <p class="questionTitle">예식장 & 뷔페 예상견적</p>
-                            <p class="price" th:text="${ specification.weddinghall }+'원'">원</p>
-                        </div>
-                    </div>
-                    <div id="A" class="invi">
-                        <div class="row">
-                            <p class="detailA Margin10px" th:text="${ requirement.q1City }"></p>
-                            <p class="detailA Margin10px" th:text="${ requirement.q1Gu }"></p>
-                            <p class="detailA Margin10px" th:text="${ requirement.q1_guestno }"></p>
-                        </div>
-                        <p class="detailC Margin10px" th:text="${ requirement.getQ1Date()}"></p>
-                    </div>
+    </div>
+    <div id="detailB">
+        <div class="margindiv">
+            <div class="except">
+                <button id="showB" class="button-with-image"></button>
+                <div class="package">
+                    <p class="questionTitle">본식의상 예상견적</p>
+                    <p class="price" th:text="${ specification.dress }+'원'" ></p>
                 </div>
             </div>
-            <div id="detailB">
-                <div class="margindiv">
-                    <div class="except">
-                        <button id="showB" class="button-with-image"></button>
-                        <div class="package">
-                            <p class="questionTitle">본식의상 예상견적</p>
-                            <p class="price" th:text="${ specification.dress }+'원'" ></p>
-                        </div>
-                    </div>
-                    <div id="B" class="invi">
-                        <div class="row">
-                            <p class="detailB Margin10px" th:text="'신부 드레스: '+ ${  requirement.q2_dress }"> </p>
-                            <p class="detailB Margin10px" th:text="'신랑 정장: '+ ${  requirement.q2_suit }"></p>
-                        </div>
-                    </div>
+            <div id="B" class="invi">
+                <div class="row">
+                    <p class="detailB Margin10px" th:text="'신부 드레스: '+ ${  requirement.q2_dress }"> </p>
+                    <p class="detailB Margin10px" th:text="'신랑 정장: '+ ${  requirement.q2_suit }"></p>
                 </div>
             </div>
-            <div id="detailC">
-                <div class="margindiv">
-                    <div class="except">
-                        <button id="showC" class="button-with-image"></button>
-                        <div class="package">
-                            <p class="questionTitle">본식 부모님 의상 예상견적</p>
-                            <p class="price" th:text="${ specification.parentsdress }+'원'" >원</p>
-                        </div>
-                    </div>
-                    <div id="C" class="invi">
-                        <div class="row">
-                            <p class="detailB Margin10px" th:text="'신부어머니 한복:'+ ${  requirement.q3_Fmom_hanbok }"></p>
-                            <p class="detailB Margin10px" th:text="'신부아버지 정장:'+ ${  requirement.q3_Fdad_suit }">신부아버지 정장:직접</p>
-                        </div>
-                        <div class="row">
-                            <p class="detailB Margin10px" th:text="'신랑어머니 한복:'+ ${  requirement.q3_Mmom_hanbok }"></p>
-                            <p class="detailB Margin10px" th:text="'신랑아버지 정장:'+ ${  requirement.q3_Mdad_suit }"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="detailD">
-                <div class="margindiv">
-                    <div class="except">
-                        <button id="showD" class="button-with-image"></button>
-                        <div class="package">
-                            <p class="questionTitle">본식촬영 예상견적</p>
-                            <p class="price" th:text="${ specification.photo }+'원'" ></p>
-                        </div>
-                    </div>
-                    <div id="D" class="invi">
-                        <div class="row">
-                            <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q4_wedding_photo }"></p>
-                            <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q4_wedding_video }"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="detailE">
-                <div class="margindiv">
-                    <div class="except">
-                        <button id="showE" class="button-with-image"></button>
-                        <div class="package">
-                            <p class="questionTitle">스튜디오 촬영 예상견적</p>
-                            <p class="price" th:text="${ specification.studio }+'원'" >원</p>
-                        </div>
-                    </div>
-                    <div id="E" class="invi">
-                        <div class="row">
-                            <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q5_studio_photo }"></p>
-                            <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q5_studio_video }"></p>
-                        </div>
-                        <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q5_studio_makeup }"></p>
-                        <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ5_bride_cloth()}"></p>
-                        <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ5_groom_cloth()}"></p>
-                    </div>
-                </div>
-            </div>
-            <div id="detailF">
-                <div class="margindiv">
-                    <div class="except">
-                        <button id="showF" class="button-with-image"></button>
-                        <div class="package">
-                            <p class="questionTitle">스냅 촬영 예상견적</p>
-                            <p class="price" th:text="${ specification.snap }+'원'"   >원</p>
-                        </div>
-                    </div>
-                    <div id="F" class="invi">
-                        <div class="row">
-                            <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q6_snap_photo }"></p>
-                            <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q6_snap_video }"></p>
-                        </div>
-                        <div class="row">
-                            <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q6_snap_makeup }"></p>
-                            <p class="detailB Margin10px" th:text="'장소:'+ ${  requirement.q6_snap_place }"></p>
-                        </div>
-                        <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ6_snap_bride_cloth()}"></p>
-                        <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ6_snap_groom_cloth()}"></p>
-                    </div>
-                </div>
-            </div>
-
-            <p class="lastline"></p>
-            <div id="estimateSum" class="Margin20px">
-                <p>
-                    총 예상 견적
-                </p>
-                <p id="sum" th:text="${ sum }+'원'">
-
-                </p>
-            </div>
-            <p class="lastline"></p>
-<!-- 
-            <div class="box">
-                <p class="state">상담예약</p>
-                <p class="state">계약완료</p>
-                <p class="state">계약종료</p>
-            </div> -->
-            <div id="footDiv" class="margindiv row">
-                <button id="hrefChat">채팅하기</button>
-                <button id="hrefReservation">예약하기</button>
-            </div>
-
         </div>
-    </body>
+    </div>
+    <div id="detailC">
+        <div class="margindiv">
+            <div class="except">
+                <button id="showC" class="button-with-image"></button>
+                <div class="package">
+                    <p class="questionTitle">본식 부모님 의상 예상견적</p>
+                    <p class="price" th:text="${ specification.parentsdress }+'원'" >원</p>
+                </div>
+            </div>
+            <div id="C" class="invi">
+                <div class="row">
+                    <p class="detailB Margin10px" th:text="'신부어머니 한복:'+ ${  requirement.q3_Fmom_hanbok }"></p>
+                    <p class="detailB Margin10px" th:text="'신부아버지 정장:'+ ${  requirement.q3_Fdad_suit }">신부아버지 정장:직접</p>
+                </div>
+                <div class="row">
+                    <p class="detailB Margin10px" th:text="'신랑어머니 한복:'+ ${  requirement.q3_Mmom_hanbok }"></p>
+                    <p class="detailB Margin10px" th:text="'신랑아버지 정장:'+ ${  requirement.q3_Mdad_suit }"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="detailD">
+        <div class="margindiv">
+            <div class="except">
+                <button id="showD" class="button-with-image"></button>
+                <div class="package">
+                    <p class="questionTitle">본식촬영 예상견적</p>
+                    <p class="price" th:text="${ specification.photo }+'원'" ></p>
+                </div>
+            </div>
+            <div id="D" class="invi">
+                <div class="row">
+                    <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q4_wedding_photo }"></p>
+                    <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q4_wedding_video }"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="detailE">
+        <div class="margindiv">
+            <div class="except">
+                <button id="showE" class="button-with-image"></button>
+                <div class="package">
+                    <p class="questionTitle">스튜디오 촬영 예상견적</p>
+                    <p class="price" th:text="${ specification.studio }+'원'" >원</p>
+                </div>
+            </div>
+            <div id="E" class="invi">
+                <div class="row">
+                    <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q5_studio_photo }"></p>
+                    <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q5_studio_video }"></p>
+                </div>
+                <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q5_studio_makeup }"></p>
+                <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ5_bride_cloth()}"></p>
+                <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ5_groom_cloth()}"></p>
+            </div>
+        </div>
+    </div>
+    <div id="detailF">
+        <div class="margindiv">
+            <div class="except">
+                <button id="showF" class="button-with-image"></button>
+                <div class="package">
+                    <p class="questionTitle">스냅 촬영 예상견적</p>
+                    <p class="price" th:text="${ specification.snap }+'원'"   >원</p>
+                </div>
+            </div>
+            <div id="F" class="invi">
+                <div class="row">
+                    <p class="detailB Margin10px" th:text="'사진:'+ ${  requirement.q6_snap_photo }"></p>
+                    <p class="detailB Margin10px" th:text="'동영상:'+ ${  requirement.q6_snap_video }"></p>
+                </div>
+                <div class="row">
+                    <p class="detailB Margin10px" th:text="'메이크업:'+ ${  requirement.q6_snap_makeup }"></p>
+                    <p class="detailB Margin10px" th:text="'장소:'+ ${  requirement.q6_snap_place }"></p>
+                </div>
+                <p class="detailC Margin10px" th:text="'신부의상:'+${ requirement.getQ6_snap_bride_cloth()}"></p>
+                <p class="detailC Margin10px" th:text="'신랑의상:'+${ requirement.getQ6_snap_groom_cloth()}"></p>
+            </div>
+        </div>
+    </div>
+
+    <p class="lastline"></p>
+    <div id="estimateSum" class="Margin20px">
+        <p>
+            총 예상 견적
+        </p>
+        <p id="sum" th:text="${ sum }+'원'">
+
+        </p>
+    </div>
+    <p class="lastline"></p>
+    <!--
+                <div class="box">
+                    <p class="state">상담예약</p>
+                    <p class="state">계약완료</p>
+                    <p class="state">계약종료</p>
+                </div> -->
+    <div id="footDiv" class="margindiv row">
+        <button id="hrefChat">채팅하기</button>
+        <button id="hrefReservation">예약하기</button>
+    </div>
+
+</div>
+</body>
 
 
-    <script src="/js/estimate_member.js"></script>
-    <script th:inline="javascript">
+<script src="/js/estimate_member.js"></script>
+<script th:inline="javascript">
 
 
-        var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';
+    var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';
 
 
-        var nameTag = document.getElementById("exceptTitle");
+    var nameTag = document.getElementById("exceptTitle");
 
 
-        nameTag.innerText = member.name + " 님이 원하는 견적";
-    </script>
+    nameTag.innerText = member.name + " 님이 원하는 견적";
+</script>
 </html>
