@@ -4,6 +4,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.awt.*;
 import java.util.Optional;
 
@@ -27,4 +28,7 @@ public interface SpringDataJpaPlannerRepository extends JpaRepository<Planner, I
 
     @Override
     Image getImgfindByplannerNo(Integer plannerNo);
+    @Transactional
+    @Override
+    int updateRating(Integer plannerNo,double rating,int dealCnt);
 }

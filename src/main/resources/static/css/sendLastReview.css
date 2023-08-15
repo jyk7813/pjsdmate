@@ -1,0 +1,100 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+.notosanskr * {
+    font-family: "Noto Sans KR", sans-serif;
+}
+body {
+    border: 1px solid black;
+}
+* {
+    /* 여기 잘해봐야함 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR";
+}
+body {
+    min-width: 430px;
+    max-width: 430px;
+    height: auto;
+    margin: 0 auto;
+    font-family: "Noto Sans KR";
+    border-color: #d9d9d9;
+    border-radius: 15px 15px 15px 15px;
+}
+#back{
+    border: none;
+    width: 28px;
+    height: 28px;
+    background-color: #ffff;
+    background-image: url("images/button-back.png");
+}
+
+#title {
+    display: flex;
+    margin-right: 30px;
+    margin-top: 34px;
+    margin-bottom: 19px;
+    
+}
+.title {
+    
+    /* display: inline-flex; */
+    color: #343837;
+    font-family: Noto Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.9px;
+    text-transform: lowercase;
+    margin: auto;
+}
+#plannerName{
+    padding-top: 265px;
+}
+.PlannerName{
+    margin-top: 394;
+    margin-left: 165px;
+    font-size: 20px;
+
+}
+.ment {
+    margin-left: 100px;
+    font-size: 18px;
+    color: black; /* 기본 텍스트 색상 설정 */
+  }
+  
+  .ment span {
+    color: #F28585; /* "계약"만 색상 변경할 스타일 설정 */
+  }
+
+  #yesOrNo{
+    display: flex;
+    align-items: center; /* 요소들을 세로 중앙으로 정렬 */
+    }
+  .sendRequest {
+    color: #ffff;
+    margin-left: 145px;
+    width: 80px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    background: #F28585;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+#yes{
+    
+    margin-left: 130px;
+}
+ #no{
+    margin-left: 15px;
+    background: #D9D9D9;
+}
+#blank{
+
+    margin: 394px;
+}

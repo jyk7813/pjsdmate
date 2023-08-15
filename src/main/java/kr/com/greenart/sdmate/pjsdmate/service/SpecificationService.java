@@ -38,4 +38,10 @@ public class SpecificationService {
 
 
     }
+    
+    public int updataState(int pk,int state){
+        int i = specificationRepository.updateState(pk, state);
+
+        return  i;
+    }
 }
