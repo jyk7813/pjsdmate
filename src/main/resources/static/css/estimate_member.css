@@ -211,7 +211,7 @@ text-transform: lowercase;
       }
 }
 .button-with-image {
-    background-image: url("images/detailOpen.png");
+    background-image: url("/img/detailOpen.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -220,7 +220,7 @@ text-transform: lowercase;
     height: 20px;
 }
 .button-back {
-    background-image: url("images/button-back.png");
+    background-image: url("/img/button-back.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;

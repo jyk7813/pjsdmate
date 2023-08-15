@@ -7,8 +7,7 @@ import kr.com.greenart.sdmate.pjsdmate.service.RequirementService;
 import kr.com.greenart.sdmate.pjsdmate.service.SpecificationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -50,9 +49,17 @@ public class SpecificationController {
     model.addAttribute("requirement",sendRequirement);
     return "estimate_member";
     }
-    @GetMapping("/plannerInfo")
-    public String plannerInfo(){
-    return "plannerInfo";
+//    @GetMapping("/plannerInfo")
+//    public String plannerInfo(){
+//        return "plannerInfo";
+//    }
+    @PostMapping ("/plannerInfo")
+    public String plannerInfo(@RequestParam String id, Model model){
+        System.out.println(id);
+        Planner planner = plannerService.getPlannerByUsername(id);
+        System.out.println(planner);
+        model.addAttribute("planner", planner);
+        return "planner";
     }
     @GetMapping("/userInfo")
     public  String viewUser(){

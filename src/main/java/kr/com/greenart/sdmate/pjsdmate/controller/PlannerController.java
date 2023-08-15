@@ -6,6 +6,7 @@ import kr.com.greenart.sdmate.pjsdmate.domain.PlannermainpageCard;
 import kr.com.greenart.sdmate.pjsdmate.service.MySpecificationService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerMainPageService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -162,6 +163,7 @@ public class PlannerController {
         session.removeAttribute("planner");
         return"./login";
     }
+
 }
 
 

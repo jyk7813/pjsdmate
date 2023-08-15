@@ -9,9 +9,13 @@
     <body>
         <div id="title">
             <button id="back" onclick="history.go(-1)" class="button-back" ></button>
-                    <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
-                    <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
-                    <input id="rating" type="hidden" th:value="${ planner.getRating()}">
+            <form id="postForm" action="/plannerInfo" method="post">
+            <input id="planner" type="hidden" name="id" th:value="${ planner.getId() }">
+            </form>
+<!--            <input id="img" type="hidden" th:value="${ planner.getImage() }">-->
+            <input id= "name" type="hidden" th:value="${ planner.getBusiness_name()}">
+            <input id="dealCnt" type="hidden" th:value="${ planner.getDealCnt()}">
+            <input id="rating" type="hidden" th:value="${ planner.getRating()}">
             <span class="title"> 상세견적 및 플래너 정보 </span>
         </div>
         <hr />
@@ -19,7 +23,7 @@
             <div id="plannerInfo"></div>
             <div id="exceptTitle">김민성 고객님이 원하는 견적</div>
             <div id="exceptMoney">
-                <p th:text="${ requirement.q7Estimate  }+'원'"></p>
+                <p th:text="${ requirement.q7Estimate  }+'만원'">원</p>
             </div>
             <p class="lastline"></p>
 
@@ -29,7 +33,7 @@
                         <button id="showA" class="button-with-image"></button>
                         <div class="package">
                             <p class="questionTitle">예식장 & 뷔페 예상견적</p>
-                            <p class="price" th:text="${ specification.weddinghall }+'원'"></p>
+                            <p class="price" th:text="${ specification.weddinghall }+'원'">원</p>
                         </div>
                     </div>
                     <div id="A" class="invi">
