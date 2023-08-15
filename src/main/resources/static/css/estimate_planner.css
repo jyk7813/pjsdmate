@@ -21,7 +21,7 @@ body {
     line-height: normal;
     letter-spacing: -0.9px;
     text-transform: lowercase;
-    margin-left: 30px;
+    margin-left: 120px;
     margin-bottom: 20px;
     margin-top: 20px;
 }
@@ -214,7 +214,7 @@ text-transform: lowercase;
       }
 }
 .button-with-image {
-    background-image: url("images/detailOpen.png");
+    background-image: url("img/icoarrow.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -223,7 +223,7 @@ text-transform: lowercase;
     height: 20px;
 }
 .button-back {
-    background-image: url("images/button-back.png");
+    background-image: url("img/button-back.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
