@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta charset="UTF-8">
+    <meta name ="google-signin-client_id" content="570045814661-r881145p4o9e2lj10ssnvimpiser977c.apps.googleusercontent.com">
     <title>스드메이트</title>
     <link rel="stylesheet" href="/css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,8 +47,8 @@
       <span class="naverlogin">
         <input type="button" class="naverimg" id="naverIdLogin_loginButton">
       </span>
-      <span class="google">
-        <input type="button" class="googleimg">
+      <span class="googlelogin">
+        <input type="button" class="googleimg" id="googleIdLogin_loginButton">
       </span>
     </div>
       <div class="loginbtndiv">
@@ -186,4 +188,35 @@ checkbox.addEventListener('change', function(){
 
   }
 </script>
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+  // Google 로그인 API 초기화
+  gapi.load('auth2', function() {
+    gapi.auth2.init({
+      client_id: '570045814661-r881145p4o9e2lj10ssnvimpiser977c.apps.googleusercontent.com', // Google 개발자 콘솔에서 생성한 클라이언트 ID
+    });
+  });
+
+  // 버튼 클릭 이벤트에 대한 핸들러 함수
+  document.getElementById('googleIdLogin_loginButton').addEventListener('click', function() {
+    gapi.auth2.getAuthInstance().signIn().then(onGoogleSignIn);
+  });
+
+  // 구글 로그인 콜백 함수
+  function onGoogleSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var idToken = googleUser.getAuthResponse().id_token;
+    // 사용자 정보(profile)나 idToken을 활용하여 필요한 동작 수행
+
+    console.log('Google ID: ' + profile.getId());
+    console.log('Name: ' + profile.getName());
+    console.log('Email: ' + profile.getEmail());
+    console.log('ID Token: ' + idToken);
+
+    // 여기서 필요한 로직을 추가하세요.
+  }
+</script>
+
+
 </html>
