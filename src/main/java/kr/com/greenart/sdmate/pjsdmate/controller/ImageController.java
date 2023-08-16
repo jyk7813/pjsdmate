@@ -5,7 +5,9 @@ import kr.com.greenart.sdmate.pjsdmate.domain.Planner;
 import kr.com.greenart.sdmate.pjsdmate.service.MemberService;
 import kr.com.greenart.sdmate.pjsdmate.service.PlannerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StreamUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,9 +43,9 @@ public class ImageController {
             image = planner.getImage();
             encodedImage = Base64.getEncoder().encodeToString(image);
         } catch (NullPointerException e) {
-            String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
-            Path path = Paths.get(imagePath);
-            byte[] imageBytes = Files.readAllBytes(path);
+            String imagePath = "static/img/profileDefault.png"; // 클래스패스 내의 이미지 파일 경로
+            ClassPathResource resource = new ClassPathResource(imagePath);
+            byte[] imageBytes = StreamUtils.copyToByteArray(resource.getInputStream());
             encodedImage = Base64.getEncoder().encodeToString(imageBytes);
         }
         response.put("image", encodedImage);
@@ -64,9 +66,9 @@ public class ImageController {
             image = member.getImage();
             encodedImage = Base64.getEncoder().encodeToString(image);
         } catch (NullPointerException e) {
-            String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
-            Path path = Paths.get(imagePath);
-            byte[] imageBytes = Files.readAllBytes(path);
+            String imagePath = "static/img/profileDefault.png"; // 클래스패스 내의 이미지 파일 경로
+            ClassPathResource resource = new ClassPathResource(imagePath);
+            byte[] imageBytes = StreamUtils.copyToByteArray(resource.getInputStream());
             encodedImage = Base64.getEncoder().encodeToString(imageBytes);
         }
 
