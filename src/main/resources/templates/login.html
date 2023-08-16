@@ -4,6 +4,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta charset="UTF-8">
     <meta name ="google-signin-client_id" content="570045814661-r881145p4o9e2lj10ssnvimpiser977c.apps.googleusercontent.com">
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <title>스드메이트</title>
     <link rel="stylesheet" href="/css/login.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +43,7 @@
     </div>
     <div class="snslogin">
       <span class="kakaologin">
-        <input type="button" class="kakaoimg" >
+        <input type="button" class="kakaoimg" id="kakaoIdLogin_loginButton">
       </span>
       <span class="naverlogin">
         <input type="button" class="naverimg" id="naverIdLogin_loginButton">
@@ -215,6 +216,51 @@ checkbox.addEventListener('change', function(){
     console.log('ID Token: ' + idToken);
 
     // 여기서 필요한 로직을 추가하세요.
+  }
+</script>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+  document.getElementById('kakaoIdLogin_loginButton').addEventListener('click', function() {
+    kakaoLogin();
+  });
+
+
+  Kakao.init('a9004ac66ab851446461e9939946ee64'); //발급받은 키 중 javascript키를 사용해준다.
+  console.log(Kakao.isInitialized()); // sdk초기화여부판단
+  //카카오로그인
+  function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+            console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+  }
+  //카카오로그아웃
+  function kakaoLogout() {
+    if (Kakao.Auth.getAccessToken()) {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function (response) {
+          console.log(response)
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+      Kakao.Auth.setAccessToken(undefined)
+    }
   }
 </script>
 
