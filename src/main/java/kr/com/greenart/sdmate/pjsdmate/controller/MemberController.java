@@ -219,10 +219,10 @@ public class MemberController {
     }
 
     @PostMapping("/updataImage")
-    public ResponseEntity<String> updataImage(@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
+    public ResponseEntity<String> updataImage(@RequestParam("image") MultipartFile file, HttpSession session) throws IOException {
         Member member = (Member) session.getAttribute("member");
         byte[] image = file.getBytes();
-
+        System.out.println("야!!!!!!!!!!!!!!!!!" + image);
         memberService.updataImage(image,member.getMemberNo());
         return ResponseEntity.ok("성공됐습니다");
     }

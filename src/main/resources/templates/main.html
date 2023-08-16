@@ -192,29 +192,35 @@
         const fileInput = document.getElementById("fileInput");
         const headerImage = document.getElementById("headerImage");
 
-
         fileInput.addEventListener("change", function() {
-            const selectedFile = fileInput.files[0];
-            if (selectedFile) {
-                const reader = new FileReader();
-                reader.readAsDataURL(selectedFile);
-                reader.onload = function(event) {
-                    headerImage.src = event.target.result;
-                    const image = new Uint8Array(event.target.result);
-                    const blob = new Blob([image]);
-                    const formData = new FormData();
-                    formData.append('file', blob, 'filename'); // 'filename'은 업로드 시 사용할 파일 이름
+            var file = fileInput.files[0];
+            console.log(file);
+        if (file) {
+            var imageURL = URL.createObjectURL(file);
+            var formData = new FormData();
+            formData.append('image', file);
 
-                    fetch('./updataImage', {
-                        method: 'POST',
-                        body: formData
-                    }).then(response => {
-                       alert("업데이트 되었습니다");
-                    }).catch(error => {
-                        // Handle error
-                    });
+            fetch('/member/updataImage', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json', // 추가
+                },
+                body: formData
+            }).then(response => response.json())
+            .then(data => {
+                alert("업데이트 되었습니다");
+
+                // 이미지를 base64로 변환하여 표시
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    headerImage.src = e.target.result;
                 };
-            }
+                reader.readAsDataURL(file);
+            }).catch(error => {
+                // Handle error
+            });
+
+        }
         });
     });
 </script>
