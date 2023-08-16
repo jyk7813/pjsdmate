@@ -167,6 +167,10 @@ public class PlannerController {
         session.removeAttribute("planner");
         return"./login";
     }
+    @GetMapping("/description")
+    public String discription(){
+        return "description";
+    }
 
 }
 

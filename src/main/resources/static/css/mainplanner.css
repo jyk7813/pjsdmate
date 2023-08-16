@@ -66,7 +66,7 @@ input, select, textarea {
 }
 
 .chat_wrap {
-	width: 430px;
+	width: 400px;
 	padding-top: 10px;
 	padding-left: 30px;
 	padding-right: 30px;
@@ -209,7 +209,7 @@ div.topbannerbg{
 
 div.topbannerbg div.topbanner {
 	display: flex;
-	width: 430px;
+	width: 400px;
 	align-items: center;
 	justify-content: space-between;
 	margin: 10px auto;
@@ -779,10 +779,109 @@ button,
 	font-weight: 800;
 	height: 2.75em;
 	line-height: 2.75em;
-	min-width: 430px;
 	text-align: center;
 	text-decoration: none;
 	white-space: nowrap;
+}
+
+input[type="submit"].icon,
+input[type="reset"].icon,
+input[type="button"].icon,
+button.icon,
+.button.icon {
+	padding-left: 1.35em;
+}
+
+input[type="submit"].icon:before,
+input[type="reset"].icon:before,
+input[type="button"].icon:before,
+button.icon:before,
+.button.icon:before {
+	margin-right: 0.5em;
+}
+
+input[type="submit"].fit,
+input[type="reset"].fit,
+input[type="button"].fit,
+button.fit,
+.button.fit {
+	width: 100%;
+}
+
+input[type="submit"].small,
+input[type="reset"].small,
+input[type="button"].small,
+button.small,
+.button.small {
+	font-size: 0.8em;
+}
+
+input[type="submit"].large,
+input[type="reset"].large,
+input[type="button"].large,
+button.large,
+.button.large {
+	font-size: 1.35em;
+}
+
+input[type="submit"].disabled, input[type="submit"]:disabled,
+input[type="reset"].disabled,
+input[type="reset"]:disabled,
+input[type="button"].disabled,
+input[type="button"]:disabled,
+button.disabled,
+button:disabled,
+.button.disabled,
+.button:disabled {
+	pointer-events: none;
+	opacity: 0.25;
+}
+
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button,
+.button {
+	background-color: transparent;
+	color: #ffffff !important;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+button:hover,
+.button:hover {
+	background-color: rgba(255, 255, 255, 0.075);
+}
+
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active,
+button:active,
+.button:active {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+input[type="submit"].icon:before,
+input[type="reset"].icon:before,
+input[type="button"].icon:before,
+button.icon:before,
+.button.icon:before {
+	color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="submit"].primary,
+input[type="reset"].primary,
+input[type="button"].primary,
+button.primary,
+.button.primary {
+	width: 100%;
+	font-weight: 700;
+	font-size: 20px;
+	background-color: #4BA698;
+	color: #ffffff !important;
+	box-shadow: none;
 }
 
 input[type="submit"].icon,
@@ -1421,20 +1520,18 @@ dl dt {
 /* Actions */
 
 ul.actions {
+	all: unset;
+	width: 100%;
 	cursor: default;
 	list-style: none;
 }
 
 ul.actions li {
 	vertical-align: middle;
-	margin-top:20px;
-	margin-bottom: 30px;
+	margin: 20px 0px 30px 0px;
 }
 
 ul.actions.special {
-	-moz-justify-content: center;
-	-webkit-justify-content: center;
-	-ms-justify-content: center;
 	justify-content: center;
 	width: 100%;
 	margin-left: 0;
@@ -1831,7 +1928,7 @@ table.alt tbody tr td {
 /* Header */
 
 #header {
-	text-align: left;
+	text-align: center;
 	margin-top: 40px;
 }
 
@@ -1843,12 +1940,12 @@ table.alt tbody tr td {
 
 
 #header p {
-	all: unset;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 500;
-	color: #343837;
+	color: #727272;
 	letter-spacing: -0.025em;
 }
+
 
 #header p span {
 	all: unset;
@@ -2035,13 +2132,13 @@ li.ham-btn {
 }
 
 #header.alt img {
-	max-width: 11px;
-	max-height: 11px;
-	width: auto;
-	height: auto;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
 	margin-left: 3px;
-	margin-bottom: 3px;
 	vertical-align: bottom;
+	border-radius: 100%;
+	object-fit: cover;
 }
 
 #header.alt > * {
@@ -2486,6 +2583,6 @@ body.is-preload #header.alt .logo {
 /* Wrapper */
 
 #wrapper {
-	width: 430px;
+	width:400px;
 	margin: auto;
 }
