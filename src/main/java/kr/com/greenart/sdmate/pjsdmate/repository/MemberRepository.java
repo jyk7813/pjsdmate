@@ -45,5 +45,7 @@ public interface MemberRepository {
     @Modifying
     @Query("UPDATE Member m SET m.requirementPk = ?2 WHERE m.memberNo = ?1")
     int updateRequirementPk(int memberPk,int requirementPk);
+@Query("UPDATE Member m SET m.image =?2 WHERE m.memberNo =?1")
+    byte[] updataImage(int memberPk,byte[] images);
 
 }

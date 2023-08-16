@@ -189,4 +189,8 @@ public void join(Member member){
         }
         return null;
     }
+
+    public void updataImage(byte[] image,int memberPk){
+        memberRepository.updataImage(memberPk,image);
+    }
 }
