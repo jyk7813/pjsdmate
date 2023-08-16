@@ -58,7 +58,7 @@
     <!-- Main -->
     <div id="main">
         <div class="chat_wrap">
-            <p class="newtext" th:text="${stateString}"></p>
+
             <div class="chat_wrapper">
                 <a>
                     <p id="mno" th:text="${memberNo}" hidden></p>
@@ -153,8 +153,15 @@
 
 
     var member = /*[[${#session.getAttribute("member") != null ? #session.getAttribute("member") : 'defaultValue'}]]*/ 'defaultValue';
-
-
+    if(member.requirementPk !=null){
+        let btn = document.getElementById("takeRequirment");
+        btn.removeAttribute("href");
+        btn.style.backgroundColor = "rgba(222, 222, 222, 0.5)";
+        btn.addEventListener("click",removeFunction);
+    }
+    function removeFunction (){
+        alert("이미 요청서를 작성 했습니다")
+    }
     var nameTag = document.getElementById("name");
 
 
