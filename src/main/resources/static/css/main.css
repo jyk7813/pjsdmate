@@ -66,7 +66,7 @@ input, select, textarea {
 }
 
 .chat_wrap {
-	width: 430px;
+	width: 400px;
 	display: inline-block;
 	margin-top: 15px;
 	padding-left: 30px;
@@ -130,7 +130,7 @@ div.topbannerbg{
 
 div.topbannerbg div.topbanner {
 	display: flex;
-	width: 430px;
+	width: 400px;
 	align-items: center;
 	justify-content: space-between;
 	margin: 10px auto;
@@ -692,7 +692,6 @@ button,
 	font-weight: 800;
 	height: 2.75em;
 	line-height: 2.75em;
-	min-width: 430px;
 	text-align: center;
 	text-decoration: none;
 	white-space: nowrap;
@@ -790,6 +789,7 @@ input[type="reset"].primary,
 input[type="button"].primary,
 button.primary,
 .button.primary {
+	width: 100%;
 	font-weight: 700;
 	font-size: 20px;
 	background-color: #F28585;
@@ -1313,20 +1313,18 @@ dl dt {
 /* Actions */
 
 ul.actions {
+	all: unset;
+	width: 100%;
 	cursor: default;
 	list-style: none;
 }
 
 ul.actions li {
 	vertical-align: middle;
-	margin-top:20px;
-	margin-bottom: 30px;
+	margin: 20px 0px 30px 0px;
 }
 
 ul.actions.special {
-	-moz-justify-content: center;
-	-webkit-justify-content: center;
-	-ms-justify-content: center;
 	justify-content: center;
 	width: 100%;
 	margin-left: 0;
@@ -1908,13 +1906,14 @@ li.ham-btn {
 }
 
 #header.alt img {
-	max-width: 11px;
-	max-height: 11px;
-	width: auto;
-	height: auto;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
 	margin-left: 3px;
-	margin-bottom: 3px;
 	vertical-align: bottom;
+	border-radius: 100%;
+	object-fit: cover;
+
 }
 
 #header.alt > * {
@@ -2147,6 +2146,7 @@ body.is-preload #header.alt .logo {
 #main input[type="button"].primary,
 #main button.primary,
 #main .button.primary {
+	width: 400px;
 	background-color: #F28585;
 	color: #ffffff !important;
 	box-shadow: none;
@@ -2362,6 +2362,6 @@ body.is-preload #header.alt .logo {
 /* Wrapper */
 
 #wrapper {
-	width:430px;
+	width:400px;
 	margin: auto;
 }
