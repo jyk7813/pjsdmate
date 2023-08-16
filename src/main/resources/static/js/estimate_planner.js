@@ -134,6 +134,16 @@ let sendBtn = document.getElementById("sendRequest");
 sendBtn.addEventListener("click",save);
 
 function save(){
+    let inputs = document.querySelectorAll("input[type='text']"); // 모든 text input 요소 선택
+
+    // 모든 input 요소 검사
+    for (let input of inputs) {
+        if (input.value.trim() === "") {
+            alert("값이 비어있는 공간이 있습니다.");
+            return; // 값이 비어있으면 함수 종료
+        }
+    }
+
     let wedding_hall_price = document.getElementById("wedding_hall_price");
     let cloth = document.getElementById("cloth_price");
     let parents_cloth = document.getElementById("parents_cloth_price");

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class RequirementController {
 
@@ -34,7 +36,10 @@ public class RequirementController {
     }
 
     @GetMapping("/viewRequirement")
-    public String viewRequirement(@RequestParam String requirement, Model model){
+    public String viewRequirement(@RequestParam String requirement, Model model, HttpSession session){
+        if(session.getAttribute("planner") ==null){
+            return "redirect:/planner/login";
+        }
         int RequirmentPk = Integer.parseInt(requirement);
         Requirement GetRequirement = requirementService.getRequirementByNo(RequirmentPk);
         Member member = memberService.getRequirement(RequirmentPk);

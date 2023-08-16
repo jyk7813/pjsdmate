@@ -43,8 +43,7 @@ public class ReviewController {
     @PostMapping("/sendLastReview")
     public  ResponseEntity<String> sendLastReview(@RequestBody Need need,HttpSession session){
         session.setAttribute("need",need);
-        System.out.println(need.getSpecification());
-        System.out.println(need.getRating());
+   
         return ResponseEntity.ok("잘됐습니다");
     }
     @GetMapping("/sendLastReview")
