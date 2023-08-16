@@ -1907,6 +1907,7 @@ li.ham-btn {
 
 #header.alt img {
 	display: inline-block;
+	background-color: #F1ECEC;
 	width: 100px;
 	height: 100px;
 	margin-left: 3px;

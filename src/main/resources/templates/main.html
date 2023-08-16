@@ -43,11 +43,14 @@
 
     <!-- Header -->
     <header id="header" class="alt">
-
-        <h1 id = "name" style="text-align:left">안녕하세요!<img src="/img/signature.png" alt=""></h1>
-        <p style="text-align:left">원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!</p>
+        <input type="file" id="fileInput" style="display: none;">
+        <label for="fileInput">
+            <img th:src="${'data:image/jpeg;base64,' + image }" id="headerImage" alt="Header Image">
+        </label>
+        <h1 id = "name" >안녕하세요!<img src="/img/signature.png" alt=""></h1>
+        <p>원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!</p>
         <ul class="actions">
-            <li><a id="takeRequirment" href="./answer" class="button primary">스드메이트 견적받기</a></li>
+            <li><a href="./answer" class="button primary">스드메이트 견적받기</a></li>
         </ul>
 
         </header>
@@ -55,7 +58,7 @@
     <!-- Main -->
     <div id="main">
         <div class="chat_wrap">
-          
+
             <div class="chat_wrapper">
                 <a>
                     <p id="mno" th:text="${memberNo}" hidden></p>
@@ -125,21 +128,10 @@
                         <dl class="alt">
                             <dd>부산광역시 부산진구 중앙대로 749 그린컴퓨터 서면 2별관</dd>
                             <dd>(051) 715-6224</dd>
-                            <dd><a href="#">yxxn.dev@gmail.com</a></dd>
                         </dl>
-                        <ul class="icons">
-                            <li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-                            <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a>
-                            </li>
-                            <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a>
-                            </li>
-                            <li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
-                            <li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
-                        </ul>
                     </section>
-                    <p class="copyright" style="text-align: center;">&copy; Untitled. Design: <a href="https://html5up.net"
-                                                                                                 style="text-decoration-line: none;"><img
-                            src="/img/logo_pink.png" width="15%" ;></a></p>
+                    <p class="copyright" style="text-align: center;">&copy; Untitled. Design:
+                        <img src="/img/logo_pink.png" width="15%" ;></a></p>
                 </footer>
 
                 <!-- Scripts -->
@@ -190,8 +182,37 @@
     }
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const fileInput = document.getElementById("fileInput");
+        const headerImage = document.getElementById("headerImage");
 
 
+        fileInput.addEventListener("change", function() {
+            const selectedFile = fileInput.files[0];
+            if (selectedFile) {
+                const reader = new FileReader();
+                reader.readAsDataURL(selectedFile);
+                reader.onload = function(event) {
+                    headerImage.src = event.target.result;
+                    const image = new Uint8Array(event.target.result);
+                    const blob = new Blob([image]);
+                    const formData = new FormData();
+                    formData.append('file', blob, 'filename'); // 'filename'은 업로드 시 사용할 파일 이름
+
+                    fetch('./updataImage', {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => {
+                       alert("업데이트 되었습니다");
+                    }).catch(error => {
+                        // Handle error
+                    });
+                };
+            }
+        });
+    });
+</script>
 
 <script>
 
