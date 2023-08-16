@@ -40,7 +40,10 @@ public class SpecificationController {
     }
 
     @GetMapping("/viewSpecification")
-    public String viewSpecification(@RequestParam String specification, Model model){
+    public String viewSpecification(@RequestParam String specification, Model model,HttpSession session){
+        if(session.getAttribute("member")==null){
+            return "redirect:/member/login";
+        }
 
         Specification objSpecification =  specificationService.getSpecificationByNo(Integer.parseInt(specification));
         int sum = objSpecification.calculateSumExceptSpecNoAndState();
@@ -86,7 +89,8 @@ public class SpecificationController {
 
 
     @GetMapping("/viewMySpecification")
-    public String Myspecification(@RequestParam String specificationNo, String requirementNo, Model model) throws IOException {
+    public String Myspecification(@RequestParam String specificationNo, String requirementNo, Model model,HttpSession session) throws IOException {
+        System.out.println(session.getAttribute("planner"));
 
         int plannerNo = mySpecificationService.returnPlannerNoBySpeNo(Integer.parseInt(specificationNo));
         Planner planner = plannerService.getPlannerById(plannerNo);

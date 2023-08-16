@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -29,8 +30,11 @@ public class ChatController {
     @GetMapping("/memberChat")
     public String memberChat(            @RequestParam(name = "memberNo", required = false) String memberNo,
                                          @RequestParam(name = "plannerNo", required = false) String plannerNo,
-                                         @RequestParam(name = "message", required = false) String message, Model model){
+                                         @RequestParam(name = "message", required = false) String message, Model model,HttpSession session){
         try {
+            if(session.getAttribute("member")==null){
+                return "redirect:/member/login";
+            }
             if(message.length() != 0 ) {
                 Mchat mchat = new Mchat();
                 mchat.setContent(message);
@@ -53,9 +57,13 @@ public class ChatController {
     }
 
     @GetMapping("/plannerChat")
-    public String plannerChat(            @RequestParam(name = "memberNo", required = false) String memberNo,
-                                         @RequestParam(name = "plannerNo", required = false) String plannerNo,
-                                         @RequestParam(name = "message", required = false) String message, Model model){
+    public String plannerChat(@RequestParam(name = "memberNo", required = false) String memberNo,
+                              @RequestParam(name = "plannerNo", required = false) String plannerNo,
+                              @RequestParam(name = "message", required = false) String message, Model model, HttpSession session){
+        if(session.getAttribute("planner")==null){
+            return "redirect:/planner/login";
+        }
+
         try {
             if(message.length() != 0 ) {
                 Pchat pchat = new Pchat();

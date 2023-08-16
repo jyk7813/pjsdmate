@@ -44,6 +44,9 @@ public class MemberController {
 
     @GetMapping("/main")
     public String goMain(Model model,HttpSession session) throws IOException {
+        if(session.getAttribute("member")==null){
+            return "redirect:./login";
+        }
         System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
         System.out.println("멤버" + member);
@@ -70,7 +73,10 @@ public class MemberController {
         return "main";
     }
     @GetMapping("/answer")
-    public String answer () {
+    public String answer (HttpSession session) {
+        if(session.getAttribute("member")==null){
+            return "redirect:./login";
+        }
         return "answer";
     }
 
@@ -207,6 +213,7 @@ public class MemberController {
     }
     @PostMapping("/saveq")
     public ResponseEntity<String> RequiremnetSave(@RequestBody Requirement requirement, HttpSession session){
+
         Member member = (Member) session.getAttribute("member");
         requirementService.insertRequirement(requirement,member.getMemberNo());
         return ResponseEntity.ok("데이터가 성공적으로 저장되었습니다.");

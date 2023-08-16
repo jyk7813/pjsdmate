@@ -39,7 +39,10 @@ public class PlannerController {
         this.mySpecificationService = mySpecificationService;
     }
     @GetMapping("/viewMySpecification")
-    public String mySpecification(@RequestParam(name = "plannerNo", required = false) String plannerNo, Model model) throws IOException {
+    public String mySpecification(@RequestParam(name = "plannerNo", required = false) String plannerNo, Model model,HttpSession session) throws IOException {
+        if(session.getAttribute("planner") ==null){
+            return "redirect:./login";
+        }
         List<MySpecification> cardList;
         cardList = mySpecificationService.returnMySpeList(Integer.parseInt(plannerNo));
         model.addAttribute("cardList", cardList);
@@ -47,6 +50,7 @@ public class PlannerController {
     }
     @GetMapping("/main")
     public String mainplanner(Model model, HttpSession session) throws IOException {
+
         Planner planner = (Planner) session.getAttribute("planner");
         List<PlannermainpageCard> card = plannerMainPageService.returnPlannerMainCard(planner.getPlannerNo());
 
