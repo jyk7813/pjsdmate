@@ -17,52 +17,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="is-preload">
-    <a href="./main"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
-    <li class="ham-btn" onclick="goOut()">
-        <a class="menu-trigger" >
-            <span></span>
-            <span></span>
-            <span></span>
-        </a>
-    </li>
-    <div class="topbannerbg">
-        <div class="topbanner">
-            <div class="textbox">
-                <p class="topbannertext"> 어떻게 결혼 준비를 해야할 지 고민인가요?</p>
-                <p class="topbannertext strong">결혼준비 가이드를 확인하세요.</p>
-            </div>
-            <img class="topimg" src="/img/guide.png" >
-            <div class="guidebtn">
-                <a href="https://www.ssrowedding.com/pc/html/ssr/guide_list.php"><p class="go">바로가기 →</p></a>
-            </div>
+<a href="./main"><img class="toplogo" src="/img/logo_pink.png" alt=""/></a>
+<li class="ham-btn" onclick="goOut()">
+    <a class="menu-trigger" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+</li>
+<div class="topbannerbg">
+    <div class="topbanner">
+        <div class="textbox">
+            <p class="topbannertext"> 어떻게 결혼 준비를 해야할 지 고민인가요?</p>
+            <p class="topbannertext strong">결혼준비 가이드를 확인하세요.</p>
+        </div>
+        <img class="topimg" src="/img/guide.png" >
+        <div class="guidebtn">
+            <a href="https://www.ssrowedding.com/pc/html/ssr/guide_list.php"><p class="go">바로가기 →</p></a>
         </div>
     </div>
+</div>
 
-    <!-- Wrapper -->
-    <div id="wrapper">
+<!-- Wrapper -->
+<div id="wrapper">
 
-        <!-- Header -->
-
-        <header id="header" class="alt">
-
-            <h1 id = "name" style="text-align:left">안녕하세요!<img src="/img/signature.png" alt=""></h1>
-           <input type="file">
-            <p style="text-align:left">원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!</p>
-            <ul class="actions">
-                <li><a href="./answer" class="button primary">스드메이트 견적받기</a></li>
-            </ul>
+    <!-- Header -->
+    <header id="header" class="alt">
+        <input type="file" id="fileInput" style="display: none;">
+        <label for="fileInput">
+            <img src="/img/p1.png" id="headerImage" alt="Header Image">
+        </label>
+        <!-- <img src="/img/p1.png"> -->
+        <h1 id = "name" style="text-align:left">안녕하세요!<img src="/img/signature.png" alt=""></h1>
+        <p style="text-align:left">원하는 결혼과정을 선택하고, 지금 바로 견적을 받아보세요!</p>
+        <ul class="actions">
+            <li><a href="./answer" class="button primary">스드메이트 견적받기</a></li>
+        </ul>
 
         </header>
 
-        <!-- Main -->
-        <div id="main">
-            <div class="chat_wrap">
-                <p class="newtext" th:text="${stateString}"></p>
-                <div class="chat_wrapper">
-                    <a>
-
-                        <p id="mno" th:text="${memberNo}" hidden></p>
-                        <p id="pno" th:text="${plannerNo}" hidden></p>
+    <!-- Main -->
+    <div id="main">
+        <div class="chat_wrap">
+            <p class="newtext" th:text="${stateString}"></p>
+            <div class="chat_wrapper">
+                <a>
+                    <img id="connectChat" class="chaticon" src="/img/comment%201.png" alt=""/>
+                    <p id="mno" th:text="${memberNo}" hidden></p>
+                    <p id="pno" th:text="${plannerNo}" hidden></p>
 
                     </a>
                 </div>
@@ -185,6 +187,12 @@
         window.location.href="/memberChat?" + mno + "&" + pno;
 
     }
+</script>
+
+<script>
+    document.getElementById("headerImage").addEventListener("click", function() {
+        document.getElementById("fileInput").click();
+    });
 </script>
 
 <script>

@@ -1908,13 +1908,14 @@ li.ham-btn {
 }
 
 #header.alt img {
-	max-width: 11px;
-	max-height: 11px;
-	width: auto;
-	height: auto;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
 	margin-left: 3px;
-	margin-bottom: 3px;
 	vertical-align: bottom;
+	border-radius: 100%;
+	object-fit: cover;
+
 }
 
 #header.alt > * {
