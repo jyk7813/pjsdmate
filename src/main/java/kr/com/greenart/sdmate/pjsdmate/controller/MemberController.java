@@ -66,8 +66,8 @@ public class MemberController {
         if(session.getAttribute("need")!=null){
             session.removeAttribute("need");
         }
-        String image = memberService.encoding(member);
-        model.addAttribute("image",image);
+
+
         model.addAttribute("memberNo", member.getMemberNo());
         model.addAttribute("card", card);
         model.addAttribute("stateString", stateString);
@@ -218,12 +218,4 @@ public class MemberController {
         return "./login";
     }
 
-    @PostMapping("/updataImage")
-    public ResponseEntity<String> updataImage(@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
-        Member member = (Member) session.getAttribute("member");
-        byte[] image = file.getBytes();
-
-        memberService.updataImage(image,member.getMemberNo());
-        return ResponseEntity.ok("성공됐습니다");
-    }
 }
