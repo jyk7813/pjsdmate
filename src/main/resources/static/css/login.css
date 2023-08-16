@@ -262,6 +262,7 @@ input.loginbtn.member {
   margin-right: auto;
   margin-top: 30px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 input.loginbtn.planner {
   background: url(/img/loginbtnplanner.png) no-repeat;
@@ -275,6 +276,7 @@ input.loginbtn.planner {
   margin-right: auto;
   margin-top: 30px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .loginbtn:active {
