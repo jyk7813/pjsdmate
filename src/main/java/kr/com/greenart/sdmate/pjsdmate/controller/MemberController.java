@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -47,9 +48,7 @@ public class MemberController {
         if(session.getAttribute("member")==null){
             return "redirect:./login";
         }
-        System.out.println("main 페이지 요청이 들어옴");
         Member member = (Member) session.getAttribute("member");
-        System.out.println("멤버" + member);
         List<mainpageCard> card = mainPageService.returnMainCard(member.getMemberNo());
         int cardSize = card.size();
         String stateString=null;
@@ -67,6 +66,8 @@ public class MemberController {
         if(session.getAttribute("need")!=null){
             session.removeAttribute("need");
         }
+        String image = memberService.encoding(member);
+        model.addAttribute("image",image);
         model.addAttribute("memberNo", member.getMemberNo());
         model.addAttribute("card", card);
         model.addAttribute("stateString", stateString);
@@ -217,9 +218,12 @@ public class MemberController {
         return "./login";
     }
 
-//    @PostMapping("updata")
-//    public ResponseEntity<String updataImage(@RequestBody byte[]  ,HttpSession session){
-//        Member member = (Member) session.getAttribute("member");
-//        memberService.updataImage(image,member.getMemberNo());
-//    }
+    @PostMapping("/updataImage")
+    public ResponseEntity<String> updataImage(@RequestParam("file") MultipartFile file, HttpSession session) throws IOException {
+        Member member = (Member) session.getAttribute("member");
+        byte[] image = file.getBytes();
+
+        memberService.updataImage(image,member.getMemberNo());
+        return ResponseEntity.ok("성공됐습니다");
+    }
 }
