@@ -188,7 +188,9 @@
   .loginbtn:active {
     transform: scale(0.9);
   }
-  
+  .loginbtn {
+    cursor: pointer;
+  }
   .logo.member {
     margin-top: 139px;
     background: url(/img/sdmatelogomember.png) no-repeat;

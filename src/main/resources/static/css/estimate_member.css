@@ -217,6 +217,7 @@ body {
     background-position: center;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 .button-back {
     background-image: url("/img/button-back.png");
@@ -226,8 +227,11 @@ body {
     background-position: center;
     width: 28px;
     height: 28px;
+    cursor: pointer;
 }
-
+#footDiv button {
+    cursor: pointer;
+}
 .detailA {
     width: 110px;
     height: 50px;

@@ -65,8 +65,8 @@
 	<!-- Main -->
 	<div id="main">
 		<div class="chat_wrap">
-			<p class="newtext">내 지역 견적요청</p>
-			<p class="area"><a href="#" onclick="showPopup()">부산</a></p>
+			<p class="newtext" th:text="'내 지역 견적요청 (' + ${card.size()} + ')'"></p>
+			<p class="area"><a href="#" th:text="${planner.getRegion()}"></a></p>
 			<div class="popup" id="cityPopup">
 				<div class="popup-content">
 					<ul>
