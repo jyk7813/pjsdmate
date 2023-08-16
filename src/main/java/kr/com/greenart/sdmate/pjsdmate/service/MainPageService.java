@@ -6,7 +6,9 @@ import kr.com.greenart.sdmate.pjsdmate.repository.PlannerSpecificationPackageRep
 import kr.com.greenart.sdmate.pjsdmate.repository.ReviewRepository;
 import kr.com.greenart.sdmate.pjsdmate.repository.SpecificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StreamUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -71,9 +73,9 @@ public class MainPageService {
                 try {
                     encoded = Base64.getEncoder().encodeToString(planner.getImage());
                 } catch (NullPointerException e) {
-                    String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
-                    Path path = Paths.get(imagePath);
-                    byte[] imageBytes = Files.readAllBytes(path);
+                    String imagePath = "static/img/profileDefault.png"; // 클래스패스 내의 이미지 파일 경로
+                    ClassPathResource resource = new ClassPathResource(imagePath);
+                    byte[] imageBytes = StreamUtils.copyToByteArray(resource.getInputStream());
                     encoded = Base64.getEncoder().encodeToString(imageBytes);
                 } finally {
                     eachCard.setPlannerImg(encoded);
@@ -102,9 +104,9 @@ public class MainPageService {
             try {
                 encoded = Base64.getEncoder().encodeToString(planner.getImage());
             } catch (NullPointerException e) {
-                String imagePath = "src/main/resources/static/img/profileDefault.png"; // 이미지 파일 경로
-                Path path = Paths.get(imagePath);
-                byte[] imageBytes = Files.readAllBytes(path);
+                String imagePath = "static/img/profileDefault.png"; // 클래스패스 내의 이미지 파일 경로
+                ClassPathResource resource = new ClassPathResource(imagePath);
+                byte[] imageBytes = StreamUtils.copyToByteArray(resource.getInputStream());
                 encoded = Base64.getEncoder().encodeToString(imageBytes);
             } finally {
                 eachCard.setPlannerImg(encoded);
