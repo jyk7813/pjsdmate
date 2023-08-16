@@ -8,10 +8,13 @@ import kr.com.greenart.sdmate.pjsdmate.exception.JoinIdException;
 import kr.com.greenart.sdmate.pjsdmate.exception.JoinPhoneNumException;
 import kr.com.greenart.sdmate.pjsdmate.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StreamUtils;
 
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -190,7 +193,22 @@ public void join(Member member){
         return null;
     }
 
-    public void updataImage(byte[] image,int memberPk){
+    public void updataImage(byte[] image,Integer memberPk){
         memberRepository.updataImage(memberPk,image);
     }
+
+    public String encoding(Member member) throws IOException {
+        String encoded = null;
+        try {
+          byte [] image = member.getImage();
+            encoded = Base64.getEncoder().encodeToString(image);
+        } catch (NullPointerException e) {
+            String imagePath = "static/img/profileDefault.png"; // 클래스패스 내의 이미지 파일 경로
+            ClassPathResource resource = new ClassPathResource(imagePath);
+            byte[] imageBytes = StreamUtils.copyToByteArray(resource.getInputStream());
+            encoded = Base64.getEncoder().encodeToString(imageBytes);
+        }
+        return encoded;
+    }
+
 }

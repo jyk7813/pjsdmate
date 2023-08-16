@@ -41,5 +41,5 @@ public interface SpringDataJpaMemberRepository extends JpaRepository<Member, Int
     int updateRequirementPk(int memberPk,int requirementPk);
 
     @Override
-    byte[] updataImage(int memberPk, byte[] images);
+    int updataImage(Integer memberPk, byte[] images);
 }
