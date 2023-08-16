@@ -210,7 +210,7 @@ body {
     }
 }
 .button-with-image {
-    background-image: url("/img/ detailOpen.png");
+    background-image: url("/img/detailOpen.png");
     border: none;
     background-color: transparent;
     background-repeat: no-repeat;
